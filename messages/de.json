@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "collections": "Kollektionen",
+    "featured": "Im Fokus",
+    "journal": "Journal",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "enquire": "Anfrage",
+    "language": "Sprache"
+  },
+  "hero": {
+    "eyebrow": "Ein Atelier in Neuseeland",
+    "body": "Schmuck aus natürlichen Kristallen, in langsamer Handarbeit an einer stillen Küste Neuseelands geformt.",
+    "cta": "Kollektionen entdecken",
+    "scroll": "Scrollen"
+  },
+  "philosophy": {
+    "label": "Philosophie",
+    "title": "Ein Haus, gegründet auf Stille und Stein.",
+    "pillars": {
+      "natural": {
+        "title": "Natürliche Materialien",
+        "body": "Wir arbeiten ausschließlich mit natürlichen Steinen — und bewahren ihre ursprüngliche Textur, ihre Einschlüsse und ihre leise Energie."
+      },
+      "timeless": {
+        "title": "Zeitlose Ästhetik",
+        "body": "Wir lehnen die Geschwindigkeit der Trends ab. Jedes Stück ist so entworfen, dass es das Jahr seiner Entstehung überdauert."
+      },
+      "quality": {
+        "title": "Qualität zuerst",
+        "body": "Von der Wahl des Steins bis zum letzten Handgriff — jeder Schritt folgt dem Anspruch eines Stücks, das ein Leben lang getragen werden soll."
+      }
+    }
+  },
+  "collections": {
+    "eyebrow": "Kollektionen",
+    "title": "Kapitel von einer einzigen Küste.",
+    "intro": "Jede Kollektion ist von einer anderen Stunde der Küste geprägt — ihrem Wetter, ihrer Farbe, ihrer Stille.",
+    "chapter": "Kapitel",
+    "viewLink": "Dieses Kapitel ansehen"
+  },
+  "featured": {
+    "subtitle": "Aus der LAST QUEEN Kollektion",
+    "title": "Last Queen Nr. 03",
+    "body": "Für die Frau, die durch das, was sie erlebt hat, neu geformt wurde — und sanfter, mehr sie selbst, zurückgekehrt ist.",
+    "stoneTitle": "Der Stein",
+    "stoneBody": "Handverlesener Regenbogen-Mondstein, gewählt wegen seiner seltenen Adularesenz — einem langsamen Wandel silberblauen Lichts, der nur unter bestimmten Winkeln erscheint. Seit jeher in vielen Kulturen als stille Begleiterin durch Wandlungen getragen: von einem Selbst zum nächsten.",
+    "materialTitle": "Material & Handwerk",
+    "materialBody": "In unserem Atelier in Neuseeland von Hand geschmiedet, Stück für Stück. Keine zwei sind wirklich gleich — jedes Last Queen Nr. 03 trägt die feinen, bewussten Spuren der Hände, die es geformt haben.",
+    "stylingTitle": "Trageinspiration",
+    "stylingBody": "Morgens allein nahe am Schlüsselbein getragen, abends mit feineren Ketten geschichtet — nicht zur Inszenierung, sondern als Begleitung. Wenn nicht getragen, ruht es auf Leinen."
+  },
+  "journal": {
+    "eyebrow": "Stein-Journal",
+    "title": "Notizen zu den Steinen, die wir bewahren wollen.",
+    "intro": "Ein bedachtsames, unaufgeregtes Schreiben über die Materialien, die unsere Arbeit prägen — ihre Geschichte, ihr Charakter, ihr Leben mit der Trägerin.",
+    "readLink": "Beitrag lesen"
+  },
+  "about": {
+    "eyebrow": "Unsere Geschichte",
+    "title": "Gegründet 2019, an einer stillen Küste Neuseelands.",
+    "p1": "SIREN TEARS begann 2019 an der Küste Neuseelands — einer Küste, an der das Licht langsam ankommt, das Wetter sich wie eine Seite lesen lässt und ein Schmuckstück sich alle Zeit nehmen darf, die es braucht.",
+    "p2": "Jedes Stück entsteht von Hand. Wir arbeiten nur mit natürlichen Steinen, die so kommen, wie sie sind — Textur erhalten, Charakter gewahrt, die ruhige Autorität von etwas, das nicht zur Eile gemacht wurde.",
+    "p3": "Sechs Jahre später werden unsere Stücke von einer Gemeinschaft von Frauen in über fünfunddreißig Ländern getragen — Frauen, die zu sich selbst zurückkehren, das Wesentliche bewahren und es weitergeben.",
+    "stats": {
+      "years": "Jahre Hingabe",
+      "countries": "Länder",
+      "studio": "Küsten-Atelier"
+    }
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "studio": "Atelier",
+    "elsewhere": "Anderswo",
+    "byAppointment": "Nach Vereinbarung geöffnet.",
+    "region": "Neuseeland.",
+    "wechat": "WeChat",
+    "tagline": "Schmuck aus natürlichen Kristallen, langsam am Südmeer gefertigt.",
+    "copyright": "© {year} Siren Tears Atelier",
+    "crafted": "Langsam gefertigt, am Südmeer."
+  },
+  "languageSwitcher": {
+    "label": "Sprache",
+    "close": "Schließen"
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "collections": "Collections",
+    "featured": "Featured",
+    "journal": "Journal",
+    "about": "About",
+    "contact": "Contact",
+    "enquire": "Enquire",
+    "language": "Language"
+  },
+  "hero": {
+    "eyebrow": "A New Zealand Atelier",
+    "body": "Natural crystal jewelry, shaped slowly by hand on a quiet shoreline of New Zealand.",
+    "cta": "Explore Collections",
+    "scroll": "Scroll"
+  },
+  "philosophy": {
+    "label": "Philosophy",
+    "title": "A house built on stillness and stone.",
+    "pillars": {
+      "natural": {
+        "title": "Natural Materials",
+        "body": "We work only with natural stones — preserving their original texture, inclusions, and quiet energy."
+      },
+      "timeless": {
+        "title": "Timeless Aesthetics",
+        "body": "We reject the speed of trends. Each piece is designed to transcend the year it was born in."
+      },
+      "quality": {
+        "title": "Quality First",
+        "body": "From the choice of stone to the final hand-finished detail — every step is held to what a piece worth keeping for a lifetime demands."
+      }
+    }
+  },
+  "collections": {
+    "eyebrow": "Collections",
+    "title": "Chapters from one shoreline.",
+    "intro": "Each collection is shaped by a different hour of the coast — its weather, its colour, its quiet.",
+    "chapter": "Chapter",
+    "viewLink": "View the chapter"
+  },
+  "featured": {
+    "subtitle": "From the Last Queen collection",
+    "title": "Last Queen No.03",
+    "body": "For the woman who has been remade by what she's lived through — and returned to herself, softer and more her own.",
+    "stoneTitle": "The Stone",
+    "stoneBody": "Hand-selected rainbow moonstone, chosen for its rare adularescence — a slow shift of silver-blue light that surfaces only at certain angles. Historically worn across cultures as a quiet companion through transformation: from one self into the next.",
+    "materialTitle": "Material & Craft",
+    "materialBody": "Hand-forged at our New Zealand studio, made one at a time. No two are truly alike — every Last Queen No.03 carries the small, deliberate signatures of the hands that shaped it.",
+    "stylingTitle": "Styling Inspiration",
+    "stylingBody": "Worn alone against the collarbone in the morning, layered with finer chains for evening — not to perform, but to accompany. Left to rest on linen when not in wear."
+  },
+  "journal": {
+    "eyebrow": "Stone Journal",
+    "title": "Notes on the stones we choose to keep.",
+    "intro": "Considered, unhurried writing on the materials that shape our work — their history, their character, the way they live with the wearer.",
+    "readLink": "Read the note"
+  },
+  "about": {
+    "eyebrow": "Our Story",
+    "title": "Founded in 2019, on a quiet New Zealand shore.",
+    "p1": "SIREN TEARS began in 2019 on the coast of New Zealand — the kind of shoreline where the light arrives slowly, the weather is something you read like a page, and a piece of jewelry can take all the time it needs.",
+    "p2": "Every piece is hand-shaped. We work only with natural stones that arrive as themselves — preserved texture, original character, the quiet authority of something not made to be rushed.",
+    "p3": "Six years on, our pieces are worn by a community of women across more than thirty-five countries — women returning to themselves, keeping what matters, passing it on.",
+    "stats": {
+      "years": "Years of devotion",
+      "countries": "Countries",
+      "studio": "Coastal atelier"
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "studio": "Studio",
+    "elsewhere": "Elsewhere",
+    "byAppointment": "Open by appointment.",
+    "region": "New Zealand.",
+    "wechat": "WeChat",
+    "tagline": "Natural crystal jewelry, made slowly by the southern sea.",
+    "copyright": "© {year} Siren Tears Atelier",
+    "crafted": "Crafted slowly, by the southern sea."
+  },
+  "languageSwitcher": {
+    "label": "Language",
+    "close": "Close"
+  }
+}

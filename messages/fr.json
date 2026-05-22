@@ -1,0 +1,86 @@
+{
+  "nav": {
+    "collections": "Collections",
+    "featured": "À la une",
+    "journal": "Journal",
+    "about": "À propos",
+    "contact": "Contact",
+    "enquire": "Nous écrire",
+    "language": "Langue"
+  },
+  "hero": {
+    "eyebrow": "Un atelier néo-zélandais",
+    "body": "Bijoux en cristaux naturels, façonnés lentement à la main sur un rivage tranquille de Nouvelle-Zélande.",
+    "cta": "Découvrir les collections",
+    "scroll": "Défiler"
+  },
+  "philosophy": {
+    "label": "Philosophie",
+    "title": "Une maison bâtie sur le silence et la pierre.",
+    "pillars": {
+      "natural": {
+        "title": "Matières naturelles",
+        "body": "Nous ne travaillons qu'avec des pierres naturelles — en préservant leur texture d'origine, leurs inclusions et leur énergie discrète."
+      },
+      "timeless": {
+        "title": "Esthétique intemporelle",
+        "body": "Nous refusons la vitesse des tendances. Chaque pièce est conçue pour traverser l'année qui l'a vue naître."
+      },
+      "quality": {
+        "title": "La qualité d'abord",
+        "body": "Du choix de la pierre au dernier geste à la main, chaque étape répond à ce qu'exige une pièce destinée à être gardée toute une vie."
+      }
+    }
+  },
+  "collections": {
+    "eyebrow": "Collections",
+    "title": "Quelques chapitres d'un même rivage.",
+    "intro": "Chaque collection s'inspire d'une heure différente de la côte — son climat, sa couleur, son silence.",
+    "chapter": "Chapitre",
+    "viewLink": "Voir ce chapitre"
+  },
+  "featured": {
+    "subtitle": "Issu de la collection LAST QUEEN",
+    "title": "Last Queen N°03",
+    "body": "Pour la femme que la vie a refaite — et qui est revenue à elle-même, plus douce et plus elle.",
+    "stoneTitle": "La Pierre",
+    "stoneBody": "Pierre de lune arc-en-ciel sélectionnée à la main, choisie pour son adularescence rare — ce lent glissement de lumière bleu argenté qui n'apparaît que sous certains angles. Depuis toujours portée à travers les cultures comme une compagne silencieuse des métamorphoses : d'un soi à un autre.",
+    "materialTitle": "Matière & savoir-faire",
+    "materialBody": "Forgée à la main dans notre atelier de Nouvelle-Zélande, une pièce à la fois. Aucune n'est tout à fait identique — chaque Last Queen N°03 porte les signatures délicates des mains qui l'ont façonnée.",
+    "stylingTitle": "Inspiration de port",
+    "stylingBody": "Portée seule contre la clavicule au matin, superposée à des chaînes plus fines le soir — non pour paraître, mais pour accompagner. Reposée sur le lin lorsqu'on ne la porte pas."
+  },
+  "journal": {
+    "eyebrow": "Journal des pierres",
+    "title": "Notes sur les pierres que nous choisissons de garder.",
+    "intro": "Une écriture lente et attentive sur les matières qui façonnent notre travail — leur histoire, leur caractère, la manière dont elles vivent auprès de celle qui les porte.",
+    "readLink": "Lire la note"
+  },
+  "about": {
+    "eyebrow": "Notre histoire",
+    "title": "Fondée en 2019, sur un rivage tranquille de Nouvelle-Zélande.",
+    "p1": "SIREN TEARS est née en 2019 sur la côte de la Nouvelle-Zélande — un rivage où la lumière arrive lentement, où le temps se lit comme une page, et où une pièce de joaillerie peut prendre tout le temps qu'il lui faut.",
+    "p2": "Chaque pièce est façonnée à la main. Nous ne travaillons qu'avec des pierres naturelles qui arrivent telles qu'elles sont — texture préservée, caractère intact, l'autorité discrète d'une chose qui n'a pas été pressée.",
+    "p3": "Six ans plus tard, nos pièces sont portées par une communauté de femmes dans plus de trente-cinq pays — des femmes qui reviennent à elles-mêmes, qui gardent ce qui compte, et qui le transmettent.",
+    "stats": {
+      "years": "Années de dévotion",
+      "countries": "Pays",
+      "studio": "Atelier côtier"
+    }
+  },
+  "footer": {
+    "contact": "Contact",
+    "studio": "Atelier",
+    "elsewhere": "Ailleurs",
+    "byAppointment": "Sur rendez-vous.",
+    "region": "Nouvelle-Zélande.",
+    "wechat": "WeChat",
+    "tagline": "Bijoux en cristaux naturels, faits lentement par la mer du sud.",
+    "copyright": "© {year} Siren Tears Atelier",
+    "crafted": "Façonné lentement, près de la mer du sud."
+  },
+  "languageSwitcher": {
+    "label": "Langue",
+    "close": "Fermer"
+  }
+}

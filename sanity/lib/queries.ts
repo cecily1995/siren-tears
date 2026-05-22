@@ -1,0 +1,51 @@
+import { groq } from 'next-sanity';
+import { client, hasSanityConfig } from './client';
+
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
+  brandName, tagline, instagramUrl, xiaohongshuUrl, wechatHandle, email
+}`;
+
+export const homepageQuery = groq`*[_type == "homepage"][0]{
+  hero{ eyebrow, title, body, ctaLabel, "bgUrl": background.asset->url, "bgAlt": background.alt },
+  philosophy{ sectionLabel, sectionTitle, pillars[]{ title, body } },
+  featured->{
+    title, subtitle, body,
+    "imageUrl": image.asset->url, "imageAlt": image.alt,
+    stoneTitle, stoneBody,
+    materialTitle, materialBody,
+    stylingTitle, stylingBody,
+    "detailUrl": detail.asset->url
+  }
+}`;
+
+export const collectionsQuery = groq`*[_type == "collection"] | order(order asc){
+  _id, title, subtitle, slug,
+  "coverUrl": cover.asset->url, "coverAlt": cover.alt,
+  scale
+}`;
+
+export const journalQuery = groq`*[_type == "journalArticle"] | order(publishedAt desc){
+  _id, title, slug, category, excerpt, publishedAt,
+  "coverUrl": cover.asset->url, "coverAlt": cover.alt
+}`;
+
+export const brandStoryQuery = groq`*[_type == "brandStory"][0]{
+  eyebrow, title, paragraphs,
+  "imageUrl": image.asset->url, "imageAlt": image.alt,
+  stats[]{ label, value }
+}`;
+
+async function safeFetch<T>(query: string): Promise<T | null> {
+  if (!hasSanityConfig || !client) return null;
+  try {
+    return await client.fetch<T>(query, {}, { next: { revalidate: 60 } });
+  } catch {
+    return null;
+  }
+}
+
+export const getSiteSettings = () => safeFetch<any>(siteSettingsQuery);
+export const getHomepage = () => safeFetch<any>(homepageQuery);
+export const getCollections = () => safeFetch<any[]>(collectionsQuery);
+export const getJournal = () => safeFetch<any[]>(journalQuery);
+export const getBrandStory = () => safeFetch<any>(brandStoryQuery);
