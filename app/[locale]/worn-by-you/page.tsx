@@ -36,8 +36,8 @@ export default async function GalleryPage({
       <PageHeader
         eyebrow={t('eyebrow')}
         title={t('title')}
-        imageUrl="https://images.unsplash.com/photo-1531995811006-35cb42e1a022?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Soft natural light, everyday moments"
+        imageUrl="https://images.unsplash.com/photo-1767131636996-ae27286d36fb?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Calm ocean water meeting a quiet rocky coastline"
       >
         <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
           {t('intro')}

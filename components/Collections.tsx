@@ -19,18 +19,11 @@ type Labels = {
 };
 
 const cellClass = (scale: string | undefined, i: number) => {
-  switch (scale) {
-    case 'tall':
-      return 'md:col-span-5 md:row-span-2 aspect-[3/4]';
-    case 'wide':
-      return 'md:col-span-7 aspect-[16/10]';
-    case 'large':
-      return 'md:col-span-7 md:row-span-2 aspect-[5/6]';
-    case 'small':
-      return 'md:col-span-5 aspect-[5/4]';
-    default:
-      return i % 2 === 0 ? 'md:col-span-7 aspect-[16/10]' : 'md:col-span-5 aspect-[3/4]';
-  }
+  // A clean, evenly-tiled grid (no mixed row-spans) so any number of
+  // collections tiles reliably at any viewport width, with a slightly
+  // larger "feature" tile for every 3rd item for a touch of editorial
+  // rhythm without the fragility of a hand-tuned masonry pattern.
+  return i % 3 === 0 ? 'md:col-span-6 aspect-[16/11]' : 'md:col-span-3 aspect-[3/4]';
 };
 
 export default function Collections({

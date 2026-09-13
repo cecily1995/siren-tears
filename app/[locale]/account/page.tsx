@@ -30,8 +30,8 @@ export default async function AccountPage({
         eyebrow={t('eyebrow')}
         title={t('title')}
         intro={t('intro')}
-        imageUrl="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2000&q=80"
-        imageAlt="Soft light, linen and quiet interiors"
+        imageUrl="https://images.unsplash.com/photo-1767131636996-ae27286d36fb?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Calm ocean water meeting a quiet rocky coastline"
       />
 
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">

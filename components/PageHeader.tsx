@@ -8,7 +8,7 @@ type Props = {
 };
 
 const DEFAULT_IMAGE =
-  'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2000&q=80';
+  'https://images.unsplash.com/photo-1767131636996-ae27286d36fb?auto=format&fit=crop&w=2000&q=80';
 
 /**
  * Warm, light-toned header for inner pages (Shipping, Bespoke, Care, Shop, etc).
