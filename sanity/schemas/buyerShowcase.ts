@@ -20,6 +20,13 @@ export default defineType({
       validation: (r) => r.min(1)
     }),
     defineField({
+      name: 'video',
+      title: 'Video (optional)',
+      type: 'file',
+      options: { accept: 'video/*' },
+      description: 'Optional — a short video from this customer, shown alongside their photos.'
+    }),
+    defineField({
       name: 'caption',
       title: 'Caption (customer\u2019s voice)',
       type: 'text',

@@ -7,7 +7,18 @@ type ShowcaseItem = {
   caption?: string;
   customerHandle?: string;
   images?: { url?: string; alt?: string }[];
+  videoUrl?: string;
 };
+
+type Media = { type: 'image' | 'video'; url: string; alt?: string };
+
+function mediaFor(item: ShowcaseItem): Media[] {
+  const media: Media[] = (item.images ?? [])
+    .filter((img) => !!img.url)
+    .map((img) => ({ type: 'image' as const, url: img.url!, alt: img.alt }));
+  if (item.videoUrl) media.push({ type: 'video', url: item.videoUrl });
+  return media;
+}
 
 export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -33,7 +44,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
     setActiveIndex(null);
   }
 
-  const photos = active?.images ?? [];
+  const photos = active ? mediaFor(active) : [];
 
   return (
     <>
@@ -91,14 +102,22 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
 
           <div className="relative z-[1] w-full max-w-[900px] max-h-[88vh] overflow-y-auto bg-ivory">
             <div className="relative bg-charcoal/5">
-              {photos[photoIndex]?.url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={photos[photoIndex].url}
-                  alt={photos[photoIndex].alt || active.caption || ''}
-                  className="w-full h-auto max-h-[60vh] object-contain mx-auto block"
-                />
-              )}
+              {photos[photoIndex] &&
+                (photos[photoIndex].type === 'video' ? (
+                  <video
+                    key={photos[photoIndex].url}
+                    src={photos[photoIndex].url}
+                    controls
+                    className="w-full h-auto max-h-[60vh] mx-auto block"
+                  />
+                ) : (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={photos[photoIndex].url}
+                    alt={photos[photoIndex].alt || active?.caption || ''}
+                    className="w-full h-auto max-h-[60vh] object-contain mx-auto block"
+                  />
+                ))}
               {photos.length > 1 && (
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 pb-3">
                   {photos.map((_, i) => (
@@ -138,18 +157,25 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
 
             {photos.length > 1 && (
               <div className="flex gap-2 p-4 overflow-x-auto">
-                {photos.map((img, i) => (
+                {photos.map((m, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setPhotoIndex(i)}
-                    className={`shrink-0 w-16 h-16 overflow-hidden border ${
+                    className={`shrink-0 w-16 h-16 overflow-hidden border relative bg-charcoal/10 ${
                       i === photoIndex ? 'border-charcoal' : 'border-transparent'
                     }`}
                   >
-                    {img.url && (
+                    {m.type === 'video' ? (
+                      <>
+                        <video src={m.url} className="w-full h-full object-cover" muted />
+                        <span className="absolute inset-0 flex items-center justify-center text-ivory text-[10px]">
+                          ▶
+                        </span>
+                      </>
+                    ) : (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={img.url} alt="" className="w-full h-full object-cover" />
+                      <img src={m.url} alt="" className="w-full h-full object-cover" />
                     )}
                   </button>
                 ))}
