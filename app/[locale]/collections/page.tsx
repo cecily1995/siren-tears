@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { getCollections } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -46,14 +47,12 @@ export default async function CollectionsPage({
 
   return (
     <>
-      <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-16 md:pt-48 md:pb-20 overflow-hidden">
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2rem,4.4vw,3.4rem)] font-light leading-[1.18] text-charcoal">
-            {t('title')}
-          </h1>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        imageUrl="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Crystal jewellery resting on warm linen"
+      />
 
       {/* Beaded Collections */}
       <section className="bg-ivory px-6 md:px-12 pt-4 pb-24 md:pb-32">

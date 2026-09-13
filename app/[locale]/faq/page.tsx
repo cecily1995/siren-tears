@@ -50,7 +50,12 @@ export default async function FaqPage({
 
   return (
     <>
-      <PageHeader eyebrow="FAQ" title="Frequently Asked Questions" />
+      <PageHeader
+        eyebrow="FAQ"
+        title="Frequently Asked Questions"
+        imageUrl="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Natural stone texture"
+      />
 
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
         <div className="mx-auto max-w-[820px] divide-y divide-charcoal/10">

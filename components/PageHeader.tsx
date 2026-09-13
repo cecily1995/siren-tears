@@ -2,23 +2,42 @@ type Props = {
   eyebrow?: string;
   title: string;
   intro?: string;
+  imageUrl?: string;
+  imageAlt?: string;
   children?: React.ReactNode;
 };
+
+const DEFAULT_IMAGE =
+  'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=2000&q=80';
 
 /**
  * Warm, light-toned header for inner pages (Shipping, Bespoke, Care, Shop, etc).
  * The homepage Hero keeps its dark ocean photography — this is deliberately
- * the opposite: ivory/stone, so inner pages read as contemporary quiet-luxury
- * rather than "dark art site".
+ * lighter — but it still carries a soft, low-opacity photographic backdrop
+ * (rather than a flat solid colour) so inner pages keep some atmosphere and
+ * brand mood instead of reading as empty white space.
  */
-export default function PageHeader({ eyebrow, title, intro, children }: Props) {
+export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, children }: Props) {
   return (
-    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
+    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
       <div
-        className="absolute inset-0 opacity-[0.5] pointer-events-none"
+        className="absolute inset-0 bg-center bg-cover opacity-[0.16] mix-blend-multiply"
+        style={{ backgroundImage: `url(${imageUrl || DEFAULT_IMAGE})` }}
+        role={imageAlt ? 'img' : undefined}
+        aria-label={imageAlt}
+      />
+      <div
+        className="absolute inset-0"
         style={{
           background:
-            'radial-gradient(60% 45% at 50% 0%, rgba(167,134,86,0.08) 0%, rgba(167,134,86,0) 70%)'
+            'linear-gradient(180deg, rgba(250,246,238,0.35) 0%, rgba(250,246,238,0.82) 55%, rgba(250,246,238,0.97) 100%)'
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-70 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(60% 45% at 50% 0%, rgba(167,134,86,0.1) 0%, rgba(167,134,86,0) 70%)'
         }}
       />
       <div className="relative mx-auto max-w-[820px] text-center reveal">

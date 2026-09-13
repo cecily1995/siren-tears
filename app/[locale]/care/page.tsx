@@ -32,7 +32,13 @@ export default async function CarePage({
 
   return (
     <>
-      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        intro={t('intro')}
+        imageUrl="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Natural stone, soft light"
+      />
 
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[980px]">

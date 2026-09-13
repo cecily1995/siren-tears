@@ -29,7 +29,13 @@ export default async function MembershipPage({
 
   return (
     <>
-      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('subtitle')} />
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        intro={t('subtitle')}
+        imageUrl="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Warm gold and champagne stone detail"
+      />
 
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10">

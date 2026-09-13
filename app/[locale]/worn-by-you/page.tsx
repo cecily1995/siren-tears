@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBuyerShowcase, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -32,30 +33,29 @@ export default async function GalleryPage({
 
   return (
     <>
-      <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12] text-charcoal">
-            {t('title')}
-          </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
-            {t('intro')}
-            {instagramUrl && (
-              <>
-                {' '}
-                <a
-                  href={instagramUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-charcoal link-underline"
-                >
-                  @sirentears_1995
-                </a>
-              </>
-            )}
-          </p>
-        </div>
-      </section>
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        imageUrl="https://images.unsplash.com/photo-1531995811006-35cb42e1a022?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Soft natural light, everyday moments"
+      >
+        <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
+          {t('intro')}
+          {instagramUrl && (
+            <>
+              {' '}
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-charcoal link-underline"
+              >
+                @sirentears_1995
+              </a>
+            </>
+          )}
+        </p>
+      </PageHeader>
 
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[1480px]">

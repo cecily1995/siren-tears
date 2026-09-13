@@ -55,7 +55,13 @@ export default async function BespokePage({
   return (
     <>
       {/* Hero */}
-      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        intro={t('intro')}
+        imageUrl="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Hands shaping jewellery at a quiet workbench"
+      />
 
       {/* Two production tracks */}
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">

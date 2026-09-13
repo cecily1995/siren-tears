@@ -55,7 +55,13 @@ export default async function ShopPage({
 
   return (
     <>
-      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <PageHeader
+        eyebrow={t('eyebrow')}
+        title={t('title')}
+        intro={t('intro')}
+        imageUrl="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=2000&q=80"
+        imageAlt="Natural stone jewellery macro detail"
+      />
 
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
         <div className="mx-auto max-w-[1480px]">

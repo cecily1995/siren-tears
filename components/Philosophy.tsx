@@ -6,8 +6,23 @@ type PhilosophyData = {
 
 export default function Philosophy({ data }: { data: PhilosophyData }) {
   return (
-    <section className="bg-pearl text-charcoal py-32 md:py-44 px-6 md:px-12">
-      <div className="mx-auto max-w-[1280px]">
+    <section className="relative bg-pearl text-charcoal py-32 md:py-44 px-6 md:px-12 overflow-hidden">
+      {/* Soft continuity from the ocean hero above: a dark-to-pearl bridge, not a hard cut. */}
+      <div
+        className="absolute inset-x-0 top-0 h-40 md:h-56 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(250,246,238,0) 100%)'
+        }}
+      />
+      {/* Faint stone/coastal texture so the section carries some atmosphere rather than flat colour. */}
+      <div
+        className="absolute inset-0 bg-center bg-cover opacity-[0.07] mix-blend-multiply pointer-events-none"
+        style={{
+          backgroundImage:
+            "url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=2000&q=80')"
+        }}
+      />
+      <div className="relative mx-auto max-w-[1280px]">
         <div className="text-center max-w-2xl mx-auto reveal">
           {data.sectionLabel && <p className="eyebrow mb-6">{data.sectionLabel}</p>}
           {data.sectionTitle && (
