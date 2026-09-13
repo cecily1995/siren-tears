@@ -337,6 +337,19 @@ export default function AccountLookupForm() {
                     <span className="text-ash/60"> · {p.status}</span>
                     <div className="text-ash/60 mt-1">
                       {t('trackingLabel')}: {p.trackingNumber || t('notShippedYet')}
+                      {p.trackingNumber && (
+                        <>
+                          {' — '}
+                          <a
+                            href="https://www.nzpost.co.nz/tools/tracking"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-charcoal link-underline"
+                          >
+                            {t('trackWithNzPost')}
+                          </a>
+                        </>
+                      )}
                     </div>
                   </li>
                 ))}
