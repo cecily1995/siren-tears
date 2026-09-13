@@ -8,6 +8,8 @@ type HeroData = {
   scrollLabel?: string;
 };
 
+import Image from 'next/image';
+
 export default function Hero({ data }: { data: HeroData }) {
   return (
     <section
@@ -51,11 +53,16 @@ export default function Hero({ data }: { data: HeroData }) {
                 <span className="divider-line ml-4" />
               </p>
             )}
-            <h1
-              className="serif-display text-[clamp(3.2rem,9vw,7.5rem)] font-light tracking-[0.18em] uppercase opacity-0 animate-[fadeUp_1.4s_cubic-bezier(0.22,1,0.36,1)_0.9s_forwards]"
-            >
-              {data.title}
-            </h1>
+            <div className="opacity-0 animate-[fadeUp_1.4s_cubic-bezier(0.22,1,0.36,1)_0.9s_forwards]">
+              <Image
+                src="/logo/siren-tears-logo-full-ivory.png"
+                alt={data.title || 'Siren Tears'}
+                width={1200}
+                height={453}
+                priority
+                className="w-full max-w-[280px] sm:max-w-[380px] md:max-w-[520px] h-auto mx-auto"
+              />
+            </div>
             <p
               className="mt-8 text-[0.95rem] md:text-[1.05rem] font-light text-ivory/85 max-w-xl mx-auto leading-[1.9] opacity-0 animate-[fadeUp_1.4s_cubic-bezier(0.22,1,0.36,1)_1.4s_forwards]"
             >

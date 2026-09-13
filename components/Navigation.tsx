@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -38,24 +37,13 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
-        <Link href="/#top" className="relative flex items-center shrink-0" aria-label="Siren Tears — Home">
-          <Image
-            src="/logo/siren-tears-logo-full.png"
-            alt="Siren Tears"
-            width={320}
-            height={121}
-            priority
-            className={`h-9 md:h-11 w-auto transition-opacity duration-700 ${scrolled ? 'opacity-100' : 'opacity-0'}`}
-          />
-          <Image
-            src="/logo/siren-tears-logo-full-ivory.png"
-            alt=""
-            aria-hidden="true"
-            width={320}
-            height={121}
-            priority
-            className={`h-9 md:h-11 w-auto absolute left-0 top-1/2 -translate-y-1/2 transition-opacity duration-700 ${scrolled ? 'opacity-0' : 'opacity-100'}`}
-          />
+        <Link
+          href="/#top"
+          className={`font-serif text-[1.05rem] md:text-[1.15rem] tracking-[0.42em] uppercase shrink-0 ${
+            scrolled ? 'text-charcoal' : 'text-ivory'
+          } transition-colors duration-700`}
+        >
+          Siren&nbsp;Tears
         </Link>
 
         <nav className="hidden lg:flex items-center gap-8">
