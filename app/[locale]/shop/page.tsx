@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getShopProducts } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import ShopGrid from '@/components/ShopGrid';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -16,9 +17,11 @@ export async function generateMetadata({
 }
 
 export default async function ShopPage({
-  params
+  params,
+  searchParams
 }: {
   params: { locale: string };
+  searchParams: { category?: string };
 }) {
   const { locale } = params;
   setRequestLocale(locale);
@@ -33,7 +36,13 @@ export default async function ShopPage({
       necklaces: t('filters.necklaces'),
       rings: t('filters.rings'),
       pendants: t('filters.pendants'),
+      bangles: t('filters.bangles'),
       archive: t('filters.archive')
+    },
+    lineFilters: {
+      all: t('lineFilters.all'),
+      beaded: t('lineFilters.beaded'),
+      aotearoa: t('lineFilters.aotearoa')
     },
     status: {
       sold: t('status.sold'),
@@ -46,29 +55,12 @@ export default async function ShopPage({
 
   return (
     <>
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12]">
-            {t('title')}
-          </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ivory/70 font-light">
-            {t('intro')}
-          </p>
-        </div>
-      </section>
+      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
 
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
-            <ShopGrid products={items} labels={labels} />
+            <ShopGrid products={items} labels={labels} initialFilter={searchParams?.category} />
           ) : (
             <div className="max-w-lg mx-auto text-center py-16 reveal">
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">

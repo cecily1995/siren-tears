@@ -4,6 +4,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { getShopProductBySlug, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import RequestPurchaseForm from '@/components/RequestPurchaseForm';
 
 export const revalidate = 60;
 
@@ -123,27 +124,18 @@ export default async function ShopProductPage({
             </p>
 
             <div className="mt-8 pt-8 border-t border-charcoal/10">
-              <p className="text-[0.9rem] text-ash font-light leading-relaxed mb-5">
-                {t('purchaseNote')}
-              </p>
-              <div className="flex flex-wrap gap-6">
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[11px] tracking-[0.3em] uppercase text-charcoal link-underline"
-                >
-                  WhatsApp
-                </a>
-                {email && (
-                  <a
-                    href={`mailto:${email}?subject=${encodeURIComponent(product.name + ' — ' + t('enquireCta'))}`}
-                    className="text-[11px] tracking-[0.3em] uppercase text-charcoal link-underline"
-                  >
-                    {t('enquireCta')}
-                  </a>
-                )}
-              </div>
+              {isSold || isReserved ? (
+                <p className="text-[0.9rem] text-ash font-light leading-relaxed">
+                  {t('purchaseNote')}
+                </p>
+              ) : (
+                <RequestPurchaseForm
+                  productName={product.name}
+                  productSlug={product.slug?.current ?? slug}
+                  whatsappUrl={whatsappUrl}
+                  email={email}
+                />
+              )}
             </div>
 
             {details.length > 0 && (

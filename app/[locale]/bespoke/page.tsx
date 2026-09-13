@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import BespokeForm from '@/components/BespokeForm';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -54,24 +55,7 @@ export default async function BespokePage({
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12]">
-            {t('title')}
-          </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ivory/70 font-light">
-            {t('intro')}
-          </p>
-        </div>
-      </section>
+      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
 
       {/* Two production tracks */}
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
@@ -142,40 +126,33 @@ export default async function BespokePage({
       </section>
 
       {/* Speak with the Atelier */}
-      <section className="bg-charcoal text-ivory px-6 md:px-12 py-24 md:py-32 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.1] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 100%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
+      <section className="bg-sandLight/50 text-charcoal px-6 md:px-12 py-24 md:py-32 relative overflow-hidden">
         <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <h2 className="serif-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-light leading-[1.15] mb-14">
+          <h2 className="serif-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-light leading-[1.15] mb-14 text-charcoal">
             {t('contactTitle')}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-lg mx-auto">
             <div>
-              <p className="text-[0.9rem] text-ivory/65 font-light mb-5 leading-relaxed">
+              <p className="text-[0.9rem] text-ash font-light mb-5 leading-relaxed">
                 {t('whatsappBody')}
               </p>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] tracking-[0.32em] uppercase text-ivory link-underline"
+                className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
               >
                 {t('whatsappCta')}
               </a>
             </div>
             <div>
-              <p className="text-[0.9rem] text-ivory/65 font-light mb-5 leading-relaxed">
+              <p className="text-[0.9rem] text-ash font-light mb-5 leading-relaxed">
                 {t('emailBody')}
               </p>
               {email && (
                 <a
                   href={`mailto:${email}`}
-                  className="text-[11px] tracking-[0.32em] uppercase text-ivory/85 link-underline"
+                  className="text-[11px] tracking-[0.32em] uppercase text-charcoal/85 link-underline"
                 >
                   {t('emailCta')}
                 </a>

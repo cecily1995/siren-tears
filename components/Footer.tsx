@@ -31,6 +31,7 @@ type Labels = {
   faq: string;
   privacy: string;
   terms: string;
+  aboutLabel: string;
 };
 
 import { Link } from '@/i18n/routing';
@@ -69,7 +70,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                 </Link>
               </li>
               <li>
-                <Link href="/#collections" className="link-underline text-ivory/85 hover:text-ivory">
+                <Link href="/collections" className="link-underline text-ivory/85 hover:text-ivory">
                   {labels.collections}
                 </Link>
               </li>
@@ -105,6 +106,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
           <div className="md:col-span-2 reveal" style={{ transitionDelay: '160ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.support}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
+              <li>
+                <Link href="/#about" className="link-underline text-ivory/85 hover:text-ivory">
+                  {labels.aboutLabel}
+                </Link>
+              </li>
               <li>
                 <Link href="/shipping" className="link-underline text-ivory/85 hover:text-ivory">
                   {labels.shipping}

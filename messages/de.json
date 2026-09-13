@@ -246,7 +246,8 @@
       "necklaces": "Ketten",
       "rings": "Ringe",
       "pendants": "Anhänger",
-      "archive": "Archiv"
+      "archive": "Archiv",
+      "bangles": "Armreifen"
     },
     "status": {
       "sold": "Verkauft",
@@ -266,7 +267,28 @@
     "materialLabel": "Material",
     "lengthLabel": "Länge",
     "craftedInLabel": "Gefertigt in",
-    "backToShop": "Zurück zum Shop"
+    "backToShop": "Zurück zum Shop",
+    "requestForm": {
+      "title": "Kaufanfrage",
+      "intro": "Teilen Sie uns ein paar Angaben mit, und unser Atelier bestätigt Verfügbarkeit, Versand und Zahlung persönlich mit Ihnen.",
+      "nameLabel": "Name",
+      "emailLabel": "E-Mail",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "Land",
+      "addressLabel": "Lieferadresse",
+      "messageLabel": "Möchten Sie uns noch etwas mitteilen? (optional)",
+      "submit": "Kauf anfragen",
+      "submitting": "Wird gesendet…",
+      "successTitle": "Ihre Anfrage ist bei uns eingegangen.",
+      "successBody": "Unser Atelier bestätigt Ihnen in Kürze Verfügbarkeit, Versand und die endgültigen Zahlungsdetails.",
+      "errorGeneric": "Beim Senden ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.",
+      "orContact": "Lieber per WhatsApp oder E-Mail?"
+    },
+    "lineFilters": {
+      "all": "Alle Linien",
+      "beaded": "Perlen-Kollektionen",
+      "aotearoa": "Aotearoa — Edelsteinschmuck"
+    }
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",
@@ -311,5 +333,15 @@
     "eyebrow": "Derzeit verfügbar",
     "title": "Gerade jetzt, im Atelier.",
     "cta": "Alle im Shop ansehen"
+  },
+  "collectionsPage": {
+    "eyebrow": "Kollektionen",
+    "title": "Natursteine. Eigene Formen. Gemacht, um bewahrt zu werden.",
+    "beadedEyebrow": "Perlen-Kollektionen",
+    "beadedIntro": "Sechs Arten, Farbe, Stein und Geschichte anzuordnen. Jede Kollektion hat ihre eigene Stimmung — getragen als Armbänder und Ketten, ein Stück nach dem anderen.",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "Edelsteinschmuck",
+    "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Ketten, Armbänder und Armreifen, gestaltet um einen handverlesenen Edelstein.",
+    "shopLine": "Linie entdecken"
   }
 }

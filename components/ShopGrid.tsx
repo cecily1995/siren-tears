@@ -8,6 +8,7 @@ type ShopProduct = {
   name?: string;
   slug?: { current?: string };
   category?: string;
+  productLine?: string;
   stone?: string;
   price?: number;
   status?: string;
@@ -16,7 +17,16 @@ type ShopProduct = {
 };
 
 type Labels = {
-  filters: { all: string; bracelets: string; necklaces: string; rings: string; pendants: string; archive: string };
+  filters: {
+    all: string;
+    bracelets: string;
+    necklaces: string;
+    rings: string;
+    pendants: string;
+    bangles: string;
+    archive: string;
+  };
+  lineFilters: { all: string; beaded: string; aotearoa: string };
   status: { sold: string; reserved: string; bespoke: string };
   oneOfOne: string;
   viewPiece: string;
@@ -28,14 +38,28 @@ const FILTERS = [
   { key: 'necklaces', category: 'necklace', archiveOnly: false },
   { key: 'rings', category: 'ring', archiveOnly: false },
   { key: 'pendants', category: 'pendant', archiveOnly: false },
+  { key: 'bangles', category: 'bangle', archiveOnly: false },
   { key: 'archive', category: null, archiveOnly: true }
 ] as const;
 
-export default function ShopGrid({ products, labels }: { products: ShopProduct[]; labels: Labels }) {
-  const [active, setActive] = useState<(typeof FILTERS)[number]['key']>('all');
+const LINES = ['all', 'beaded', 'aotearoa'] as const;
+
+export default function ShopGrid({
+  products,
+  labels,
+  initialFilter
+}: {
+  products: ShopProduct[];
+  labels: Labels;
+  initialFilter?: string;
+}) {
+  const initial = FILTERS.find((f) => f.key === initialFilter)?.key ?? 'all';
+  const [active, setActive] = useState<(typeof FILTERS)[number]['key']>(initial);
+  const [line, setLine] = useState<(typeof LINES)[number]>('all');
 
   const filterDef = FILTERS.find((f) => f.key === active)!;
   const filtered = products.filter((p) => {
+    if (line !== 'all' && (p.productLine ?? 'beaded') !== line) return false;
     if (filterDef.archiveOnly) return p.status === 'sold';
     if (filterDef.category) return p.category === filterDef.category;
     return true;
@@ -43,6 +67,20 @@ export default function ShopGrid({ products, labels }: { products: ShopProduct[]
 
   return (
     <div>
+      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 reveal">
+        {LINES.map((l) => (
+          <button
+            key={l}
+            onClick={() => setLine(l)}
+            className={`text-[10px] tracking-[0.24em] uppercase font-light transition-colors pb-1 border-b ${
+              line === l ? 'text-charcoal border-gold' : 'text-ash/50 border-transparent hover:text-charcoal'
+            }`}
+          >
+            {labels.lineFilters[l]}
+          </button>
+        ))}
+      </div>
+
       <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-16 reveal">
         {FILTERS.map((f) => (
           <button
@@ -88,6 +126,11 @@ export default function ShopGrid({ products, labels }: { products: ShopProduct[]
                     {isSold ? labels.status.sold : labels.status.reserved}
                   </span>
                 )}
+                <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-ivory/90 to-transparent">
+                  <span className="text-[9px] tracking-[0.24em] uppercase text-charcoal font-light">
+                    {labels.viewPiece}
+                  </span>
+                </div>
               </div>
               <div className="mt-4">
                 {p.collectionTitle && (

@@ -246,7 +246,8 @@
       "necklaces": "ネックレス",
       "rings": "リング",
       "pendants": "ペンダント",
-      "archive": "アーカイブ"
+      "archive": "アーカイブ",
+      "bangles": "バングル"
     },
     "status": {
       "sold": "売約済み",
@@ -266,7 +267,28 @@
     "materialLabel": "素材",
     "lengthLabel": "サイズ",
     "craftedInLabel": "製作国",
-    "backToShop": "ショップに戻る"
+    "backToShop": "ショップに戻る",
+    "requestForm": {
+      "title": "購入リクエスト",
+      "intro": "いくつかの情報をご入力いただければ、アトリエより在庫、配送、お支払い方法について個別にご案内いたします。",
+      "nameLabel": "お名前",
+      "emailLabel": "メールアドレス",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "国",
+      "addressLabel": "配送先住所",
+      "messageLabel": "その他ご要望があればご記入ください(任意)",
+      "submit": "購入をリクエストする",
+      "submitting": "送信中…",
+      "successTitle": "リクエストを承りました。",
+      "successBody": "在庫、配送、最終的なお支払い方法について、アトリエより追ってご連絡いたします。",
+      "errorGeneric": "送信中に問題が発生しました。もう一度お試しいただくか、直接お問い合わせください。",
+      "orContact": "WhatsAppやメールでのご連絡をご希望ですか?"
+    },
+    "lineFilters": {
+      "all": "すべてのライン",
+      "beaded": "ビーズコレクション",
+      "aotearoa": "Aotearoa — ジェムストーン"
+    }
   },
   "membership": {
     "eyebrow": "メンバーシップ",
@@ -311,5 +333,15 @@
     "eyebrow": "現在の作品",
     "title": "今、アトリエにある作品たち。",
     "cta": "ショップをすべて見る"
+  },
+  "collectionsPage": {
+    "eyebrow": "コレクション",
+    "title": "天然石。ひとつひとつの形。長く大切にされるために。",
+    "beadedEyebrow": "ビーズコレクション",
+    "beadedIntro": "色、石、物語を組み合わせる6つの方法。それぞれのコレクションには独自のムードがあり、ブレスレットやネックレスとして一点ずつ仕立てられます。",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "ジェムストーンジュエリー",
+    "aotearoaIntro": "より洗練されたラインで、手作業でセッティングされます——リング、ネックレス、ブレスレット、バングル。一つひとつ、厳選された宝石を中心にデザインされています。",
+    "shopLine": "ラインを見る"
   }
 }

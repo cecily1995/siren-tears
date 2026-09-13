@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -34,24 +35,7 @@ export default async function ShippingPage({
 
   return (
     <>
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12]">
-            {t('title')}
-          </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ivory/70 font-light">
-            {t('intro')}
-          </p>
-        </div>
-      </section>
+      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
 
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[980px]">

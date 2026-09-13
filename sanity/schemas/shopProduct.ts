@@ -21,9 +21,25 @@ export default defineType({
           { title: 'Bracelet', value: 'bracelet' },
           { title: 'Necklace', value: 'necklace' },
           { title: 'Ring', value: 'ring' },
-          { title: 'Pendant', value: 'pendant' }
+          { title: 'Pendant', value: 'pendant' },
+          { title: 'Bangle', value: 'bangle' }
         ]
       },
+      validation: (r) => r.required()
+    }),
+    defineField({
+      name: 'productLine',
+      title: 'Product line',
+      type: 'string',
+      description: 'Beaded Collections (Mosaic, Last Queen, etc) vs Aotearoa (gemstone fine jewellery).',
+      options: {
+        list: [
+          { title: 'Beaded Collections', value: 'beaded' },
+          { title: 'Aotearoa — Gemstone Jewellery', value: 'aotearoa' }
+        ],
+        layout: 'radio'
+      },
+      initialValue: 'beaded',
       validation: (r) => r.required()
     }),
     defineField({

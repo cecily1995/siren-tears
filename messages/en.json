@@ -246,7 +246,8 @@
       "necklaces": "Necklaces",
       "rings": "Rings",
       "pendants": "Pendants",
-      "archive": "Archive"
+      "archive": "Archive",
+      "bangles": "Bangles"
     },
     "status": {
       "sold": "Sold",
@@ -266,7 +267,28 @@
     "materialLabel": "Material",
     "lengthLabel": "Length",
     "craftedInLabel": "Crafted in",
-    "backToShop": "Back to Shop"
+    "backToShop": "Back to Shop",
+    "requestForm": {
+      "title": "Request Purchase",
+      "intro": "Share a few details and our Atelier will confirm availability, shipping, and payment with you personally.",
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "Country",
+      "addressLabel": "Shipping address",
+      "messageLabel": "Anything else we should know? (optional)",
+      "submit": "Request Purchase",
+      "submitting": "Sending…",
+      "successTitle": "Your request has been received.",
+      "successBody": "Our Atelier will confirm availability, shipping and final payment details with you shortly.",
+      "errorGeneric": "Something went wrong sending your request. Please try again, or contact us directly.",
+      "orContact": "Prefer WhatsApp or email?"
+    },
+    "lineFilters": {
+      "all": "All Lines",
+      "beaded": "Beaded Collections",
+      "aotearoa": "Aotearoa — Gemstone"
+    }
   },
   "membership": {
     "eyebrow": "Membership",
@@ -311,5 +333,15 @@
     "eyebrow": "Currently Available",
     "title": "In the atelier, right now.",
     "cta": "View All in Shop"
+  },
+  "collectionsPage": {
+    "eyebrow": "Collections",
+    "title": "Natural stones. Individual forms. Designed to be kept.",
+    "beadedEyebrow": "Beaded Collections",
+    "beadedIntro": "Six ways of arranging colour, stone and story. Each collection has its own mood — worn as bracelets and necklaces, one at a time.",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "Gemstone Jewellery",
+    "aotearoaIntro": "A finer line, set by hand — rings, necklaces, bracelets and bangles built around a single hand-selected gemstone.",
+    "shopLine": "Shop the Line"
   }
 }

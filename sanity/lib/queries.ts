@@ -41,13 +41,13 @@ export const buyerShowcaseQuery = groq`*[_type == "buyerShowcase"] | order(order
 }`;
 
 export const shopProductsQuery = groq`*[_type == "shopProduct"] | order(order asc, _createdAt desc){
-  _id, name, slug, category, stone, price, status,
+  _id, name, slug, category, productLine, stone, price, status,
   "collectionTitle": collection->title,
   "images": images[]{ "url": asset->url, alt }
 }`;
 
 export const shopProductBySlugQuery = groq`*[_type == "shopProduct" && slug.current == $slug][0]{
-  _id, name, slug, category, stone, price, status,
+  _id, name, slug, category, productLine, stone, price, status,
   material, length, craftedIn, stoneStory, pieceStory,
   "collectionTitle": collection->title,
   "images": images[]{ "url": asset->url, alt }

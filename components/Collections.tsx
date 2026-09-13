@@ -1,3 +1,5 @@
+import { Link } from '@/i18n/routing';
+
 type CollectionItem = {
   _id: string;
   title?: string;
@@ -55,9 +57,9 @@ export default function Collections({
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
           {items.map((c, i) => (
-            <a
+            <Link
               key={c._id ?? i}
-              href={c.slug?.current ? `#collections` : '#'}
+              href="/collections"
               className={`group reveal frame-zoom relative overflow-hidden bg-charcoal/5 ${cellClass(
                 c.scale,
                 i
@@ -89,7 +91,7 @@ export default function Collections({
                   {labels.viewLink}
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

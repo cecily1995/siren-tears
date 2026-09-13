@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 60;
 
@@ -30,24 +31,7 @@ export default async function MembershipPage({
 
   return (
     <>
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12]">
-            {t('title')}
-          </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ivory/70 font-light">
-            {t('subtitle')}
-          </p>
-        </div>
-      </section>
+      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('subtitle')} />
 
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10">
@@ -73,22 +57,22 @@ export default async function MembershipPage({
             )}
           </article>
 
-          {/* Private Client */}
+          {/* Private Client — distinguished with a charcoal border/accent, not a solid black fill */}
           <article
-            className="reveal bg-charcoal text-ivory p-10 md:p-12 flex flex-col"
+            className="reveal bg-sandLight/40 border-2 border-charcoal p-10 md:p-12 flex flex-col"
             style={{ transitionDelay: '120ms' }}
           >
-            <p className="eyebrow text-gold/85 mb-3">{t('privateTitle')}</p>
-            <p className="text-[0.95rem] text-ivory/70 font-light mb-8">{t('privateSubtitle')}</p>
+            <p className="eyebrow mb-3">{t('privateTitle')}</p>
+            <p className="text-[0.95rem] text-ash font-light mb-8">{t('privateSubtitle')}</p>
             <ul className="space-y-4 flex-1">
               {privateBenefits.map((b, i) => (
-                <li key={i} className="text-[0.92rem] leading-[1.8] text-ivory/80 font-light pl-5 relative">
+                <li key={i} className="text-[0.92rem] leading-[1.8] text-ash font-light pl-5 relative">
                   <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
                   {b}
                 </li>
               ))}
             </ul>
-            <p className="mt-10 text-[0.82rem] text-ivory/50 font-light leading-relaxed">
+            <p className="mt-10 text-[0.82rem] text-ash/70 font-light leading-relaxed">
               {t('privateQualify')}
             </p>
           </article>

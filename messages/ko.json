@@ -246,7 +246,8 @@
       "necklaces": "목걸이",
       "rings": "반지",
       "pendants": "펜던트",
-      "archive": "아카이브"
+      "archive": "아카이브",
+      "bangles": "뱅글"
     },
     "status": {
       "sold": "판매완료",
@@ -266,7 +267,28 @@
     "materialLabel": "소재",
     "lengthLabel": "사이즈",
     "craftedInLabel": "제작지",
-    "backToShop": "쇼핑으로 돌아가기"
+    "backToShop": "쇼핑으로 돌아가기",
+    "requestForm": {
+      "title": "구매 요청",
+      "intro": "몇 가지 정보를 남겨주시면, 저희 스튜디오가 재고, 배송, 결제 방법을 직접 확인해 드립니다.",
+      "nameLabel": "이름",
+      "emailLabel": "이메일",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "국가",
+      "addressLabel": "배송 주소",
+      "messageLabel": "추가로 전달하고 싶은 내용이 있으신가요? (선택)",
+      "submit": "구매 요청하기",
+      "submitting": "전송 중…",
+      "successTitle": "요청이 정상적으로 접수되었습니다.",
+      "successBody": "저희 스튜디오가 곧 재고, 배송, 최종 결제 방법을 확인해 드리겠습니다.",
+      "errorGeneric": "전송 중 문제가 발생했습니다. 다시 시도하시거나 직접 문의해 주세요.",
+      "orContact": "WhatsApp이나 이메일이 더 편하신가요?"
+    },
+    "lineFilters": {
+      "all": "전체 라인",
+      "beaded": "비즈 컬렉션",
+      "aotearoa": "Aotearoa — 젬스톤"
+    }
   },
   "membership": {
     "eyebrow": "멤버십",
@@ -311,5 +333,15 @@
     "eyebrow": "현재 판매 중",
     "title": "지금, 스튜디오에 있는 작품들.",
     "cta": "쇼핑 전체 보기"
+  },
+  "collectionsPage": {
+    "eyebrow": "컬렉션",
+    "title": "천연 스톤. 개별적인 형태. 오래 간직하도록 만들어졌습니다.",
+    "beadedEyebrow": "비즈 컬렉션",
+    "beadedIntro": "색상, 스톤, 이야기를 배열하는 여섯 가지 방식. 각 컬렉션은 저마다의 분위기를 지니며, 팔찌와 목걸이로 한 번에 한 점씩 완성됩니다.",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "젬스톤 주얼리",
+    "aotearoaIntro": "더욱 정교한 라인으로, 손으로 세팅합니다 — 반지, 목걸이, 팔찌, 뱅글까지, 하나하나 엄선된 젬스톤을 중심으로 디자인됩니다.",
+    "shopLine": "라인 보기"
   }
 }

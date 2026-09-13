@@ -6,7 +6,7 @@ import { Link } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 
 const links = [
-  { href: '/#collections', key: 'collections' },
+  { href: '/collections', key: 'collections' },
   { href: '/shop', key: 'shop' },
   { href: '/#journal', key: 'journal' },
   { href: '/worn-by-you', key: 'gallery' },

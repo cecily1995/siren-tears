@@ -32,20 +32,13 @@ export default async function GalleryPage({
 
   return (
     <>
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-28 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
+      <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
         <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">{t('eyebrow')}</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12]">
+          <p className="eyebrow mb-6">{t('eyebrow')}</p>
+          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12] text-charcoal">
             {t('title')}
           </h1>
-          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ivory/70 font-light">
+          <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
             {t('intro')}
             {instagramUrl && (
               <>
@@ -54,7 +47,7 @@ export default async function GalleryPage({
                   href={instagramUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-ivory link-underline"
+                  className="text-charcoal link-underline"
                 >
                   @sirentears_1995
                 </a>

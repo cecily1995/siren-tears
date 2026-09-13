@@ -246,7 +246,8 @@
       "necklaces": "Collane",
       "rings": "Anelli",
       "pendants": "Ciondoli",
-      "archive": "Archivio"
+      "archive": "Archivio",
+      "bangles": "Bracciali rigidi"
     },
     "status": {
       "sold": "Venduto",
@@ -266,7 +267,28 @@
     "materialLabel": "Materiale",
     "lengthLabel": "Lunghezza",
     "craftedInLabel": "Realizzato in",
-    "backToShop": "Torna allo shop"
+    "backToShop": "Torna allo shop",
+    "requestForm": {
+      "title": "Richiesta di acquisto",
+      "intro": "Condividete alcuni dettagli e il nostro Atelier vi confermerà personalmente disponibilità, spedizione e pagamento.",
+      "nameLabel": "Nome",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "Paese",
+      "addressLabel": "Indirizzo di spedizione",
+      "messageLabel": "Altro da segnalarci? (facoltativo)",
+      "submit": "Richiedi l'acquisto",
+      "submitting": "Invio in corso…",
+      "successTitle": "La vostra richiesta è stata ricevuta.",
+      "successBody": "Il nostro Atelier vi confermerà a breve disponibilità, spedizione e i dettagli finali del pagamento.",
+      "errorGeneric": "Si è verificato un errore durante l'invio. Riprovate, oppure contattateci direttamente.",
+      "orContact": "Preferite WhatsApp o l'email?"
+    },
+    "lineFilters": {
+      "all": "Tutte le linee",
+      "beaded": "Collezioni Beaded",
+      "aotearoa": "Aotearoa — Gioielleria"
+    }
   },
   "membership": {
     "eyebrow": "Membership",
@@ -311,5 +333,15 @@
     "eyebrow": "Attualmente disponibile",
     "title": "In atelier, in questo momento.",
     "cta": "Vedi tutto lo shop"
+  },
+  "collectionsPage": {
+    "eyebrow": "Collezioni",
+    "title": "Pietre naturali. Forme individuali. Pensate per essere conservate.",
+    "beadedEyebrow": "Collezioni Beaded",
+    "beadedIntro": "Sei modi di comporre colore, pietra e storia. Ogni collezione ha il proprio carattere — indossata come bracciali e collane, un pezzo alla volta.",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "Gioielleria in pietre preziose",
+    "aotearoaIntro": "Una linea più raffinata, incastonata a mano — anelli, collane, bracciali e bracciali rigidi, costruiti attorno a una pietra preziosa selezionata a mano.",
+    "shopLine": "Scopri la linea"
   }
 }

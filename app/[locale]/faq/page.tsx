@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
+import PageHeader from '@/components/PageHeader';
 
 export const revalidate = 3600;
 
@@ -49,21 +50,7 @@ export default async function FaqPage({
 
   return (
     <>
-      <section className="relative bg-charcoal text-ivory px-6 md:px-12 pt-40 pb-20 md:pt-48 md:pb-24 overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.14] pointer-events-none"
-          style={{
-            background:
-              'radial-gradient(60% 50% at 50% 15%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
-          }}
-        />
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <p className="eyebrow text-gold/85 mb-6">FAQ</p>
-          <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.4rem)] font-light leading-[1.12]">
-            Frequently Asked Questions
-          </h1>
-        </div>
-      </section>
+      <PageHeader eyebrow="FAQ" title="Frequently Asked Questions" />
 
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
         <div className="mx-auto max-w-[820px] divide-y divide-charcoal/10">

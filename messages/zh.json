@@ -246,7 +246,8 @@
       "necklaces": "项链",
       "rings": "戒指",
       "pendants": "吊坠",
-      "archive": "典藏"
+      "archive": "典藏",
+      "bangles": "手镯"
     },
     "status": {
       "sold": "已售出",
@@ -266,7 +267,28 @@
     "materialLabel": "材质",
     "lengthLabel": "尺寸",
     "craftedInLabel": "制作地",
-    "backToShop": "返回商店"
+    "backToShop": "返回商店",
+    "requestForm": {
+      "title": "申请购买",
+      "intro": "留下几项信息,我们的工作室会亲自与你确认库存、配送与付款方式。",
+      "nameLabel": "姓名",
+      "emailLabel": "邮箱",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "国家/地区",
+      "addressLabel": "收货地址",
+      "messageLabel": "还有什么想告诉我们的?(选填)",
+      "submit": "申请购买",
+      "submitting": "发送中…",
+      "successTitle": "你的申请我们已经收到。",
+      "successBody": "我们的工作室会尽快与你确认库存、配送与最终付款方式。",
+      "errorGeneric": "发送时出了点问题,请重试,或直接联系我们。",
+      "orContact": "更想用WhatsApp或邮箱联系?"
+    },
+    "lineFilters": {
+      "all": "全部系列",
+      "beaded": "Beaded 串珠系列",
+      "aotearoa": "Aotearoa 镶嵌珠宝"
+    }
   },
   "membership": {
     "eyebrow": "会员",
@@ -311,5 +333,15 @@
     "eyebrow": "现有作品",
     "title": "此刻,工作室里的作品。",
     "cta": "查看商店全部作品"
+  },
+  "collectionsPage": {
+    "eyebrow": "系列",
+    "title": "天然石材,独立成形,只为长久留存而设计。",
+    "beadedEyebrow": "Beaded 串珠系列",
+    "beadedIntro": "六种排列色彩、石材与故事的方式。每个系列都有自己的气质——以手链与项链的形式,一次只做一件。",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "镶嵌宝石珠宝",
+    "aotearoaIntro": "更精致的一条产品线,手工镶嵌——戒指、项链、手链与手镯,每一件都围绕一颗手选宝石而设计。",
+    "shopLine": "浏览此系列"
   }
 }

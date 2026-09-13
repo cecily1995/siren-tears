@@ -246,7 +246,8 @@
       "necklaces": "Colliers",
       "rings": "Bagues",
       "pendants": "Pendentifs",
-      "archive": "Archives"
+      "archive": "Archives",
+      "bangles": "Jonc"
     },
     "status": {
       "sold": "Vendue",
@@ -266,7 +267,28 @@
     "materialLabel": "Matériau",
     "lengthLabel": "Longueur",
     "craftedInLabel": "Fabriquée en",
-    "backToShop": "Retour à la boutique"
+    "backToShop": "Retour à la boutique",
+    "requestForm": {
+      "title": "Demande d'achat",
+      "intro": "Partagez quelques informations et notre Atelier confirmera personnellement la disponibilité, l'expédition et le paiement.",
+      "nameLabel": "Nom",
+      "emailLabel": "E-mail",
+      "whatsappLabel": "WhatsApp",
+      "countryLabel": "Pays",
+      "addressLabel": "Adresse de livraison",
+      "messageLabel": "Autre chose à nous dire ? (facultatif)",
+      "submit": "Demander l'achat",
+      "submitting": "Envoi en cours…",
+      "successTitle": "Votre demande a bien été reçue.",
+      "successBody": "Notre Atelier confirmera la disponibilité, l'expédition et les modalités de paiement avec vous très prochainement.",
+      "errorGeneric": "Une erreur s'est produite lors de l'envoi. Merci de réessayer, ou de nous contacter directement.",
+      "orContact": "Vous préférez WhatsApp ou l'e-mail ?"
+    },
+    "lineFilters": {
+      "all": "Toutes les lignes",
+      "beaded": "Collections Perlées",
+      "aotearoa": "Aotearoa — Joaillerie"
+    }
   },
   "membership": {
     "eyebrow": "Adhésion",
@@ -311,5 +333,15 @@
     "eyebrow": "Actuellement disponible",
     "title": "À l'atelier, en ce moment.",
     "cta": "Voir toute la boutique"
+  },
+  "collectionsPage": {
+    "eyebrow": "Collections",
+    "title": "Pierres naturelles. Formes uniques. Conçues pour être conservées.",
+    "beadedEyebrow": "Collections Perlées",
+    "beadedIntro": "Six façons d'agencer couleur, pierre et récit. Chaque collection a sa propre humeur — portée en bracelets et colliers, une pièce à la fois.",
+    "aotearoaEyebrow": "Aotearoa",
+    "aotearoaTitle": "Joaillerie en pierres précieuses",
+    "aotearoaIntro": "Une ligne plus raffinée, sertie à la main — bagues, colliers, bracelets et joncs conçus autour d'une pierre précieuse sélectionnée à la main.",
+    "shopLine": "Découvrir la ligne"
   }
 }
