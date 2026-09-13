@@ -16,6 +16,7 @@ type Labels = {
   intro: string;
   chapter: string;
   viewLink: string;
+  viewAll?: string;
 };
 
 const cellClass = (scale: string | undefined, i: number) => {
@@ -87,6 +88,17 @@ export default function Collections({
             </Link>
           ))}
         </div>
+
+        {labels.viewAll && (
+          <div className="mt-16 md:mt-20 text-center reveal">
+            <Link
+              href="/collections"
+              className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
+            >
+              {labels.viewAll}
+            </Link>
+          </div>
+        )}
       </div>
     </section>
   );

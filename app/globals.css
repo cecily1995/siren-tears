@@ -81,7 +81,16 @@ body {
   transform: translateY(0);
 }
 
-/* Cursor link affordance */
+/* Hide scrollbar for horizontal swipe galleries (Worn By You teaser etc.) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
 a, button {
   transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
 }

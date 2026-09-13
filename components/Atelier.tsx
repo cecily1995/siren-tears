@@ -2,7 +2,7 @@ type Data = { eyebrow?: string; title?: string; body?: string; imageUrl?: string
 
 export default function Atelier({ data }: { data: Data }) {
   return (
-    <section className="bg-pearl text-charcoal py-28 md:py-40 px-6 md:px-12">
+    <section id="about" className="bg-pearl text-charcoal py-28 md:py-40 px-6 md:px-12">
       <div className="mx-auto max-w-[1280px] grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16 items-center">
         <div className="md:col-span-6 reveal">
           <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/5 frame-zoom">

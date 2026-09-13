@@ -26,15 +26,15 @@
     "pillars": {
       "natural": {
         "title": "Natural Materials",
-        "body": "We work only with natural stones — preserving their original texture, inclusions, and quiet energy."
+        "body": "Each stone kept close to its natural texture and character."
       },
       "timeless": {
         "title": "Timeless Aesthetics",
-        "body": "We reject the speed of trends. Each piece is designed to transcend the year it was born in."
+        "body": "Designed to outlast any single season."
       },
       "quality": {
         "title": "Quality First",
-        "body": "From the choice of stone to the final hand-finished detail — every step is held to what a piece worth keeping for a lifetime demands."
+        "body": "Every detail held to a lifetime standard."
       }
     }
   },
@@ -43,7 +43,8 @@
     "title": "Chapters from one shoreline.",
     "intro": "Each collection is shaped by a different hour of the coast — its weather, its colour, its quiet.",
     "chapter": "Chapter",
-    "viewLink": "View the chapter"
+    "viewLink": "View the chapter",
+    "viewAll": "View All Collections"
   },
   "featured": {
     "subtitle": "From the Last Queen collection",
@@ -371,12 +372,13 @@
   "oneOfOne": {
     "eyebrow": "One of One",
     "title": "Every piece exists only once.",
-    "body": "Every stone carries its own colour, texture and character. Each piece is made individually, and no two natural stones are ever exactly alike. Once a piece is sold, that exact piece will never be reproduced."
+    "body": "Every stone carries its own colour, texture and character. No two pieces are ever exactly alike.",
+    "cta": "Discover the Collection"
   },
   "atelier": {
     "eyebrow": "The Atelier",
     "title": "Crafted slowly, in New Zealand.",
-    "body": "Every piece begins on a quiet workbench, not a production line. We work with natural materials at the pace they ask for, not the pace of a season."
+    "body": "Founded in 2019, SIREN TEARS began with a fascination for natural stones and the quiet beauty of things that cannot be replicated."
   },
   "currentlyAvailable": {
     "eyebrow": "Currently Available",
@@ -442,5 +444,12 @@
       "Priority bespoke",
       "Direct Atelier access"
     ]
+  },
+  "wornByYouTeaser": {
+    "eyebrow": "Worn By You",
+    "title": "Worn By You",
+    "subtitle": "Pieces of Siren Tears, worn in their own way.",
+    "shareCta": "Share Your Siren",
+    "viewCta": "View All"
   }
 }

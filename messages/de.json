@@ -26,15 +26,15 @@
     "pillars": {
       "natural": {
         "title": "Natürliche Materialien",
-        "body": "Wir arbeiten ausschließlich mit natürlichen Steinen — und bewahren ihre ursprüngliche Textur, ihre Einschlüsse und ihre leise Energie."
+        "body": "Jeder Stein bewahrt seine natürliche Textur und seinen Charakter."
       },
       "timeless": {
         "title": "Zeitlose Ästhetik",
-        "body": "Wir lehnen die Geschwindigkeit der Trends ab. Jedes Stück ist so entworfen, dass es das Jahr seiner Entstehung überdauert."
+        "body": "Gestaltet, um jede einzelne Saison zu überdauern."
       },
       "quality": {
         "title": "Qualität zuerst",
-        "body": "Von der Wahl des Steins bis zum letzten Handgriff — jeder Schritt folgt dem Anspruch eines Stücks, das ein Leben lang getragen werden soll."
+        "body": "Jedes Detail nach dem Maßstab eines Lebensbegleiters."
       }
     }
   },
@@ -43,7 +43,8 @@
     "title": "Kapitel von einer einzigen Küste.",
     "intro": "Jede Kollektion ist von einer anderen Stunde der Küste geprägt — ihrem Wetter, ihrer Farbe, ihrer Stille.",
     "chapter": "Kapitel",
-    "viewLink": "Dieses Kapitel ansehen"
+    "viewLink": "Dieses Kapitel ansehen",
+    "viewAll": "Alle Kollektionen Ansehen"
   },
   "featured": {
     "subtitle": "Aus der LAST QUEEN Kollektion",
@@ -371,12 +372,13 @@
   "oneOfOne": {
     "eyebrow": "Einzelstück",
     "title": "Jedes Stück existiert nur einmal.",
-    "body": "Jeder Stein trägt seine eigene Farbe, Textur und seinen eigenen Charakter. Jedes Stück wird einzeln gefertigt, und keine zwei Natursteine sind je völlig gleich. Ist ein Stück verkauft, wird genau dieses Stück nie wieder angefertigt."
+    "body": "Jeder Stein trägt seine eigene Farbe, Textur und seinen eigenen Charakter. Keine zwei Stücke sind je völlig gleich.",
+    "cta": "Kollektion Entdecken"
   },
   "atelier": {
     "eyebrow": "Das Atelier",
     "title": "Langsam gefertigt, in Neuseeland.",
-    "body": "Jedes Stück beginnt an einer stillen Werkbank, nicht am Fließband. Wir arbeiten mit natürlichen Materialien in dem Tempo, das sie verlangen, nicht im Tempo einer Saison."
+    "body": "SIREN TEARS wurde 2019 gegründet, aus einer Faszination für Natursteine und die stille Schönheit von Dingen, die sich nicht wiederholen lassen."
   },
   "currentlyAvailable": {
     "eyebrow": "Derzeit verfügbar",
@@ -442,5 +444,12 @@
       "Bevorzugte Maßanfertigung",
       "Direkter Atelier-Zugang"
     ]
+  },
+  "wornByYouTeaser": {
+    "eyebrow": "Getragen von Ihnen",
+    "title": "Worn By You",
+    "subtitle": "Siren-Tears-Stücke, getragen auf ihre eigene Art.",
+    "shareCta": "Teilen Sie Ihr Siren",
+    "viewCta": "Alle ansehen"
   }
 }

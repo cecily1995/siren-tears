@@ -82,7 +82,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             <p className="eyebrow text-ivory/50 mb-6">{labels.explore}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/#journal" className="link-underline text-ivory/85 hover:text-ivory">
+                <Link href="/journal" className="link-underline text-ivory/85 hover:text-ivory">
                   {labels.journal}
                 </Link>
               </li>

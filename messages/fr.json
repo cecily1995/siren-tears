@@ -26,15 +26,15 @@
     "pillars": {
       "natural": {
         "title": "Matières naturelles",
-        "body": "Nous ne travaillons qu'avec des pierres naturelles — en préservant leur texture d'origine, leurs inclusions et leur énergie discrète."
+        "body": "Chaque pierre garde sa texture et son caractère naturels."
       },
       "timeless": {
         "title": "Esthétique intemporelle",
-        "body": "Nous refusons la vitesse des tendances. Chaque pièce est conçue pour traverser l'année qui l'a vue naître."
+        "body": "Conçu pour dépasser une simple saison."
       },
       "quality": {
         "title": "La qualité d'abord",
-        "body": "Du choix de la pierre au dernier geste à la main, chaque étape répond à ce qu'exige une pièce destinée à être gardée toute une vie."
+        "body": "Chaque détail à la hauteur d’une pièce faite pour durer toute une vie."
       }
     }
   },
@@ -43,7 +43,8 @@
     "title": "Quelques chapitres d'un même rivage.",
     "intro": "Chaque collection s'inspire d'une heure différente de la côte — son climat, sa couleur, son silence.",
     "chapter": "Chapitre",
-    "viewLink": "Voir ce chapitre"
+    "viewLink": "Voir ce chapitre",
+    "viewAll": "Voir Toutes les Collections"
   },
   "featured": {
     "subtitle": "Issu de la collection LAST QUEEN",
@@ -371,12 +372,13 @@
   "oneOfOne": {
     "eyebrow": "Pièce unique",
     "title": "Chaque pièce n'existe qu'une seule fois.",
-    "body": "Chaque pierre porte sa propre couleur, texture et caractère. Chaque pièce est réalisée individuellement, et deux pierres naturelles ne sont jamais tout à fait identiques. Une fois une pièce vendue, elle ne sera jamais reproduite à l'identique."
+    "body": "Chaque pierre porte sa propre couleur, texture et caractère. Deux pièces ne sont jamais tout à fait identiques.",
+    "cta": "Découvrir la Collection"
   },
   "atelier": {
     "eyebrow": "L'Atelier",
     "title": "Façonnée lentement, en Nouvelle-Zélande.",
-    "body": "Chaque pièce commence sur un établi silencieux, non sur une chaîne de production. Nous travaillons les matières naturelles au rythme qu'elles imposent, non à celui d'une saison."
+    "body": "Fondée en 2019, SIREN TEARS est née d'une fascination pour les pierres naturelles et la beauté silencieuse des choses qui ne peuvent être reproduites."
   },
   "currentlyAvailable": {
     "eyebrow": "Actuellement disponible",
@@ -442,5 +444,12 @@
       "Sur mesure prioritaire",
       "Accès direct à l’Atelier"
     ]
+  },
+  "wornByYouTeaser": {
+    "eyebrow": "Portée par vous",
+    "title": "Worn By You",
+    "subtitle": "Des pièces Siren Tears, portées à leur façon.",
+    "shareCta": "Partagez votre Siren",
+    "viewCta": "Voir tout"
   }
 }

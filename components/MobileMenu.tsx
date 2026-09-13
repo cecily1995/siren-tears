@@ -8,7 +8,7 @@ import { Link } from '@/i18n/routing';
 const links = [
   { href: '/collections', key: 'collections' },
   { href: '/shop', key: 'shop' },
-  { href: '/#journal', key: 'journal' },
+  { href: '/journal', key: 'journal' },
   { href: '/worn-by-you', key: 'gallery' },
   { href: '/bespoke', key: 'bespoke' },
   { href: '/membership', key: 'membership' }

@@ -1,4 +1,6 @@
-type Data = { eyebrow?: string; title?: string; body?: string };
+type Data = { eyebrow?: string; title?: string; body?: string; cta?: string };
+
+import { Link } from '@/i18n/routing';
 
 export default function OneOfOne({ data }: { data: Data }) {
   return (
@@ -20,6 +22,14 @@ export default function OneOfOne({ data }: { data: Data }) {
         <div className="mt-8 mx-auto h-px w-16 bg-gold/60" />
         {data.body && (
           <p className="mt-8 text-[1rem] leading-[1.95] text-ash font-light">{data.body}</p>
+        )}
+        {data.cta && (
+          <Link
+            href="/collections"
+            className="mt-10 inline-block text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
+          >
+            {data.cta}
+          </Link>
         )}
       </div>
     </section>

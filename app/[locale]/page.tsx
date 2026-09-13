@@ -3,21 +3,18 @@ import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
 import OneOfOne from '@/components/OneOfOne';
 import Collections from '@/components/Collections';
-import CurrentlyAvailable from '@/components/CurrentlyAvailable';
-import FeaturedProduct from '@/components/FeaturedProduct';
+import WornByYouTeaser from '@/components/WornByYouTeaser';
 import Atelier from '@/components/Atelier';
-import Journal from '@/components/Journal';
-import BrandStory from '@/components/BrandStory';
 import {
   getHomepage,
   getCollections,
-  getJournal,
-  getBrandStory,
-  getShopProducts
+  getBuyerShowcase
 } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 
 export const revalidate = 60;
+
+const HOMEPAGE_COLLECTION_TITLES = ['Last Queen', 'Golden Age', "Siren's Chain"];
 
 export default async function HomePage({
   params
@@ -27,19 +24,13 @@ export default async function HomePage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [home, collections, journal, brandStory, shopProducts] = await Promise.all([
+  const [home, collections, showcase] = await Promise.all([
     getHomepage(),
     getCollections(),
-    getJournal(),
-    getBrandStory(),
-    getShopProducts()
+    getBuyerShowcase()
   ]);
 
   const t = await getTranslations();
-
-  // For all locales, editorial CHROME comes from messages.
-  // IMAGES always come from Sanity (or fallback URL).
-  // Dynamic content (collection titles, journal titles, brand info from CMS) stays as user entered.
 
   const heroBg = home?.hero?.bgUrl ?? fallback.hero.bgUrl;
   const heroBgAlt = home?.hero?.bgAlt ?? fallback.hero.bgAlt;
@@ -64,54 +55,36 @@ export default async function HomePage({
     ]
   };
 
+  const oneOfOneData = {
+    eyebrow: t('oneOfOne.eyebrow'),
+    title: t('oneOfOne.title'),
+    body: t('oneOfOne.body'),
+    cta: t('oneOfOne.cta')
+  };
+
+  const allCollections = collections?.length ? collections : fallback.collections;
+  const homepageCollections =
+    allCollections
+      .filter((c: any) => HOMEPAGE_COLLECTION_TITLES.includes(c.title))
+      .sort(
+        (a: any, b: any) =>
+          HOMEPAGE_COLLECTION_TITLES.indexOf(a.title) - HOMEPAGE_COLLECTION_TITLES.indexOf(b.title)
+      ) || [];
   const collectionsLabels = {
     eyebrow: t('collections.eyebrow'),
     title: t('collections.title'),
     intro: t('collections.intro'),
     chapter: t('collections.chapter'),
-    viewLink: t('collections.viewLink')
+    viewLink: t('collections.viewLink'),
+    viewAll: t('collections.viewAll')
   };
 
-  const featuredFromSanity = home?.featured;
-  const featuredData = {
-    title: featuredFromSanity?.title ?? t('featured.title'),
-    subtitle: t('featured.subtitle'),
-    body: t('featured.body'),
-    imageUrl: featuredFromSanity?.imageUrl ?? fallback.featured.imageUrl,
-    imageAlt: featuredFromSanity?.imageAlt ?? fallback.featured.imageAlt,
-    detailUrl: featuredFromSanity?.detailUrl ?? fallback.featured.detailUrl,
-    stoneTitle: t('featured.stoneTitle'),
-    stoneBody: t('featured.stoneBody'),
-    materialTitle: t('featured.materialTitle'),
-    materialBody: t('featured.materialBody'),
-    stylingTitle: t('featured.stylingTitle'),
-    stylingBody: t('featured.stylingBody')
-  };
-
-  const journalLabels = {
-    eyebrow: t('journal.eyebrow'),
-    title: t('journal.title'),
-    intro: t('journal.intro'),
-    readLink: t('journal.readLink')
-  };
-
-  const brandStoryData = {
-    eyebrow: t('about.eyebrow'),
-    title: t('about.title'),
-    paragraphs: [t('about.p1'), t('about.p2'), t('about.p3')],
-    imageUrl: brandStory?.imageUrl ?? fallback.brandStory.imageUrl,
-    imageAlt: brandStory?.imageAlt ?? fallback.brandStory.imageAlt,
-    stats: [
-      { value: '06', label: t('about.stats.years') },
-      { value: '35+', label: t('about.stats.countries') },
-      { value: '01', label: t('about.stats.studio') }
-    ]
-  };
-
-  const oneOfOneData = {
-    eyebrow: t('oneOfOne.eyebrow'),
-    title: t('oneOfOne.title'),
-    body: t('oneOfOne.body')
+  const wornByYouLabels = {
+    eyebrow: t('wornByYouTeaser.eyebrow'),
+    title: t('wornByYouTeaser.title'),
+    subtitle: t('wornByYouTeaser.subtitle'),
+    shareCta: t('wornByYouTeaser.shareCta'),
+    viewCta: t('wornByYouTeaser.viewCta')
   };
 
   const atelierData = {
@@ -122,33 +95,17 @@ export default async function HomePage({
     imageAlt: fallback.atelier.imageAlt
   };
 
-  const currentlyAvailableItems = (shopProducts?.length ? shopProducts : fallback.shopProducts).filter(
-    (p: any) => p.status === 'available'
-  );
-  const currentlyAvailableLabels = {
-    eyebrow: t('currentlyAvailable.eyebrow'),
-    title: t('currentlyAvailable.title'),
-    oneOfOne: t('shop.oneOfOne'),
-    cta: t('currentlyAvailable.cta')
-  };
-
   return (
     <>
       <Hero data={heroData} />
       <Philosophy data={philosophyData} />
       <OneOfOne data={oneOfOneData} />
       <Collections
-        items={collections?.length ? collections : fallback.collections}
+        items={homepageCollections.length ? homepageCollections : allCollections.slice(0, 3)}
         labels={collectionsLabels}
       />
-      <CurrentlyAvailable items={currentlyAvailableItems} labels={currentlyAvailableLabels} />
-      <FeaturedProduct data={featuredData} />
+      <WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />
       <Atelier data={atelierData} />
-      <Journal
-        items={journal?.length ? journal : fallback.journal}
-        labels={journalLabels}
-      />
-      <BrandStory data={brandStoryData} />
     </>
   );
 }
