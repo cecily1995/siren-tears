@@ -58,10 +58,25 @@ export async function POST(request: Request) {
   }
 
   try {
+    // Resolve the product by slug so we can link a real reference — this is
+    // what lets a later status change ("Paid"/"Shipped") automatically mark
+    // the linked Shop Product as Sold.
+    let productRef: { _type: 'reference'; _ref: string } | undefined;
+    if (productSlug) {
+      const product = await client.fetch<{ _id: string } | null>(
+        `*[_type == "shopProduct" && slug.current == $slug][0]{ _id }`,
+        { slug: productSlug }
+      );
+      if (product?._id) {
+        productRef = { _type: 'reference', _ref: product._id };
+      }
+    }
+
     await client.create({
       _type: 'purchaseRequest',
       productName: productName || '',
       productSlug: productSlug || '',
+      ...(productRef ? { product: productRef } : {}),
       name,
       email,
       whatsapp: whatsapp || '',

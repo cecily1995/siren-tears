@@ -7,6 +7,13 @@ export default defineType({
   fields: [
     defineField({ name: 'productName', title: 'Product', type: 'string' }),
     defineField({ name: 'productSlug', title: 'Product slug', type: 'string' }),
+    defineField({
+      name: 'product',
+      title: 'Linked shop product',
+      type: 'reference',
+      to: [{ type: 'shopProduct' }],
+      description: 'Set automatically when the request is submitted. Used to auto-mark the product as Sold when this request is marked Paid or Shipped.'
+    }),
     defineField({ name: 'name', title: 'Name', type: 'string' }),
     defineField({ name: 'email', title: 'Email', type: 'string' }),
     defineField({ name: 'whatsapp', title: 'WhatsApp / Phone', type: 'string' }),
