@@ -37,7 +37,7 @@ export const brandStoryQuery = groq`*[_type == "brandStory"][0]{
 
 export const buyerShowcaseQuery = groq`*[_type == "buyerShowcase"] | order(order asc, _createdAt desc){
   _id, caption, customerHandle,
-  "imageUrl": image.asset->url, "imageAlt": image.alt
+  "images": images[]{ "url": asset->url, alt }
 }`;
 
 export const shopProductsQuery = groq`*[_type == "shopProduct"] | order(order asc, _createdAt desc){

@@ -6,24 +6,31 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
-      name: 'image',
-      title: 'Photo',
-      type: 'image',
-      options: { hotspot: true },
-      validation: (r) => r.required(),
-      fields: [{ name: 'alt', type: 'string', title: 'Alt text' }]
+      name: 'images',
+      title: 'Photos',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: { hotspot: true },
+          fields: [{ name: 'alt', type: 'string', title: 'Alt text' }]
+        }
+      ],
+      description: 'All the photos from this one customer / piece. The first photo is used as the cover in the gallery grid.',
+      validation: (r) => r.min(1)
     }),
     defineField({
       name: 'caption',
-      title: 'Caption',
-      type: 'string',
-      description: 'Optional short note, e.g. the piece worn or a customer quote.'
+      title: 'Caption (customer\u2019s voice)',
+      type: 'text',
+      rows: 3,
+      description: 'Written as if the customer is saying it themselves, first person. E.g. "I wear this one almost every day."'
     }),
     defineField({
       name: 'customerHandle',
       title: 'Customer name / handle',
       type: 'string',
-      description: 'Optional, e.g. "@handle" or a first name — only if the customer is happy to be credited.'
+      description: 'Shown below the photo(s), e.g. "Livvy" or "@handle". Leave blank if the customer prefers not to be named.'
     }),
     defineField({
       name: 'order',
@@ -41,6 +48,6 @@ export default defineType({
     }
   ],
   preview: {
-    select: { title: 'caption', subtitle: 'customerHandle', media: 'image' }
+    select: { title: 'customerHandle', subtitle: 'caption', media: 'images.0' }
   }
 });

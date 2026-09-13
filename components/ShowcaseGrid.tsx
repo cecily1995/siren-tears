@@ -1,0 +1,178 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+
+type ShowcaseItem = {
+  _id: string;
+  caption?: string;
+  customerHandle?: string;
+  images?: { url?: string; alt?: string }[];
+};
+
+export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const [photoIndex, setPhotoIndex] = useState(0);
+
+  const active = activeIndex !== null ? items[activeIndex] : null;
+
+  useEffect(() => {
+    if (active === null) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [active]);
+
+  function open(i: number) {
+    setActiveIndex(i);
+    setPhotoIndex(0);
+  }
+
+  function close() {
+    setActiveIndex(null);
+  }
+
+  const photos = active?.images ?? [];
+
+  return (
+    <>
+      <div className="columns-2 md:columns-3 lg:columns-4 gap-5 md:gap-6 [column-fill:_balance]">
+        {items.map((p, i) => {
+          const cover = p.images?.[0];
+          return (
+            <button
+              key={p._id ?? i}
+              type="button"
+              onClick={() => open(i)}
+              className="reveal mb-5 md:mb-6 break-inside-avoid overflow-hidden bg-charcoal/5 frame-zoom relative block w-full text-left"
+              style={{ transitionDelay: `${(i % 8) * 90}ms` }}
+            >
+              {cover?.url && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={cover.url}
+                  alt={cover.alt || p.caption || 'Siren Tears, as worn'}
+                  className="bg-img w-full h-auto block"
+                  loading="lazy"
+                />
+              )}
+              {p.customerHandle && (
+                <p className="px-4 py-3 text-[0.8rem] tracking-[0.08em] text-gold font-light">
+                  {p.customerHandle}
+                </p>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {active && (
+        <div
+          className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-10"
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className="absolute inset-0 bg-charcoal/90"
+            onClick={close}
+            aria-hidden="true"
+          />
+          <button
+            type="button"
+            onClick={close}
+            aria-label="Close"
+            className="absolute top-5 right-5 md:top-8 md:right-8 w-9 h-9 flex items-center justify-center text-ivory z-10"
+          >
+            <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+            </svg>
+          </button>
+
+          <div className="relative z-[1] w-full max-w-[900px] max-h-[88vh] overflow-y-auto bg-ivory">
+            <div className="relative bg-charcoal/5">
+              {photos[photoIndex]?.url && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={photos[photoIndex].url}
+                  alt={photos[photoIndex].alt || active.caption || ''}
+                  className="w-full h-auto max-h-[60vh] object-contain mx-auto block"
+                />
+              )}
+              {photos.length > 1 && (
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 pb-3">
+                  {photos.map((_, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => setPhotoIndex(i)}
+                      aria-label={`Photo ${i + 1}`}
+                      className={`w-1.5 h-1.5 rounded-full transition-colors ${
+                        i === photoIndex ? 'bg-charcoal' : 'bg-charcoal/25'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+              {photos.length > 1 && (
+                <>
+                  <button
+                    type="button"
+                    onClick={() => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length)}
+                    aria-label="Previous photo"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-charcoal bg-ivory/80"
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setPhotoIndex((i) => (i + 1) % photos.length)}
+                    aria-label="Next photo"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-charcoal bg-ivory/80"
+                  >
+                    →
+                  </button>
+                </>
+              )}
+            </div>
+
+            {photos.length > 1 && (
+              <div className="flex gap-2 p-4 overflow-x-auto">
+                {photos.map((img, i) => (
+                  <button
+                    key={i}
+                    type="button"
+                    onClick={() => setPhotoIndex(i)}
+                    className={`shrink-0 w-16 h-16 overflow-hidden border ${
+                      i === photoIndex ? 'border-charcoal' : 'border-transparent'
+                    }`}
+                  >
+                    {img.url && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={img.url} alt="" className="w-full h-full object-cover" />
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {(active.caption || active.customerHandle) && (
+              <div className="p-6 md:p-8 border-t border-charcoal/10">
+                {active.caption && (
+                  <p className="serif-display text-[1.2rem] md:text-[1.4rem] font-light leading-[1.5] text-charcoal italic">
+                    &ldquo;{active.caption}&rdquo;
+                  </p>
+                )}
+                {active.customerHandle && (
+                  <p className="mt-4 text-[0.85rem] tracking-[0.1em] uppercase text-gold font-light">
+                    — {active.customerHandle}
+                  </p>
+                )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}

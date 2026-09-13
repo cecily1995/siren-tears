@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBuyerShowcase, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import PageHeader from '@/components/PageHeader';
+import ShowcaseGrid from '@/components/ShowcaseGrid';
 
 export const revalidate = 60;
 
@@ -60,34 +61,7 @@ export default async function GalleryPage({
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
-            <div className="columns-2 md:columns-3 lg:columns-4 gap-5 md:gap-6 [column-fill:_balance]">
-              {items.map((p: any, i: number) => (
-                <figure
-                  key={p._id ?? i}
-                  className="reveal mb-5 md:mb-6 break-inside-avoid overflow-hidden bg-charcoal/5 frame-zoom relative"
-                  style={{ transitionDelay: `${(i % 8) * 90}ms` }}
-                >
-                  {p.imageUrl && (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={p.imageUrl}
-                      alt={p.imageAlt || p.caption || 'Siren Tears, as worn'}
-                      className="bg-img w-full h-auto block"
-                      loading="lazy"
-                    />
-                  )}
-                  {(p.caption || p.customerHandle) && (
-                    <figcaption className="p-4 text-[0.85rem] text-ash font-light leading-relaxed">
-                      {p.caption}
-                      {p.caption && p.customerHandle && ' — '}
-                      {p.customerHandle && (
-                        <span className="text-gold">{p.customerHandle}</span>
-                      )}
-                    </figcaption>
-                  )}
-                </figure>
-              ))}
-            </div>
+            <ShowcaseGrid items={items} />
           ) : (
             <div className="max-w-lg mx-auto text-center py-16 reveal">
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">
