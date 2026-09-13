@@ -60,7 +60,7 @@ export default function RequestPurchaseForm({
 
   if (status === 'success') {
     return (
-      <div className="border border-charcoal/12 p-6 reveal">
+      <div className="border border-charcoal/12 p-6">
         <p className="serif-display text-[1.25rem] font-light text-charcoal mb-3">
           {t('successTitle')}
         </p>

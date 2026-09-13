@@ -93,7 +93,7 @@ export default function BespokeForm() {
 
   if (status === 'success') {
     return (
-      <div className="text-center py-16 reveal">
+      <div className="text-center py-16">
         <p className="serif-display text-[1.8rem] font-light mb-5 text-charcoal">
           {t('successTitle')}
         </p>

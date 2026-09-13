@@ -53,7 +53,7 @@ export default function MembershipJoinForm() {
 
   if (status === 'success') {
     return (
-      <div className="mt-10 border border-gold/40 bg-ivory p-6 text-center reveal">
+      <div className="mt-10 border border-gold/40 bg-ivory p-6 text-center">
         <p className="serif-display text-[1.2rem] font-light text-charcoal mb-3">
           {t('successTitle')}
         </p>

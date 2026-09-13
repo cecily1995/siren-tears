@@ -242,7 +242,7 @@ export default function AccountLookupForm() {
 
     if (editing) {
       return (
-        <div className="reveal">
+        <div className="">
           <EditProfileForm
             member={member}
             onCancel={() => setEditing(false)}
@@ -256,7 +256,7 @@ export default function AccountLookupForm() {
     }
 
     return (
-      <div className="reveal">
+      <div className="">
         <div className="border border-charcoal/12 bg-ivory p-8 md:p-10">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
@@ -351,7 +351,7 @@ export default function AccountLookupForm() {
   if (mode === 'forgot') {
     if (forgotStatus === 'found') {
       return (
-        <div className="max-w-md mx-auto reveal text-center">
+        <div className="max-w-md mx-auto text-center">
           <p className="text-[0.9rem] text-ash font-light mb-2">
             {foundName ? `${foundName}, ` : ''}
             {t('foundPrefix')}:
