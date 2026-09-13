@@ -6,7 +6,10 @@
     "about": "À propos",
     "contact": "Contact",
     "enquire": "Nous écrire",
-    "language": "Langue"
+    "language": "Langue",
+    "shipping": "Livraison",
+    "custom": "Sur mesure",
+    "gallery": "Galerie"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -77,10 +80,67 @@
     "wechat": "WeChat",
     "tagline": "Bijoux en cristaux naturels, faits lentement par la mer du sud.",
     "copyright": "© {year} Siren Tears Atelier",
-    "crafted": "Façonné lentement, près de la mer du sud."
+    "crafted": "Façonné lentement, près de la mer du sud.",
+    "explore": "Explorer"
   },
   "languageSwitcher": {
     "label": "Langue",
     "close": "Fermer"
+  },
+  "shipping": {
+    "eyebrow": "Livraison & Expédition",
+    "title": "Où que la marée vous mène, ceci trouvera son chemin jusqu'à vous.",
+    "intro": "Un bref guide sur la façon dont votre commande voyage depuis notre atelier côtier jusqu'à votre porte.",
+    "domestic": {
+      "title": "En Nouvelle-Zélande",
+      "body": "Les commandes locales sont soigneusement emballées et expédiées depuis notre atelier, avec un suivi fourni à l'envoi. Le délai et les frais de livraison sont calculés lors du paiement."
+    },
+    "international": {
+      "title": "Commandes internationales",
+      "body": "Nous expédions dans le monde entier. Les commandes de plus de 500 NZD bénéficient de la livraison gratuite, où que vous soyez. En dessous de ce montant, les frais standards s'appliquent et sont calculés lors du paiement."
+    },
+    "duties": {
+      "title": "Douanes, droits & taxes locales",
+      "body": "Les colis internationaux peuvent être soumis à des droits de douane, taxes ou frais de traitement fixés par les autorités douanières de votre pays. Ces frais sont indépendants de notre volonté et restent à la charge du client à la réception. En cas de doute, votre bureau de douane local pourra généralement vous indiquer une estimation avant votre commande."
+    },
+    "care": {
+      "title": "Avant de quitter notre atelier",
+      "body": "Chaque pièce est inspectée et emballée à la main avant de quitter notre atelier. Merci de prévoir un peu plus de temps pendant les périodes de forte demande — nous préférons toujours prendre soin plutôt que de précipiter les choses."
+    },
+    "contactPrompt": "Une question sur une commande en particulier ?",
+    "contactCta": "Écrivez-nous"
+  },
+  "custom": {
+    "eyebrow": "Sur mesure",
+    "title": "Une pièce façonnée pour une seule histoire — la vôtre.",
+    "intro": "Au-delà de nos collections, nous acceptons chaque saison un nombre limité de commandes sur mesure — une pierre qui a un sens particulier, une longueur pensée pour vous seule, un design porté en silence depuis des années.",
+    "steps": {
+      "one": {
+        "title": "Partagez votre vision",
+        "body": "Écrivez-nous en précisant la pierre, l'histoire, ou la personne à qui la pièce est destinée. Une photo ou un croquis peut aider, sans être nécessaire."
+      },
+      "two": {
+        "title": "Nous façonnons une proposition",
+        "body": "Nous vous répondons avec des idées sur la pierre, le matériau et la forme — en affinant ensemble jusqu'à ce que tout semble juste, avant toute fabrication."
+      },
+      "three": {
+        "title": "Façonnée à la main, une seule fois",
+        "body": "Votre pièce est façonnée à la main dans notre atelier en Nouvelle-Zélande, une commande à la fois, puis vous est expédiée une fois prête."
+      }
+    },
+    "noteTitle": "Bon à savoir",
+    "note": "Les pièces sur mesure sont réalisées en nombre limité chaque saison et demandent plus de temps que nos collections prêtes à porter — nous vous indiquerons un délai une fois votre projet compris.",
+    "ctaTitle": "Engager la conversation",
+    "ctaBody": "Écrivez-nous par e-mail ou envoyez-nous un message direct sur Instagram — dites-nous ce que vous imaginez, et nous prendrons le relais.",
+    "emailCta": "Écrire à l'atelier",
+    "instagramCta": "Message sur Instagram"
+  },
+  "gallery": {
+    "eyebrow": "Portée par vous",
+    "title": "Siren Tears, dans le monde réel.",
+    "intro": "De vrais instants partagés par celles qui portent nos créations — identifiez @sirentears_1995 ou écrivez-nous, et votre photo sera peut-être mise à l'honneur ici.",
+    "emptyTitle": "De nouvelles photos arrivent bientôt.",
+    "emptyBody": "Cette galerie ne fait que commencer — revenez bientôt, ou soyez parmi les premières à partager votre photo avec nous.",
+    "shareCta": "Partagez votre photo"
   }
 }

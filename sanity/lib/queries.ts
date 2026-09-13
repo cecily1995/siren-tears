@@ -35,6 +35,11 @@ export const brandStoryQuery = groq`*[_type == "brandStory"][0]{
   stats[]{ label, value }
 }`;
 
+export const buyerShowcaseQuery = groq`*[_type == "buyerShowcase"] | order(order asc, _createdAt desc){
+  _id, caption, customerHandle,
+  "imageUrl": image.asset->url, "imageAlt": image.alt
+}`;
+
 async function safeFetch<T>(query: string): Promise<T | null> {
   if (!hasSanityConfig || !client) return null;
   try {
@@ -49,3 +54,4 @@ export const getHomepage = () => safeFetch<any>(homepageQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);
+export const getBuyerShowcase = () => safeFetch<any[]>(buyerShowcaseQuery);

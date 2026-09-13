@@ -17,7 +17,13 @@ type Labels = {
   tagline: string;
   copyright: string;
   crafted: string;
+  explore: string;
+  shipping: string;
+  custom: string;
+  gallery: string;
 };
+
+import { Link } from '@/i18n/routing';
 
 export default function Footer({ data, labels }: { data: FooterData; labels: Labels }) {
   return (
@@ -34,7 +40,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
       />
       <div className="relative mx-auto max-w-[1380px]">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-14 md:gap-10">
-          <div className="md:col-span-6 reveal">
+          <div className="md:col-span-5 reveal">
             <p className="eyebrow text-gold/80 mb-6">{labels.contact}</p>
             <h2 className="serif-display text-[clamp(2.4rem,4.8vw,4rem)] font-light leading-[1.05] tracking-wide">
               {data.brandName ?? 'SIREN TEARS'}
@@ -42,6 +48,27 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             <p className="mt-7 max-w-md text-[0.95rem] leading-[1.95] text-ivory/70 font-light">
               {data.tagline || labels.tagline}
             </p>
+          </div>
+
+          <div className="md:col-span-2 reveal" style={{ transitionDelay: '80ms' }}>
+            <p className="eyebrow text-ivory/50 mb-6">{labels.explore}</p>
+            <ul className="space-y-3 text-[0.95rem] font-light">
+              <li>
+                <Link href="/gallery" className="link-underline text-ivory/85 hover:text-ivory">
+                  {labels.gallery}
+                </Link>
+              </li>
+              <li>
+                <Link href="/custom" className="link-underline text-ivory/85 hover:text-ivory">
+                  {labels.custom}
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping" className="link-underline text-ivory/85 hover:text-ivory">
+                  {labels.shipping}
+                </Link>
+              </li>
+            </ul>
           </div>
 
           <div className="md:col-span-3 reveal" style={{ transitionDelay: '120ms' }}>
@@ -61,7 +88,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             </p>
           </div>
 
-          <div className="md:col-span-3 reveal" style={{ transitionDelay: '200ms' }}>
+          <div className="md:col-span-2 reveal" style={{ transitionDelay: '200ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.elsewhere}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               {data.instagramUrl && (

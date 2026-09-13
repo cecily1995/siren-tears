@@ -6,7 +6,10 @@
     "about": "Chi siamo",
     "contact": "Contatti",
     "enquire": "Scrivici",
-    "language": "Lingua"
+    "language": "Lingua",
+    "shipping": "Spedizioni",
+    "custom": "Su misura",
+    "gallery": "Galleria"
   },
   "hero": {
     "eyebrow": "Un atelier neozelandese",
@@ -77,10 +80,67 @@
     "wechat": "WeChat",
     "tagline": "Gioielli in cristalli naturali, fatti lentamente sul mare del sud.",
     "copyright": "© {year} Siren Tears Atelier",
-    "crafted": "Realizzato lentamente, sul mare del sud."
+    "crafted": "Realizzato lentamente, sul mare del sud.",
+    "explore": "Esplora"
   },
   "languageSwitcher": {
     "label": "Lingua",
     "close": "Chiudi"
+  },
+  "shipping": {
+    "eyebrow": "Spedizioni e Consegna",
+    "title": "Ovunque la marea vi porti, questo troverà la sua strada fino a voi.",
+    "intro": "Una breve guida su come il vostro ordine viaggia dal nostro atelier costiero fino alla vostra porta.",
+    "domestic": {
+      "title": "In Nuova Zelanda",
+      "body": "Gli ordini nazionali vengono imballati con cura e spediti dal nostro atelier, con tracciamento fornito alla spedizione. Tempi e costi di consegna vengono calcolati al momento del pagamento."
+    },
+    "international": {
+      "title": "Ordini internazionali",
+      "body": "Spediamo in tutto il mondo. Gli ordini superiori a 500 NZD hanno la spedizione gratuita, ovunque vi troviate. Al di sotto di questa cifra si applica la tariffa standard, calcolata al momento del pagamento."
+    },
+    "duties": {
+      "title": "Dogana, dazi e tasse locali",
+      "body": "I pacchi internazionali possono essere soggetti a dazi doganali, tasse o spese di gestione stabilite dall'autorità doganale del vostro paese. Questi costi non dipendono da noi e sono a carico del cliente al momento della consegna. In caso di dubbio, il vostro ufficio doganale locale può generalmente fornire una stima prima dell'ordine."
+    },
+    "care": {
+      "title": "Prima che lasci il nostro atelier",
+      "body": "Ogni pezzo viene ispezionato e imballato a mano prima di lasciare il nostro atelier. Vi preghiamo di considerare un po' più di tempo nei periodi di maggiore richiesta — per noi la cura viene sempre prima della fretta."
+    },
+    "contactPrompt": "Domande su un ordine specifico?",
+    "contactCta": "Scriveteci"
+  },
+  "custom": {
+    "eyebrow": "Su misura",
+    "title": "Un pezzo pensato per una sola storia — la vostra.",
+    "intro": "Oltre alle nostre collezioni, accogliamo ogni stagione un numero limitato di commissioni su misura — una pietra che ha un significato particolare, una lunghezza pensata solo per voi, un design custodito in silenzio per anni.",
+    "steps": {
+      "one": {
+        "title": "Raccontateci la vostra visione",
+        "body": "Scriveteci indicando la pietra, la storia, o la persona a cui è destinato il pezzo. Una foto o uno schizzo possono aiutare, ma non sono necessari."
+      },
+      "two": {
+        "title": "Definiamo insieme una proposta",
+        "body": "Vi rispondiamo con idee su pietra, materiale e forma — perfezionando insieme il progetto finché non sembra giusto, prima di iniziare la lavorazione."
+      },
+      "three": {
+        "title": "Lavorato a mano, un'unica volta",
+        "body": "Il vostro pezzo viene lavorato a mano nel nostro atelier in Nuova Zelanda, una commissione alla volta, e spedito non appena pronto."
+      }
+    },
+    "noteTitle": "Da sapere",
+    "note": "I pezzi su misura vengono realizzati in numero limitato ogni stagione e richiedono più tempo rispetto alle nostre collezioni pronte — vi comunicheremo una tempistica non appena avremo compreso la vostra idea.",
+    "ctaTitle": "Iniziamo a parlarne",
+    "ctaBody": "Scriveteci via email o inviateci un messaggio diretto su Instagram — raccontateci cosa avete in mente, penseremo noi al resto.",
+    "emailCta": "Scrivi all'atelier",
+    "instagramCta": "Messaggio su Instagram"
+  },
+  "gallery": {
+    "eyebrow": "Indossato da voi",
+    "title": "Siren Tears, nella vita di tutti i giorni.",
+    "intro": "Momenti autentici delle donne che indossano i nostri pezzi — taggate @sirentears_1995 o scriveteci, e la vostra foto potrebbe comparire qui.",
+    "emptyTitle": "Presto nuove foto.",
+    "emptyBody": "Questa galleria è appena agli inizi — tornate presto a trovarci, o siate tra le prime a condividere la vostra foto con noi.",
+    "shareCta": "Condividi la tua foto"
   }
 }

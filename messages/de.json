@@ -6,7 +6,10 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "enquire": "Anfrage",
-    "language": "Sprache"
+    "language": "Sprache",
+    "shipping": "Versand",
+    "custom": "Maßanfertigung",
+    "gallery": "Galerie"
   },
   "hero": {
     "eyebrow": "Ein Atelier in Neuseeland",
@@ -77,10 +80,67 @@
     "wechat": "WeChat",
     "tagline": "Schmuck aus natürlichen Kristallen, langsam am Südmeer gefertigt.",
     "copyright": "© {year} Siren Tears Atelier",
-    "crafted": "Langsam gefertigt, am Südmeer."
+    "crafted": "Langsam gefertigt, am Südmeer.",
+    "explore": "Entdecken"
   },
   "languageSwitcher": {
     "label": "Sprache",
     "close": "Schließen"
+  },
+  "shipping": {
+    "eyebrow": "Versand & Lieferung",
+    "title": "Wohin die Gezeiten Sie auch tragen, es findet seinen Weg zu Ihnen.",
+    "intro": "Ein kurzer Überblick, wie Ihre Bestellung von unserem Küstenatelier zu Ihnen gelangt.",
+    "domestic": {
+      "title": "Innerhalb Neuseelands",
+      "body": "Inländische Bestellungen werden sorgfältig in unserem Atelier verpackt und versandt, mit Sendungsverfolgung bei Versand. Lieferzeit und Kosten werden an der Kasse berechnet."
+    },
+    "international": {
+      "title": "Internationale Bestellungen",
+      "body": "Wir versenden weltweit. Bestellungen über NZD 500 werden versandkostenfrei geliefert, egal wohin. Bei niedrigeren Beträgen gilt der Standardtarif, der an der Kasse berechnet wird."
+    },
+    "duties": {
+      "title": "Zoll, Abgaben & lokale Steuern",
+      "body": "Internationale Sendungen können Einfuhrzöllen, Steuern oder Bearbeitungsgebühren der Zollbehörde Ihres Landes unterliegen. Diese Gebühren liegen außerhalb unserer Kontrolle und sind bei Erhalt vom Kunden zu tragen. Falls Sie unsicher sind, kann Ihr örtliches Zollamt in der Regel vorab eine Schätzung geben."
+    },
+    "care": {
+      "title": "Bevor es uns verlässt",
+      "body": "Jedes Stück wird von Hand geprüft und verpackt, bevor es unser Atelier verlässt. Bitte planen Sie in Stoßzeiten etwas mehr Zeit ein — uns ist Sorgfalt wichtiger als Eile."
+    },
+    "contactPrompt": "Fragen zu einer bestimmten Bestellung?",
+    "contactCta": "Schreiben Sie uns"
+  },
+  "custom": {
+    "eyebrow": "Maßanfertigung",
+    "title": "Ein Stück für genau eine Geschichte — Ihre.",
+    "intro": "Neben unseren Kollektionen nehmen wir jede Saison eine kleine Anzahl an Sonderanfertigungen an — ein Stein von besonderer Bedeutung, eine Länge, die nur Ihnen passt, ein Design, das Sie schon lange im Herzen tragen.",
+    "steps": {
+      "one": {
+        "title": "Erzählen Sie uns Ihre Vision",
+        "body": "Schreiben Sie uns, welchen Stein, welche Geschichte oder für wen das Stück gedacht ist. Ein Foto oder eine Skizze hilft, ist aber nicht nötig."
+      },
+      "two": {
+        "title": "Wir entwerfen einen Vorschlag",
+        "body": "Wir antworten mit Ideen zu Stein, Material und Form — gemeinsam verfeinert, bis es sich richtig anfühlt, bevor etwas gefertigt wird."
+      },
+      "three": {
+        "title": "Von Hand gefertigt, nur einmal",
+        "body": "Ihr Stück wird von Hand in unserem Atelier in Neuseeland gefertigt, ein Auftrag nach dem anderen, und an Sie versandt, sobald es fertig ist."
+      }
+    },
+    "noteTitle": "Gut zu wissen",
+    "note": "Sonderanfertigungen entstehen jede Saison in begrenzter Zahl und benötigen mehr Zeit als unsere fertigen Kollektionen — sobald wir Ihre Vorstellung kennen, nennen wir Ihnen einen Zeitrahmen.",
+    "ctaTitle": "Beginnen wir das Gespräch",
+    "ctaBody": "Schreiben Sie uns per E-Mail oder senden Sie uns eine Direktnachricht auf Instagram — erzählen Sie uns, was Ihnen vorschwebt, und wir übernehmen den Rest.",
+    "emailCta": "Atelier per E-Mail kontaktieren",
+    "instagramCta": "Nachricht auf Instagram"
+  },
+  "gallery": {
+    "eyebrow": "Getragen von Ihnen",
+    "title": "Siren Tears, mitten im Leben.",
+    "intro": "Echte Momente von den Frauen, die unsere Stücke tragen — markieren Sie @sirentears_1995 oder schreiben Sie uns, und Ihr Foto findet vielleicht hier seinen Platz.",
+    "emptyTitle": "Neue Fotos folgen bald.",
+    "emptyBody": "Diese Galerie steht noch am Anfang — schauen Sie bald wieder vorbei, oder teilen Sie als eine der Ersten Ihr Foto mit uns.",
+    "shareCta": "Foto teilen"
   }
 }

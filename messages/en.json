@@ -6,7 +6,10 @@
     "about": "About",
     "contact": "Contact",
     "enquire": "Enquire",
-    "language": "Language"
+    "language": "Language",
+    "shipping": "Shipping",
+    "custom": "Custom Orders",
+    "gallery": "Gallery"
   },
   "hero": {
     "eyebrow": "A New Zealand Atelier",
@@ -77,10 +80,67 @@
     "wechat": "WeChat",
     "tagline": "Natural crystal jewelry, made slowly by the southern sea.",
     "copyright": "© {year} Siren Tears Atelier",
-    "crafted": "Crafted slowly, by the southern sea."
+    "crafted": "Crafted slowly, by the southern sea.",
+    "explore": "Explore"
   },
   "languageSwitcher": {
     "label": "Language",
     "close": "Close"
+  },
+  "shipping": {
+    "eyebrow": "Shipping & Delivery",
+    "title": "Wherever the tide takes you, this finds its way there.",
+    "intro": "A short guide to how your order travels from our coastal studio to your door.",
+    "domestic": {
+      "title": "Within New Zealand",
+      "body": "Domestic orders are carefully packed and shipped from our studio, with tracking provided on dispatch. Delivery timing and cost are calculated at checkout."
+    },
+    "international": {
+      "title": "International Orders",
+      "body": "We ship to customers around the world. Orders over NZD $500 ship free, wherever you are. Orders under this amount ship at a standard rate, calculated at checkout."
+    },
+    "duties": {
+      "title": "Customs, Duties & Local Taxes",
+      "body": "International parcels may be subject to import duties, taxes, or handling fees set by your country's customs authority. These charges are outside our control and are the responsibility of the customer on arrival. If you're unsure what applies, your local customs office can usually give you an estimate before you order."
+    },
+    "care": {
+      "title": "Before It Leaves Us",
+      "body": "Each piece is inspected and packed by hand before it leaves our studio. Please allow a little extra time during peak periods — we'd always rather take care than rush."
+    },
+    "contactPrompt": "Questions about a specific order?",
+    "contactCta": "Write to us"
+  },
+  "custom": {
+    "eyebrow": "Bespoke",
+    "title": "A piece made for exactly one story — yours.",
+    "intro": "Beyond our collections, we take on a small number of custom commissions each season — a stone that means something, a length that fits only you, a design carried quietly in your mind for years.",
+    "steps": {
+      "one": {
+        "title": "Tell us your vision",
+        "body": "Write to us with the stone, the story, or the person the piece is for. A photo or sketch helps, but isn't necessary."
+      },
+      "two": {
+        "title": "We shape a proposal",
+        "body": "We reply with thoughts on stone, material, and form — refining together until it feels right, before anything is made."
+      },
+      "three": {
+        "title": "Hand-shaped, just once",
+        "body": "Your piece is shaped by hand at our New Zealand studio, one commission at a time, and shipped to you when it's ready."
+      }
+    },
+    "noteTitle": "Good to Know",
+    "note": "Custom pieces are made in limited numbers each season and take longer than our ready collections — we'll let you know a timeframe once we understand what you have in mind.",
+    "ctaTitle": "Begin the Conversation",
+    "ctaBody": "Write to us by email or send a direct message on Instagram — tell us what you're picturing, and we'll take it from there.",
+    "emailCta": "Email the Studio",
+    "instagramCta": "Message on Instagram"
+  },
+  "gallery": {
+    "eyebrow": "As Worn",
+    "title": "Siren Tears, out in the world.",
+    "intro": "Real moments from the women who wear our pieces — tag @sirentears_1995 or write to us, and we may feature your photo here.",
+    "emptyTitle": "New photos are coming soon.",
+    "emptyBody": "This gallery is just getting started — check back soon, or be among the first to share your photo with us.",
+    "shareCta": "Share Your Photo"
   }
 }

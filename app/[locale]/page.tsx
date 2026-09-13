@@ -5,13 +5,11 @@ import Collections from '@/components/Collections';
 import FeaturedProduct from '@/components/FeaturedProduct';
 import Journal from '@/components/Journal';
 import BrandStory from '@/components/BrandStory';
-import Footer from '@/components/Footer';
 import {
   getHomepage,
   getCollections,
   getJournal,
-  getBrandStory,
-  getSiteSettings
+  getBrandStory
 } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 
@@ -25,12 +23,11 @@ export default async function HomePage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [home, collections, journal, brandStory, settings] = await Promise.all([
+  const [home, collections, journal, brandStory] = await Promise.all([
     getHomepage(),
     getCollections(),
     getJournal(),
-    getBrandStory(),
-    getSiteSettings()
+    getBrandStory()
   ]);
 
   const t = await getTranslations();
@@ -106,19 +103,6 @@ export default async function HomePage({
     ]
   };
 
-  const footerSettings = settings ?? fallback.settings;
-  const footerLabels = {
-    contact: t('footer.contact'),
-    studio: t('footer.studio'),
-    elsewhere: t('footer.elsewhere'),
-    byAppointment: t('footer.byAppointment'),
-    region: t('footer.region'),
-    wechat: t('footer.wechat'),
-    tagline: t('footer.tagline'),
-    copyright: t('footer.copyright', { year: new Date().getFullYear() }),
-    crafted: t('footer.crafted')
-  };
-
   return (
     <>
       <Hero data={heroData} />
@@ -133,7 +117,6 @@ export default async function HomePage({
         labels={journalLabels}
       />
       <BrandStory data={brandStoryData} />
-      <Footer data={footerSettings} labels={footerLabels} />
     </>
   );
 }
