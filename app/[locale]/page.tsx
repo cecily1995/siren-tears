@@ -1,15 +1,19 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
+import OneOfOne from '@/components/OneOfOne';
 import Collections from '@/components/Collections';
+import CurrentlyAvailable from '@/components/CurrentlyAvailable';
 import FeaturedProduct from '@/components/FeaturedProduct';
+import Atelier from '@/components/Atelier';
 import Journal from '@/components/Journal';
 import BrandStory from '@/components/BrandStory';
 import {
   getHomepage,
   getCollections,
   getJournal,
-  getBrandStory
+  getBrandStory,
+  getShopProducts
 } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 
@@ -23,11 +27,12 @@ export default async function HomePage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [home, collections, journal, brandStory] = await Promise.all([
+  const [home, collections, journal, brandStory, shopProducts] = await Promise.all([
     getHomepage(),
     getCollections(),
     getJournal(),
-    getBrandStory()
+    getBrandStory(),
+    getShopProducts()
   ]);
 
   const t = await getTranslations();
@@ -103,15 +108,42 @@ export default async function HomePage({
     ]
   };
 
+  const oneOfOneData = {
+    eyebrow: t('oneOfOne.eyebrow'),
+    title: t('oneOfOne.title'),
+    body: t('oneOfOne.body')
+  };
+
+  const atelierData = {
+    eyebrow: t('atelier.eyebrow'),
+    title: t('atelier.title'),
+    body: t('atelier.body'),
+    imageUrl: fallback.atelier.imageUrl,
+    imageAlt: fallback.atelier.imageAlt
+  };
+
+  const currentlyAvailableItems = (shopProducts?.length ? shopProducts : fallback.shopProducts).filter(
+    (p: any) => p.status === 'available'
+  );
+  const currentlyAvailableLabels = {
+    eyebrow: t('currentlyAvailable.eyebrow'),
+    title: t('currentlyAvailable.title'),
+    oneOfOne: t('shop.oneOfOne'),
+    cta: t('currentlyAvailable.cta')
+  };
+
   return (
     <>
       <Hero data={heroData} />
       <Philosophy data={philosophyData} />
+      <OneOfOne data={oneOfOneData} />
       <Collections
         items={collections?.length ? collections : fallback.collections}
         labels={collectionsLabels}
       />
+      <CurrentlyAvailable items={currentlyAvailableItems} labels={currentlyAvailableLabels} />
       <FeaturedProduct data={featuredData} />
+      <Atelier data={atelierData} />
       <Journal
         items={journal?.length ? journal : fallback.journal}
         labels={journalLabels}

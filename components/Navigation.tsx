@@ -7,12 +7,11 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 const links = [
   { href: '/#collections', key: 'collections' },
-  { href: '/#story', key: 'featured' },
+  { href: '/shop', key: 'shop' },
   { href: '/#journal', key: 'journal' },
-  { href: '/gallery', key: 'gallery' },
-  { href: '/custom', key: 'custom' },
-  { href: '/shipping', key: 'shipping' },
-  { href: '/#about', key: 'about' }
+  { href: '/worn-by-you', key: 'gallery' },
+  { href: '/bespoke', key: 'bespoke' },
+  { href: '/membership', key: 'membership' }
 ] as const;
 
 export default function Navigation() {

@@ -8,8 +8,10 @@
     "enquire": "Anfrage",
     "language": "Sprache",
     "shipping": "Versand",
-    "custom": "Maßanfertigung",
-    "gallery": "Galerie"
+    "gallery": "Getragen von Ihnen",
+    "shop": "Shop",
+    "membership": "Mitgliedschaft",
+    "bespoke": "Maßanfertigung"
   },
   "hero": {
     "eyebrow": "Ein Atelier in Neuseeland",
@@ -81,7 +83,14 @@
     "tagline": "Schmuck aus natürlichen Kristallen, langsam am Südmeer gefertigt.",
     "copyright": "© {year} Siren Tears Atelier",
     "crafted": "Langsam gefertigt, am Südmeer.",
-    "explore": "Entdecken"
+    "explore": "Entdecken",
+    "archive": "Archiv",
+    "care": "Pflege",
+    "faq": "FAQ",
+    "privacy": "Datenschutz",
+    "terms": "AGB",
+    "shopHeader": "Shop",
+    "support": "Support"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -110,31 +119,6 @@
     "contactPrompt": "Fragen zu einer bestimmten Bestellung?",
     "contactCta": "Schreiben Sie uns"
   },
-  "custom": {
-    "eyebrow": "Maßanfertigung",
-    "title": "Ein Stück für genau eine Geschichte — Ihre.",
-    "intro": "Neben unseren Kollektionen nehmen wir jede Saison eine kleine Anzahl an Sonderanfertigungen an — ein Stein von besonderer Bedeutung, eine Länge, die nur Ihnen passt, ein Design, das Sie schon lange im Herzen tragen.",
-    "steps": {
-      "one": {
-        "title": "Erzählen Sie uns Ihre Vision",
-        "body": "Schreiben Sie uns, welchen Stein, welche Geschichte oder für wen das Stück gedacht ist. Ein Foto oder eine Skizze hilft, ist aber nicht nötig."
-      },
-      "two": {
-        "title": "Wir entwerfen einen Vorschlag",
-        "body": "Wir antworten mit Ideen zu Stein, Material und Form — gemeinsam verfeinert, bis es sich richtig anfühlt, bevor etwas gefertigt wird."
-      },
-      "three": {
-        "title": "Von Hand gefertigt, nur einmal",
-        "body": "Ihr Stück wird von Hand in unserem Atelier in Neuseeland gefertigt, ein Auftrag nach dem anderen, und an Sie versandt, sobald es fertig ist."
-      }
-    },
-    "noteTitle": "Gut zu wissen",
-    "note": "Sonderanfertigungen entstehen jede Saison in begrenzter Zahl und benötigen mehr Zeit als unsere fertigen Kollektionen — sobald wir Ihre Vorstellung kennen, nennen wir Ihnen einen Zeitrahmen.",
-    "ctaTitle": "Beginnen wir das Gespräch",
-    "ctaBody": "Schreiben Sie uns per E-Mail oder senden Sie uns eine Direktnachricht auf Instagram — erzählen Sie uns, was Ihnen vorschwebt, und wir übernehmen den Rest.",
-    "emailCta": "Atelier per E-Mail kontaktieren",
-    "instagramCta": "Nachricht auf Instagram"
-  },
   "gallery": {
     "eyebrow": "Getragen von Ihnen",
     "title": "Siren Tears, mitten im Leben.",
@@ -142,5 +126,190 @@
     "emptyTitle": "Neue Fotos folgen bald.",
     "emptyBody": "Diese Galerie steht noch am Anfang — schauen Sie bald wieder vorbei, oder teilen Sie als eine der Ersten Ihr Foto mit uns.",
     "shareCta": "Foto teilen"
+  },
+  "bespoke": {
+    "eyebrow": "Maßanfertigung",
+    "title": "Für Sie gefertigt. Nie ein zweites Mal.",
+    "intro": "Manche Stücke sind nicht dazu bestimmt, gefunden zu werden. Sie sind dazu bestimmt, gefertigt zu werden. Jedes Maßanfertigungsstück wird individuell nach Ihren Vorstellungen entworfen — vom Stein über die Farbe bis zur endgültigen Fassung.",
+    "tracksTitle": "Zwei Wege der Entstehung",
+    "handmade": {
+      "title": "Handgefertigte Naturstein-Stücke",
+      "subtitle": "Armbänder & Ketten",
+      "time": "Innerhalb 1 Woche",
+      "body": "Handgefertigte Armbänder und Ketten aus Natursteinen sind in der Regel innerhalb einer Woche nach Bestätigung von Design und Steinwahl fertiggestellt."
+    },
+    "gemstone": {
+      "title": "Handgefasster Edelsteinschmuck",
+      "subtitle": "Ringe & Feinschmuck",
+      "time": "Etwa 2 Monate",
+      "body": "Handgefasste Edelsteinringe und Feinschmuck erfordern einen längeren Fertigungsprozess und benötigen in der Regel etwa zwei Monate."
+    },
+    "tracksDisclaimer": "Dies sind geschätzte Fertigungszeiten, die je nach Steinbeschaffung, Designfreigabe, Produktionsanforderungen, Versand und weiteren Umständen variieren können.",
+    "processTitle": "So beginnt es",
+    "steps": {
+      "tell": {
+        "title": "Sie erzählen uns",
+        "body": "Erzählen Sie uns, wonach Sie suchen."
+      },
+      "source": {
+        "title": "Wir beschaffen",
+        "body": "Wir wählen Steine nach Ihren Vorstellungen aus."
+      },
+      "design": {
+        "title": "Wir entwerfen",
+        "body": "Wir entwickeln das Design rund um den gewählten Stein."
+      },
+      "create": {
+        "title": "Wir fertigen",
+        "body": "Ihr Stück wird einzeln von Hand in unserem Atelier gefertigt."
+      }
+    },
+    "formTitle": "Anfrage für Maßanfertigung",
+    "formIntro": "Erzählen Sie uns, was Ihnen vorschwebt. Es verpflichtet zu nichts — eine Anfrage ist der Beginn eines Gesprächs, keine Bestellung.",
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "E-Mail",
+      "whatsappLabel": "WhatsApp",
+      "pieceTypeLabel": "Was möchten Sie anfertigen lassen?",
+      "pieceTypes": {
+        "bracelet": "Armband",
+        "necklace": "Kette",
+        "ring": "Ring",
+        "pendant": "Anhänger",
+        "other": "Sonstiges"
+      },
+      "stoneLabel": "Bevorzugter Stein",
+      "colourLabel": "Bevorzugte Farbe",
+      "colours": {
+        "white": "Weiß",
+        "blue": "Blau",
+        "green": "Grün",
+        "black": "Schwarz",
+        "champagne": "Champagner",
+        "other": "Sonstiges"
+      },
+      "budgetLabel": "Budget",
+      "budgets": {
+        "b1": "200–500 NZD",
+        "b2": "500–1.000 NZD",
+        "b3": "1.000–2.000 NZD",
+        "b4": "2.000+ NZD",
+        "b5": "Noch nicht sicher"
+      },
+      "messageLabel": "Erzählen Sie uns von Ihrem Stück",
+      "messagePlaceholder": "Teilen Sie die Geschichte, den Anlass oder das Gefühl, das dieses Stück tragen soll.",
+      "imagesLabel": "Inspiration",
+      "imagesHint": "Screenshots, Pinterest-Boards, vorhandener Schmuck — alles, was uns hilft, Ihre Vorstellung zu verstehen. Bis zu 6 Bilder.",
+      "imagesSelected": "Bild(er) ausgewählt",
+      "imageError": "Eines der Bilder konnte nicht gelesen werden — bitte versuchen Sie es erneut.",
+      "submit": "Anfrage senden",
+      "submitting": "Wird gesendet…",
+      "successTitle": "Ihre Anfrage hat uns erreicht.",
+      "successBody": "Vielen Dank, dass Sie Ihre Vorstellung mit uns geteilt haben. Wir melden uns innerhalb weniger Tage persönlich bei Ihnen, um das Gespräch zu beginnen.",
+      "errorGeneric": "Beim Senden ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt."
+    },
+    "contactTitle": "Mit dem Atelier sprechen",
+    "whatsappBody": "Für ein schnelleres Gespräch über Ihr Maßanfertigungsstück.",
+    "whatsappCta": "Gespräch beginnen",
+    "emailBody": "Für ausführliche Anfragen und Inspirationen.",
+    "emailCta": "E-Mail senden"
+  },
+  "care": {
+    "eyebrow": "Pflege",
+    "title": "Pflege für Ihr Siren Tears Stück",
+    "intro": "Natursteine sind widerstandsfähig, aber nicht unzerstörbar. Ein wenig Pflege bewahrt jedes Stück nahe seinem ursprünglichen Zustand.",
+    "water": {
+      "title": "Wasser",
+      "body": "Vermeiden Sie längeren Kontakt mit Wasser. Legen Sie Ihr Stück vor dem Schwimmen, Baden oder Abwaschen ab."
+    },
+    "perfume": {
+      "title": "Parfüm",
+      "body": "Tragen Sie Parfüm, Lotion und Kosmetik auf, bevor Sie Ihren Schmuck anlegen, nicht danach."
+    },
+    "storage": {
+      "title": "Aufbewahrung",
+      "body": "Bewahren Sie Ihr Stück separat an einem trockenen Ort auf, geschützt vor direktem Sonnenlicht, um Kratzer zu vermeiden und die Farbe zu erhalten."
+    },
+    "cleaning": {
+      "title": "Reinigung",
+      "body": "Wischen Sie es nach dem Tragen sanft mit einem weichen, trockenen Tuch ab. Vermeiden Sie aggressive Chemikalien, Ultraschallreiniger und scheuernde Materialien."
+    },
+    "note": "Manche Steine haben einen eigenen Charakter und besondere Pflegebedürfnisse — wo relevant, vermerken wir dies auf der jeweiligen Produktseite."
+  },
+  "shop": {
+    "eyebrow": "Shop",
+    "title": "Derzeit im Atelier",
+    "intro": "Jedes Stück existiert nur einmal. Ist es fort, ist es fort — bleibt aber Teil des SIREN TEARS Archivs.",
+    "filters": {
+      "all": "Alle",
+      "bracelets": "Armbänder",
+      "necklaces": "Ketten",
+      "rings": "Ringe",
+      "pendants": "Anhänger",
+      "archive": "Archiv"
+    },
+    "status": {
+      "sold": "Verkauft",
+      "reserved": "Reserviert",
+      "bespoke": "Nur auf Anfrage"
+    },
+    "oneOfOne": "Einzelstück",
+    "viewPiece": "Stück ansehen",
+    "emptyTitle": "Das Atelier bereitet seine ersten Stücke vor.",
+    "emptyBody": "Unser Shop wird gerade sorgfältig zusammengestellt — schauen Sie bald wieder vorbei, oder schreiben Sie uns in der Zwischenzeit für ein Maßanfertigungsstück.",
+    "enquireCta": "Zu diesem Stück anfragen",
+    "purchaseNote": "Der Online-Checkout startet bald. Schreiben Sie uns in der Zwischenzeit per E-Mail oder WhatsApp, um sich nach diesem Stück zu erkundigen.",
+    "detailsTitle": "Details",
+    "stoneTitle": "Der Stein",
+    "pieceTitle": "Das Stück",
+    "oneOfOneNote": "Dieses Stück existiert als einzelnes Werk. Nach dem Kauf wird genau dieses Stück nicht erneut angefertigt.",
+    "materialLabel": "Material",
+    "lengthLabel": "Länge",
+    "craftedInLabel": "Gefertigt in",
+    "backToShop": "Zurück zum Shop"
+  },
+  "membership": {
+    "eyebrow": "Mitgliedschaft",
+    "title": "Treten Sie dem Siren Circle bei",
+    "subtitle": "Eine engere Verbindung zu SIREN TEARS.",
+    "circleTitle": "Siren Circle",
+    "circleFree": "Kostenlose Mitgliedschaft.",
+    "circleBenefits": [
+      "Willkommensgeschenk beim ersten qualifizierenden Kauf — die Siren Case",
+      "Kostenloser Versand ab NZD 400",
+      "Früher Zugang zu ausgewählten neuen Kollektionen und Einzelstücken",
+      "Privater Atelier-Kontakt für Fragen, Steinbeschaffung und Maßanfertigungen",
+      "Wunschliste — bewahren Sie die Stücke, die Sie berühren",
+      "Meine Sammlung — ein privates Verzeichnis der Stücke, die Sie sich angeeignet haben"
+    ],
+    "circleCta": "Dem Siren Circle beitreten",
+    "privateTitle": "Private Client",
+    "privateSubtitle": "Nicht gewählt — erworben, durch Ihre Sammlung.",
+    "privateBenefits": [
+      "Kostenloser Versand, ohne Mindestbestellwert",
+      "Früher Zugang, 24–48 Stunden vor der öffentlichen Veröffentlichung",
+      "Private Vorschau ausgewählter kommender Einzelstücke",
+      "Bevorzugte Bearbeitung von Maßanfertigungsanfragen",
+      "Private Steinbeschaffung, soweit möglich",
+      "Ein privates Geburtstagsprivileg",
+      "Direkter, persönlicher Zugang zum Atelier"
+    ],
+    "privateQualify": "Der Private-Client-Status wird automatisch anhand Ihrer Sammlungshistorie vergeben — er kann nicht beantragt werden.",
+    "comingSoonNote": "Vollständige Mitgliedskonten starten in Kürze. Schreiben Sie uns in der Zwischenzeit, und wir informieren Sie, sobald der Siren Circle eröffnet."
+  },
+  "oneOfOne": {
+    "eyebrow": "Einzelstück",
+    "title": "Jedes Stück existiert nur einmal.",
+    "body": "Jeder Stein trägt seine eigene Farbe, Textur und seinen eigenen Charakter. Jedes Stück wird einzeln gefertigt, und keine zwei Natursteine sind je völlig gleich. Ist ein Stück verkauft, wird genau dieses Stück nie wieder angefertigt."
+  },
+  "atelier": {
+    "eyebrow": "Das Atelier",
+    "title": "Langsam gefertigt, in Neuseeland.",
+    "body": "Jedes Stück beginnt an einer stillen Werkbank, nicht am Fließband. Wir arbeiten mit natürlichen Materialien in dem Tempo, das sie verlangen, nicht im Tempo einer Saison."
+  },
+  "currentlyAvailable": {
+    "eyebrow": "Derzeit verfügbar",
+    "title": "Gerade jetzt, im Atelier.",
+    "cta": "Alle im Shop ansehen"
   }
 }

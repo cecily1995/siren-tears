@@ -63,9 +63,19 @@ export default async function LocaleLayout({
     copyright: t('footer.copyright', { year: new Date().getFullYear() }),
     crafted: t('footer.crafted'),
     explore: t('footer.explore'),
+    shopHeader: t('footer.shopHeader'),
+    support: t('footer.support'),
     shipping: t('nav.shipping'),
-    custom: t('nav.custom'),
-    gallery: t('nav.gallery')
+    bespoke: t('nav.bespoke'),
+    gallery: t('nav.gallery'),
+    membership: t('nav.membership'),
+    shop: t('nav.shop'),
+    collections: t('nav.collections'),
+    journal: t('nav.journal'),
+    care: t('footer.care'),
+    faq: t('footer.faq'),
+    privacy: t('footer.privacy'),
+    terms: t('footer.terms')
   };
 
   return (

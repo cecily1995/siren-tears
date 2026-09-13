@@ -147,6 +147,10 @@ export const fallback = {
       { value: '01', label: 'Coastal atelier' }
     ]
   },
+  atelier: {
+    imageUrl: U('photo-1617038260897-41a1f14a8ca0', 1800),
+    imageAlt: 'Hands shaping jewellery at a quiet workbench'
+  },
   settings: {
     brandName: 'SIREN TEARS',
     tagline: 'Natural crystal jewelry, made slowly by the southern sea.',
@@ -154,5 +158,74 @@ export const fallback = {
     xiaohongshuUrl: 'https://www.xiaohongshu.com/',
     wechatHandle: 'sirentears.studio',
     email: 'studio@sirentears.com'
-  }
+  },
+  shopProducts: [
+    {
+      _id: 'sp1',
+      name: 'Last Queen No.01',
+      slug: { current: 'last-queen-no-01' },
+      category: 'bracelet',
+      stone: 'Rainbow Moonstone',
+      price: 288,
+      status: 'available',
+      collectionTitle: 'Last Queen',
+      images: [{ url: U('photo-1611652022419-a9419f74343d', 1200), alt: 'Last Queen No.01 moonstone bracelet' }],
+      material: '925 Sterling Silver',
+      length: '16–17 cm',
+      craftedIn: 'New Zealand',
+      stoneStory:
+        'Hand-selected rainbow moonstone, chosen for its rare adularescence — a slow shift of silver-blue light that surfaces only at certain angles.',
+      pieceStory:
+        'Hand-forged at our New Zealand studio. No two are truly alike — this piece carries the small, deliberate signatures of the hands that shaped it.'
+    },
+    {
+      _id: 'sp2',
+      name: 'Last Queen No.03',
+      slug: { current: 'last-queen-no-03' },
+      category: 'necklace',
+      stone: 'Rainbow Moonstone',
+      price: 388,
+      status: 'sold',
+      collectionTitle: 'Last Queen',
+      images: [{ url: U('photo-1599643478518-a784e5dc4c8f', 1200), alt: 'Last Queen No.03 moonstone necklace' }],
+      material: '925 Sterling Silver',
+      length: '42–45 cm',
+      craftedIn: 'New Zealand',
+      stoneStory:
+        'A single moonstone of unusually deep adularescence, set to catch the light with every movement.',
+      pieceStory: 'This exact piece has found its home and will not be recreated.'
+    },
+    {
+      _id: 'sp3',
+      name: 'Golden Age No.02',
+      slug: { current: 'golden-age-no-02' },
+      category: 'ring',
+      stone: 'Champagne Citrine',
+      price: 468,
+      status: 'available',
+      collectionTitle: 'Golden Age',
+      images: [{ url: U('photo-1515562141207-7a88fb7ce338', 1200), alt: 'Golden Age No.02 citrine ring' }],
+      material: '18k Recycled Gold Vermeil',
+      length: 'Made to size',
+      craftedIn: 'New Zealand',
+      stoneStory: 'A warm champagne citrine, chosen for its clarity and quiet, antique-gold warmth.',
+      pieceStory: 'Hand-set in our studio, one ring at a time.'
+    },
+    {
+      _id: 'sp4',
+      name: "Siren's Chain No.05",
+      slug: { current: 'sirens-chain-no-05' },
+      category: 'pendant',
+      stone: 'Black Onyx',
+      price: 328,
+      status: 'available',
+      collectionTitle: "Siren's Chain",
+      images: [{ url: U('photo-1611591437281-460bfbe1220a', 1200), alt: "Siren's Chain No.05 onyx pendant" }],
+      material: 'Oxidised Sterling Silver',
+      length: '46 cm',
+      craftedIn: 'New Zealand',
+      stoneStory: 'Deep black onyx, polished to hold light like still water at night.',
+      pieceStory: 'Part of the Siren\u2019s Chain collection — dark metal, quiet weight, worn close.'
+    }
+  ]
 };

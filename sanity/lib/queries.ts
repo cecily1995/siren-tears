@@ -40,10 +40,23 @@ export const buyerShowcaseQuery = groq`*[_type == "buyerShowcase"] | order(order
   "imageUrl": image.asset->url, "imageAlt": image.alt
 }`;
 
-async function safeFetch<T>(query: string): Promise<T | null> {
+export const shopProductsQuery = groq`*[_type == "shopProduct"] | order(order asc, _createdAt desc){
+  _id, name, slug, category, stone, price, status,
+  "collectionTitle": collection->title,
+  "images": images[]{ "url": asset->url, alt }
+}`;
+
+export const shopProductBySlugQuery = groq`*[_type == "shopProduct" && slug.current == $slug][0]{
+  _id, name, slug, category, stone, price, status,
+  material, length, craftedIn, stoneStory, pieceStory,
+  "collectionTitle": collection->title,
+  "images": images[]{ "url": asset->url, alt }
+}`;
+
+async function safeFetch<T>(query: string, params: Record<string, unknown> = {}): Promise<T | null> {
   if (!hasSanityConfig || !client) return null;
   try {
-    return await client.fetch<T>(query, {}, { next: { revalidate: 60 } });
+    return await client.fetch<T>(query, params, { next: { revalidate: 60 } });
   } catch {
     return null;
   }
@@ -55,3 +68,5 @@ export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);
 export const getBuyerShowcase = () => safeFetch<any[]>(buyerShowcaseQuery);
+export const getShopProducts = () => safeFetch<any[]>(shopProductsQuery);
+export const getShopProductBySlug = (slug: string) => safeFetch<any>(shopProductBySlugQuery, { slug });

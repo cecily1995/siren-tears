@@ -8,8 +8,10 @@
     "enquire": "Nous écrire",
     "language": "Langue",
     "shipping": "Livraison",
-    "custom": "Sur mesure",
-    "gallery": "Galerie"
+    "gallery": "Portée par vous",
+    "shop": "Boutique",
+    "membership": "Adhésion",
+    "bespoke": "Sur mesure"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -81,7 +83,14 @@
     "tagline": "Bijoux en cristaux naturels, faits lentement par la mer du sud.",
     "copyright": "© {year} Siren Tears Atelier",
     "crafted": "Façonné lentement, près de la mer du sud.",
-    "explore": "Explorer"
+    "explore": "Explorer",
+    "archive": "Archives",
+    "care": "Entretien",
+    "faq": "FAQ",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "shopHeader": "Boutique",
+    "support": "Assistance"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -110,31 +119,6 @@
     "contactPrompt": "Une question sur une commande en particulier ?",
     "contactCta": "Écrivez-nous"
   },
-  "custom": {
-    "eyebrow": "Sur mesure",
-    "title": "Une pièce façonnée pour une seule histoire — la vôtre.",
-    "intro": "Au-delà de nos collections, nous acceptons chaque saison un nombre limité de commandes sur mesure — une pierre qui a un sens particulier, une longueur pensée pour vous seule, un design porté en silence depuis des années.",
-    "steps": {
-      "one": {
-        "title": "Partagez votre vision",
-        "body": "Écrivez-nous en précisant la pierre, l'histoire, ou la personne à qui la pièce est destinée. Une photo ou un croquis peut aider, sans être nécessaire."
-      },
-      "two": {
-        "title": "Nous façonnons une proposition",
-        "body": "Nous vous répondons avec des idées sur la pierre, le matériau et la forme — en affinant ensemble jusqu'à ce que tout semble juste, avant toute fabrication."
-      },
-      "three": {
-        "title": "Façonnée à la main, une seule fois",
-        "body": "Votre pièce est façonnée à la main dans notre atelier en Nouvelle-Zélande, une commande à la fois, puis vous est expédiée une fois prête."
-      }
-    },
-    "noteTitle": "Bon à savoir",
-    "note": "Les pièces sur mesure sont réalisées en nombre limité chaque saison et demandent plus de temps que nos collections prêtes à porter — nous vous indiquerons un délai une fois votre projet compris.",
-    "ctaTitle": "Engager la conversation",
-    "ctaBody": "Écrivez-nous par e-mail ou envoyez-nous un message direct sur Instagram — dites-nous ce que vous imaginez, et nous prendrons le relais.",
-    "emailCta": "Écrire à l'atelier",
-    "instagramCta": "Message sur Instagram"
-  },
   "gallery": {
     "eyebrow": "Portée par vous",
     "title": "Siren Tears, dans le monde réel.",
@@ -142,5 +126,190 @@
     "emptyTitle": "De nouvelles photos arrivent bientôt.",
     "emptyBody": "Cette galerie ne fait que commencer — revenez bientôt, ou soyez parmi les premières à partager votre photo avec nous.",
     "shareCta": "Partagez votre photo"
+  },
+  "bespoke": {
+    "eyebrow": "Sur mesure",
+    "title": "Façonnée pour vous. Jamais reproduite.",
+    "intro": "Certaines pièces ne sont pas faites pour être trouvées. Elles sont faites pour être créées. Chaque pièce sur mesure est conçue individuellement selon vos préférences, de la pierre et la couleur jusqu'au sertissage final.",
+    "tracksTitle": "Deux façons de créer",
+    "handmade": {
+      "title": "Pièces artisanales en pierres naturelles",
+      "subtitle": "Bracelets & Colliers",
+      "time": "Sous 1 semaine",
+      "body": "Les bracelets et colliers artisanaux en pierres naturelles sont généralement terminés sous une semaine après confirmation du design et du choix de la pierre."
+    },
+    "gemstone": {
+      "title": "Joaillerie sertie à la main",
+      "subtitle": "Bagues & Pièces fines",
+      "time": "Environ 2 mois",
+      "body": "Les bagues serties à la main et la joaillerie fine nécessitent un processus de fabrication plus long, généralement environ deux mois."
+    },
+    "tracksDisclaimer": "Ces délais sont estimatifs et peuvent varier selon l'approvisionnement en pierres, la validation du design, les contraintes de production, l'expédition et d'autres circonstances.",
+    "processTitle": "Comment cela commence",
+    "steps": {
+      "tell": {
+        "title": "Vous nous parlez",
+        "body": "Dites-nous ce que vous recherchez."
+      },
+      "source": {
+        "title": "Nous sourçons",
+        "body": "Nous sélectionnons les pierres selon vos préférences."
+      },
+      "design": {
+        "title": "Nous concevons",
+        "body": "Nous développons le design autour de la pierre choisie."
+      },
+      "create": {
+        "title": "Nous créons",
+        "body": "Votre pièce est façonnée à la main, individuellement, dans notre atelier."
+      }
+    },
+    "formTitle": "Demande sur mesure",
+    "formIntro": "Dites-nous ce que vous avez en tête. Cela n'engage à rien — une demande ouvre une conversation, pas une commande.",
+    "form": {
+      "nameLabel": "Nom",
+      "emailLabel": "E-mail",
+      "whatsappLabel": "WhatsApp",
+      "pieceTypeLabel": "Que souhaitez-vous créer ?",
+      "pieceTypes": {
+        "bracelet": "Bracelet",
+        "necklace": "Collier",
+        "ring": "Bague",
+        "pendant": "Pendentif",
+        "other": "Autre"
+      },
+      "stoneLabel": "Pierre préférée",
+      "colourLabel": "Couleur préférée",
+      "colours": {
+        "white": "Blanc",
+        "blue": "Bleu",
+        "green": "Vert",
+        "black": "Noir",
+        "champagne": "Champagne",
+        "other": "Autre"
+      },
+      "budgetLabel": "Budget",
+      "budgets": {
+        "b1": "200–500 NZD",
+        "b2": "500–1 000 NZD",
+        "b3": "1 000–2 000 NZD",
+        "b4": "2 000 NZD et plus",
+        "b5": "Je ne sais pas encore"
+      },
+      "messageLabel": "Parlez-nous de votre pièce",
+      "messagePlaceholder": "Partagez l'histoire, l'occasion, ou le sentiment que vous souhaitez que cette pièce porte.",
+      "imagesLabel": "Inspiration",
+      "imagesHint": "Captures d'écran, tableaux Pinterest, bijoux existants — tout ce qui nous aide à comprendre votre vision. Jusqu'à 6 images.",
+      "imagesSelected": "image(s) sélectionnée(s)",
+      "imageError": "Nous n'avons pas pu lire l'une de ces images — veuillez réessayer.",
+      "submit": "Envoyer la demande sur mesure",
+      "submitting": "Envoi en cours…",
+      "successTitle": "Votre demande nous est bien parvenue.",
+      "successBody": "Merci d'avoir partagé votre vision. Nous vous contacterons personnellement d'ici quelques jours pour commencer la conversation.",
+      "errorGeneric": "Une erreur s'est produite lors de l'envoi. Merci de réessayer, ou de nous écrire directement."
+    },
+    "contactTitle": "Parler à l'Atelier",
+    "whatsappBody": "Pour une conversation plus rapide au sujet de votre pièce sur mesure.",
+    "whatsappCta": "Démarrer une conversation",
+    "emailBody": "Pour des demandes détaillées et le partage d'inspirations.",
+    "emailCta": "Envoyer un e-mail"
+  },
+  "care": {
+    "eyebrow": "Entretien",
+    "title": "Prendre soin de votre Siren Tears",
+    "intro": "Les pierres naturelles sont résistantes, mais pas indestructibles. Un peu de soin garde chaque pièce proche de son état d'origine.",
+    "water": {
+      "title": "Eau",
+      "body": "Évitez une exposition prolongée à l'eau. Retirez votre pièce avant de nager, de vous baigner ou de faire la vaisselle."
+    },
+    "perfume": {
+      "title": "Parfum",
+      "body": "Appliquez parfum, crème et cosmétiques avant de porter vos bijoux, jamais après."
+    },
+    "storage": {
+      "title": "Rangement",
+      "body": "Rangez votre pièce séparément, dans un endroit sec, à l'abri de la lumière directe, pour éviter les rayures et préserver sa couleur."
+    },
+    "cleaning": {
+      "title": "Nettoyage",
+      "body": "Essuyez délicatement avec un chiffon doux et sec après chaque port. Évitez les produits chimiques agressifs, les nettoyeurs à ultrasons et les matériaux abrasifs."
+    },
+    "note": "Certaines pierres ont un caractère et des besoins d'entretien particuliers — le cas échéant, nous le précisons sur la page du produit concerné."
+  },
+  "shop": {
+    "eyebrow": "Boutique",
+    "title": "Actuellement à l'atelier",
+    "intro": "Chaque pièce n'existe qu'une fois. Une fois partie, elle ne revient pas — mais elle demeure dans les archives de SIREN TEARS.",
+    "filters": {
+      "all": "Tout",
+      "bracelets": "Bracelets",
+      "necklaces": "Colliers",
+      "rings": "Bagues",
+      "pendants": "Pendentifs",
+      "archive": "Archives"
+    },
+    "status": {
+      "sold": "Vendue",
+      "reserved": "Réservée",
+      "bespoke": "Sur commande uniquement"
+    },
+    "oneOfOne": "Pièce unique",
+    "viewPiece": "Voir la pièce",
+    "emptyTitle": "L'atelier prépare ses premières pièces.",
+    "emptyBody": "Notre boutique est en cours de catalogage — revenez bientôt, ou écrivez-nous dès maintenant pour une pièce sur mesure.",
+    "enquireCta": "Se renseigner sur cette pièce",
+    "purchaseNote": "Le paiement en ligne arrive bientôt. En attendant, écrivez-nous ou contactez-nous sur WhatsApp pour vous renseigner sur cette pièce.",
+    "detailsTitle": "Détails",
+    "stoneTitle": "La pierre",
+    "pieceTitle": "La pièce",
+    "oneOfOneNote": "Cette pièce existe en un seul exemplaire. Une fois achetée, elle ne sera jamais recréée à l'identique.",
+    "materialLabel": "Matériau",
+    "lengthLabel": "Longueur",
+    "craftedInLabel": "Fabriquée en",
+    "backToShop": "Retour à la boutique"
+  },
+  "membership": {
+    "eyebrow": "Adhésion",
+    "title": "Entrez dans le Siren Circle",
+    "subtitle": "Une relation plus proche avec SIREN TEARS.",
+    "circleTitle": "Siren Circle",
+    "circleFree": "Adhésion gratuite.",
+    "circleBenefits": [
+      "Cadeau de bienvenue dès le premier achat éligible — le Siren Case",
+      "Livraison gratuite dès 400 NZD d'achat",
+      "Accès anticipé à certaines nouvelles collections et pièces uniques",
+      "Contact privé avec l'Atelier pour vos questions, l'approvisionnement en pierres et le sur mesure",
+      "Liste de souhaits — pour garder les pièces qui vous touchent",
+      "Ma Collection — un registre privé des pièces que vous avez faites vôtres"
+    ],
+    "circleCta": "Rejoindre le Siren Circle",
+    "privateTitle": "Private Client",
+    "privateSubtitle": "Ce statut ne se choisit pas — il se mérite, à travers votre collection.",
+    "privateBenefits": [
+      "Livraison gratuite, sans montant minimum",
+      "Accès anticipé, 24 à 48 heures avant la sortie publique",
+      "Aperçu privé de certaines futures pièces uniques",
+      "Traitement prioritaire des demandes sur mesure",
+      "Approvisionnement privé en pierres, dans la mesure du possible",
+      "Un privilège d'anniversaire personnalisé",
+      "Un accès direct et personnel à l'Atelier"
+    ],
+    "privateQualify": "Le statut Private Client est attribué automatiquement, selon votre historique de collection — il ne se demande pas.",
+    "comingSoonNote": "Les comptes membres complets arrivent bientôt. En attendant, écrivez-nous et nous vous préviendrons dès l'ouverture du Siren Circle."
+  },
+  "oneOfOne": {
+    "eyebrow": "Pièce unique",
+    "title": "Chaque pièce n'existe qu'une seule fois.",
+    "body": "Chaque pierre porte sa propre couleur, texture et caractère. Chaque pièce est réalisée individuellement, et deux pierres naturelles ne sont jamais tout à fait identiques. Une fois une pièce vendue, elle ne sera jamais reproduite à l'identique."
+  },
+  "atelier": {
+    "eyebrow": "L'Atelier",
+    "title": "Façonnée lentement, en Nouvelle-Zélande.",
+    "body": "Chaque pièce commence sur un établi silencieux, non sur une chaîne de production. Nous travaillons les matières naturelles au rythme qu'elles imposent, non à celui d'une saison."
+  },
+  "currentlyAvailable": {
+    "eyebrow": "Actuellement disponible",
+    "title": "À l'atelier, en ce moment.",
+    "cta": "Voir toute la boutique"
   }
 }

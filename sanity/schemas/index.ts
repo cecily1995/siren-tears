@@ -5,6 +5,8 @@ import product from './product';
 import journalArticle from './journalArticle';
 import brandStory from './brandStory';
 import buyerShowcase from './buyerShowcase';
+import shopProduct from './shopProduct';
+import bespokeRequest from './bespokeRequest';
 
 export const schemaTypes = [
   siteSettings,
@@ -13,5 +15,7 @@ export const schemaTypes = [
   collection,
   product,
   journalArticle,
-  buyerShowcase
+  buyerShowcase,
+  shopProduct,
+  bespokeRequest
 ];

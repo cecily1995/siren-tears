@@ -8,8 +8,10 @@
     "enquire": "Enquire",
     "language": "Language",
     "shipping": "Shipping",
-    "custom": "Custom Orders",
-    "gallery": "Gallery"
+    "gallery": "Worn By You",
+    "shop": "Shop",
+    "membership": "Membership",
+    "bespoke": "Bespoke"
   },
   "hero": {
     "eyebrow": "A New Zealand Atelier",
@@ -81,7 +83,14 @@
     "tagline": "Natural crystal jewelry, made slowly by the southern sea.",
     "copyright": "© {year} Siren Tears Atelier",
     "crafted": "Crafted slowly, by the southern sea.",
-    "explore": "Explore"
+    "explore": "Explore",
+    "archive": "Archive",
+    "care": "Care",
+    "faq": "FAQ",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "shopHeader": "Shop",
+    "support": "Support"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -110,31 +119,6 @@
     "contactPrompt": "Questions about a specific order?",
     "contactCta": "Write to us"
   },
-  "custom": {
-    "eyebrow": "Bespoke",
-    "title": "A piece made for exactly one story — yours.",
-    "intro": "Beyond our collections, we take on a small number of custom commissions each season — a stone that means something, a length that fits only you, a design carried quietly in your mind for years.",
-    "steps": {
-      "one": {
-        "title": "Tell us your vision",
-        "body": "Write to us with the stone, the story, or the person the piece is for. A photo or sketch helps, but isn't necessary."
-      },
-      "two": {
-        "title": "We shape a proposal",
-        "body": "We reply with thoughts on stone, material, and form — refining together until it feels right, before anything is made."
-      },
-      "three": {
-        "title": "Hand-shaped, just once",
-        "body": "Your piece is shaped by hand at our New Zealand studio, one commission at a time, and shipped to you when it's ready."
-      }
-    },
-    "noteTitle": "Good to Know",
-    "note": "Custom pieces are made in limited numbers each season and take longer than our ready collections — we'll let you know a timeframe once we understand what you have in mind.",
-    "ctaTitle": "Begin the Conversation",
-    "ctaBody": "Write to us by email or send a direct message on Instagram — tell us what you're picturing, and we'll take it from there.",
-    "emailCta": "Email the Studio",
-    "instagramCta": "Message on Instagram"
-  },
   "gallery": {
     "eyebrow": "As Worn",
     "title": "Siren Tears, out in the world.",
@@ -142,5 +126,190 @@
     "emptyTitle": "New photos are coming soon.",
     "emptyBody": "This gallery is just getting started — check back soon, or be among the first to share your photo with us.",
     "shareCta": "Share Your Photo"
+  },
+  "bespoke": {
+    "eyebrow": "Bespoke",
+    "title": "Made for you. Never made twice.",
+    "intro": "Some pieces are not meant to be found. They are meant to be made. Each bespoke piece is individually designed around your preferences, from the stone and colour to the final setting.",
+    "tracksTitle": "Two Ways We Create",
+    "handmade": {
+      "title": "Handmade Natural Stone Pieces",
+      "subtitle": "Bracelets & Necklaces",
+      "time": "Within 1 Week",
+      "body": "Handmade natural stone bracelets and necklaces are generally completed within one week after the design and stone selection are confirmed."
+    },
+    "gemstone": {
+      "title": "Hand-Set Gemstone Jewellery",
+      "subtitle": "Rings & Fine Jewellery",
+      "time": "Approximately 2 Months",
+      "body": "Hand-set gemstone rings and fine jewellery require a longer production process and generally take approximately two months to complete."
+    },
+    "tracksDisclaimer": "These are estimated production times and may vary depending on stone sourcing, design approval, production requirements, shipping and other circumstances.",
+    "processTitle": "How It Begins",
+    "steps": {
+      "tell": {
+        "title": "Tell Us",
+        "body": "Tell us what you are looking for."
+      },
+      "source": {
+        "title": "We Source",
+        "body": "We select stones according to your preferences."
+      },
+      "design": {
+        "title": "We Design",
+        "body": "We develop the design around the selected stone."
+      },
+      "create": {
+        "title": "We Create",
+        "body": "Your piece is individually handmade in our atelier."
+      }
+    },
+    "formTitle": "Bespoke Request",
+    "formIntro": "Tell us what you have in mind. There's no obligation — a request begins a conversation, not an order.",
+    "form": {
+      "nameLabel": "Name",
+      "emailLabel": "Email",
+      "whatsappLabel": "WhatsApp",
+      "pieceTypeLabel": "What would you like to create?",
+      "pieceTypes": {
+        "bracelet": "Bracelet",
+        "necklace": "Necklace",
+        "ring": "Ring",
+        "pendant": "Pendant",
+        "other": "Other"
+      },
+      "stoneLabel": "Preferred stone",
+      "colourLabel": "Preferred colour",
+      "colours": {
+        "white": "White",
+        "blue": "Blue",
+        "green": "Green",
+        "black": "Black",
+        "champagne": "Champagne",
+        "other": "Other"
+      },
+      "budgetLabel": "Budget",
+      "budgets": {
+        "b1": "NZD 200–500",
+        "b2": "NZD 500–1,000",
+        "b3": "NZD 1,000–2,000",
+        "b4": "NZD 2,000+",
+        "b5": "I'm not sure yet"
+      },
+      "messageLabel": "Tell us about your piece",
+      "messagePlaceholder": "Share the story, the occasion, or the feeling you'd like this piece to hold.",
+      "imagesLabel": "Inspiration",
+      "imagesHint": "Screenshots, Pinterest boards, existing jewellery — anything that helps us understand your vision. Up to 6 images.",
+      "imagesSelected": "image(s) selected",
+      "imageError": "We couldn't read one of those images — please try again.",
+      "submit": "Submit Bespoke Request",
+      "submitting": "Sending…",
+      "successTitle": "Your request has found its way to us.",
+      "successBody": "Thank you for sharing your vision. We'll be in touch personally within a few days to begin the conversation.",
+      "errorGeneric": "Something went wrong sending your request. Please try again, or write to us directly."
+    },
+    "contactTitle": "Speak With the Atelier",
+    "whatsappBody": "For a quicker conversation about your bespoke piece.",
+    "whatsappCta": "Start a Conversation",
+    "emailBody": "For detailed bespoke enquiries and inspiration.",
+    "emailCta": "Send an Email"
+  },
+  "care": {
+    "eyebrow": "Care",
+    "title": "Care for Your Siren Tears",
+    "intro": "Natural stones are resilient, but they are not indestructible. A little care keeps each piece close to how it was made.",
+    "water": {
+      "title": "Water",
+      "body": "Avoid prolonged exposure to water. Remove your piece before swimming, bathing, or washing dishes."
+    },
+    "perfume": {
+      "title": "Perfume",
+      "body": "Apply perfume, lotion, and cosmetics before wearing your jewellery, not after."
+    },
+    "storage": {
+      "title": "Storage",
+      "body": "Store your piece separately in a dry place, away from direct sunlight, to prevent scratching and preserve its colour."
+    },
+    "cleaning": {
+      "title": "Cleaning",
+      "body": "Wipe gently with a soft, dry cloth after wear. Avoid harsh chemicals, ultrasonic cleaners, and abrasive materials."
+    },
+    "note": "Some stones carry their own particular character and care needs — where relevant, we note this on the individual product page."
+  },
+  "shop": {
+    "eyebrow": "Shop",
+    "title": "Currently in the Atelier",
+    "intro": "Each piece exists once. When it's gone, it's gone — but it remains part of the SIREN TEARS archive.",
+    "filters": {
+      "all": "All",
+      "bracelets": "Bracelets",
+      "necklaces": "Necklaces",
+      "rings": "Rings",
+      "pendants": "Pendants",
+      "archive": "Archive"
+    },
+    "status": {
+      "sold": "Sold",
+      "reserved": "Reserved",
+      "bespoke": "Bespoke Only"
+    },
+    "oneOfOne": "One of One",
+    "viewPiece": "View Piece",
+    "emptyTitle": "The atelier is preparing its first pieces.",
+    "emptyBody": "Our shop is being carefully catalogued — check back soon, or write to us about a bespoke piece in the meantime.",
+    "enquireCta": "Enquire About This Piece",
+    "purchaseNote": "Checkout is launching soon. In the meantime, write to us or send a WhatsApp message to enquire about this piece.",
+    "detailsTitle": "Details",
+    "stoneTitle": "The Stone",
+    "pieceTitle": "The Piece",
+    "oneOfOneNote": "This piece exists as a single work. Once purchased, this exact piece will not be recreated.",
+    "materialLabel": "Material",
+    "lengthLabel": "Length",
+    "craftedInLabel": "Crafted in",
+    "backToShop": "Back to Shop"
+  },
+  "membership": {
+    "eyebrow": "Membership",
+    "title": "Enter the Siren Circle",
+    "subtitle": "A closer relationship with SIREN TEARS.",
+    "circleTitle": "Siren Circle",
+    "circleFree": "Free to join.",
+    "circleBenefits": [
+      "Welcome gift with qualifying first purchase — the Siren Case",
+      "Free shipping on orders over NZD $400",
+      "Early access to selected new collections and One of One pieces",
+      "Private Atelier contact for questions, stone sourcing, and bespoke enquiries",
+      "Wishlist — save the pieces that hold your attention",
+      "My Collection — a private record of the pieces you've made your own"
+    ],
+    "circleCta": "Join the Siren Circle",
+    "privateTitle": "Private Client",
+    "privateSubtitle": "Not chosen — earned, through your collection.",
+    "privateBenefits": [
+      "Free shipping, with no minimum",
+      "Early access, 24–48 hours before public release",
+      "Private preview of selected upcoming One of One pieces",
+      "Priority handling for bespoke enquiries",
+      "Private stone sourcing, where possible",
+      "A private birthday privilege",
+      "Direct, personal access to the Atelier"
+    ],
+    "privateQualify": "Private Client status is granted automatically, based on your collection history — it isn't something you apply for.",
+    "comingSoonNote": "Full membership accounts are launching soon. In the meantime, write to us and we'll let you know the moment the Siren Circle opens."
+  },
+  "oneOfOne": {
+    "eyebrow": "One of One",
+    "title": "Every piece exists only once.",
+    "body": "Every stone carries its own colour, texture and character. Each piece is made individually, and no two natural stones are ever exactly alike. Once a piece is sold, that exact piece will never be reproduced."
+  },
+  "atelier": {
+    "eyebrow": "The Atelier",
+    "title": "Crafted slowly, in New Zealand.",
+    "body": "Every piece begins on a quiet workbench, not a production line. We work with natural materials at the pace they ask for, not the pace of a season."
+  },
+  "currentlyAvailable": {
+    "eyebrow": "Currently Available",
+    "title": "In the atelier, right now.",
+    "cta": "View All in Shop"
   }
 }

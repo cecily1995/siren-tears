@@ -8,8 +8,10 @@
     "enquire": "咨询",
     "language": "语言",
     "shipping": "配送说明",
-    "custom": "定制服务",
-    "gallery": "买家秀"
+    "gallery": "买家秀",
+    "shop": "商店",
+    "membership": "会员",
+    "bespoke": "定制"
   },
   "hero": {
     "eyebrow": "来自新西兰的工作室",
@@ -81,7 +83,14 @@
     "tagline": "来自南半球海岸的天然水晶珠宝,缓慢手作。",
     "copyright": "© {year} Siren Tears Atelier",
     "crafted": "由南海岸缓慢手作。",
-    "explore": "更多"
+    "explore": "更多",
+    "archive": "典藏",
+    "care": "保养",
+    "faq": "常见问题",
+    "privacy": "隐私政策",
+    "terms": "条款",
+    "shopHeader": "购买",
+    "support": "支持"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -110,31 +119,6 @@
     "contactPrompt": "对某个订单有疑问?",
     "contactCta": "联系我们"
   },
-  "custom": {
-    "eyebrow": "定制服务",
-    "title": "为一个独一无二的故事而生的作品——属于你的故事。",
-    "intro": "除了现有系列,我们每季也接受少量定制委托——一颗有特殊意义的石头、一段专属于你的链长、一个你藏在心里许久的设计。",
-    "steps": {
-      "one": {
-        "title": "告诉我们你的想法",
-        "body": "写信告诉我们你想要的石材、背后的故事,或这件作品是为谁而做。有一张照片或草图会有帮助,但并非必需。"
-      },
-      "two": {
-        "title": "我们为你提出方案",
-        "body": "我们会就石材、材质与造型给出建议,并与你反复沟通调整,直到方案让人满意——之后才会开始制作。"
-      },
-      "three": {
-        "title": "手工制作,仅此一件",
-        "body": "你的作品将在我们新西兰的工作室中手工制作,一次只做一件委托,完成后即为你发货。"
-      }
-    },
-    "noteTitle": "温馨提示",
-    "note": "定制作品每季数量有限,所需时间也比现有系列更长——了解你的具体需求后,我们会告知你大致的制作周期。",
-    "ctaTitle": "开始这场对话",
-    "ctaBody": "通过邮件或 Instagram 私信联系我们,告诉我们你的想法,接下来的一切交给我们。",
-    "emailCta": "给工作室发邮件",
-    "instagramCta": "Instagram 私信"
-  },
   "gallery": {
     "eyebrow": "买家秀",
     "title": "Siren Tears,在世界各地的日常里。",
@@ -142,5 +126,190 @@
     "emptyTitle": "更多照片即将呈现。",
     "emptyBody": "买家秀正在慢慢集结中——欢迎稍后再来看看,或成为第一位分享照片的人。",
     "shareCta": "分享你的照片"
+  },
+  "bespoke": {
+    "eyebrow": "定制",
+    "title": "为你而做,绝不重复。",
+    "intro": "有些作品不是用来被发现的,而是被创造出来的。每一件定制作品,都会根据你的偏好单独设计——从石材、色彩,到最终的镶嵌方式。",
+    "tracksTitle": "两种创作方式",
+    "handmade": {
+      "title": "天然石材手作",
+      "subtitle": "手链与项链",
+      "time": "1周内完成",
+      "body": "天然石材手链与项链,在设计与石材确认后,通常在一周内即可完成。"
+    },
+    "gemstone": {
+      "title": "手工镶嵌宝石首饰",
+      "subtitle": "戒指与精品首饰",
+      "time": "约2个月",
+      "body": "手工镶嵌宝石戒指及精品首饰的制作工序更为复杂,通常需要约两个月才能完成。"
+    },
+    "tracksDisclaimer": "以上均为预估制作周期,实际时长可能因石材寻源、设计确认、生产要求、运输等情况而有所变化。",
+    "processTitle": "从这里开始",
+    "steps": {
+      "tell": {
+        "title": "告诉我们",
+        "body": "告诉我们你想要的作品。"
+      },
+      "source": {
+        "title": "我们寻石",
+        "body": "根据你的偏好挑选石材。"
+      },
+      "design": {
+        "title": "我们设计",
+        "body": "围绕所选石材展开设计。"
+      },
+      "create": {
+        "title": "我们制作",
+        "body": "你的作品将在我们的工作室中,由手工逐一完成。"
+      }
+    },
+    "formTitle": "定制申请",
+    "formIntro": "告诉我们你的想法。填写这份表单不代表下单,而是我们对话的开始。",
+    "form": {
+      "nameLabel": "姓名",
+      "emailLabel": "邮箱",
+      "whatsappLabel": "WhatsApp",
+      "pieceTypeLabel": "你想制作什么?",
+      "pieceTypes": {
+        "bracelet": "手链",
+        "necklace": "项链",
+        "ring": "戒指",
+        "pendant": "吊坠",
+        "other": "其他"
+      },
+      "stoneLabel": "偏好的石材",
+      "colourLabel": "偏好的颜色",
+      "colours": {
+        "white": "白色",
+        "blue": "蓝色",
+        "green": "绿色",
+        "black": "黑色",
+        "champagne": "香槟色",
+        "other": "其他"
+      },
+      "budgetLabel": "预算",
+      "budgets": {
+        "b1": "200–500 纽币",
+        "b2": "500–1,000 纽币",
+        "b3": "1,000–2,000 纽币",
+        "b4": "2,000 纽币以上",
+        "b5": "还不确定"
+      },
+      "messageLabel": "告诉我们更多关于这件作品的想法",
+      "messagePlaceholder": "分享这件作品背后的故事、场合,或你希望它承载的感受。",
+      "imagesLabel": "灵感图片",
+      "imagesHint": "截图、Pinterest收藏、现有的首饰——任何能帮助我们理解你想法的图片,最多6张。",
+      "imagesSelected": "张图片已选择",
+      "imageError": "有一张图片无法读取,请重试。",
+      "submit": "提交定制申请",
+      "submitting": "发送中…",
+      "successTitle": "你的申请我们已经收到。",
+      "successBody": "感谢你分享你的想法。我们会在几天内亲自与你联系,开始这场对话。",
+      "errorGeneric": "发送时出了点问题,请重试,或直接写信给我们。"
+    },
+    "contactTitle": "与工作室对话",
+    "whatsappBody": "如需更快速地讨论你的定制作品。",
+    "whatsappCta": "开始对话",
+    "emailBody": "适合详细的定制咨询与灵感分享。",
+    "emailCta": "发送邮件"
+  },
+  "care": {
+    "eyebrow": "保养",
+    "title": "如何保养你的 Siren Tears",
+    "intro": "天然石材坚韧,但并非坚不可摧。用心保养,才能让每一件作品保持最初被制作时的模样。",
+    "water": {
+      "title": "远离水分",
+      "body": "避免长时间接触水。游泳、洗澡或洗碗前请取下你的首饰。"
+    },
+    "perfume": {
+      "title": "香水与化妆品",
+      "body": "请在佩戴首饰之前,而非之后,使用香水、乳液及化妆品。"
+    },
+    "storage": {
+      "title": "存放",
+      "body": "请将每件首饰单独存放在干燥处,避免阳光直射,以防刮擦并保持色泽。"
+    },
+    "cleaning": {
+      "title": "清洁",
+      "body": "佩戴后请用柔软干布轻轻擦拭。避免使用刺激性化学品、超声波清洗机及粗糙材质。"
+    },
+    "note": "部分石材有其特殊的性质与保养需求——如有需要,我们会在对应的商品页面中特别说明。"
+  },
+  "shop": {
+    "eyebrow": "商店",
+    "title": "工作室现有作品",
+    "intro": "每一件作品都只存在一次。售出即不再重现——但它将永远留在 SIREN TEARS 的典藏之中。",
+    "filters": {
+      "all": "全部",
+      "bracelets": "手链",
+      "necklaces": "项链",
+      "rings": "戒指",
+      "pendants": "吊坠",
+      "archive": "典藏"
+    },
+    "status": {
+      "sold": "已售出",
+      "reserved": "已预留",
+      "bespoke": "仅限定制"
+    },
+    "oneOfOne": "独一无二",
+    "viewPiece": "查看作品",
+    "emptyTitle": "工作室正在准备第一批作品。",
+    "emptyBody": "商店内容正在仔细整理中——欢迎稍后再来看看,期间也欢迎与我们聊聊定制的想法。",
+    "enquireCta": "咨询这件作品",
+    "purchaseNote": "在线结算功能即将上线。目前如需咨询购买,欢迎写信或通过WhatsApp联系我们。",
+    "detailsTitle": "详情",
+    "stoneTitle": "石材",
+    "pieceTitle": "作品",
+    "oneOfOneNote": "这件作品是独一无二的存在。一旦售出,便不会再被重新制作。",
+    "materialLabel": "材质",
+    "lengthLabel": "尺寸",
+    "craftedInLabel": "制作地",
+    "backToShop": "返回商店"
+  },
+  "membership": {
+    "eyebrow": "会员",
+    "title": "加入 Siren Circle",
+    "subtitle": "与 SIREN TEARS 更进一步的关系。",
+    "circleTitle": "Siren Circle",
+    "circleFree": "免费加入。",
+    "circleBenefits": [
+      "首次达标购买即赠送欢迎礼——The Siren Case 首饰盒",
+      "订单满 400 纽币即可享受免费配送",
+      "优先获得部分新系列及独一无二作品的抢先体验",
+      "专属工作室联系通道,可咨询产品、寻石与定制事宜",
+      "心愿单——收藏你心动的作品",
+      "我的典藏——私人记录你已收藏的每一件作品"
+    ],
+    "circleCta": "加入 Siren Circle",
+    "privateTitle": "Private Client",
+    "privateSubtitle": "并非选择而来,而是由你的收藏历程赢得。",
+    "privateBenefits": [
+      "免费配送,不设最低消费门槛",
+      "新品发布前 24–48 小时优先购买权",
+      "部分即将发布的独一无二作品私享预览",
+      "定制咨询优先处理",
+      "尽可能协助专属寻石服务",
+      "专属生日礼遇",
+      "与工作室直接、私人的联系方式"
+    ],
+    "privateQualify": "Private Client 身份将根据你的收藏历程自动获得,无需主动申请。",
+    "comingSoonNote": "完整的会员账户系统即将上线。在此之前,欢迎写信告诉我们,Siren Circle 开放时我们会第一时间通知你。"
+  },
+  "oneOfOne": {
+    "eyebrow": "独一无二",
+    "title": "每一件作品都只存在一次。",
+    "body": "每一颗石头都拥有属于自己的色彩、纹理与个性。每件作品都是单独制作而成,天然石材没有两颗完全相同。一旦售出,这件独有的作品便不会再被复刻。"
+  },
+  "atelier": {
+    "eyebrow": "工作室",
+    "title": "在新西兰,慢慢制作。",
+    "body": "每一件作品都始于一张安静的工作台,而非流水线。我们尊重天然材料本身的节奏,而不是季节的节奏。"
+  },
+  "currentlyAvailable": {
+    "eyebrow": "现有作品",
+    "title": "此刻,工作室里的作品。",
+    "cta": "查看商店全部作品"
   }
 }
