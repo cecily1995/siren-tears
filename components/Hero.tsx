@@ -9,6 +9,7 @@ type HeroData = {
 };
 
 import Image from 'next/image';
+import HeroOceanRipple from './HeroOceanRipple';
 
 export default function Hero({ data }: { data: HeroData }) {
   return (
@@ -16,13 +17,16 @@ export default function Hero({ data }: { data: HeroData }) {
       id="top"
       className="relative h-[100svh] min-h-[640px] w-full overflow-hidden text-ivory grain"
     >
-      {/* Background image with slow Ken Burns */}
+      {/* Background image with slow Ken Burns — untouched, exactly as before */}
       <div
         className="absolute inset-0 bg-img bg-center bg-cover animate-kenburns"
         style={{ backgroundImage: `url(${data.bgUrl})` }}
         role="img"
         aria-label={data.bgAlt || ''}
       />
+
+      {/* Extremely subtle water shimmer, confined to the lower ocean band only */}
+      <HeroOceanRipple src={data.bgUrl} />
 
       {/* Warm coastal tonal wash */}
       <div
