@@ -31,7 +31,14 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem('collection').title('Collections'),
             S.documentTypeListItem('product').title('Featured Products'),
-            S.documentTypeListItem('journalArticle').title('Stone Journal')
+            S.documentTypeListItem('journalArticle').title('Stone Journal'),
+            S.divider(),
+            S.documentTypeListItem('shopProduct').title('Shop Products'),
+            S.documentTypeListItem('buyerShowcase').title('Buyer Showcase (As Worn)'),
+            S.divider(),
+            S.documentTypeListItem('purchaseRequest').title('Purchase Requests'),
+            S.documentTypeListItem('bespokeRequest').title('Bespoke Requests'),
+            S.documentTypeListItem('member').title('Siren Circle Members')
           ])
     }),
     visionTool({ defaultApiVersion: apiVersion })
