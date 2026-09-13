@@ -31,7 +31,7 @@ export async function POST(request: Request) {
   try {
     const member = await client.fetch(
       `*[_type == "member" && lower(email) == lower($email) && upper(memberCode) == upper($memberCode)][0]{
-        firstName, lastName, email, memberCode, tier, joinedAt
+        firstName, lastName, email, phone, address, country, birthday, memberCode, tier, joinedAt
       }`,
       { email, memberCode }
     );

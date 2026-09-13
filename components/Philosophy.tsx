@@ -16,7 +16,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
       />
       {/* Faint stone/coastal texture so the section carries some atmosphere rather than flat colour. */}
       <div
-        className="absolute inset-0 bg-center bg-cover opacity-[0.07] mix-blend-multiply pointer-events-none"
+        className="absolute inset-0 bg-center bg-cover opacity-[0.09] pointer-events-none"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?auto=format&fit=crop&w=2000&q=80')"

@@ -21,7 +21,7 @@ export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, 
   return (
     <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
       <div
-        className="absolute inset-0 bg-center bg-cover opacity-[0.16] mix-blend-multiply"
+        className="absolute inset-0 bg-center bg-cover opacity-[0.22]"
         style={{ backgroundImage: `url(${imageUrl || DEFAULT_IMAGE})` }}
         role={imageAlt ? 'img' : undefined}
         aria-label={imageAlt}

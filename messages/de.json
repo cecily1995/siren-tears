@@ -363,7 +363,8 @@
       "successTitle": "Willkommen im Siren Circle.",
       "successBody": "Ihre Vorteile sind jetzt aktiv. Bewahren Sie Ihren Mitgliedscode sicher auf — er kann beim Einkauf abgefragt werden.",
       "codeLabel": "Ihr Mitgliedscode",
-      "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt."
+      "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.",
+      "countryLabel": "Land"
     },
     "privatePriceNote": "Vorläufig: Ein einmaliger Betrag von NZD 999 kann für den direkten Einstieg als Private Client anfallen, vorbehaltlich der endgültigen Vorteile."
   },
@@ -418,6 +419,28 @@
     "forgotSubmitting": "Wird gesucht…",
     "foundPrefix": "Ihr Mitgliedscode lautet",
     "useThisCode": "Diesen Code verwenden",
-    "back": "Zurück"
+    "back": "Zurück",
+    "countryLabel": "Land",
+    "editProfile": "Profil bearbeiten",
+    "saveChanges": "Änderungen speichern",
+    "saving": "Wird gespeichert…",
+    "saved": "Ihre Angaben wurden aktualisiert.",
+    "cancel": "Abbrechen",
+    "logOut": "Abmelden",
+    "benefitsTitle": "Vorteile",
+    "circleBenefits2": [
+      "Kostenloser Versand ab NZD 400",
+      "Willkommensgeschenk beim ersten qualifizierenden Kauf",
+      "Früher Zugang zu neuen Stücken",
+      "Privater Atelier-Kontakt",
+      "Wunschliste & Meine Sammlung"
+    ],
+    "privateBenefits2": [
+      "Kostenloser Versand ohne Mindestbestellwert",
+      "Früher Zugang 24-48h",
+      "Private Vorschauen",
+      "Bevorzugte Maßanfertigung",
+      "Direkter Atelier-Zugang"
+    ]
   }
 }

@@ -363,7 +363,8 @@
       "successTitle": "Siren Circle에 오신 것을 환영합니다.",
       "successBody": "회원 혜택이 활성화되었습니다. 회원 코드를 안전하게 보관해 주세요 — 쇼핑 시 필요할 수 있습니다.",
       "codeLabel": "회원 코드",
-      "errorGeneric": "문제가 발생했습니다. 다시 시도하시거나 직접 문의해 주세요."
+      "errorGeneric": "문제가 발생했습니다. 다시 시도하시거나 직접 문의해 주세요.",
+      "countryLabel": "국가"
     },
     "privatePriceNote": "임시 안내: Private Client에 바로 가입 시 NZD 999의 일회성 비용이 발생할 수 있으며, 최종 혜택은 추후 확정됩니다."
   },
@@ -418,6 +419,28 @@
     "forgotSubmitting": "조회 중…",
     "foundPrefix": "회원님의 회원 코드는",
     "useThisCode": "이 코드 사용하기",
-    "back": "뒤로"
+    "back": "뒤로",
+    "countryLabel": "국가",
+    "editProfile": "프로필 수정",
+    "saveChanges": "변경사항 저장",
+    "saving": "저장 중…",
+    "saved": "정보가 업데이트되었습니다.",
+    "cancel": "취소",
+    "logOut": "로그아웃",
+    "benefitsTitle": "혜택",
+    "circleBenefits2": [
+      "NZD 400 이상 무료 배송",
+      "첫 구매 시 웰컴 기프트",
+      "신제품 얼리 액세스",
+      "전용 스튜디오 상담",
+      "위시리스트 & 마이 컬렉션"
+    ],
+    "privateBenefits2": [
+      "최소 금액 없는 무료 배송",
+      "24~48시간 얼리 액세스",
+      "프라이빗 프리뷰",
+      "커스텀 우선 처리",
+      "스튜디오 직접 연락"
+    ]
   }
 }

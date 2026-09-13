@@ -41,9 +41,10 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
       </button>
 
       <div
-        className={`fixed inset-0 z-[60] bg-ivory transition-opacity duration-500 ${
-          open ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        className={`fixed inset-0 z-[60] bg-ivory transition-transform duration-[400ms] ease-editorial ${
+          open ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
         }`}
+        aria-hidden={!open}
       >
         <div className="flex items-center justify-between px-6 py-6">
           <span className="font-serif text-[1.05rem] tracking-[0.42em] uppercase text-charcoal">

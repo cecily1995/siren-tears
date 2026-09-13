@@ -23,7 +23,8 @@ export default function MembershipJoinForm() {
       birthday: form.get('birthday')?.toString() || '',
       email: form.get('email')?.toString() || '',
       phone: form.get('phone')?.toString() || '',
-      address: form.get('address')?.toString() || ''
+      address: form.get('address')?.toString() || '',
+      country: form.get('country')?.toString() || ''
     };
 
     try {
@@ -95,6 +96,10 @@ export default function MembershipJoinForm() {
         <div>
           <label className={labelClass}>{t('addressLabel')}</label>
           <input name="address" type="text" className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass}>{t('countryLabel')}</label>
+          <input name="country" type="text" className={inputClass} />
         </div>
       </div>
 

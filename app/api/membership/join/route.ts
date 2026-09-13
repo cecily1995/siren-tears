@@ -39,7 +39,8 @@ export async function POST(request: Request) {
     birthday,
     email,
     phone,
-    address
+    address,
+    country
   }: {
     firstName?: string;
     lastName?: string;
@@ -47,6 +48,7 @@ export async function POST(request: Request) {
     email?: string;
     phone?: string;
     address?: string;
+    country?: string;
   } = body ?? {};
 
   if (!email || !firstName) {
@@ -76,6 +78,7 @@ export async function POST(request: Request) {
       email,
       phone: phone || '',
       address: address || '',
+      country: country || '',
       memberCode,
       tier: 'circle',
       joinedAt: new Date().toISOString()

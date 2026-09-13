@@ -363,7 +363,8 @@
       "successTitle": "欢迎加入 Siren Circle。",
       "successBody": "你的会员权益已生效。请妥善保存你的会员码——购物时可能需要用到。",
       "codeLabel": "你的会员码",
-      "errorGeneric": "出了点问题,请重试,或直接联系我们。"
+      "errorGeneric": "出了点问题,请重试,或直接联系我们。",
+      "countryLabel": "国家/地区"
     },
     "privatePriceNote": "暂定:一次性支付 NZD $999 即可直接加入 Private Client,具体权益确定后可能调整。"
   },
@@ -418,6 +419,28 @@
     "forgotSubmitting": "查询中…",
     "foundPrefix": "你的会员码是",
     "useThisCode": "使用这个会员码",
-    "back": "返回"
+    "back": "返回",
+    "countryLabel": "国家/地区",
+    "editProfile": "修改个人信息",
+    "saveChanges": "保存修改",
+    "saving": "保存中…",
+    "saved": "你的信息已更新。",
+    "cancel": "取消",
+    "logOut": "退出登录",
+    "benefitsTitle": "会员权益",
+    "circleBenefits2": [
+      "订单满400纽币免运费",
+      "首次达标购买赠送欢迎礼",
+      "优先获得新品体验",
+      "专属工作室联系通道",
+      "心愿单与我的典藏"
+    ],
+    "privateBenefits2": [
+      "免费配送,不设门槛",
+      "新品发布提前24–48小时",
+      "私享预览",
+      "定制优先处理",
+      "工作室直接联系"
+    ]
   }
 }

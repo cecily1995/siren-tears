@@ -11,6 +11,7 @@ export default defineType({
     defineField({ name: 'email', title: 'Email', type: 'string', validation: (r) => r.required() }),
     defineField({ name: 'phone', title: 'Phone', type: 'string' }),
     defineField({ name: 'address', title: 'Usual address', type: 'text', rows: 2 }),
+    defineField({ name: 'country', title: 'Country', type: 'string' }),
     defineField({
       name: 'memberCode',
       title: 'Member code',

@@ -4,7 +4,7 @@ export default function OneOfOne({ data }: { data: Data }) {
   return (
     <section className="bg-pearl text-charcoal py-28 md:py-36 px-6 md:px-12 relative overflow-hidden">
       <div
-        className="absolute inset-0 bg-center bg-cover opacity-[0.08] mix-blend-multiply pointer-events-none"
+        className="absolute inset-0 bg-center bg-cover opacity-[0.1] pointer-events-none"
         style={{
           backgroundImage:
             "url('https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=2000&q=80')"
