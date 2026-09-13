@@ -281,7 +281,11 @@
       "rings": "Кольца",
       "pendants": "Кулоны",
       "archive": "Архив",
-      "bangles": "Браслеты-манжеты"
+      "bangles": "Браслеты-манжеты",
+      "braceletBead": "Браслеты из бусин",
+      "braceletChain": "Цепочные браслеты",
+      "earrings": "Серьги",
+      "bespokeShowcase": "Прошлые индивидуальные заказы"
     },
     "status": {
       "sold": "Продано",

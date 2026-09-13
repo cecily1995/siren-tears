@@ -16,18 +16,18 @@ export async function generateMetadata({
   return { title: `${t('eyebrow')} — SIREN TEARS` };
 }
 
-const AOTEAROA_CATEGORIES = ['rings', 'necklaces', 'bracelets', 'bangles'] as const;
+const AOTEAROA_CATEGORIES = ['necklaces', 'rings', 'bangles', 'earrings'] as const;
 const AOTEAROA_CATEGORY_VALUE: Record<(typeof AOTEAROA_CATEGORIES)[number], string> = {
-  rings: 'ring',
   necklaces: 'necklace',
-  bracelets: 'bracelet',
-  bangles: 'bangle'
+  rings: 'ring',
+  bangles: 'bangle',
+  earrings: 'earring'
 };
 const AOTEAROA_CATEGORY_IMAGE: Record<(typeof AOTEAROA_CATEGORIES)[number], string> = {
-  rings: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1000&q=80',
   necklaces: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1000&q=80',
-  bracelets: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1000&q=80',
-  bangles: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1000&q=80'
+  rings: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1000&q=80',
+  bangles: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1000&q=80',
+  earrings: 'https://images.unsplash.com/photo-1535632787350-4e68ef0ac584?auto=format&fit=crop&w=1000&q=80'
 };
 
 export default async function CollectionsPage({

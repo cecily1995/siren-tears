@@ -281,7 +281,11 @@
       "rings": "Anelli",
       "pendants": "Ciondoli",
       "archive": "Archivio",
-      "bangles": "Bracciali rigidi"
+      "bangles": "Bracciali rigidi",
+      "braceletBead": "Bracciali Perlinati",
+      "braceletChain": "Bracciali a Catena",
+      "earrings": "Orecchini",
+      "bespokeShowcase": "Pezzi Su Misura Passati"
     },
     "status": {
       "sold": "Venduto",

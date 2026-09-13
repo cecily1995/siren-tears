@@ -281,7 +281,11 @@
       "rings": "リング",
       "pendants": "ペンダント",
       "archive": "アーカイブ",
-      "bangles": "バングル"
+      "bangles": "バングル",
+      "braceletBead": "ビーズブレスレット",
+      "braceletChain": "チェーンブレスレット",
+      "earrings": "ピアス・イヤリング",
+      "bespokeShowcase": "過去のオーダーメイド作品"
     },
     "status": {
       "sold": "売約済み",

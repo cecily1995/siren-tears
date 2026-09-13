@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { getShopProducts } from '@/sanity/lib/queries';
+import { getShopProducts, getCollections } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import ShopGrid from '@/components/ShopGrid';
 import PageHeader from '@/components/PageHeader';
@@ -26,18 +26,28 @@ export default async function ShopPage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [t, products] = await Promise.all([getTranslations('shop'), getShopProducts()]);
+  const [t, products, collections] = await Promise.all([
+    getTranslations('shop'),
+    getShopProducts(),
+    getCollections()
+  ]);
   const items = products?.length ? products : fallback.shopProducts;
+  const collectionNames = (collections?.length ? collections : fallback.collections).map(
+    (c: any) => c.title
+  );
 
   const labels = {
     filters: {
       all: t('filters.all'),
-      bracelets: t('filters.bracelets'),
-      necklaces: t('filters.necklaces'),
       rings: t('filters.rings'),
+      braceletBead: t('filters.braceletBead'),
+      braceletChain: t('filters.braceletChain'),
+      necklaces: t('filters.necklaces'),
       pendants: t('filters.pendants'),
       bangles: t('filters.bangles'),
-      archive: t('filters.archive')
+      earrings: t('filters.earrings'),
+      archive: t('filters.archive'),
+      bespokeShowcase: t('filters.bespokeShowcase')
     },
     lineFilters: {
       all: t('lineFilters.all'),
@@ -66,7 +76,12 @@ export default async function ShopPage({
       <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
-            <ShopGrid products={items} labels={labels} initialFilter={searchParams?.category} />
+            <ShopGrid
+              products={items}
+              labels={labels}
+              collectionNames={collectionNames}
+              initialFilter={searchParams?.category}
+            />
           ) : (
             <div className="max-w-lg mx-auto text-center py-16 reveal">
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">

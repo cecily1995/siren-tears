@@ -281,7 +281,11 @@
       "rings": "戒指",
       "pendants": "吊坠",
       "archive": "典藏",
-      "bangles": "手镯"
+      "bangles": "手镯",
+      "braceletBead": "手串",
+      "braceletChain": "手链",
+      "earrings": "耳环",
+      "bespokeShowcase": "往期定制展示"
     },
     "status": {
       "sold": "已售出",

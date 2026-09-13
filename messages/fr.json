@@ -281,7 +281,11 @@
       "rings": "Bagues",
       "pendants": "Pendentifs",
       "archive": "Archives",
-      "bangles": "Jonc"
+      "bangles": "Jonc",
+      "braceletBead": "Bracelets Perlés",
+      "braceletChain": "Bracelets Chaîne",
+      "earrings": "Boucles d’Oreilles",
+      "bespokeShowcase": "Pièces Sur Mesure Passées"
     },
     "status": {
       "sold": "Vendue",

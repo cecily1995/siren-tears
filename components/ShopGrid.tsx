@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from '@/i18n/routing';
 
 type ShopProduct = {
@@ -19,12 +19,15 @@ type ShopProduct = {
 type Labels = {
   filters: {
     all: string;
-    bracelets: string;
-    necklaces: string;
     rings: string;
+    braceletBead: string;
+    braceletChain: string;
+    necklaces: string;
     pendants: string;
     bangles: string;
+    earrings: string;
     archive: string;
+    bespokeShowcase: string;
   };
   lineFilters: { all: string; beaded: string; aotearoa: string };
   status: { sold: string; reserved: string; bespoke: string };
@@ -32,69 +35,149 @@ type Labels = {
   viewPiece: string;
 };
 
-const FILTERS = [
-  { key: 'all', category: null, archiveOnly: false },
-  { key: 'bracelets', category: 'bracelet', archiveOnly: false },
-  { key: 'necklaces', category: 'necklace', archiveOnly: false },
-  { key: 'rings', category: 'ring', archiveOnly: false },
-  { key: 'pendants', category: 'pendant', archiveOnly: false },
-  { key: 'bangles', category: 'bangle', archiveOnly: false },
-  { key: 'archive', category: null, archiveOnly: true }
+type Line = 'all' | 'beaded' | 'aotearoa';
+
+const LINES: Line[] = ['all', 'beaded', 'aotearoa'];
+
+// Category sub-filters shown when line === 'all'
+const ALL_CATEGORY_FILTERS = [
+  { key: 'rings', category: 'ring' },
+  { key: 'braceletChain', category: 'braceletChain' },
+  { key: 'braceletBead', category: 'braceletBead' },
+  { key: 'necklaces', category: 'necklace' },
+  { key: 'pendants', category: 'pendant' },
+  { key: 'bangles', category: 'bangle' }
 ] as const;
 
-const LINES = ['all', 'beaded', 'aotearoa'] as const;
+// Category sub-filters shown when line === 'aotearoa'
+const AOTEAROA_CATEGORY_FILTERS = [
+  { key: 'necklaces', category: 'necklace' },
+  { key: 'rings', category: 'ring' },
+  { key: 'bangles', category: 'bangle' },
+  { key: 'earrings', category: 'earring' }
+] as const;
 
 export default function ShopGrid({
   products,
   labels,
+  collectionNames,
   initialFilter
 }: {
   products: ShopProduct[];
   labels: Labels;
+  collectionNames: string[];
   initialFilter?: string;
 }) {
-  const initial = FILTERS.find((f) => f.key === initialFilter)?.key ?? 'all';
-  const [active, setActive] = useState<(typeof FILTERS)[number]['key']>(initial);
-  const [line, setLine] = useState<(typeof LINES)[number]>('all');
+  const [line, setLine] = useState<Line>('all');
+  const [subFilter, setSubFilter] = useState<string>(initialFilter ?? 'all');
 
-  const filterDef = FILTERS.find((f) => f.key === active)!;
+  function changeLine(next: Line) {
+    setLine(next);
+    setSubFilter('all');
+  }
+
+  const subOptions: { key: string; label: string }[] = useMemo(() => {
+    if (line === 'beaded') {
+      return [
+        { key: 'all', label: labels.lineFilters.all },
+        ...collectionNames.map((name) => ({ key: name, label: name })),
+        { key: 'bespokeShowcase', label: labels.filters.bespokeShowcase }
+      ];
+    }
+    if (line === 'aotearoa') {
+      return [
+        { key: 'all', label: labels.lineFilters.all },
+        ...AOTEAROA_CATEGORY_FILTERS.map((f) => ({ key: f.category, label: labels.filters[f.key] }))
+      ];
+    }
+    return [
+      { key: 'all', label: labels.filters.all },
+      ...ALL_CATEGORY_FILTERS.map((f) => ({ key: f.category, label: labels.filters[f.key] })),
+      { key: 'bespokeShowcase', label: labels.filters.bespokeShowcase },
+      { key: 'archive', label: labels.filters.archive }
+    ];
+  }, [line, collectionNames, labels]);
+
   const filtered = products.filter((p) => {
-    if (line !== 'all' && (p.productLine ?? 'beaded') !== line) return false;
-    if (filterDef.archiveOnly) return p.status === 'sold';
-    if (filterDef.category) return p.category === filterDef.category;
-    return true;
+    const productLine = p.productLine ?? 'beaded';
+    if (line !== 'all' && productLine !== line) return false;
+
+    if (subFilter === 'all') return true;
+    if (subFilter === 'archive') return p.status === 'sold';
+    if (subFilter === 'bespokeShowcase') return p.status === 'bespoke';
+    if (line === 'beaded') return p.collectionTitle === subFilter;
+    return p.category === subFilter;
   });
 
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 reveal">
-        {LINES.map((l) => (
-          <button
-            key={l}
-            onClick={() => setLine(l)}
-            className={`text-[10px] tracking-[0.24em] uppercase font-light transition-colors pb-1 border-b ${
-              line === l ? 'text-charcoal border-gold' : 'text-ash/50 border-transparent hover:text-charcoal'
-            }`}
-          >
-            {labels.lineFilters[l]}
-          </button>
-        ))}
+      {/* Desktop: line tabs + sub-filter buttons */}
+      <div className="hidden md:block">
+        <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-8 reveal">
+          {LINES.map((l) => (
+            <button
+              key={l}
+              onClick={() => changeLine(l)}
+              className={`text-[10px] tracking-[0.24em] uppercase font-light transition-colors pb-1 border-b ${
+                line === l ? 'text-charcoal border-gold' : 'text-ash/50 border-transparent hover:text-charcoal'
+              }`}
+            >
+              {labels.lineFilters[l]}
+            </button>
+          ))}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-16 reveal">
+          {subOptions.map((opt) => (
+            <button
+              key={opt.key}
+              onClick={() => setSubFilter(opt.key)}
+              className={`text-[11px] tracking-[0.28em] uppercase font-light transition-colors pb-1 border-b ${
+                subFilter === opt.key
+                  ? 'text-charcoal border-gold'
+                  : 'text-ash/60 border-transparent hover:text-charcoal'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-16 reveal">
-        {FILTERS.map((f) => (
-          <button
-            key={f.key}
-            onClick={() => setActive(f.key)}
-            className={`text-[11px] tracking-[0.28em] uppercase font-light transition-colors pb-1 border-b ${
-              active === f.key
-                ? 'text-charcoal border-gold'
-                : 'text-ash/60 border-transparent hover:text-charcoal'
-            }`}
+      {/* Mobile: tap-to-open dropdown menus, one for line, one for sub-filter */}
+      <div className="md:hidden mb-10 reveal grid grid-cols-2 gap-3">
+        <div className="relative">
+          <select
+            value={line}
+            onChange={(e) => changeLine(e.target.value as Line)}
+            className="w-full appearance-none border border-charcoal/20 bg-ivory px-4 py-3 text-[11px] tracking-[0.16em] uppercase text-charcoal"
           >
-            {labels.filters[f.key]}
-          </button>
-        ))}
+            {LINES.map((l) => (
+              <option key={l} value={l}>
+                {labels.lineFilters[l]}
+              </option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ash text-[10px]">
+            ▾
+          </span>
+        </div>
+        <div className="relative">
+          <select
+            value={subFilter}
+            onChange={(e) => setSubFilter(e.target.value)}
+            className="w-full appearance-none border border-charcoal/20 bg-ivory px-4 py-3 text-[11px] tracking-[0.16em] uppercase text-charcoal"
+          >
+            {subOptions.map((opt) => (
+              <option key={opt.key} value={opt.key}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ash text-[10px]">
+            ▾
+          </span>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">

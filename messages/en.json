@@ -281,7 +281,11 @@
       "rings": "Rings",
       "pendants": "Pendants",
       "archive": "Archive",
-      "bangles": "Bangles"
+      "bangles": "Bangles",
+      "braceletBead": "Beaded Bracelets",
+      "braceletChain": "Chain Bracelets",
+      "earrings": "Earrings",
+      "bespokeShowcase": "Past Bespoke Pieces"
     },
     "status": {
       "sold": "Sold",

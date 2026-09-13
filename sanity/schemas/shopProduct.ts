@@ -18,11 +18,13 @@ export default defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Bracelet', value: 'bracelet' },
+          { title: 'Bracelet — Beaded (手串)', value: 'braceletBead' },
+          { title: 'Bracelet — Chain (手链)', value: 'braceletChain' },
           { title: 'Necklace', value: 'necklace' },
           { title: 'Ring', value: 'ring' },
           { title: 'Pendant', value: 'pendant' },
-          { title: 'Bangle', value: 'bangle' }
+          { title: 'Bangle', value: 'bangle' },
+          { title: 'Earring', value: 'earring' }
         ]
       },
       validation: (r) => r.required()

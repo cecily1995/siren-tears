@@ -281,7 +281,11 @@
       "rings": "Ringe",
       "pendants": "Anhänger",
       "archive": "Archiv",
-      "bangles": "Armreifen"
+      "bangles": "Armreifen",
+      "braceletBead": "Perlenarmbänder",
+      "braceletChain": "Kettenarmbänder",
+      "earrings": "Ohrringe",
+      "bespokeShowcase": "Frühere Maßanfertigungen"
     },
     "status": {
       "sold": "Verkauft",

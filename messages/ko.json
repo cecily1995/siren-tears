@@ -281,7 +281,11 @@
       "rings": "반지",
       "pendants": "펜던트",
       "archive": "아카이브",
-      "bangles": "뱅글"
+      "bangles": "뱅글",
+      "braceletBead": "비즈 팔찌",
+      "braceletChain": "체인 팔찌",
+      "earrings": "이어링",
+      "bespokeShowcase": "지난 커스텀 작품"
     },
     "status": {
       "sold": "판매완료",
