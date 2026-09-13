@@ -112,6 +112,31 @@ export default async function BespokePage({
         </div>
       </section>
 
+      {/* Prefer to talk first? — positioned before the form as an alternative, not a redundant follow-up */}
+      <section className="bg-sandLight/40 px-6 md:px-12 py-14">
+        <div className="mx-auto max-w-[820px] flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-4 text-center sm:text-left reveal">
+          <p className="text-[0.9rem] text-ash font-light">{t('contactTitle')}</p>
+          <div className="flex items-center gap-8">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] tracking-[0.3em] uppercase text-charcoal link-underline"
+            >
+              {t('whatsappCta')}
+            </a>
+            {email && (
+              <a
+                href={`mailto:${email}`}
+                className="text-[11px] tracking-[0.3em] uppercase text-charcoal/85 link-underline"
+              >
+                {t('emailCta')}
+              </a>
+            )}
+          </div>
+        </div>
+      </section>
+
       {/* Bespoke request form */}
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[760px]">
@@ -122,43 +147,6 @@ export default async function BespokePage({
             </p>
           </div>
           <BespokeForm />
-        </div>
-      </section>
-
-      {/* Speak with the Atelier */}
-      <section className="bg-sandLight/50 text-charcoal px-6 md:px-12 py-24 md:py-32 relative overflow-hidden">
-        <div className="relative mx-auto max-w-[820px] text-center reveal">
-          <h2 className="serif-display text-[clamp(1.9rem,3.6vw,2.6rem)] font-light leading-[1.15] mb-14 text-charcoal">
-            {t('contactTitle')}
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-lg mx-auto">
-            <div>
-              <p className="text-[0.9rem] text-ash font-light mb-5 leading-relaxed">
-                {t('whatsappBody')}
-              </p>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
-              >
-                {t('whatsappCta')}
-              </a>
-            </div>
-            <div>
-              <p className="text-[0.9rem] text-ash font-light mb-5 leading-relaxed">
-                {t('emailBody')}
-              </p>
-              {email && (
-                <a
-                  href={`mailto:${email}`}
-                  className="text-[11px] tracking-[0.32em] uppercase text-charcoal/85 link-underline"
-                >
-                  {t('emailCta')}
-                </a>
-              )}
-            </div>
-          </div>
         </div>
       </section>
     </>

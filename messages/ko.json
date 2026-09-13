@@ -117,7 +117,11 @@
       "body": "모든 제품은 스튜디오를 떠나기 전 하나하나 손으로 검수하고 포장합니다. 성수기에는 조금 더 여유를 두고 기다려 주세요 — 저희는 언제나 서두름보다 정성을 우선합니다."
     },
     "contactPrompt": "특정 주문에 대해 궁금한 점이 있으신가요?",
-    "contactCta": "문의하기"
+    "contactCta": "문의하기",
+    "carrierNote": "모든 SIREN TEARS 주문은 뉴질랜드 스튜디오에서 NZ Post를 통해 발송됩니다.",
+    "checkTitle": "배송 기간 확인",
+    "checkBody": "목적지까지 배송이 대략 얼마나 걸리는지 궁금하신가요?",
+    "checkCta": "NZ Post에서 확인하기"
   },
   "gallery": {
     "eyebrow": "고객 착용 사진",
@@ -206,7 +210,35 @@
       "submitting": "전송 중…",
       "successTitle": "신청이 저희에게 잘 도착했습니다.",
       "successBody": "소중한 아이디어를 들려주셔서 감사합니다. 며칠 내로 저희가 직접 연락드려 대화를 시작하겠습니다.",
-      "errorGeneric": "전송 중 문제가 발생했습니다. 다시 시도해 주시거나, 저희에게 직접 이메일로 연락해 주세요."
+      "errorGeneric": "전송 중 문제가 발생했습니다. 다시 시도해 주시거나, 저희에게 직접 이메일로 연락해 주세요.",
+      "genderLabel": "성별",
+      "genders": {
+        "female": "여성",
+        "male": "남성",
+        "other": "밝히지 않음"
+      },
+      "birthdayLabel": "생년월일",
+      "zodiacLabel": "별자리",
+      "wristSizeLabel": "손목 둘레(cm)",
+      "ringSizeLabel": "반지 사이즈",
+      "coloursLabel": "선호하는 색상(복수 선택 가능)",
+      "colours2": {
+        "pink": "핑크",
+        "white": "화이트",
+        "red": "레드",
+        "yellow": "옐로우",
+        "purple": "퍼플",
+        "green": "그린",
+        "blue": "블루",
+        "brown": "브라운",
+        "orange": "오렌지"
+      },
+      "styleLabel": "선호하는 금속 톤",
+      "styles": {
+        "silver": "실버",
+        "gold": "골드"
+      },
+      "noteLabel": "전달하고 싶은 내용이 있으신가요? (선호하는 스타일, 메모 등 무엇이든)"
     },
     "contactTitle": "스튜디오와 상담하기",
     "whatsappBody": "커스텀 작품에 대해 더 빠르게 상담하고 싶으신가요?",
@@ -317,7 +349,22 @@
       "스튜디오와의 직접적이고 개인적인 소통 창구"
     ],
     "privateQualify": "Private Client 자격은 신청하는 것이 아니라, 고객님의 컬렉션 이력에 따라 자동으로 부여됩니다.",
-    "comingSoonNote": "정식 멤버십 계정 시스템은 곧 오픈될 예정입니다. 그동안 저희에게 메시지를 남겨주시면, Siren Circle이 열리는 즉시 안내해 드리겠습니다."
+    "comingSoonNote": "정식 멤버십 계정 시스템은 곧 오픈될 예정입니다. 그동안 저희에게 메시지를 남겨주시면, Siren Circle이 열리는 즉시 안내해 드리겠습니다.",
+    "form": {
+      "firstNameLabel": "이름",
+      "lastNameLabel": "성",
+      "birthdayLabel": "생년월일",
+      "emailLabel": "이메일",
+      "phoneLabel": "전화번호",
+      "addressLabel": "자주 사용하는 주소",
+      "submit": "Siren Circle 가입하기",
+      "submitting": "가입 중…",
+      "successTitle": "Siren Circle에 오신 것을 환영합니다.",
+      "successBody": "회원 혜택이 활성화되었습니다. 회원 코드를 안전하게 보관해 주세요 — 쇼핑 시 필요할 수 있습니다.",
+      "codeLabel": "회원 코드",
+      "errorGeneric": "문제가 발생했습니다. 다시 시도하시거나 직접 문의해 주세요."
+    },
+    "privatePriceNote": "임시 안내: Private Client에 바로 가입 시 NZD 999의 일회성 비용이 발생할 수 있으며, 최종 혜택은 추후 확정됩니다."
   },
   "oneOfOne": {
     "eyebrow": "단 하나의 작품",

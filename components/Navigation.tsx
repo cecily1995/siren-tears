@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
+import MobileMenu from './MobileMenu';
 
 const links = [
   { href: '/collections', key: 'collections' },
@@ -36,14 +37,17 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
-        <Link
-          href="/#top"
-          className={`font-serif text-[1.05rem] md:text-[1.15rem] tracking-[0.42em] uppercase shrink-0 ${
-            scrolled ? 'text-charcoal' : 'text-ivory'
-          } transition-colors duration-700`}
-        >
-          Siren&nbsp;Tears
-        </Link>
+        <div className="flex items-center gap-4 shrink-0">
+          <MobileMenu dark={scrolled} />
+          <Link
+            href="/#top"
+            className={`font-serif text-[1.05rem] md:text-[1.15rem] tracking-[0.42em] uppercase shrink-0 ${
+              scrolled ? 'text-charcoal' : 'text-ivory'
+            } transition-colors duration-700`}
+          >
+            Siren&nbsp;Tears
+          </Link>
+        </div>
 
         <nav className="hidden lg:flex items-center gap-8">
           {links.map((l) => (

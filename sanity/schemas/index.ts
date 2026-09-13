@@ -8,6 +8,7 @@ import buyerShowcase from './buyerShowcase';
 import shopProduct from './shopProduct';
 import bespokeRequest from './bespokeRequest';
 import purchaseRequest from './purchaseRequest';
+import member from './member';
 
 export const schemaTypes = [
   siteSettings,
@@ -19,5 +20,6 @@ export const schemaTypes = [
   buyerShowcase,
   shopProduct,
   bespokeRequest,
-  purchaseRequest
+  purchaseRequest,
+  member
 ];

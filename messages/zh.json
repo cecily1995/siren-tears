@@ -117,7 +117,11 @@
       "body": "每一件作品在离开工作室前,都经过手工检查与包装。在订单高峰期,请多给我们一些耐心——我们始终认为,用心比速度更重要。"
     },
     "contactPrompt": "对某个订单有疑问?",
-    "contactCta": "联系我们"
+    "contactCta": "联系我们",
+    "carrierNote": "SIREN TEARS 所有订单均从新西兰工作室发出,使用 NZ Post(新西兰邮政)配送。",
+    "checkTitle": "查询配送时效",
+    "checkBody": "想知道包裹寄到你所在地大概需要多久?",
+    "checkCta": "前往 NZ Post 官网查询"
   },
   "gallery": {
     "eyebrow": "买家秀",
@@ -206,7 +210,35 @@
       "submitting": "发送中…",
       "successTitle": "你的申请我们已经收到。",
       "successBody": "感谢你分享你的想法。我们会在几天内亲自与你联系,开始这场对话。",
-      "errorGeneric": "发送时出了点问题,请重试,或直接写信给我们。"
+      "errorGeneric": "发送时出了点问题,请重试,或直接写信给我们。",
+      "genderLabel": "性别",
+      "genders": {
+        "female": "女",
+        "male": "男",
+        "other": "不透露"
+      },
+      "birthdayLabel": "生日",
+      "zodiacLabel": "星座",
+      "wristSizeLabel": "手围(厘米)",
+      "ringSizeLabel": "戒圈尺寸",
+      "coloursLabel": "喜欢的颜色(可多选)",
+      "colours2": {
+        "pink": "粉色",
+        "white": "白色",
+        "red": "红色",
+        "yellow": "黄色",
+        "purple": "紫色",
+        "green": "绿色",
+        "blue": "蓝色",
+        "brown": "茶色",
+        "orange": "橙色"
+      },
+      "styleLabel": "喜欢的配饰风格",
+      "styles": {
+        "silver": "银色",
+        "gold": "金色"
+      },
+      "noteLabel": "还有什么想告诉我们的?(喜欢的风格、任何备注都可以)"
     },
     "contactTitle": "与工作室对话",
     "whatsappBody": "如需更快速地讨论你的定制作品。",
@@ -317,7 +349,22 @@
       "与工作室直接、私人的联系方式"
     ],
     "privateQualify": "Private Client 身份将根据你的收藏历程自动获得,无需主动申请。",
-    "comingSoonNote": "完整的会员账户系统即将上线。在此之前,欢迎写信告诉我们,Siren Circle 开放时我们会第一时间通知你。"
+    "comingSoonNote": "完整的会员账户系统即将上线。在此之前,欢迎写信告诉我们,Siren Circle 开放时我们会第一时间通知你。",
+    "form": {
+      "firstNameLabel": "名",
+      "lastNameLabel": "姓",
+      "birthdayLabel": "生日",
+      "emailLabel": "邮箱",
+      "phoneLabel": "电话",
+      "addressLabel": "常用地址",
+      "submit": "加入 Siren Circle",
+      "submitting": "加入中…",
+      "successTitle": "欢迎加入 Siren Circle。",
+      "successBody": "你的会员权益已生效。请妥善保存你的会员码——购物时可能需要用到。",
+      "codeLabel": "你的会员码",
+      "errorGeneric": "出了点问题,请重试,或直接联系我们。"
+    },
+    "privatePriceNote": "暂定:一次性支付 NZD $999 即可直接加入 Private Client,具体权益确定后可能调整。"
   },
   "oneOfOne": {
     "eyebrow": "独一无二",

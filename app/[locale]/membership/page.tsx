@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
-import { getSiteSettings } from '@/sanity/lib/queries';
-import { fallback } from '@/components/fallback';
 import PageHeader from '@/components/PageHeader';
+import MembershipJoinForm from '@/components/MembershipJoinForm';
 
 export const revalidate = 60;
 
@@ -23,8 +22,7 @@ export default async function MembershipPage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [t, settings] = await Promise.all([getTranslations('membership'), getSiteSettings()]);
-  const email = settings?.email ?? fallback.settings.email;
+  const [t] = await Promise.all([getTranslations('membership')]);
 
   const circleBenefits = t.raw('circleBenefits') as string[];
   const privateBenefits = t.raw('privateBenefits') as string[];
@@ -47,14 +45,6 @@ export default async function MembershipPage({
                 </li>
               ))}
             </ul>
-            {email && (
-              <a
-                href={`mailto:${email}?subject=${encodeURIComponent(t('circleCta'))}`}
-                className="mt-10 text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline w-fit"
-              >
-                {t('circleCta')}
-              </a>
-            )}
           </article>
 
           {/* Private Client — distinguished with a charcoal border/accent, not a solid black fill */}
@@ -75,12 +65,19 @@ export default async function MembershipPage({
             <p className="mt-10 text-[0.82rem] text-ash/70 font-light leading-relaxed">
               {t('privateQualify')}
             </p>
+            <p className="mt-4 text-[0.78rem] text-gold font-light leading-relaxed">
+              {t('privatePriceNote')}
+            </p>
           </article>
         </div>
 
-        <div className="mt-20 max-w-xl mx-auto text-center reveal">
+        <div className="mt-24 max-w-lg mx-auto reveal">
           <div className="mx-auto h-px w-16 bg-gold/60 mb-8" />
-          <p className="text-[0.9rem] text-ash font-light leading-relaxed">{t('comingSoonNote')}</p>
+          <div className="text-center">
+            <p className="eyebrow mb-4">{t('circleCta')}</p>
+            <p className="text-[0.9rem] text-ash font-light leading-relaxed">{t('circleFree')}</p>
+          </div>
+          <MembershipJoinForm />
         </div>
       </section>
     </>

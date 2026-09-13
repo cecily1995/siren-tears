@@ -39,6 +39,10 @@ export default async function ShippingPage({
 
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[980px]">
+          <p className="text-center text-[0.85rem] text-ash/70 font-light mb-16 reveal">
+            {t('carrierNote')}
+          </p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-16">
             {sections.map((s, i) => (
               <article key={i} className="reveal" style={{ transitionDelay: `${i * 100}ms` }}>
@@ -53,7 +57,22 @@ export default async function ShippingPage({
             ))}
           </div>
 
-          <div className="mt-24 pt-12 border-t border-charcoal/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 reveal">
+          <div className="mt-20 pt-12 border-t border-charcoal/10 text-center reveal">
+            <p className="eyebrow mb-4">{t('checkTitle')}</p>
+            <p className="text-[0.95rem] text-ash font-light mb-6 max-w-md mx-auto">
+              {t('checkBody')}
+            </p>
+            <a
+              href="https://www.nzpost.co.nz/tools/rate-finder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[11px] tracking-[0.3em] uppercase text-charcoal link-underline"
+            >
+              {t('checkCta')} →
+            </a>
+          </div>
+
+          <div className="mt-20 pt-12 border-t border-charcoal/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 reveal">
             <p className="text-[0.95rem] text-ash font-light">{t('contactPrompt')}</p>
             {email && (
               <a

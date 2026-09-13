@@ -22,6 +22,12 @@ const AOTEAROA_CATEGORY_VALUE: Record<(typeof AOTEAROA_CATEGORIES)[number], stri
   bracelets: 'bracelet',
   bangles: 'bangle'
 };
+const AOTEAROA_CATEGORY_IMAGE: Record<(typeof AOTEAROA_CATEGORIES)[number], string> = {
+  rings: 'https://images.unsplash.com/photo-1611591437281-460bfbe1220a?auto=format&fit=crop&w=1000&q=80',
+  necklaces: 'https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=1000&q=80',
+  bracelets: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1000&q=80',
+  bangles: 'https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=1000&q=80'
+};
 
 export default async function CollectionsPage({
   params
@@ -107,12 +113,21 @@ export default async function CollectionsPage({
               <Link
                 key={cat}
                 href={`/shop?category=${AOTEAROA_CATEGORY_VALUE[cat]}`}
-                className="reveal border border-charcoal/15 hover:border-gold/60 transition-colors bg-ivory text-center py-10 px-4"
+                className="group reveal relative overflow-hidden bg-charcoal/5 aspect-[4/5] frame-zoom"
                 style={{ transitionDelay: `${i * 90}ms` }}
               >
-                <span className="text-[11px] tracking-[0.28em] uppercase text-charcoal font-light">
-                  {tShop(`filters.${cat}`)}
-                </span>
+                <div
+                  className="bg-img absolute inset-0 bg-center bg-cover"
+                  style={{ backgroundImage: `url(${AOTEAROA_CATEGORY_IMAGE[cat]})` }}
+                  role="img"
+                  aria-label={tShop(`filters.${cat}`)}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/55 via-charcoal/5 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 p-5 text-center">
+                  <span className="text-[11px] tracking-[0.28em] uppercase text-ivory font-light">
+                    {tShop(`filters.${cat}`)}
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

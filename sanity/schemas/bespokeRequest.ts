@@ -7,18 +7,25 @@ export default defineType({
   fields: [
     defineField({ name: 'name', title: 'Name', type: 'string' }),
     defineField({ name: 'email', title: 'Email', type: 'string' }),
-    defineField({ name: 'whatsapp', title: 'WhatsApp / Phone', type: 'string' }),
+    defineField({ name: 'gender', title: 'Gender', type: 'string' }),
+    defineField({ name: 'birthday', title: 'Date of birth', type: 'string' }),
+    defineField({ name: 'zodiac', title: 'Zodiac sign', type: 'string' }),
     defineField({ name: 'pieceType', title: 'Piece type', type: 'string' }),
-    defineField({ name: 'stone', title: 'Preferred stone', type: 'string' }),
-    defineField({ name: 'colour', title: 'Preferred colour', type: 'string' }),
-    defineField({ name: 'budget', title: 'Budget range', type: 'string' }),
-    defineField({ name: 'message', title: 'Message', type: 'text', rows: 6 }),
+    defineField({ name: 'wristSize', title: 'Wrist size (cm)', type: 'string' }),
+    defineField({ name: 'ringSize', title: 'Ring size', type: 'string' }),
     defineField({
-      name: 'inspirationImages',
-      title: 'Inspiration images',
+      name: 'colours',
+      title: 'Preferred colours',
       type: 'array',
-      of: [{ type: 'image' }]
+      of: [{ type: 'string' }]
     }),
+    defineField({
+      name: 'styles',
+      title: 'Preferred metal tone',
+      type: 'array',
+      of: [{ type: 'string' }]
+    }),
+    defineField({ name: 'note', title: 'Customer note', type: 'text', rows: 4 }),
     defineField({
       name: 'status',
       title: 'Status',
@@ -41,6 +48,6 @@ export default defineType({
     { title: 'Newest first', name: 'submittedDesc', by: [{ field: 'submittedAt', direction: 'desc' }] }
   ],
   preview: {
-    select: { title: 'name', subtitle: 'pieceType', media: 'inspirationImages.0' }
+    select: { title: 'name', subtitle: 'pieceType' }
   }
 });

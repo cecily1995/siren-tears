@@ -13,8 +13,6 @@ function getWriteClient() {
   return createClient({ apiVersion, dataset, projectId, useCdn: false, token });
 }
 
-type InspirationImage = { dataUrl: string; name?: string };
-
 export async function POST(request: Request) {
   const client = getWriteClient();
   if (!client) {
@@ -38,65 +36,50 @@ export async function POST(request: Request) {
   const {
     name,
     email,
-    whatsapp,
+    gender,
+    birthday,
+    zodiac,
     pieceType,
-    stone,
-    colour,
-    budget,
-    message,
-    images
+    wristSize,
+    ringSize,
+    colours,
+    styles,
+    note
   }: {
     name?: string;
     email?: string;
-    whatsapp?: string;
+    gender?: string;
+    birthday?: string;
+    zodiac?: string;
     pieceType?: string;
-    stone?: string;
-    colour?: string;
-    budget?: string;
-    message?: string;
-    images?: InspirationImage[];
+    wristSize?: string;
+    ringSize?: string;
+    colours?: string[];
+    styles?: string[];
+    note?: string;
   } = body ?? {};
 
-  if (!email || !message) {
+  if (!email || !name) {
     return NextResponse.json(
-      { ok: false, error: 'Please include at least an email address and a short message.' },
+      { ok: false, error: 'Please include your name and email address.' },
       { status: 400 }
     );
   }
 
   try {
-    const uploadedImages: { _type: 'image'; _key: string; asset: { _type: 'reference'; _ref: string } }[] = [];
-
-    if (Array.isArray(images)) {
-      for (const img of images.slice(0, 6)) {
-        if (!img?.dataUrl) continue;
-        const match = img.dataUrl.match(/^data:(image\/[a-zA-Z0-9+.-]+);base64,(.+)$/);
-        if (!match) continue;
-        const buffer = Buffer.from(match[2], 'base64');
-        if (buffer.length > 8 * 1024 * 1024) continue; // 8MB safety cap per image
-        const asset = await client.assets.upload('image', buffer, {
-          filename: img.name || 'inspiration.jpg',
-          contentType: match[1]
-        });
-        uploadedImages.push({
-          _type: 'image',
-          _key: asset._id,
-          asset: { _type: 'reference', _ref: asset._id }
-        });
-      }
-    }
-
     await client.create({
       _type: 'bespokeRequest',
-      name: name || '',
+      name,
       email,
-      whatsapp: whatsapp || '',
+      gender: gender || '',
+      birthday: birthday || '',
+      zodiac: zodiac || '',
       pieceType: pieceType || '',
-      stone: stone || '',
-      colour: colour || '',
-      budget: budget || '',
-      message,
-      inspirationImages: uploadedImages,
+      wristSize: wristSize || '',
+      ringSize: ringSize || '',
+      colours: Array.isArray(colours) ? colours : [],
+      styles: Array.isArray(styles) ? styles : [],
+      note: note || '',
       status: 'new',
       submittedAt: new Date().toISOString()
     });

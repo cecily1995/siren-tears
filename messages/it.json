@@ -117,7 +117,11 @@
       "body": "Ogni pezzo viene ispezionato e imballato a mano prima di lasciare il nostro atelier. Vi preghiamo di considerare un po' più di tempo nei periodi di maggiore richiesta — per noi la cura viene sempre prima della fretta."
     },
     "contactPrompt": "Domande su un ordine specifico?",
-    "contactCta": "Scriveteci"
+    "contactCta": "Scriveteci",
+    "carrierNote": "Tutti gli ordini SIREN TEARS vengono spediti dal nostro atelier in Nuova Zelanda tramite NZ Post.",
+    "checkTitle": "Verifica i tempi di consegna",
+    "checkBody": "Volete sapere approssimativamente quanto tempo richiederà la consegna verso la vostra destinazione?",
+    "checkCta": "Verifica con NZ Post"
   },
   "gallery": {
     "eyebrow": "Indossato da voi",
@@ -206,7 +210,35 @@
       "submitting": "Invio in corso…",
       "successTitle": "La vostra richiesta ci è arrivata.",
       "successBody": "Grazie per aver condiviso la vostra visione. Vi contatteremo personalmente entro pochi giorni per iniziare la conversazione.",
-      "errorGeneric": "Si è verificato un errore durante l'invio. Riprovate, oppure scriveteci direttamente."
+      "errorGeneric": "Si è verificato un errore durante l'invio. Riprovate, oppure scriveteci direttamente.",
+      "genderLabel": "Genere",
+      "genders": {
+        "female": "Donna",
+        "male": "Uomo",
+        "other": "Preferisco non specificare"
+      },
+      "birthdayLabel": "Data di nascita",
+      "zodiacLabel": "Segno zodiacale",
+      "wristSizeLabel": "Circonferenza polso (cm)",
+      "ringSizeLabel": "Misura anello",
+      "coloursLabel": "Colore/i preferito/i — selezionate quelli che preferite",
+      "colours2": {
+        "pink": "Rosa",
+        "white": "Bianco",
+        "red": "Rosso",
+        "yellow": "Giallo",
+        "purple": "Viola",
+        "green": "Verde",
+        "blue": "Blu",
+        "brown": "Marrone",
+        "orange": "Arancione"
+      },
+      "styleLabel": "Tonalità del metallo preferita",
+      "styles": {
+        "silver": "Argento",
+        "gold": "Oro"
+      },
+      "noteLabel": "C'è qualcosa che vorreste farci sapere? (preferenze di stile, note, qualsiasi cosa)"
     },
     "contactTitle": "Parla con l'Atelier",
     "whatsappBody": "Per una conversazione più rapida sul vostro pezzo su misura.",
@@ -317,7 +349,22 @@
       "Accesso diretto e personale all'Atelier"
     ],
     "privateQualify": "Lo status di Private Client viene assegnato automaticamente, in base alla vostra storia di acquisti — non è qualcosa che si richiede.",
-    "comingSoonNote": "Gli account membership completi arriveranno presto. Nel frattempo, scriveteci e vi avviseremo non appena il Siren Circle sarà aperto."
+    "comingSoonNote": "Gli account membership completi arriveranno presto. Nel frattempo, scriveteci e vi avviseremo non appena il Siren Circle sarà aperto.",
+    "form": {
+      "firstNameLabel": "Nome",
+      "lastNameLabel": "Cognome",
+      "birthdayLabel": "Data di nascita",
+      "emailLabel": "Email",
+      "phoneLabel": "Telefono",
+      "addressLabel": "Indirizzo abituale",
+      "submit": "Entra nel Siren Circle",
+      "submitting": "Iscrizione in corso…",
+      "successTitle": "Benvenuta/o nel Siren Circle.",
+      "successBody": "I tuoi vantaggi sono ora attivi. Conserva il tuo codice membro in un luogo sicuro — potrebbe esserti richiesto durante gli acquisti.",
+      "codeLabel": "Il tuo codice membro",
+      "errorGeneric": "Qualcosa è andato storto. Riprova, oppure contattaci direttamente."
+    },
+    "privatePriceNote": "Provvisorio: potrebbe essere richiesto un contributo una tantum di NZD $999 per entrare direttamente come Private Client, in attesa dei vantaggi definitivi."
   },
   "oneOfOne": {
     "eyebrow": "Pezzo unico",
