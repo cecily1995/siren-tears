@@ -90,7 +90,12 @@ export default async function HomePage({
   const atelierData = {
     eyebrow: t('atelier.eyebrow'),
     title: t('atelier.title'),
-    body: t('atelier.body'),
+    paragraphs: [t('about.p1'), t('about.p2'), t('about.p3')],
+    stats: [
+      { value: '06', label: t('about.stats.years') },
+      { value: '35+', label: t('about.stats.countries') },
+      { value: '01', label: t('about.stats.studio') }
+    ],
     imageUrl: fallback.atelier.imageUrl,
     imageAlt: fallback.atelier.imageAlt
   };
