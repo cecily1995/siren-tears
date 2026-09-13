@@ -32,7 +32,7 @@ export default function Navigation() {
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-editorial ${
         scrolled
-          ? 'bg-ivory/90 backdrop-blur-md border-b border-charcoal/10 py-4'
+          ? 'bg-ivory border-b border-charcoal/10 py-4'
           : 'bg-transparent py-6'
       }`}
     >
