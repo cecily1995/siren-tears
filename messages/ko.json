@@ -11,7 +11,8 @@
     "gallery": "고객 착용 사진",
     "shop": "쇼핑",
     "membership": "멤버십",
-    "bespoke": "커스텀 주문"
+    "bespoke": "커스텀 주문",
+    "account": "마이 계정"
   },
   "hero": {
     "eyebrow": "뉴질랜드의 아틀리에",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "젬스톤 주얼리",
     "aotearoaIntro": "더욱 정교한 라인으로, 손으로 세팅합니다 — 반지, 목걸이, 팔찌, 뱅글까지, 하나하나 엄선된 젬스톤을 중심으로 디자인됩니다.",
     "shopLine": "라인 보기"
+  },
+  "account": {
+    "eyebrow": "마이 계정",
+    "title": "SIREN TEARS 안에서의 당신의 자리.",
+    "intro": "Siren Circle 가입 시 받으신 이메일과 회원 코드를 입력해 주세요.",
+    "emailLabel": "이메일",
+    "memberCodeLabel": "회원 코드",
+    "submit": "내 계정 보기",
+    "submitting": "조회 중…",
+    "errorGeneric": "해당 이메일과 회원 코드로 계정을 찾을 수 없습니다.",
+    "welcomeBack": "다시 오신 것을 환영합니다",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "가입일",
+    "myBespokeTitle": "내 커스텀 주문 신청",
+    "myPurchasesTitle": "내 구매 요청",
+    "noBespoke": "아직 제출한 커스텀 주문 신청이 없습니다.",
+    "noPurchases": "아직 제출한 구매 요청이 없습니다.",
+    "trackingLabel": "운송장 번호",
+    "notShippedYet": "아직 발송되지 않음"
   }
 }

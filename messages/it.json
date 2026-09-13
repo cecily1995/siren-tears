@@ -11,7 +11,8 @@
     "gallery": "Indossato da voi",
     "shop": "Shop",
     "membership": "Membership",
-    "bespoke": "Su misura"
+    "bespoke": "Su misura",
+    "account": "Il mio account"
   },
   "hero": {
     "eyebrow": "Un atelier neozelandese",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "Gioielleria in pietre preziose",
     "aotearoaIntro": "Una linea più raffinata, incastonata a mano — anelli, collane, bracciali e bracciali rigidi, costruiti attorno a una pietra preziosa selezionata a mano.",
     "shopLine": "Scopri la linea"
+  },
+  "account": {
+    "eyebrow": "Il mio account",
+    "title": "Il vostro posto in SIREN TEARS.",
+    "intro": "Inserite l'email e il codice membro ricevuti quando siete entrati nel Siren Circle.",
+    "emailLabel": "Email",
+    "memberCodeLabel": "Codice membro",
+    "submit": "Visualizza il mio account",
+    "submitting": "Ricerca in corso…",
+    "errorGeneric": "Non abbiamo trovato un account corrispondente a questa email e codice membro.",
+    "welcomeBack": "Bentornata/o",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "Membro dal",
+    "myBespokeTitle": "Le mie richieste su misura",
+    "myPurchasesTitle": "Le mie richieste di acquisto",
+    "noBespoke": "Non hai ancora inviato una richiesta su misura.",
+    "noPurchases": "Non hai ancora inviato una richiesta di acquisto.",
+    "trackingLabel": "Numero di tracciamento",
+    "notShippedYet": "Non ancora spedito"
   }
 }

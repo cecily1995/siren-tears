@@ -11,7 +11,8 @@
     "gallery": "お客様の着用写真",
     "shop": "ショップ",
     "membership": "メンバーシップ",
-    "bespoke": "オーダーメイド"
+    "bespoke": "オーダーメイド",
+    "account": "マイページ"
   },
   "hero": {
     "eyebrow": "ニュージーランドのアトリエ",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "ジェムストーンジュエリー",
     "aotearoaIntro": "より洗練されたラインで、手作業でセッティングされます——リング、ネックレス、ブレスレット、バングル。一つひとつ、厳選された宝石を中心にデザインされています。",
     "shopLine": "ラインを見る"
+  },
+  "account": {
+    "eyebrow": "マイページ",
+    "title": "SIREN TEARSでの、あなたの場所。",
+    "intro": "Siren Circleご登録時に受け取ったメールアドレスと会員コードをご入力ください。",
+    "emailLabel": "メールアドレス",
+    "memberCodeLabel": "会員コード",
+    "submit": "マイアカウントを見る",
+    "submitting": "確認中…",
+    "errorGeneric": "そのメールアドレスと会員コードに一致するアカウントが見つかりませんでした。",
+    "welcomeBack": "おかえりなさい",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "登録日",
+    "myBespokeTitle": "マイオーダーメイド申請",
+    "myPurchasesTitle": "マイ購入リクエスト",
+    "noBespoke": "まだオーダーメイドのご相談を送信されていません。",
+    "noPurchases": "まだ購入リクエストを送信されていません。",
+    "trackingLabel": "追跡番号",
+    "notShippedYet": "まだ発送されていません"
   }
 }

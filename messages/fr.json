@@ -11,7 +11,8 @@
     "gallery": "Portée par vous",
     "shop": "Boutique",
     "membership": "Adhésion",
-    "bespoke": "Sur mesure"
+    "bespoke": "Sur mesure",
+    "account": "Mon compte"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "Joaillerie en pierres précieuses",
     "aotearoaIntro": "Une ligne plus raffinée, sertie à la main — bagues, colliers, bracelets et joncs conçus autour d'une pierre précieuse sélectionnée à la main.",
     "shopLine": "Découvrir la ligne"
+  },
+  "account": {
+    "eyebrow": "Mon compte",
+    "title": "Votre place au sein de Siren Tears.",
+    "intro": "Saisissez l'e-mail et le code membre reçus lors de votre inscription au Siren Circle.",
+    "emailLabel": "E-mail",
+    "memberCodeLabel": "Code membre",
+    "submit": "Voir mon compte",
+    "submitting": "Recherche en cours…",
+    "errorGeneric": "Nous n'avons trouvé aucun compte correspondant à cet e-mail et ce code membre.",
+    "welcomeBack": "Bon retour",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "Membre depuis",
+    "myBespokeTitle": "Mes demandes sur mesure",
+    "myPurchasesTitle": "Mes demandes d'achat",
+    "noBespoke": "Vous n'avez pas encore soumis de demande sur mesure.",
+    "noPurchases": "Vous n'avez pas encore soumis de demande d'achat.",
+    "trackingLabel": "Numéro de suivi",
+    "notShippedYet": "Pas encore expédié"
   }
 }

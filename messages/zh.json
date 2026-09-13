@@ -11,7 +11,8 @@
     "gallery": "买家秀",
     "shop": "商店",
     "membership": "会员",
-    "bespoke": "定制"
+    "bespoke": "定制",
+    "account": "我的账户"
   },
   "hero": {
     "eyebrow": "来自新西兰的工作室",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "镶嵌宝石珠宝",
     "aotearoaIntro": "更精致的一条产品线,手工镶嵌——戒指、项链、手链与手镯,每一件都围绕一颗手选宝石而设计。",
     "shopLine": "浏览此系列"
+  },
+  "account": {
+    "eyebrow": "我的账户",
+    "title": "你在 Siren Tears 的专属空间。",
+    "intro": "请输入你加入 Siren Circle 时收到的邮箱与会员码。",
+    "emailLabel": "邮箱",
+    "memberCodeLabel": "会员码",
+    "submit": "查看我的账户",
+    "submitting": "查询中…",
+    "errorGeneric": "未能找到与该邮箱和会员码匹配的账户。",
+    "welcomeBack": "欢迎回来",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "加入时间",
+    "myBespokeTitle": "我的定制申请",
+    "myPurchasesTitle": "我的购买申请",
+    "noBespoke": "你还没有提交过定制申请。",
+    "noPurchases": "你还没有提交过购买申请。",
+    "trackingLabel": "物流单号",
+    "notShippedYet": "尚未发货"
   }
 }

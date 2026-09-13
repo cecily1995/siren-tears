@@ -13,6 +13,7 @@ export default defineType({
     defineField({ name: 'country', title: 'Country', type: 'string' }),
     defineField({ name: 'shippingAddress', title: 'Shipping address', type: 'text', rows: 3 }),
     defineField({ name: 'message', title: 'Message', type: 'text', rows: 4 }),
+    defineField({ name: 'trackingNumber', title: 'NZ Post tracking number', type: 'string' }),
     defineField({
       name: 'status',
       title: 'Status',

@@ -11,7 +11,8 @@
     "gallery": "Worn By You",
     "shop": "Shop",
     "membership": "Membership",
-    "bespoke": "Bespoke"
+    "bespoke": "Bespoke",
+    "account": "My Siren"
   },
   "hero": {
     "eyebrow": "A New Zealand Atelier",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "Gemstone Jewellery",
     "aotearoaIntro": "A finer line, set by hand — rings, necklaces, bracelets and bangles built around a single hand-selected gemstone.",
     "shopLine": "Shop the Line"
+  },
+  "account": {
+    "eyebrow": "My Siren",
+    "title": "Your place within Siren Tears.",
+    "intro": "Enter the email and member code you received when you joined the Siren Circle.",
+    "emailLabel": "Email",
+    "memberCodeLabel": "Member code",
+    "submit": "View My Account",
+    "submitting": "Looking up…",
+    "errorGeneric": "We couldn't find an account matching that email and member code.",
+    "welcomeBack": "Welcome back",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "Member since",
+    "myBespokeTitle": "My Bespoke Requests",
+    "myPurchasesTitle": "My Purchase Requests",
+    "noBespoke": "You haven't submitted a bespoke request yet.",
+    "noPurchases": "You haven't submitted a purchase request yet.",
+    "trackingLabel": "Tracking number",
+    "notShippedYet": "Not yet shipped"
   }
 }

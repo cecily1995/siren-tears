@@ -79,6 +79,13 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
           >
             {t('enquire')}
           </Link>
+          <Link
+            href="/account"
+            onClick={() => setOpen(false)}
+            className="text-[11px] tracking-[0.32em] uppercase text-ash"
+          >
+            {t('account')}
+          </Link>
         </nav>
       </div>
     </div>

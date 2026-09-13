@@ -65,6 +65,14 @@ export default function Navigation() {
 
         <div className="flex items-center gap-3 md:gap-5">
           <Link
+            href="/account"
+            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+              scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
+            }`}
+          >
+            {t('account')}
+          </Link>
+          <Link
             href="/#contact"
             className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'

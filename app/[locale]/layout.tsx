@@ -76,7 +76,8 @@ export default async function LocaleLayout({
     faq: t('footer.faq'),
     privacy: t('footer.privacy'),
     terms: t('footer.terms'),
-    aboutLabel: t('nav.about')
+    aboutLabel: t('nav.about'),
+    account: t('nav.account')
   };
 
   return (

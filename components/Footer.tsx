@@ -32,6 +32,7 @@ type Labels = {
   privacy: string;
   terms: string;
   aboutLabel: string;
+  account: string;
 };
 
 import { Link } from '@/i18n/routing';
@@ -88,6 +89,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               <li>
                 <Link href="/worn-by-you" className="link-underline text-ivory/85 hover:text-ivory">
                   {labels.gallery}
+                </Link>
+              </li>
+              <li>
+                <Link href="/account" className="link-underline text-ivory/85 hover:text-ivory">
+                  {labels.account}
                 </Link>
               </li>
               <li>

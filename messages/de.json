@@ -11,7 +11,8 @@
     "gallery": "Getragen von Ihnen",
     "shop": "Shop",
     "membership": "Mitgliedschaft",
-    "bespoke": "Maßanfertigung"
+    "bespoke": "Maßanfertigung",
+    "account": "Mein Konto"
   },
   "hero": {
     "eyebrow": "Ein Atelier in Neuseeland",
@@ -390,5 +391,25 @@
     "aotearoaTitle": "Edelsteinschmuck",
     "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Ketten, Armbänder und Armreifen, gestaltet um einen handverlesenen Edelstein.",
     "shopLine": "Linie entdecken"
+  },
+  "account": {
+    "eyebrow": "Mein Konto",
+    "title": "Ihr Platz bei Siren Tears.",
+    "intro": "Geben Sie die E-Mail-Adresse und den Mitgliedscode ein, die Sie beim Beitritt zum Siren Circle erhalten haben.",
+    "emailLabel": "E-Mail",
+    "memberCodeLabel": "Mitgliedscode",
+    "submit": "Mein Konto ansehen",
+    "submitting": "Wird gesucht…",
+    "errorGeneric": "Wir konnten kein Konto mit dieser E-Mail und diesem Mitgliedscode finden.",
+    "welcomeBack": "Willkommen zurück",
+    "tierCircle": "Siren Circle",
+    "tierPrivate": "Private Client",
+    "joinedLabel": "Mitglied seit",
+    "myBespokeTitle": "Meine Maßanfertigungsanfragen",
+    "myPurchasesTitle": "Meine Kaufanfragen",
+    "noBespoke": "Sie haben noch keine Maßanfertigungsanfrage gesendet.",
+    "noPurchases": "Sie haben noch keine Kaufanfrage gesendet.",
+    "trackingLabel": "Sendungsnummer",
+    "notShippedYet": "Noch nicht versandt"
   }
 }
