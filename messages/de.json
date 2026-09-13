@@ -410,6 +410,14 @@
     "noBespoke": "Sie haben noch keine Maßanfertigungsanfrage gesendet.",
     "noPurchases": "Sie haben noch keine Kaufanfrage gesendet.",
     "trackingLabel": "Sendungsnummer",
-    "notShippedYet": "Noch nicht versandt"
+    "notShippedYet": "Noch nicht versandt",
+    "forgotLink": "Mitgliedscode vergessen?",
+    "forgotTitle": "Mitgliedscode finden",
+    "forgotBody": "Geben Sie die E-Mail-Adresse ein, mit der Sie beigetreten sind, und wir zeigen Ihnen Ihren Code.",
+    "forgotSubmit": "Meinen Code finden",
+    "forgotSubmitting": "Wird gesucht…",
+    "foundPrefix": "Ihr Mitgliedscode lautet",
+    "useThisCode": "Diesen Code verwenden",
+    "back": "Zurück"
   }
 }

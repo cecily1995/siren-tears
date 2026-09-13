@@ -410,6 +410,14 @@
     "noBespoke": "아직 제출한 커스텀 주문 신청이 없습니다.",
     "noPurchases": "아직 제출한 구매 요청이 없습니다.",
     "trackingLabel": "운송장 번호",
-    "notShippedYet": "아직 발송되지 않음"
+    "notShippedYet": "아직 발송되지 않음",
+    "forgotLink": "회원 코드를 잊으셨나요?",
+    "forgotTitle": "회원 코드 찾기",
+    "forgotBody": "가입하신 이메일을 입력하시면 회원 코드를 알려드립니다.",
+    "forgotSubmit": "내 코드 찾기",
+    "forgotSubmitting": "조회 중…",
+    "foundPrefix": "회원님의 회원 코드는",
+    "useThisCode": "이 코드 사용하기",
+    "back": "뒤로"
   }
 }

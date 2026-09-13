@@ -410,6 +410,14 @@
     "noBespoke": "Non hai ancora inviato una richiesta su misura.",
     "noPurchases": "Non hai ancora inviato una richiesta di acquisto.",
     "trackingLabel": "Numero di tracciamento",
-    "notShippedYet": "Non ancora spedito"
+    "notShippedYet": "Non ancora spedito",
+    "forgotLink": "Hai dimenticato il codice membro?",
+    "forgotTitle": "Trova il tuo codice membro",
+    "forgotBody": "Inserisci l'email con cui ti sei iscritta/o e ti mostreremo il tuo codice.",
+    "forgotSubmit": "Trova il mio codice",
+    "forgotSubmitting": "Ricerca in corso…",
+    "foundPrefix": "Il tuo codice membro è",
+    "useThisCode": "Usa questo codice",
+    "back": "Indietro"
   }
 }

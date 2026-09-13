@@ -410,6 +410,14 @@
     "noBespoke": "You haven't submitted a bespoke request yet.",
     "noPurchases": "You haven't submitted a purchase request yet.",
     "trackingLabel": "Tracking number",
-    "notShippedYet": "Not yet shipped"
+    "notShippedYet": "Not yet shipped",
+    "forgotLink": "Forgot your member code?",
+    "forgotTitle": "Find your member code",
+    "forgotBody": "Enter the email you joined with and we'll show you your code.",
+    "forgotSubmit": "Find My Code",
+    "forgotSubmitting": "Looking up…",
+    "foundPrefix": "Your member code is",
+    "useThisCode": "Use This Code",
+    "back": "Back"
   }
 }

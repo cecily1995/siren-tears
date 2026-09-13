@@ -410,6 +410,14 @@
     "noBespoke": "你还没有提交过定制申请。",
     "noPurchases": "你还没有提交过购买申请。",
     "trackingLabel": "物流单号",
-    "notShippedYet": "尚未发货"
+    "notShippedYet": "尚未发货",
+    "forgotLink": "忘记会员码了?",
+    "forgotTitle": "找回会员码",
+    "forgotBody": "输入你注册时用的邮箱,我们会把会员码显示给你。",
+    "forgotSubmit": "找回会员码",
+    "forgotSubmitting": "查询中…",
+    "foundPrefix": "你的会员码是",
+    "useThisCode": "使用这个会员码",
+    "back": "返回"
   }
 }

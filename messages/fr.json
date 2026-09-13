@@ -410,6 +410,14 @@
     "noBespoke": "Vous n'avez pas encore soumis de demande sur mesure.",
     "noPurchases": "Vous n'avez pas encore soumis de demande d'achat.",
     "trackingLabel": "Numéro de suivi",
-    "notShippedYet": "Pas encore expédié"
+    "notShippedYet": "Pas encore expédié",
+    "forgotLink": "Code membre oublié ?",
+    "forgotTitle": "Retrouver votre code membre",
+    "forgotBody": "Saisissez l'e-mail utilisé lors de votre inscription et nous vous montrerons votre code.",
+    "forgotSubmit": "Retrouver mon code",
+    "forgotSubmitting": "Recherche en cours…",
+    "foundPrefix": "Votre code membre est",
+    "useThisCode": "Utiliser ce code",
+    "back": "Retour"
   }
 }

@@ -410,6 +410,14 @@
     "noBespoke": "まだオーダーメイドのご相談を送信されていません。",
     "noPurchases": "まだ購入リクエストを送信されていません。",
     "trackingLabel": "追跡番号",
-    "notShippedYet": "まだ発送されていません"
+    "notShippedYet": "まだ発送されていません",
+    "forgotLink": "会員コードをお忘れですか?",
+    "forgotTitle": "会員コードを確認する",
+    "forgotBody": "ご登録時のメールアドレスをご入力いただくと、会員コードをお知らせします。",
+    "forgotSubmit": "コードを確認する",
+    "forgotSubmitting": "確認中…",
+    "foundPrefix": "あなたの会員コードは",
+    "useThisCode": "このコードを使用する",
+    "back": "戻る"
   }
 }
