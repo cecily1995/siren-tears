@@ -90,6 +90,16 @@ body {
   display: none;
 }
 
+/* Full-viewport height that accounts for mobile browsers' collapsing
+   address bar. 100vh is a safe fallback; 100dvh (dynamic viewport height)
+   is preferred where supported and updates live as the browser chrome
+   shows/hides, instead of the hero appearing short with a gap below it
+   until the user scrolls once. */
+.h-viewport-full {
+  height: 100vh;
+  height: 100dvh;
+}
+
 
 a, button {
   transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;

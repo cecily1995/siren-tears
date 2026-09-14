@@ -15,7 +15,7 @@ export default function Hero({ data }: { data: HeroData }) {
   return (
     <section
       id="top"
-      className="relative h-[100svh] min-h-[640px] w-full overflow-hidden text-ivory grain"
+      className="relative h-viewport-full min-h-[640px] w-full overflow-hidden text-ivory grain"
     >
       {/* Background image with slow Ken Burns — untouched, exactly as before */}
       <div
