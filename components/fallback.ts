@@ -166,8 +166,8 @@ export const fallback = {
     ]
   },
   atelier: {
-    imageUrl: U('photo-1617038260897-41a1f14a8ca0', 1800),
-    imageAlt: 'Hands shaping jewellery at a quiet workbench'
+    imageUrl: '/atelier/rope-ring-bracelet-ocean.jpg',
+    imageAlt: 'A hand holding a rope over the ocean, wearing a blue stone bracelet and gemstone ring'
   },
   settings: {
     brandName: 'SIREN TEARS',

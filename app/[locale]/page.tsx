@@ -115,11 +115,6 @@ export default async function HomePage({
     eyebrow: t('atelier.eyebrow'),
     title: t('atelier.title'),
     paragraphs: [t('about.p1'), t('about.p2'), t('about.p3')],
-    stats: [
-      { value: '06', label: t('about.stats.years') },
-      { value: '35+', label: t('about.stats.countries') },
-      { value: '01', label: t('about.stats.studio') }
-    ],
     imageUrl: fallback.atelier.imageUrl,
     imageAlt: fallback.atelier.imageAlt
   };
@@ -135,8 +130,20 @@ export default async function HomePage({
         labels={collectionsLabels}
       />
       <AotearoaTeaser items={aotearoaProducts} labels={aotearoaLabels} />
-      <WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />
-      <Atelier data={atelierData} />
+
+      {/* Worn By You -> The Atelier: a pure-CSS "pull up" stacked-panel
+          transition. Both sections are sticky at the top of the viewport;
+          The Atelier sits later in the document with a higher z-index and
+          its own opaque background, so as the page scrolls it naturally
+          rises up the screen and settles over Worn By You rather than a
+          simple fade. Reverses automatically when scrolling back up, and
+          needs no JS/scroll-jacking since it's just position:sticky. */}
+      <div className="sticky top-0 z-0">
+        <WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />
+      </div>
+      <div className="sticky top-0 z-10">
+        <Atelier data={atelierData} />
+      </div>
     </>
   );
 }
