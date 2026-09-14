@@ -12,14 +12,14 @@ export default function FooterAccordionSection({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="border-b border-ivory/15">
+    <div className="border-b border-charcoal/15">
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         className="w-full flex items-center justify-between py-4 text-left"
       >
-        <span className="eyebrow text-ivory/70">{title}</span>
-        <span className="text-ivory/60 text-lg leading-none font-light">{open ? '−' : '+'}</span>
+        <span className="eyebrow text-charcoal/70">{title}</span>
+        <span className="text-charcoal/60 text-lg leading-none font-light">{open ? '−' : '+'}</span>
       </button>
       {open && <div className="pb-5">{children}</div>}
     </div>

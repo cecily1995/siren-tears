@@ -39,6 +39,7 @@ type Labels = {
 
 import { Link } from '@/i18n/routing';
 import FooterAccordionSection from './FooterAccordionSection';
+import CurrencySelector from './CurrencySelector';
 
 export default function Footer({ data, labels }: { data: FooterData; labels: Labels }) {
   return (
@@ -348,7 +349,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               {labels.terms}
             </Link>
             <span className="hidden md:inline">{labels.crafted}</span>
-            <span className="text-charcoal/45">$/NZD</span>
+            <CurrencySelector />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/logo/siren-tears-mark.png"
