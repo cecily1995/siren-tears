@@ -4,6 +4,12 @@ import { createNavigation } from 'next-intl/navigation';
 export const routing = defineRouting({
   locales: ['en', 'zh', 'fr', 'de', 'ru', 'ko', 'ja', 'it'],
   defaultLocale: 'en',
+  // Always default to English at the root `/` regardless of the visitor's
+  // browser/system language, and don't remember a past choice from a
+  // shared cookie either -- every unprefixed link (e.g. someone opening a
+  // link shared in WeChat) should land in English, with the language
+  // switcher there for them to change it themselves.
+  localeDetection: false,
   localePrefix: 'as-needed' // English at `/`, others at `/zh`, `/fr`, etc.
 });
 
