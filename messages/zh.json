@@ -370,7 +370,9 @@
       "successBody": "你的会员权益已生效。请妥善保存你的会员码——购物时可能需要用到。",
       "codeLabel": "你的会员码",
       "errorGeneric": "出了点问题,请重试,或直接联系我们。",
-      "countryLabel": "国家/地区"
+      "countryLabel": "国家/地区",
+      "needAccountFirst": "会员和账户是分开的两件事。请先登录或注册一个账户,再回到这里加入 Siren Circle。",
+      "alreadyMemberTitle": "你已经是 Siren Circle 的会员了。"
     },
     "privatePriceNote": "暂定:一次性支付 NZD $999 即可直接加入 Private Client,具体权益确定后可能调整。"
   },
@@ -462,7 +464,11 @@
     "gateLoginTitle": "欢迎回来",
     "joinedSuccessBody": "你的会员权益已生效,请妥善保存你的会员码。",
     "continueExploring": "去逛逛系列",
-    "continueBrowsing": "暂不注册,先随便看看"
+    "continueBrowsing": "暂不注册,先随便看看",
+    "accountCreatedTitle": "账户已创建。",
+    "accountCreatedBody": "你随时可以在 My Siren 登录。会员是单独的一步,想加入的时候再去申请就行。",
+    "joinCircleCta": "加入 Siren Circle",
+    "notMemberYet": "还未加入 Siren Circle"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",

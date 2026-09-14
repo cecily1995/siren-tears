@@ -13,6 +13,7 @@ type Member = {
   birthday?: string;
   memberCode?: string;
   tier?: string;
+  isMember?: boolean;
   joinedAt?: string;
 };
 
@@ -272,10 +273,12 @@ export default function AccountLookupForm() {
             </div>
           </div>
           <div className="flex flex-wrap gap-x-10 gap-y-2 text-[0.85rem] text-ash font-light">
-            <span>
-              {t('memberCodeLabel')}: <span className="text-gold">{member.memberCode}</span>
-            </span>
-            <span>{tierLabel}</span>
+            {member.isMember && (
+              <span>
+                {t('memberCodeLabel')}: <span className="text-gold">{member.memberCode}</span>
+              </span>
+            )}
+            <span>{member.isMember ? tierLabel : t('notMemberYet')}</span>
             {joined && (
               <span>
                 {t('joinedLabel')}: {joined}
@@ -283,19 +286,30 @@ export default function AccountLookupForm() {
             )}
           </div>
 
-          <div className="mt-6 pt-6 border-t border-charcoal/10">
-            <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-3">
-              {t('benefitsTitle')}
-            </p>
-            <ul className="space-y-1.5">
-              {benefits.map((b, i) => (
-                <li key={i} className="text-[0.85rem] text-ash font-light pl-4 relative">
-                  <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full bg-gold/70" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </div>
+          {member.isMember ? (
+            <div className="mt-6 pt-6 border-t border-charcoal/10">
+              <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-3">
+                {t('benefitsTitle')}
+              </p>
+              <ul className="space-y-1.5">
+                {benefits.map((b, i) => (
+                  <li key={i} className="text-[0.85rem] text-ash font-light pl-4 relative">
+                    <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full bg-gold/70" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="mt-6 pt-6 border-t border-charcoal/10">
+              <a
+                href="/membership"
+                className="inline-block text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+              >
+                {t('joinCircleCta')}
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">

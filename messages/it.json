@@ -370,7 +370,9 @@
       "successBody": "I tuoi vantaggi sono ora attivi. Conserva il tuo codice membro in un luogo sicuro — potrebbe esserti richiesto durante gli acquisti.",
       "codeLabel": "Il tuo codice membro",
       "errorGeneric": "Qualcosa è andato storto. Riprova, oppure contattaci direttamente.",
-      "countryLabel": "Paese"
+      "countryLabel": "Paese",
+      "needAccountFirst": "L'iscrizione è separata dal tuo account. Accedi o crea prima un account, poi torna qui per entrare nel Siren Circle.",
+      "alreadyMemberTitle": "Fai già parte del Siren Circle."
     },
     "privatePriceNote": "Provvisorio: potrebbe essere richiesto un contributo una tantum di NZD $999 per entrare direttamente come Private Client, in attesa dei vantaggi definitivi."
   },
@@ -462,7 +464,11 @@
     "gateLoginTitle": "Bentornata/o",
     "joinedSuccessBody": "I tuoi vantaggi sono ora attivi. Conserva il tuo codice membro in un luogo sicuro.",
     "continueExploring": "Scopri la Collezione",
-    "continueBrowsing": "Continua senza account"
+    "continueBrowsing": "Continua senza account",
+    "accountCreatedTitle": "Il tuo account è pronto.",
+    "accountCreatedBody": "Ora puoi accedere in qualsiasi momento da My Siren. L'iscrizione è un passaggio separato, quando vorrai.",
+    "joinCircleCta": "Entra nel Siren Circle",
+    "notMemberYet": "Non ancora membro del Siren Circle"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",

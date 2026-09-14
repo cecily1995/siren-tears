@@ -370,7 +370,9 @@
       "successBody": "Your benefits are now active. Keep your member code somewhere safe — you may be asked for it when you shop with us.",
       "codeLabel": "Your member code",
       "errorGeneric": "Something went wrong. Please try again, or contact us directly.",
-      "countryLabel": "Country"
+      "countryLabel": "Country",
+      "needAccountFirst": "Membership is separate from your account. Please log in or create an account first, then come back here to join the Siren Circle.",
+      "alreadyMemberTitle": "You're already part of the Siren Circle."
     },
     "privatePriceNote": "Provisional: a one-time NZD $999 may apply to enter Private Client directly, pending final benefits."
   },
@@ -462,7 +464,11 @@
     "gateLoginTitle": "Welcome back",
     "joinedSuccessBody": "Your benefits are now active. Keep your member code somewhere safe.",
     "continueExploring": "Explore the Collection",
-    "continueBrowsing": "Continue browsing without an account"
+    "continueBrowsing": "Continue browsing without an account",
+    "accountCreatedTitle": "Your account is ready.",
+    "accountCreatedBody": "You can now log in anytime from My Siren. Membership is a separate step, whenever you'd like.",
+    "joinCircleCta": "Join the Siren Circle",
+    "notMemberYet": "Not a Siren Circle member yet"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",

@@ -13,7 +13,6 @@ export default function AuthGateModal() {
   const [mode, setMode] = useState<'login' | 'register'>('register');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
-  const [memberCode, setMemberCode] = useState('');
 
   useEffect(() => {
     setMounted(true);
@@ -67,7 +66,6 @@ export default function AuthGateModal() {
         setStatus('error');
         return;
       }
-      setMemberCode(data.memberCode);
       setStatus('success');
       sessionStorage.setItem(DISMISS_KEY, '1');
     } catch {
@@ -128,21 +126,21 @@ export default function AuthGateModal() {
         {status === 'success' ? (
           <div className="text-center pt-4">
             <p className="serif-display text-[1.4rem] font-light text-charcoal mb-3">
-              {t('welcomeBack')}
+              {t('accountCreatedTitle')}
             </p>
-            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-5">
-              {t('joinedSuccessBody')}
+            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-6">
+              {t('accountCreatedBody')}
             </p>
-            <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-2">
-              {t('memberCodeLabel')}
-            </p>
-            <p className="serif-display text-[1.5rem] tracking-[0.15em] text-gold mb-6">
-              {memberCode}
-            </p>
+            <a
+              href="/membership"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+            >
+              {t('joinCircleCta')}
+            </a>
             <button
               type="button"
               onClick={dismiss}
-              className="text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+              className="block w-full mt-4 text-[10px] tracking-[0.2em] uppercase text-ash/60"
             >
               {t('continueExploring')}
             </button>

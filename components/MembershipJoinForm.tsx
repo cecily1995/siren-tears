@@ -1,16 +1,36 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 
+type SessionMember = {
+  firstName?: string;
+  lastName?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  country?: string;
+  birthday?: string;
+  memberCode?: string;
+  isMember?: boolean;
+};
+
 export default function MembershipJoinForm() {
   const t = useTranslations('membership.form');
-  const tAccount = useTranslations('account');
   const tNav = useTranslations('nav');
+  const [checking, setChecking] = useState(true);
+  const [session, setSession] = useState<SessionMember | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [memberCode, setMemberCode] = useState('');
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then((r) => r.json())
+      .then((data) => setSession(data.member ?? null))
+      .finally(() => setChecking(false));
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -22,15 +42,13 @@ export default function MembershipJoinForm() {
       firstName: form.get('firstName')?.toString() || '',
       lastName: form.get('lastName')?.toString() || '',
       birthday: form.get('birthday')?.toString() || '',
-      email: form.get('email')?.toString() || '',
-      password: form.get('password')?.toString() || '',
       phone: form.get('phone')?.toString() || '',
       address: form.get('address')?.toString() || '',
       country: form.get('country')?.toString() || ''
     };
 
     try {
-      const res = await fetch('/api/auth/register', {
+      const res = await fetch('/api/membership/join', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -53,6 +71,49 @@ export default function MembershipJoinForm() {
     'w-full bg-transparent border-b border-charcoal/20 focus:border-gold outline-none py-2.5 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
   const labelClass = 'block text-[10px] tracking-[0.24em] uppercase text-ash mb-1.5 font-light';
 
+  if (checking) {
+    return <div className="mt-10 text-center text-[0.85rem] text-ash/60 font-light">…</div>;
+  }
+
+  // Not logged in at all — account and membership are separate; you need
+  // an account first.
+  if (!session) {
+    return (
+      <div className="mt-10 border border-charcoal/12 bg-ivory p-8 text-center">
+        <p className="text-[0.9rem] text-ash font-light leading-relaxed mb-6">
+          {t('needAccountFirst')}
+        </p>
+        <Link
+          href="/account"
+          className="inline-block text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+        >
+          {tNav('account')} →
+        </Link>
+      </div>
+    );
+  }
+
+  // Logged in and already a member.
+  if (session.isMember && status !== 'success') {
+    return (
+      <div className="mt-10 border border-gold/40 bg-ivory p-6 text-center">
+        <p className="serif-display text-[1.2rem] font-light text-charcoal mb-3">
+          {t('alreadyMemberTitle')}
+        </p>
+        <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-2">{t('codeLabel')}</p>
+        <p className="serif-display text-[1.6rem] tracking-[0.15em] text-gold">
+          {session.memberCode}
+        </p>
+        <Link
+          href="/account"
+          className="inline-block mt-6 text-[11px] tracking-[0.28em] uppercase text-charcoal link-underline"
+        >
+          {tNav('account')} →
+        </Link>
+      </div>
+    );
+  }
+
   if (status === 'success') {
     return (
       <div className="mt-10 border border-gold/40 bg-ivory p-6 text-center">
@@ -72,40 +133,33 @@ export default function MembershipJoinForm() {
     );
   }
 
+  // Logged in, not yet a member — complete profile + join.
   return (
     <form onSubmit={handleSubmit} className="mt-10">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-5">
         <div>
-          <label className={labelClass}>{t('firstNameLabel')} *</label>
-          <input name="firstName" type="text" required className={inputClass} />
+          <label className={labelClass}>{t('firstNameLabel')}</label>
+          <input name="firstName" type="text" defaultValue={session.firstName} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('lastNameLabel')}</label>
-          <input name="lastName" type="text" className={inputClass} />
-        </div>
-        <div>
-          <label className={labelClass}>{t('emailLabel')} *</label>
-          <input name="email" type="email" required className={inputClass} />
-        </div>
-        <div>
-          <label className={labelClass}>{tAccount('passwordLabel')} *</label>
-          <input name="password" type="password" required minLength={8} className={inputClass} />
+          <input name="lastName" type="text" defaultValue={session.lastName} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('phoneLabel')}</label>
-          <input name="phone" type="tel" className={inputClass} />
+          <input name="phone" type="tel" defaultValue={session.phone} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('birthdayLabel')}</label>
-          <input name="birthday" type="date" className={inputClass} />
+          <input name="birthday" type="date" defaultValue={session.birthday} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('addressLabel')}</label>
-          <input name="address" type="text" className={inputClass} />
+          <input name="address" type="text" defaultValue={session.address} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('countryLabel')}</label>
-          <input name="country" type="text" className={inputClass} />
+          <input name="country" type="text" defaultValue={session.country} className={inputClass} />
         </div>
       </div>
 

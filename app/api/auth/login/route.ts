@@ -36,9 +36,9 @@ export async function POST(request: Request) {
 
   try {
     const member = await client.fetch<
-      { _id: string; passwordHash?: string; firstName?: string; lastName?: string; memberCode?: string; tier?: string } | null
+      { _id: string; passwordHash?: string; firstName?: string; lastName?: string; memberCode?: string; tier?: string; isMember?: boolean } | null
     >(
-      `*[_type == "member" && lower(email) == lower($email)][0]{ _id, passwordHash, firstName, lastName, memberCode, tier }`,
+      `*[_type == "member" && lower(email) == lower($email)][0]{ _id, passwordHash, firstName, lastName, memberCode, tier, isMember }`,
       { email }
     );
 
@@ -54,7 +54,8 @@ export async function POST(request: Request) {
         lastName: member.lastName,
         email,
         memberCode: member.memberCode,
-        tier: member.tier
+        tier: member.tier,
+        isMember: member.isMember
       }
     });
     if (token) {

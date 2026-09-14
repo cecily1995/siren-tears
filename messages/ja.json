@@ -370,7 +370,9 @@
       "successBody": "会員特典が有効になりました。会員コードは大切に保管してください——お買い物の際に確認させていただく場合があります。",
       "codeLabel": "会員コード",
       "errorGeneric": "問題が発生しました。もう一度お試しいただくか、直接お問い合わせください。",
-      "countryLabel": "国"
+      "countryLabel": "国",
+      "needAccountFirst": "会員登録はアカウントとは別のものです。まずログインまたはアカウントを作成してから、こちらに戻ってSiren Circleにご参加ください。",
+      "alreadyMemberTitle": "すでにSiren Circleの会員です。"
     },
     "privatePriceNote": "暫定案内:Private Clientへ直接ご登録の場合、NZD 999の一括費用が発生する場合があります。最終的な特典は今後確定いたします。"
   },
@@ -462,7 +464,11 @@
     "gateLoginTitle": "おかえりなさい",
     "joinedSuccessBody": "会員特典が有効になりました。会員コードは大切に保管してください。",
     "continueExploring": "コレクションを見る",
-    "continueBrowsing": "アカウントなしで続ける"
+    "continueBrowsing": "アカウントなしで続ける",
+    "accountCreatedTitle": "アカウントの準備が整いました。",
+    "accountCreatedBody": "いつでもMy Sirenからログインいただけます。会員登録は別のステップですので、ご都合の良いタイミングでどうぞ。",
+    "joinCircleCta": "Siren Circleに参加する",
+    "notMemberYet": "まだSiren Circle会員ではありません"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",

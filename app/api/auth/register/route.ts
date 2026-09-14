@@ -11,13 +11,6 @@ function getWriteClient() {
   return createClient({ apiVersion, dataset, projectId, useCdn: false, token });
 }
 
-function generateMemberCode() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  let code = '';
-  for (let i = 0; i < 6; i++) code += chars[Math.floor(Math.random() * chars.length)];
-  return `ST-${code}`;
-}
-
 export async function POST(request: Request) {
   const client = getWriteClient();
   if (!client || !process.env.SESSION_SECRET) {
@@ -79,7 +72,6 @@ export async function POST(request: Request) {
       );
     }
 
-    const memberCode = generateMemberCode();
     const created = await client.create({
       _type: 'member',
       firstName,
@@ -90,16 +82,14 @@ export async function POST(request: Request) {
       phone: phone || '',
       address: address || '',
       country: country || '',
-      memberCode,
-      tier: 'circle',
-      joinedAt: new Date().toISOString()
+      isMember: false,
+      joinedAt: ''
     });
 
     const token = createSessionToken({ id: created._id, email });
     const res = NextResponse.json({
       ok: true,
-      memberCode,
-      member: { firstName, lastName, email, memberCode, tier: 'circle' }
+      member: { firstName, lastName, email, isMember: false }
     });
     if (token) {
       res.cookies.set(SESSION_COOKIE_NAME, token, {
