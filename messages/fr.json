@@ -93,7 +93,8 @@
     "privacy": "Confidentialité",
     "terms": "Conditions",
     "shopHeader": "Boutique",
-    "support": "Assistance"
+    "support": "Assistance",
+    "brandStoryLabel": "Notre histoire"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -509,5 +510,8 @@
   },
   "common": {
     "chatCta": "Chat"
+  },
+  "brandStory": {
+    "pageTitle": "Notre histoire"
   }
 }

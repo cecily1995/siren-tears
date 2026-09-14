@@ -119,7 +119,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             <p className="eyebrow text-charcoal/50 mb-6">{labels.support}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/#about" className="link-underline text-charcoal/85 hover:text-charcoal">
+                <Link href="/brand-story" className="link-underline text-charcoal/85 hover:text-charcoal">
                   {labels.aboutLabel}
                 </Link>
               </li>
@@ -277,7 +277,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
           <FooterAccordionSection title={labels.support}>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/#about" className="link-underline text-charcoal/85">
+                <Link href="/brand-story" className="link-underline text-charcoal/85">
                   {labels.aboutLabel}
                 </Link>
               </li>

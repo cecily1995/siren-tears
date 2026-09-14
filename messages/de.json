@@ -93,7 +93,8 @@
     "privacy": "Datenschutz",
     "terms": "AGB",
     "shopHeader": "Shop",
-    "support": "Support"
+    "support": "Support",
+    "brandStoryLabel": "Markengeschichte"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -509,5 +510,8 @@
   },
   "common": {
     "chatCta": "Chat"
+  },
+  "brandStory": {
+    "pageTitle": "Unsere Geschichte"
   }
 }

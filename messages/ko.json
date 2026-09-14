@@ -93,7 +93,8 @@
     "privacy": "개인정보처리방침",
     "terms": "이용약관",
     "shopHeader": "쇼핑",
-    "support": "고객 지원"
+    "support": "고객 지원",
+    "brandStoryLabel": "브랜드 스토리"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -509,5 +510,8 @@
   },
   "common": {
     "chatCta": "채팅"
+  },
+  "brandStory": {
+    "pageTitle": "우리의 이야기"
   }
 }

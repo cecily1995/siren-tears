@@ -93,7 +93,8 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "shopHeader": "ショップ",
-    "support": "サポート"
+    "support": "サポート",
+    "brandStoryLabel": "ブランドストーリー"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -509,5 +510,8 @@
   },
   "common": {
     "chatCta": "チャット"
+  },
+  "brandStory": {
+    "pageTitle": "私たちの物語"
   }
 }

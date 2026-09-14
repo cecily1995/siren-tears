@@ -93,7 +93,8 @@
     "privacy": "隐私政策",
     "terms": "条款",
     "shopHeader": "购买",
-    "support": "支持"
+    "support": "支持",
+    "brandStoryLabel": "品牌故事"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -509,5 +510,8 @@
   },
   "common": {
     "chatCta": "联系我们"
+  },
+  "brandStory": {
+    "pageTitle": "我们的故事"
   }
 }
