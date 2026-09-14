@@ -50,7 +50,7 @@ export async function POST(request: Request) {
 
       await client.patch(member._id).set({ resetCode: code, resetCodeExpiresAt: expiresAt }).commit();
 
-      await sendEmail({
+      const sendResult = await sendEmail({
         to: email,
         subject: `Your Siren Tears reset code: ${code}`,
         html: `
@@ -63,6 +63,9 @@ export async function POST(request: Request) {
           </div>
         `
       });
+      if (!sendResult.ok) {
+        console.error('forgot-password: email send failed for', email, sendResult.error);
+      }
     }
 
     return genericOk;

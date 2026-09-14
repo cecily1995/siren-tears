@@ -432,6 +432,8 @@ export default function AccountLookupForm() {
                 name="code"
                 type="text"
                 inputMode="numeric"
+                autoComplete="one-time-code"
+                placeholder="123456"
                 required
                 maxLength={6}
                 className={inputClass}
@@ -439,7 +441,7 @@ export default function AccountLookupForm() {
             </div>
             <div>
               <label className={labelClass}>{t('newPasswordLabel')} *</label>
-              <input name="password" type="password" required minLength={8} className={inputClass} />
+              <input name="password" type="password" required minLength={8} autoComplete="new-password" className={inputClass} />
             </div>
           </div>
 
@@ -516,7 +518,7 @@ export default function AccountLookupForm() {
           </div>
           <div>
             <label className={labelClass}>{t('passwordLabel')} *</label>
-            <input name="password" type="password" required minLength={8} className={inputClass} />
+            <input name="password" type="password" required minLength={8} autoComplete="new-password" className={inputClass} />
           </div>
         </div>
 

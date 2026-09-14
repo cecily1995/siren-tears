@@ -217,11 +217,20 @@ export default function AuthGateModal() {
                 </p>
                 <div>
                   <label className={labelClass}>{t('resetCodeLabel')} *</label>
-                  <input name="code" type="text" inputMode="numeric" required maxLength={6} className={inputClass} />
+                  <input
+                    name="code"
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    placeholder="123456"
+                    required
+                    maxLength={6}
+                    className={inputClass}
+                  />
                 </div>
                 <div>
                   <label className={labelClass}>{t('newPasswordLabel')} *</label>
-                  <input name="password" type="password" required minLength={8} className={inputClass} />
+                  <input name="password" type="password" required minLength={8} autoComplete="new-password" className={inputClass} />
                 </div>
                 {status === 'error' && (
                   <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
@@ -284,7 +293,7 @@ export default function AuthGateModal() {
                 </div>
                 <div>
                   <label className={labelClass}>{t('passwordLabel')} *</label>
-                  <input name="password" type="password" required minLength={8} className={inputClass} />
+                  <input name="password" type="password" required minLength={8} autoComplete="new-password" className={inputClass} />
                 </div>
                 {status === 'error' && (
                   <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
