@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { sendEmail } from '@/lib/email';
 
 export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 // Visit /api/debug/test-email?to=you@example.com in the browser directly.
 // Shows exactly what happened -- whether RESEND_API_KEY is even present,
