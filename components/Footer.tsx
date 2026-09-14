@@ -46,6 +46,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
       id="contact"
       className="bg-[#191d22] text-ivory px-6 md:px-12 pt-20 md:pt-28 pb-10 md:pb-12 relative overflow-hidden"
     >
+      {/* Soft blend from the light section above into the dark footer, instead of a hard cut. */}
+      <div
+        className="absolute inset-x-0 top-0 h-24 md:h-32 pointer-events-none"
+        style={{ background: 'linear-gradient(180deg, #FAF6EE 0%, rgba(25,29,34,0) 100%)' }}
+      />
       {/* Deep Southern Ocean base tint, echoing the Hero rather than a flat charcoal/black */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -363,6 +368,13 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               {labels.terms}
             </Link>
             <span className="hidden md:inline">{labels.crafted}</span>
+            <span className="text-ivory/45">$/NZD</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/logo/siren-tears-mark.png"
+              alt="Siren Tears"
+              className="h-5 w-5 object-contain opacity-70"
+            />
           </div>
         </div>
       </div>

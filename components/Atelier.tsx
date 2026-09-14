@@ -11,9 +11,10 @@ type Data = {
 export default function Atelier({ data }: { data: Data }) {
   return (
     <section id="about" className="bg-pearl text-charcoal">
-      {/* Mobile: full-bleed portrait image at the very top, text below. */}
-      <div className="md:hidden">
-        <div className="relative w-full aspect-[9/16] overflow-hidden bg-charcoal/5">
+      {/* Mobile: text first (eyebrow, title, story, CTA), full-width image below. */}
+      <div className="md:hidden px-6 py-10">
+        <AtelierText data={data} align="left" />
+        <div className="relative w-full aspect-[9/16] overflow-hidden bg-charcoal/5 mt-8">
           {data.imageUrl && (
             <div
               className="absolute inset-0 bg-center bg-cover"
@@ -23,15 +24,12 @@ export default function Atelier({ data }: { data: Data }) {
             />
           )}
         </div>
-        <div className="px-6 py-8">
-          <AtelierText data={data} align="left" />
-        </div>
       </div>
 
-      {/* Desktop: original side-by-side layout, image left / text right. */}
+      {/* Desktop: original side-by-side layout, image left / text right, text vertically centred against the image so there's no dead space below it. */}
       <div className="hidden md:block px-12 py-40">
-        <div className="mx-auto max-w-[1280px] grid grid-cols-12 gap-16 items-start">
-          <div className="col-span-6 sticky top-28 reveal">
+        <div className="mx-auto max-w-[1280px] grid grid-cols-12 gap-16 items-center">
+          <div className="col-span-6 reveal">
             <div className="relative aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom">
               {data.imageUrl && (
                 <div

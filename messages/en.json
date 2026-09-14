@@ -506,5 +506,8 @@
     "title": "Gemstone Jewellery",
     "intro": "Hand-set gemstones, in a finer line of their own.",
     "cta": "View More"
+  },
+  "common": {
+    "chatCta": "Chat"
   }
 }

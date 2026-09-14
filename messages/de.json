@@ -506,5 +506,8 @@
     "title": "Edelsteinschmuck",
     "intro": "Von Hand gefasste Edelsteine, in einer eigenen, feineren Linie.",
     "cta": "Mehr ansehen"
+  },
+  "common": {
+    "chatCta": "Chat"
   }
 }

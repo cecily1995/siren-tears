@@ -24,7 +24,7 @@ export default function CurrentlyAvailable({
   return (
     <section className="bg-pearl py-14 md:py-36 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
-        <div className="text-center mb-8 md:mb-16 reveal">
+        <div className="text-left md:text-center mb-8 md:mb-16 reveal">
           <p className="eyebrow mb-5">{labels.eyebrow}</p>
           <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15]">
             {labels.title}
