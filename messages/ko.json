@@ -449,7 +449,20 @@
       "커스텀 우선 처리",
       "스튜디오 직접 연락"
     ],
-    "trackWithNzPost": "NZ Post로 조회하기"
+    "trackWithNzPost": "NZ Post로 조회하기",
+    "passwordLabel": "비밀번호",
+    "loginCta": "로그인",
+    "registerCta": "계정 만들기",
+    "noAccount": "계정이 없으신가요? 회원가입",
+    "haveAccount": "이미 계정이 있으신가요? 로그인",
+    "firstNameLabel": "이름",
+    "lastNameLabel": "성",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Siren Circle 가입하기",
+    "gateLoginTitle": "다시 오신 것을 환영합니다",
+    "joinedSuccessBody": "회원 혜택이 활성화되었습니다. 회원 코드를 안전하게 보관해 주세요.",
+    "continueExploring": "컬렉션 둘러보기",
+    "continueBrowsing": "계정 없이 둘러보기"
   },
   "wornByYouTeaser": {
     "eyebrow": "고객 착용 사진",

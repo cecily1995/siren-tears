@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from 'next-sanity';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
+import { verifySessionToken, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -11,6 +13,11 @@ function getWriteClient() {
 }
 
 export async function POST(request: Request) {
+  const session = verifySessionToken(cookies().get(SESSION_COOKIE_NAME)?.value);
+  if (!session) {
+    return NextResponse.json({ ok: false, error: 'Please log in again.' }, { status: 401 });
+  }
+
   const client = getWriteClient();
   if (!client) {
     return NextResponse.json(
@@ -26,30 +33,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'Invalid request body.' }, { status: 400 });
   }
 
-  const { email, memberCode, updates } = body ?? {};
-  if (!email || !memberCode) {
-    return NextResponse.json({ ok: false, error: 'Missing email or member code.' }, { status: 400 });
-  }
+  const { updates } = body ?? {};
 
   try {
-    const existing = await client.fetch<{ _id: string } | null>(
-      `*[_type == "member" && lower(email) == lower($email) && upper(memberCode) == upper($memberCode)][0]{ _id }`,
-      { email, memberCode }
-    );
-    if (!existing?._id) {
-      return NextResponse.json(
-        { ok: false, error: "We couldn't verify that account." },
-        { status: 404 }
-      );
-    }
-
     const allowedFields = ['firstName', 'lastName', 'birthday', 'phone', 'address', 'country'];
     const patch: Record<string, string> = {};
     for (const key of allowedFields) {
       if (typeof updates?.[key] === 'string') patch[key] = updates[key];
     }
 
-    await client.patch(existing._id).set(patch).commit();
+    await client.patch(session.id).set(patch).commit();
 
     return NextResponse.json({ ok: true });
   } catch (err) {

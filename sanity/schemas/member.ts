@@ -9,6 +9,13 @@ export default defineType({
     defineField({ name: 'lastName', title: 'Last name', type: 'string' }),
     defineField({ name: 'birthday', title: 'Date of birth', type: 'string' }),
     defineField({ name: 'email', title: 'Email', type: 'string', validation: (r) => r.required() }),
+    defineField({
+      name: 'passwordHash',
+      title: 'Password (hashed)',
+      type: 'string',
+      hidden: true,
+      description: 'Never edit this manually — set only via the site\u2019s register/login flow.'
+    }),
     defineField({ name: 'phone', title: 'Phone', type: 'string' }),
     defineField({ name: 'address', title: 'Usual address', type: 'text', rows: 2 }),
     defineField({ name: 'country', title: 'Country', type: 'string' }),

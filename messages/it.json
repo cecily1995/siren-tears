@@ -449,7 +449,20 @@
       "Su misura prioritario",
       "Accesso diretto all’Atelier"
     ],
-    "trackWithNzPost": "Traccia con NZ Post"
+    "trackWithNzPost": "Traccia con NZ Post",
+    "passwordLabel": "Password",
+    "loginCta": "Accedi",
+    "registerCta": "Crea account",
+    "noAccount": "Non hai un account? Registrati",
+    "haveAccount": "Hai già un account? Accedi",
+    "firstNameLabel": "Nome",
+    "lastNameLabel": "Cognome",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Entra nel Siren Circle",
+    "gateLoginTitle": "Bentornata/o",
+    "joinedSuccessBody": "I tuoi vantaggi sono ora attivi. Conserva il tuo codice membro in un luogo sicuro.",
+    "continueExploring": "Scopri la Collezione",
+    "continueBrowsing": "Continua senza account"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",

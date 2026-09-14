@@ -449,7 +449,20 @@
       "Приоритетный индивидуальный заказ",
       "Прямой доступ к мастерской"
     ],
-    "trackWithNzPost": "Отследить через NZ Post"
+    "trackWithNzPost": "Отследить через NZ Post",
+    "passwordLabel": "Пароль",
+    "loginCta": "Войти",
+    "registerCta": "Создать аккаунт",
+    "noAccount": "Нет аккаунта? Зарегистрируйтесь",
+    "haveAccount": "Уже есть аккаунт? Войти",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Вступить в Siren Circle",
+    "gateLoginTitle": "С возвращением",
+    "joinedSuccessBody": "Ваши привилегии уже активны. Сохраните код участника в надёжном месте.",
+    "continueExploring": "Смотреть коллекцию",
+    "continueBrowsing": "Продолжить без аккаунта"
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",

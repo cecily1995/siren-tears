@@ -449,7 +449,20 @@
       "Priority bespoke",
       "Direct Atelier access"
     ],
-    "trackWithNzPost": "Track with NZ Post"
+    "trackWithNzPost": "Track with NZ Post",
+    "passwordLabel": "Password",
+    "loginCta": "Log In",
+    "registerCta": "Create Account",
+    "noAccount": "Don't have an account? Register",
+    "haveAccount": "Already have an account? Log in",
+    "firstNameLabel": "First name",
+    "lastNameLabel": "Last name",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Join the Siren Circle",
+    "gateLoginTitle": "Welcome back",
+    "joinedSuccessBody": "Your benefits are now active. Keep your member code somewhere safe.",
+    "continueExploring": "Explore the Collection",
+    "continueBrowsing": "Continue browsing without an account"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",

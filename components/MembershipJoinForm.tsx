@@ -6,6 +6,7 @@ import { Link } from '@/i18n/routing';
 
 export default function MembershipJoinForm() {
   const t = useTranslations('membership.form');
+  const tAccount = useTranslations('account');
   const tNav = useTranslations('nav');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -22,13 +23,14 @@ export default function MembershipJoinForm() {
       lastName: form.get('lastName')?.toString() || '',
       birthday: form.get('birthday')?.toString() || '',
       email: form.get('email')?.toString() || '',
+      password: form.get('password')?.toString() || '',
       phone: form.get('phone')?.toString() || '',
       address: form.get('address')?.toString() || '',
       country: form.get('country')?.toString() || ''
     };
 
     try {
-      const res = await fetch('/api/membership/join', {
+      const res = await fetch('/api/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -84,6 +86,10 @@ export default function MembershipJoinForm() {
         <div>
           <label className={labelClass}>{t('emailLabel')} *</label>
           <input name="email" type="email" required className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass}>{tAccount('passwordLabel')} *</label>
+          <input name="password" type="password" required minLength={8} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('phoneLabel')}</label>

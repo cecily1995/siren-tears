@@ -1,0 +1,242 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useTranslations } from 'next-intl';
+
+const DISMISS_KEY = 'sirentears_auth_gate_dismissed';
+
+export default function AuthGateModal() {
+  const t = useTranslations('account');
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [mode, setMode] = useState<'login' | 'register'>('register');
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
+  const [memberCode, setMemberCode] = useState('');
+
+  useEffect(() => {
+    setMounted(true);
+    let cancelled = false;
+
+    async function check() {
+      if (sessionStorage.getItem(DISMISS_KEY)) return;
+      try {
+        const res = await fetch('/api/auth/me');
+        const data = await res.json();
+        if (!cancelled && !data.member) {
+          // Small delay so it doesn't fight the initial page paint/hero animation.
+          setTimeout(() => {
+            if (!cancelled) setVisible(true);
+          }, 1200);
+        }
+      } catch {
+        /* fail silently — never block browsing over a network hiccup */
+      }
+    }
+    check();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  function dismiss() {
+    sessionStorage.setItem(DISMISS_KEY, '1');
+    setVisible(false);
+  }
+
+  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.get('firstName')?.toString(),
+          email: form.get('email')?.toString(),
+          password: form.get('password')?.toString()
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMsg(data.error || t('errorGeneric'));
+        setStatus('error');
+        return;
+      }
+      setMemberCode(data.memberCode);
+      setStatus('success');
+      sessionStorage.setItem(DISMISS_KEY, '1');
+    } catch {
+      setErrorMsg(t('errorGeneric'));
+      setStatus('error');
+    }
+  }
+
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: form.get('email')?.toString(),
+          password: form.get('password')?.toString()
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMsg(data.error || t('errorGeneric'));
+        setStatus('error');
+        return;
+      }
+      sessionStorage.setItem(DISMISS_KEY, '1');
+      dismiss();
+    } catch {
+      setErrorMsg(t('errorGeneric'));
+      setStatus('error');
+    }
+  }
+
+  if (!mounted || !visible) return null;
+
+  const inputClass =
+    'w-full bg-transparent border-b border-charcoal/20 focus:border-gold outline-none py-2.5 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
+  const labelClass = 'block text-[10px] tracking-[0.24em] uppercase text-ash mb-1.5 font-light';
+
+  return createPortal(
+    <div className="fixed inset-0 z-[1000] flex items-center justify-center p-5">
+      <div className="absolute inset-0 bg-charcoal/70" onClick={dismiss} aria-hidden="true" />
+      <div className="relative z-[1] w-full max-w-[420px] bg-ivory p-8 md:p-10 max-h-[90vh] overflow-y-auto">
+        <button
+          type="button"
+          onClick={dismiss}
+          aria-label="Close"
+          className="absolute top-5 right-5 w-7 h-7 flex items-center justify-center text-charcoal"
+        >
+          <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {status === 'success' ? (
+          <div className="text-center pt-4">
+            <p className="serif-display text-[1.4rem] font-light text-charcoal mb-3">
+              {t('welcomeBack')}
+            </p>
+            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-5">
+              {t('joinedSuccessBody')}
+            </p>
+            <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-2">
+              {t('memberCodeLabel')}
+            </p>
+            <p className="serif-display text-[1.5rem] tracking-[0.15em] text-gold mb-6">
+              {memberCode}
+            </p>
+            <button
+              type="button"
+              onClick={dismiss}
+              className="text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+            >
+              {t('continueExploring')}
+            </button>
+          </div>
+        ) : (
+          <>
+            <p className="eyebrow mb-2 text-center">{t('gateEyebrow')}</p>
+            <h2 className="serif-display text-[1.5rem] font-light text-charcoal text-center mb-6">
+              {mode === 'register' ? t('gateRegisterTitle') : t('gateLoginTitle')}
+            </h2>
+
+            {mode === 'register' ? (
+              <form onSubmit={handleRegister} className="space-y-5">
+                <div>
+                  <label className={labelClass}>{t('firstNameLabel')} *</label>
+                  <input name="firstName" type="text" required className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t('emailLabel')} *</label>
+                  <input name="email" type="email" required className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t('passwordLabel')} *</label>
+                  <input name="password" type="password" required minLength={8} className={inputClass} />
+                </div>
+                {status === 'error' && (
+                  <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+                >
+                  {status === 'submitting' ? t('submitting') : t('registerCta')}
+                </button>
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMode('login');
+                      setStatus('idle');
+                    }}
+                    className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+                  >
+                    {t('haveAccount')}
+                  </button>
+                </div>
+              </form>
+            ) : (
+              <form onSubmit={handleLogin} className="space-y-5">
+                <div>
+                  <label className={labelClass}>{t('emailLabel')} *</label>
+                  <input name="email" type="email" required className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t('passwordLabel')} *</label>
+                  <input name="password" type="password" required className={inputClass} />
+                </div>
+                {status === 'error' && (
+                  <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+                >
+                  {status === 'submitting' ? t('submitting') : t('loginCta')}
+                </button>
+                <div className="text-center">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMode('register');
+                      setStatus('idle');
+                    }}
+                    className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+                  >
+                    {t('noAccount')}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            <button
+              type="button"
+              onClick={dismiss}
+              className="mt-6 w-full text-center text-[10px] tracking-[0.2em] uppercase text-ash/50"
+            >
+              {t('continueBrowsing')}
+            </button>
+          </>
+        )}
+      </div>
+    </div>,
+    document.body
+  );
+}

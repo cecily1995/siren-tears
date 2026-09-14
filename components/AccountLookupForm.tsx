@@ -16,8 +16,6 @@ type Member = {
   joinedAt?: string;
 };
 
-const STORAGE_KEY = 'sirentears_account';
-
 type PurchaseItem = { productName?: string; status?: string; trackingNumber?: string; _createdAt?: string };
 type BespokeItem = { pieceType?: string; status?: string; _createdAt?: string };
 
@@ -55,7 +53,7 @@ function EditProfileForm({
       const res = await fetch('/api/account/update', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: member.email, memberCode: member.memberCode, updates })
+        body: JSON.stringify({ updates })
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
@@ -125,51 +123,55 @@ function EditProfileForm({
 
 export default function AccountLookupForm() {
   const t = useTranslations('account');
+  const [checking, setChecking] = useState(true);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [member, setMember] = useState<Member | null>(null);
   const [purchases, setPurchases] = useState<PurchaseItem[]>([]);
   const [bespokeRequests, setBespokeRequests] = useState<BespokeItem[]>([]);
-
-  const [mode, setMode] = useState<'lookup' | 'forgot'>('lookup');
-  const [forgotStatus, setForgotStatus] = useState<'idle' | 'submitting' | 'found' | 'error'>('idle');
-  const [forgotError, setForgotError] = useState('');
-  const [foundCode, setFoundCode] = useState('');
-  const [foundName, setFoundName] = useState('');
-  const [forgotEmail, setForgotEmail] = useState('');
+  const [mode, setMode] = useState<'login' | 'register'>('login');
   const [editing, setEditing] = useState(false);
-  const [editStatus, setEditStatus] = useState<'idle' | 'saving' | 'error'>('idle');
-  const [editError, setEditError] = useState('');
 
-  // Remember the last successful login on this device (not a secure session,
-  // just a convenience so returning visitors don't have to retype their code).
-  useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem(STORAGE_KEY) : null;
-    if (saved) {
-      try {
-        const { email, memberCode } = JSON.parse(saved);
-        if (email && memberCode) performLookup(email, memberCode, false);
-      } catch {
-        /* ignore malformed storage */
+  async function loadSession() {
+    try {
+      const res = await fetch('/api/auth/me');
+      const data = await res.json();
+      if (data.member) {
+        setMember(data.member);
+        setPurchases(data.purchases || []);
+        setBespokeRequests(data.bespokeRequests || []);
+        setStatus('success');
       }
+    } catch {
+      /* not logged in */
+    } finally {
+      setChecking(false);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }
+
+  useEffect(() => {
+    loadSession();
   }, []);
 
-  function logout() {
-    localStorage.removeItem(STORAGE_KEY);
+  async function logout() {
+    await fetch('/api/auth/logout', { method: 'POST' });
     setMember(null);
     setStatus('idle');
   }
 
-  async function performLookup(email: string, memberCode: string, remember = true) {
+  async function handleLogin(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     setStatus('submitting');
     setErrorMsg('');
+    const form = new FormData(e.currentTarget);
     try {
-      const res = await fetch('/api/account/lookup', {
+      const res = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, memberCode })
+        body: JSON.stringify({
+          email: form.get('email')?.toString(),
+          password: form.get('password')?.toString()
+        })
       });
       const data = await res.json();
       if (!res.ok || !data.ok) {
@@ -177,59 +179,48 @@ export default function AccountLookupForm() {
         setStatus('error');
         return;
       }
-      setMember(data.member);
-      setPurchases(data.purchases || []);
-      setBespokeRequests(data.bespokeRequests || []);
-      setStatus('success');
-      setMode('lookup');
-      if (remember && typeof window !== 'undefined') {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify({ email, memberCode }));
-      }
+      await loadSession();
     } catch {
       setErrorMsg(t('errorGeneric'));
       setStatus('error');
     }
   }
 
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
     const form = new FormData(e.currentTarget);
-    const email = form.get('email')?.toString() || '';
-    const memberCode = form.get('memberCode')?.toString() || '';
-    await performLookup(email, memberCode);
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName: form.get('firstName')?.toString(),
+          lastName: form.get('lastName')?.toString(),
+          email: form.get('email')?.toString(),
+          password: form.get('password')?.toString()
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMsg(data.error || t('errorGeneric'));
+        setStatus('error');
+        return;
+      }
+      await loadSession();
+    } catch {
+      setErrorMsg(t('errorGeneric'));
+      setStatus('error');
+    }
   }
 
   const inputClass =
     'w-full bg-transparent border-b border-charcoal/20 focus:border-gold outline-none py-2.5 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
   const labelClass = 'block text-[10px] tracking-[0.24em] uppercase text-ash mb-1.5 font-light';
 
-  async function handleForgotSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setForgotStatus('submitting');
-    setForgotError('');
-    const form = new FormData(e.currentTarget);
-    const email = form.get('email')?.toString() || '';
-    setForgotEmail(email);
-
-    try {
-      const res = await fetch('/api/account/forgot-code', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email })
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok) {
-        setForgotError(data.error || t('errorGeneric'));
-        setForgotStatus('error');
-        return;
-      }
-      setFoundCode(data.memberCode);
-      setFoundName(data.firstName || '');
-      setForgotStatus('found');
-    } catch {
-      setForgotError(t('errorGeneric'));
-      setForgotStatus('error');
-    }
+  if (checking) {
+    return <div className="max-w-md mx-auto text-center text-[0.85rem] text-ash/60 font-light">…</div>;
   }
 
   if (status === 'success' && member) {
@@ -242,21 +233,19 @@ export default function AccountLookupForm() {
 
     if (editing) {
       return (
-        <div className="">
-          <EditProfileForm
-            member={member}
-            onCancel={() => setEditing(false)}
-            onSaved={(updates) => {
-              setMember((m) => (m ? { ...m, ...updates } : m));
-              setEditing(false);
-            }}
-          />
-        </div>
+        <EditProfileForm
+          member={member}
+          onCancel={() => setEditing(false)}
+          onSaved={(updates) => {
+            setMember((m) => (m ? { ...m, ...updates } : m));
+            setEditing(false);
+          }}
+        />
       );
     }
 
     return (
-      <div className="">
+      <div>
         <div className="border border-charcoal/12 bg-ivory p-8 md:p-10">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
@@ -361,68 +350,25 @@ export default function AccountLookupForm() {
     );
   }
 
-  if (mode === 'forgot') {
-    if (forgotStatus === 'found') {
-      return (
-        <div className="max-w-md mx-auto text-center">
-          <p className="text-[0.9rem] text-ash font-light mb-2">
-            {foundName ? `${foundName}, ` : ''}
-            {t('foundPrefix')}:
-          </p>
-          <p className="serif-display text-[1.8rem] tracking-[0.15em] text-gold mb-8">{foundCode}</p>
-          <button
-            type="button"
-            onClick={() => performLookup(forgotEmail, foundCode)}
-            className="text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors"
-          >
-            {t('useThisCode')}
-          </button>
-        </div>
-      );
-    }
-
+  if (mode === 'register') {
     return (
-      <form onSubmit={handleForgotSubmit} className="max-w-md mx-auto">
-        <p className="serif-display text-[1.3rem] font-light text-charcoal mb-2">{t('forgotTitle')}</p>
-        <p className="text-[0.85rem] text-ash font-light mb-6">{t('forgotBody')}</p>
-        <label className={labelClass}>{t('emailLabel')} *</label>
-        <input name="email" type="email" required className={inputClass} />
-
-        {forgotStatus === 'error' && (
-          <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{forgotError}</p>
-        )}
-
-        <div className="mt-8 flex items-center gap-8">
-          <button
-            type="submit"
-            disabled={forgotStatus === 'submitting'}
-            className="text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
-          >
-            {forgotStatus === 'submitting' ? t('forgotSubmitting') : t('forgotSubmit')}
-          </button>
-          <button
-            type="button"
-            onClick={() => setMode('lookup')}
-            className="text-[11px] tracking-[0.28em] uppercase text-ash link-underline"
-          >
-            {t('back')}
-          </button>
-        </div>
-      </form>
-    );
-  }
-
-  return (
-    <div>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+      <form onSubmit={handleRegister} className="max-w-md mx-auto">
         <div className="space-y-6">
+          <div>
+            <label className={labelClass}>{t('firstNameLabel')} *</label>
+            <input name="firstName" type="text" required className={inputClass} />
+          </div>
+          <div>
+            <label className={labelClass}>{t('lastNameLabel')}</label>
+            <input name="lastName" type="text" className={inputClass} />
+          </div>
           <div>
             <label className={labelClass}>{t('emailLabel')} *</label>
             <input name="email" type="email" required className={inputClass} />
           </div>
           <div>
-            <label className={labelClass}>{t('memberCodeLabel')} *</label>
-            <input name="memberCode" type="text" required placeholder="ST-XXXXXX" className={inputClass} />
+            <label className={labelClass}>{t('passwordLabel')} *</label>
+            <input name="password" type="password" required minLength={8} className={inputClass} />
           </div>
         </div>
 
@@ -435,18 +381,60 @@ export default function AccountLookupForm() {
           disabled={status === 'submitting'}
           className="mt-8 w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
         >
-          {status === 'submitting' ? t('submitting') : t('submit')}
+          {status === 'submitting' ? t('submitting') : t('registerCta')}
         </button>
+        <div className="mt-5 text-center">
+          <button
+            type="button"
+            onClick={() => {
+              setMode('login');
+              setStatus('idle');
+            }}
+            className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+          >
+            {t('haveAccount')}
+          </button>
+        </div>
       </form>
-      <div className="max-w-md mx-auto mt-5 text-center">
+    );
+  }
+
+  return (
+    <form onSubmit={handleLogin} className="max-w-md mx-auto">
+      <div className="space-y-6">
+        <div>
+          <label className={labelClass}>{t('emailLabel')} *</label>
+          <input name="email" type="email" required className={inputClass} />
+        </div>
+        <div>
+          <label className={labelClass}>{t('passwordLabel')} *</label>
+          <input name="password" type="password" required className={inputClass} />
+        </div>
+      </div>
+
+      {status === 'error' && (
+        <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === 'submitting'}
+        className="mt-8 w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+      >
+        {status === 'submitting' ? t('submitting') : t('loginCta')}
+      </button>
+      <div className="mt-5 text-center">
         <button
           type="button"
-          onClick={() => setMode('forgot')}
+          onClick={() => {
+            setMode('register');
+            setStatus('idle');
+          }}
           className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
         >
-          {t('forgotLink')}
+          {t('noAccount')}
         </button>
       </div>
-    </div>
+    </form>
   );
 }

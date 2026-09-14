@@ -449,7 +449,20 @@
       "定制优先处理",
       "工作室直接联系"
     ],
-    "trackWithNzPost": "前往NZ Post查询物流"
+    "trackWithNzPost": "前往NZ Post查询物流",
+    "passwordLabel": "密码",
+    "loginCta": "登录",
+    "registerCta": "创建账户",
+    "noAccount": "还没有账户?去注册",
+    "haveAccount": "已有账户?去登录",
+    "firstNameLabel": "名",
+    "lastNameLabel": "姓",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "加入 Siren Circle",
+    "gateLoginTitle": "欢迎回来",
+    "joinedSuccessBody": "你的会员权益已生效,请妥善保存你的会员码。",
+    "continueExploring": "去逛逛系列",
+    "continueBrowsing": "暂不注册,先随便看看"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",

@@ -449,7 +449,20 @@
       "オーダーメイド優先対応",
       "アトリエへの直接アクセス"
     ],
-    "trackWithNzPost": "NZ Postで追跡する"
+    "trackWithNzPost": "NZ Postで追跡する",
+    "passwordLabel": "パスワード",
+    "loginCta": "ログイン",
+    "registerCta": "アカウントを作成",
+    "noAccount": "アカウントをお持ちでないですか? 新規登録",
+    "haveAccount": "すでにアカウントをお持ちですか? ログイン",
+    "firstNameLabel": "名",
+    "lastNameLabel": "姓",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Siren Circleに参加する",
+    "gateLoginTitle": "おかえりなさい",
+    "joinedSuccessBody": "会員特典が有効になりました。会員コードは大切に保管してください。",
+    "continueExploring": "コレクションを見る",
+    "continueBrowsing": "アカウントなしで続ける"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",

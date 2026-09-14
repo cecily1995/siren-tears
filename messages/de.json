@@ -449,7 +449,20 @@
       "Bevorzugte Maßanfertigung",
       "Direkter Atelier-Zugang"
     ],
-    "trackWithNzPost": "Mit NZ Post verfolgen"
+    "trackWithNzPost": "Mit NZ Post verfolgen",
+    "passwordLabel": "Passwort",
+    "loginCta": "Anmelden",
+    "registerCta": "Konto erstellen",
+    "noAccount": "Noch kein Konto? Registrieren",
+    "haveAccount": "Bereits ein Konto? Anmelden",
+    "firstNameLabel": "Vorname",
+    "lastNameLabel": "Nachname",
+    "gateEyebrow": "Siren Circle",
+    "gateRegisterTitle": "Dem Siren Circle beitreten",
+    "gateLoginTitle": "Willkommen zurück",
+    "joinedSuccessBody": "Ihre Vorteile sind jetzt aktiv. Bewahren Sie Ihren Mitgliedscode sicher auf.",
+    "continueExploring": "Kollektion entdecken",
+    "continueBrowsing": "Ohne Konto weitersurfen"
   },
   "wornByYouTeaser": {
     "eyebrow": "Getragen von Ihnen",
