@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing';
 import { getShopProductBySlug, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import RequestPurchaseForm from '@/components/RequestPurchaseForm';
+import { translateFields } from '@/lib/translate';
 
 export const revalidate = 60;
 
@@ -41,6 +42,14 @@ export default async function ShopProductPage({
 
   if (!product) notFound();
 
+  // Product copy (stone type, stone story, piece story) is authored once
+  // in English in Sanity; auto-translate it for non-English locales rather
+  // than requiring a manually-translated copy per language.
+  const translated = await translateFields(
+    { stone: product.stone, stoneStory: product.stoneStory, pieceStory: product.pieceStory },
+    locale
+  );
+
   const email = settings?.email ?? fallback.settings.email;
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
     `Hi Siren Tears, I'm enquiring about ${product.name}.`
@@ -50,7 +59,7 @@ export default async function ShopProductPage({
   const statusLabel = isSold ? t('status.sold') : isReserved ? t('status.reserved') : null;
 
   const details = [
-    product.stone && { label: t('stoneTitle'), value: product.stone },
+    translated.stone && { label: t('stoneTitle'), value: translated.stone },
     product.material && { label: t('materialLabel'), value: product.material },
     product.length && { label: t('lengthLabel'), value: product.length },
     product.craftedIn && { label: t('craftedInLabel'), value: product.craftedIn }
@@ -105,8 +114,8 @@ export default async function ShopProductPage({
             <h1 className="serif-display text-[clamp(1.9rem,4vw,2.8rem)] font-light leading-[1.1] text-charcoal">
               {product.name}
             </h1>
-            {product.stone && (
-              <p className="mt-3 text-[1rem] text-ash font-light">{product.stone}</p>
+            {translated.stone && (
+              <p className="mt-3 text-[1rem] text-ash font-light">{translated.stone}</p>
             )}
             <div className="mt-6 flex items-center gap-4">
               <span className="text-[1.3rem] text-charcoal font-light">
@@ -152,20 +161,20 @@ export default async function ShopProductPage({
               </div>
             )}
 
-            {product.stoneStory && (
+            {translated.stoneStory && (
               <div className="mt-10 pt-8 border-t border-charcoal/10">
                 <p className="eyebrow mb-3">{t('stoneTitle')}</p>
                 <p className="text-[0.92rem] leading-[1.9] text-ash font-light">
-                  {product.stoneStory}
+                  {translated.stoneStory}
                 </p>
               </div>
             )}
 
-            {product.pieceStory && (
+            {translated.pieceStory && (
               <div className="mt-8">
                 <p className="eyebrow mb-3">{t('pieceTitle')}</p>
                 <p className="text-[0.92rem] leading-[1.9] text-ash font-light">
-                  {product.pieceStory}
+                  {translated.pieceStory}
                 </p>
               </div>
             )}
