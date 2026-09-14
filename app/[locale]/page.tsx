@@ -7,6 +7,9 @@ import Collections from '@/components/Collections';
 import AotearoaTeaser from '@/components/AotearoaTeaser';
 import WornByYouTeaser from '@/components/WornByYouTeaser';
 import Atelier from '@/components/Atelier';
+import PullUpStack from '@/components/PullUpStack';
+import JournalTeaser from '@/components/JournalTeaser';
+import { getJournal } from '@/sanity/lib/queries';
 import {
   getHomepage,
   getCollections,
@@ -27,11 +30,12 @@ export default async function HomePage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [home, collections, showcase, shopProducts] = await Promise.all([
+  const [home, collections, showcase, shopProducts, journal] = await Promise.all([
     getHomepage(),
     getCollections(),
     getBuyerShowcase(),
-    getShopProducts()
+    getShopProducts(),
+    getJournal()
   ]);
 
   const t = await getTranslations();
@@ -119,6 +123,14 @@ export default async function HomePage({
     imageAlt: fallback.atelier.imageAlt
   };
 
+  const journalItems = journal?.length ? journal : fallback.journal;
+  const journalLabels = {
+    eyebrow: t('journal.eyebrow'),
+    title: t('journal.title'),
+    readLink: t('journal.readLink'),
+    viewAllCta: t('journal.viewAllCta')
+  };
+
   return (
     <>
       <Hero data={heroData} />
@@ -131,19 +143,15 @@ export default async function HomePage({
       />
       <AotearoaTeaser items={aotearoaProducts} labels={aotearoaLabels} />
 
-      {/* Worn By You -> The Atelier: a pure-CSS "pull up" stacked-panel
-          transition. Both sections are sticky at the top of the viewport;
-          The Atelier sits later in the document with a higher z-index and
-          its own opaque background, so as the page scrolls it naturally
-          rises up the screen and settles over Worn By You rather than a
-          simple fade. Reverses automatically when scrolling back up, and
-          needs no JS/scroll-jacking since it's just position:sticky. */}
-      <div className="sticky top-0 z-0">
-        <WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />
-      </div>
-      <div className="sticky top-0 z-10">
-        <Atelier data={atelierData} />
-      </div>
+      {/* Worn By You -> The Atelier: a smooth, scroll-position-driven
+          "pull up" panel (see PullUpStack) rather than a hard CSS-sticky
+          snap or a simple fade. */}
+      <PullUpStack
+        below={<WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />}
+        above={<Atelier data={atelierData} />}
+      />
+
+      <JournalTeaser items={journalItems} labels={journalLabels} />
     </>
   );
 }

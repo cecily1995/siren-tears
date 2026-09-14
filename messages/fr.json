@@ -61,7 +61,8 @@
     "eyebrow": "Journal des pierres",
     "title": "Notes sur les pierres que nous choisissons de garder.",
     "intro": "Une écriture lente et attentive sur les matières qui façonnent notre travail — leur histoire, leur caractère, la manière dont elles vivent auprès de celle qui les porte.",
-    "readLink": "Lire la note"
+    "readLink": "Lire la note",
+    "viewAllCta": "Voir toutes les notes"
   },
   "about": {
     "eyebrow": "Notre histoire",

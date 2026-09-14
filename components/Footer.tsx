@@ -44,13 +44,28 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
   return (
     <footer
       id="contact"
-      className="bg-charcoal text-ivory px-6 md:px-12 pt-20 md:pt-28 pb-10 md:pb-12 relative overflow-hidden"
+      className="bg-[#191d22] text-ivory px-6 md:px-12 pt-20 md:pt-28 pb-10 md:pb-12 relative overflow-hidden"
     >
+      {/* Deep Southern Ocean base tint, echoing the Hero rather than a flat charcoal/black */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'linear-gradient(180deg, rgba(26,34,42,1) 0%, rgba(20,24,28,1) 55%, rgba(15,17,20,1) 100%)'
+        }}
+      />
+      <div
+        className="absolute inset-0 opacity-[0.1] pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(70% 55% at 50% 0%, rgba(120,150,165,0.6) 0%, rgba(120,150,165,0) 70%)'
+        }}
+      />
       <div
         className="absolute inset-0 opacity-[0.12] pointer-events-none"
         style={{
           background:
-            'radial-gradient(60% 50% at 50% 20%, rgba(245, 215, 165, 0.55) 0%, rgba(245, 215, 165, 0) 70%)'
+            'radial-gradient(60% 50% at 50% 20%, rgba(245, 215, 165, 0.4) 0%, rgba(245, 215, 165, 0) 70%)'
         }}
       />
       <div className="relative mx-auto max-w-[1480px]">
