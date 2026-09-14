@@ -78,26 +78,25 @@ export default async function BespokePage({
       />
 
       {/* Process */}
-      <section className="bg-ivory px-6 md:px-12 py-20 md:py-32">
+      <section className="bg-ivory px-6 md:px-12 py-16 md:py-32">
         <div className="mx-auto max-w-[1100px]">
-          <p className="eyebrow text-center mb-10 md:mb-16">{t('processTitle')}</p>
-          <div className="flex md:grid md:grid-cols-4 gap-0 md:gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0">
+          <p className="eyebrow text-center mb-8 md:mb-16">{t('processTitle')}</p>
+          <div className="grid grid-cols-4 gap-1.5 md:gap-8">
             {steps.map((s, i) => (
-              <div key={i} className="flex items-stretch shrink-0 w-[78vw] sm:w-[42vw] md:w-auto snap-start">
-                <article
-                  className="reveal text-center flex-1 px-2 md:px-0"
-                  style={{ transitionDelay: `${i * 120}ms` }}
-                >
-                  <div className="text-[11px] tracking-[0.4em] uppercase text-gold mb-5 font-light">
+              <div key={i} className="flex items-stretch">
+                <article className="reveal text-center flex-1" style={{ transitionDelay: `${i * 120}ms` }}>
+                  <div className="text-[8px] md:text-[11px] tracking-[0.2em] md:tracking-[0.4em] uppercase text-gold mb-1.5 md:mb-5 font-light">
                     {String(i + 1).padStart(2, '0')}
                   </div>
-                  <h3 className="serif-display text-[1.3rem] font-light leading-tight mb-3 text-charcoal">
+                  <h3 className="serif-display text-[0.8rem] md:text-[1.3rem] font-light leading-tight mb-1 md:mb-3 text-charcoal">
                     {s.title}
                   </h3>
-                  <p className="text-[0.9rem] leading-[1.85] text-ash font-light">{s.body}</p>
+                  <p className="hidden sm:block text-[0.6rem] md:text-[0.9rem] leading-[1.4] md:leading-[1.85] text-ash font-light">
+                    {s.body}
+                  </p>
                 </article>
                 {i < steps.length - 1 && (
-                  <div className="hidden md:flex items-center justify-center text-gold/50 text-xl px-2 shrink-0">
+                  <div className="flex items-center justify-center text-gold/50 text-xs md:text-xl px-0.5 md:px-2 shrink-0">
                     →
                   </div>
                 )}
