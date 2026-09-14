@@ -19,7 +19,7 @@ const DEFAULT_IMAGE =
  */
 export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, children }: Props) {
   return (
-    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-32 overflow-hidden">
+    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-32 pb-14 md:pt-36 md:pb-16 overflow-hidden">
       <div
         className="absolute inset-0 bg-center bg-cover opacity-[0.22]"
         style={{ backgroundImage: `url(${imageUrl || DEFAULT_IMAGE})` }}

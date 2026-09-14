@@ -19,7 +19,7 @@ export default function WornByYouTeaser({ items, labels }: { items: Item[]; labe
 
   return (
     <section className="bg-pearl pt-14 pb-20 md:pt-20 md:pb-16 overflow-hidden">
-      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-center mb-10 md:mb-16 reveal">
+      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-center mb-10 md:mb-12 reveal">
         <p className="eyebrow mb-5">{labels.eyebrow}</p>
         <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
           {labels.title}

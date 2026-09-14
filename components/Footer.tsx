@@ -45,7 +45,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
   return (
     <footer
       id="contact"
-      className="bg-pearl text-charcoal px-6 md:px-12 pt-20 md:pt-28 pb-10 md:pb-12 relative overflow-hidden"
+      className="bg-pearl text-charcoal px-6 md:px-12 pt-16 md:pt-16 pb-10 md:pb-12 relative overflow-hidden"
     >
       <div
         className="absolute inset-0 opacity-[0.1] pointer-events-none"

@@ -16,8 +16,8 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
   if (!items.length) return null;
 
   return (
-    <section className="bg-pearl py-14 md:py-32">
-      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-left md:text-center mb-8 md:mb-16 reveal">
+    <section className="bg-pearl py-14 md:py-20">
+      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-left md:text-center mb-8 md:mb-12 reveal">
         <p className="eyebrow mb-5">{labels.eyebrow}</p>
         <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
           {labels.title}
@@ -65,7 +65,7 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
         ))}
       </div>
 
-      <div className="mt-8 md:mt-14 text-center reveal">
+      <div className="mt-8 md:mt-12 text-center reveal">
         <Link
           href="/journal"
           className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
