@@ -479,8 +479,9 @@
     "forgotPasswordBody": "Enter your email and we'll send you a link to reset your password.",
     "sendResetLink": "Send Reset Link",
     "backToLogin": "Back to login",
-    "resetEmailSentBody": "If an account exists for that email, we've sent a link to reset your password. It expires in 1 hour.",
-    "gateJoinTitle": "Welcome. Here's what the Siren Circle offers."
+    "resetEmailSentBody": "If an account exists for that email, we've sent a 6-digit code. It expires in 15 minutes.",
+    "gateJoinTitle": "Welcome. Here's what the Siren Circle offers.",
+    "resetCodeLabel": "Reset code"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",

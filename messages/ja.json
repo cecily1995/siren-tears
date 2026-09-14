@@ -479,8 +479,9 @@
     "forgotPasswordBody": "メールアドレスをご入力いただくと、パスワード再設定用のリンクをお送りします。",
     "sendResetLink": "リセットリンクを送信",
     "backToLogin": "ログインに戻る",
-    "resetEmailSentBody": "このメールアドレスのアカウントが存在する場合、パスワード再設定用のリンクをお送りしました。1時間有効です。",
-    "gateJoinTitle": "ようこそ。Siren Circleの特典はこちらです。"
+    "resetEmailSentBody": "このメールアドレスのアカウントが存在する場合、6桁のコードをお送りしました。15分間有効です。",
+    "gateJoinTitle": "ようこそ。Siren Circleの特典はこちらです。",
+    "resetCodeLabel": "リセットコード"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",

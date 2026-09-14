@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { createClient } from 'next-sanity';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
-import { verifyResetToken, hashPassword, createSessionToken, SESSION_COOKIE_NAME, SESSION_COOKIE_MAX_AGE } from '@/lib/auth';
+import { hashPassword, createSessionToken, SESSION_COOKIE_NAME, SESSION_COOKIE_MAX_AGE } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -27,15 +27,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'Invalid request body.' }, { status: 400 });
   }
 
-  const token = (body?.token || '').toString();
+  const email = (body?.email || '').toString().trim();
+  const code = (body?.code || '').toString().trim();
   const password = (body?.password || '').toString();
 
-  const verified = verifyResetToken(token);
-  if (!verified) {
-    return NextResponse.json(
-      { ok: false, error: 'This reset link is invalid or has expired. Please request a new one.' },
-      { status: 400 }
-    );
+  if (!email || !code) {
+    return NextResponse.json({ ok: false, error: 'Please enter the code we emailed you.' }, { status: 400 });
   }
   if (password.length < 8) {
     return NextResponse.json(
@@ -45,15 +42,31 @@ export async function POST(request: Request) {
   }
 
   try {
-    const member = await client.fetch<{ _id: string; email?: string } | null>(
-      `*[_type == "member" && _id == $id][0]{ _id, email }`,
-      { id: verified.id }
+    const member = await client.fetch<
+      { _id: string; email?: string; resetCode?: string; resetCodeExpiresAt?: string } | null
+    >(
+      `*[_type == "member" && lower(email) == lower($email)][0]{ _id, email, resetCode, resetCodeExpiresAt }`,
+      { email }
     );
-    if (!member) {
-      return NextResponse.json({ ok: false, error: 'Account not found.' }, { status: 404 });
+
+    const valid =
+      member?.resetCode &&
+      member.resetCode === code &&
+      member.resetCodeExpiresAt &&
+      new Date(member.resetCodeExpiresAt).getTime() > Date.now();
+
+    if (!member || !valid) {
+      return NextResponse.json(
+        { ok: false, error: 'That code is incorrect or has expired. Please request a new one.' },
+        { status: 400 }
+      );
     }
 
-    await client.patch(member._id).set({ passwordHash: hashPassword(password) }).commit();
+    await client
+      .patch(member._id)
+      .set({ passwordHash: hashPassword(password) })
+      .unset(['resetCode', 'resetCodeExpiresAt'])
+      .commit();
 
     const sessionToken = member.email ? createSessionToken({ id: member._id, email: member.email }) : null;
     const res = NextResponse.json({ ok: true });

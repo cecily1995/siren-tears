@@ -479,8 +479,9 @@
     "forgotPasswordBody": "Введите свой email, и мы вышлем ссылку для сброса пароля.",
     "sendResetLink": "Отправить ссылку",
     "backToLogin": "Назад ко входу",
-    "resetEmailSentBody": "Если для этого email существует аккаунт, мы отправили ссылку для сброса пароля. Она действительна 1 час.",
-    "gateJoinTitle": "Добро пожаловать. Вот что предлагает Siren Circle."
+    "resetEmailSentBody": "Если для этого email существует аккаунт, мы отправили 6-значный код. Он действителен 15 минут.",
+    "gateJoinTitle": "Добро пожаловать. Вот что предлагает Siren Circle.",
+    "resetCodeLabel": "Код сброса"
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",

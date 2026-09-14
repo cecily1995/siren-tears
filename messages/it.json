@@ -479,8 +479,9 @@
     "forgotPasswordBody": "Inserisci la tua email e ti invieremo un link per reimpostare la password.",
     "sendResetLink": "Invia link di reimpostazione",
     "backToLogin": "Torna all'accesso",
-    "resetEmailSentBody": "Se esiste un account per questa email, abbiamo inviato un link per reimpostare la password. Scade tra 1 ora.",
-    "gateJoinTitle": "Benvenuta/o. Ecco cosa offre il Siren Circle."
+    "resetEmailSentBody": "Se esiste un account per questa email, abbiamo inviato un codice a 6 cifre. Scade tra 15 minuti.",
+    "gateJoinTitle": "Benvenuta/o. Ecco cosa offre il Siren Circle.",
+    "resetCodeLabel": "Codice di reimpostazione"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",

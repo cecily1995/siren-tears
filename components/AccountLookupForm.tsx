@@ -133,6 +133,8 @@ export default function AccountLookupForm() {
   const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [editing, setEditing] = useState(false);
   const [forgotStatus, setForgotStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
+  const [forgotStep, setForgotStep] = useState<'email' | 'code'>('email');
+  const [forgotEmail, setForgotEmail] = useState('');
 
   async function loadSession() {
     try {
@@ -221,15 +223,49 @@ export default function AccountLookupForm() {
     e.preventDefault();
     setForgotStatus('submitting');
     const form = new FormData(e.currentTarget);
+    const email = form.get('email')?.toString() || '';
+    setForgotEmail(email);
     try {
       await fetch('/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: form.get('email')?.toString() })
+        body: JSON.stringify({ email })
       });
     } catch {
-      /* still show the generic "check your email" state either way */
+      /* still show the "check your email" state either way */
     } finally {
+      setForgotStep('code');
+      setForgotStatus('idle');
+    }
+  }
+
+  async function handleResetWithCode(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setForgotStatus('submitting');
+    setErrorMsg('');
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail,
+          code: form.get('code')?.toString(),
+          password: form.get('password')?.toString()
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMsg(data.error || t('errorGeneric'));
+        setForgotStatus('idle');
+        return;
+      }
+      setMode('login');
+      setForgotStatus('idle');
+      setForgotStep('email');
+      await loadSession();
+    } catch {
+      setErrorMsg(t('errorGeneric'));
       setForgotStatus('sent');
     }
   }
@@ -383,23 +419,54 @@ export default function AccountLookupForm() {
   }
 
   if (mode === 'forgot') {
-    if (forgotStatus === 'sent') {
+    if (forgotStep === 'code') {
       return (
-        <div className="max-w-md mx-auto text-center">
-          <p className="text-[0.9rem] text-ash font-light leading-relaxed mb-6">
+        <form onSubmit={handleResetWithCode} className="max-w-md mx-auto">
+          <p className="text-[0.85rem] text-ash font-light leading-relaxed mb-6 text-center">
             {t('resetEmailSentBody')}
           </p>
+          <div className="space-y-6">
+            <div>
+              <label className={labelClass}>{t('resetCodeLabel')} *</label>
+              <input
+                name="code"
+                type="text"
+                inputMode="numeric"
+                required
+                maxLength={6}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label className={labelClass}>{t('newPasswordLabel')} *</label>
+              <input name="password" type="password" required minLength={8} className={inputClass} />
+            </div>
+          </div>
+
+          {errorMsg && <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
+
           <button
-            type="button"
-            onClick={() => {
-              setMode('login');
-              setForgotStatus('idle');
-            }}
-            className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+            type="submit"
+            disabled={forgotStatus === 'submitting'}
+            className="mt-8 w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
           >
-            {t('backToLogin')}
+            {forgotStatus === 'submitting' ? t('submitting') : t('resetSubmit')}
           </button>
-        </div>
+          <div className="mt-5 text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setMode('login');
+                setForgotStatus('idle');
+                setForgotStep('email');
+                setErrorMsg('');
+              }}
+              className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+            >
+              {t('backToLogin')}
+            </button>
+          </div>
+        </form>
       );
     }
     return (

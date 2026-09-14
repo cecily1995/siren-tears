@@ -479,8 +479,9 @@
     "forgotPasswordBody": "Saisissez votre e-mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
     "sendResetLink": "Envoyer le lien",
     "backToLogin": "Retour à la connexion",
-    "resetEmailSentBody": "Si un compte existe pour cet e-mail, nous avons envoyé un lien de réinitialisation. Il expire dans 1 heure.",
-    "gateJoinTitle": "Bienvenue. Voici ce que propose le Siren Circle."
+    "resetEmailSentBody": "Si un compte existe pour cet e-mail, nous avons envoyé un code à 6 chiffres. Il expire dans 15 minutes.",
+    "gateJoinTitle": "Bienvenue. Voici ce que propose le Siren Circle.",
+    "resetCodeLabel": "Code de réinitialisation"
   },
   "wornByYouTeaser": {
     "eyebrow": "Portée par vous",

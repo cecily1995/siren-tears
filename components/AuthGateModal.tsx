@@ -14,6 +14,7 @@ export default function AuthGateModal() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [forgotSent, setForgotSent] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState('');
 
   useEffect(() => {
     setMounted(true);
@@ -107,17 +108,48 @@ export default function AuthGateModal() {
     e.preventDefault();
     setStatus('submitting');
     const form = new FormData(e.currentTarget);
+    const email = form.get('email')?.toString() || '';
+    setForgotEmail(email);
     try {
       await fetch('/api/auth/forgot-password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: form.get('email')?.toString() })
+        body: JSON.stringify({ email })
       });
     } catch {
       /* show the same generic confirmation either way */
     } finally {
       setForgotSent(true);
       setStatus('idle');
+    }
+  }
+
+  async function handleResetWithCode(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('submitting');
+    setErrorMsg('');
+    const form = new FormData(e.currentTarget);
+    try {
+      const res = await fetch('/api/auth/reset-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: forgotEmail,
+          code: form.get('code')?.toString(),
+          password: form.get('password')?.toString()
+        })
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) {
+        setErrorMsg(data.error || t('errorGeneric'));
+        setStatus('error');
+        return;
+      }
+      sessionStorage.setItem(DISMISS_KEY, '1');
+      dismiss();
+    } catch {
+      setErrorMsg(t('errorGeneric'));
+      setStatus('error');
     }
   }
 
@@ -179,9 +211,29 @@ export default function AuthGateModal() {
               {t('resetPasswordTitle')}
             </h2>
             {forgotSent ? (
-              <p className="text-[0.85rem] text-ash font-light leading-relaxed text-center">
-                {t('resetEmailSentBody')}
-              </p>
+              <form onSubmit={handleResetWithCode} className="space-y-5">
+                <p className="text-[0.85rem] text-ash font-light leading-relaxed text-center">
+                  {t('resetEmailSentBody')}
+                </p>
+                <div>
+                  <label className={labelClass}>{t('resetCodeLabel')} *</label>
+                  <input name="code" type="text" inputMode="numeric" required maxLength={6} className={inputClass} />
+                </div>
+                <div>
+                  <label className={labelClass}>{t('newPasswordLabel')} *</label>
+                  <input name="password" type="password" required minLength={8} className={inputClass} />
+                </div>
+                {status === 'error' && (
+                  <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>
+                )}
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+                >
+                  {status === 'submitting' ? t('submitting') : t('resetSubmit')}
+                </button>
+              </form>
             ) : (
               <form onSubmit={handleForgot} className="space-y-5">
                 <p className="text-[0.85rem] text-ash font-light leading-relaxed text-center">

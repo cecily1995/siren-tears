@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from 'next-sanity';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
-import { createResetToken } from '@/lib/auth';
 import { sendEmail } from '@/lib/email';
 
 export const runtime = 'nodejs';
@@ -12,23 +11,18 @@ function getWriteClient() {
   return createClient({ apiVersion, dataset, projectId, useCdn: false, token });
 }
 
-function siteUrl(request: Request) {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
-  const host = request.headers.get('host');
-  const proto = host?.includes('localhost') ? 'http' : 'https';
-  return `${proto}://${host}`;
+function generateCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString(); // 6 digits
 }
 
 export async function POST(request: Request) {
   const client = getWriteClient();
-  // Always respond the same way regardless of whether the email exists or
-  // email sending is even configured, so we never leak which addresses
-  // have accounts. If something is genuinely unconfigured we still log it
-  // server-side for the studio to notice.
+  // Always respond the same way regardless of whether the email exists,
+  // so we never leak which addresses have accounts.
   const genericOk = NextResponse.json({ ok: true });
 
-  if (!client || !process.env.SESSION_SECRET) {
-    console.error('forgot-password: Sanity or SESSION_SECRET not configured');
+  if (!client) {
+    console.error('forgot-password: Sanity write client not configured');
     return genericOk;
   }
 
@@ -51,23 +45,24 @@ export async function POST(request: Request) {
     );
 
     if (member?._id) {
-      const token = createResetToken(member._id);
-      if (token) {
-        const link = `${siteUrl(request)}/reset-password?token=${token}`;
-        await sendEmail({
-          to: email,
-          subject: 'Reset your Siren Tears password',
-          html: `
-            <div style="font-family: Georgia, serif; color: #26231f;">
-              <p>Hi ${member.firstName || ''},</p>
-              <p>Click the link below to set a new password. This link expires in 1 hour.</p>
-              <p><a href="${link}">${link}</a></p>
-              <p>If you didn't request this, you can safely ignore this email.</p>
-              <p>— Siren Tears</p>
-            </div>
-          `
-        });
-      }
+      const code = generateCode();
+      const expiresAt = new Date(Date.now() + 15 * 60 * 1000).toISOString(); // 15 minutes
+
+      await client.patch(member._id).set({ resetCode: code, resetCodeExpiresAt: expiresAt }).commit();
+
+      await sendEmail({
+        to: email,
+        subject: `Your Siren Tears reset code: ${code}`,
+        html: `
+          <div style="font-family: Georgia, serif; color: #26231f;">
+            <p>Hi ${member.firstName || ''},</p>
+            <p>Use this code to reset your password. It expires in 15 minutes.</p>
+            <p style="font-size: 28px; letter-spacing: 6px; font-weight: bold;">${code}</p>
+            <p>If you didn't request this, you can safely ignore this email.</p>
+            <p>— Siren Tears</p>
+          </div>
+        `
+      });
     }
 
     return genericOk;

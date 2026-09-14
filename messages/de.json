@@ -479,8 +479,9 @@
     "forgotPasswordBody": "Geben Sie Ihre E-Mail ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
     "sendResetLink": "Link senden",
     "backToLogin": "Zurück zur Anmeldung",
-    "resetEmailSentBody": "Falls für diese E-Mail ein Konto besteht, haben wir einen Link zum Zurücksetzen gesendet. Er läuft in 1 Stunde ab.",
-    "gateJoinTitle": "Willkommen. Das bietet der Siren Circle."
+    "resetEmailSentBody": "Falls für diese E-Mail ein Konto besteht, haben wir einen 6-stelligen Code gesendet. Er läuft in 15 Minuten ab.",
+    "gateJoinTitle": "Willkommen. Das bietet der Siren Circle.",
+    "resetCodeLabel": "Reset-Code"
   },
   "wornByYouTeaser": {
     "eyebrow": "Getragen von Ihnen",

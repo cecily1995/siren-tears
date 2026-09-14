@@ -38,6 +38,18 @@ export default defineType({
       type: 'string',
       options: { list: [{ title: 'Siren Circle', value: 'circle' }, { title: 'Private Client', value: 'private' }] }
     }),
+    defineField({
+      name: 'resetCode',
+      title: 'Password reset code (temporary)',
+      type: 'string',
+      hidden: true
+    }),
+    defineField({
+      name: 'resetCodeExpiresAt',
+      title: 'Reset code expires at',
+      type: 'datetime',
+      hidden: true
+    }),
     defineField({ name: 'joinedAt', title: 'Joined at', type: 'datetime' })
   ],
   preview: {
