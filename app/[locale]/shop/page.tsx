@@ -21,7 +21,7 @@ export default async function ShopPage({
   searchParams
 }: {
   params: { locale: string };
-  searchParams: { category?: string };
+  searchParams: { category?: string; line?: string; collection?: string };
 }) {
   const { locale } = params;
   setRequestLocale(locale);
@@ -81,6 +81,8 @@ export default async function ShopPage({
               labels={labels}
               collectionNames={collectionNames}
               initialFilter={searchParams?.category}
+              initialLine={searchParams?.line}
+              initialCollection={searchParams?.collection}
             />
           ) : (
             <div className="max-w-lg mx-auto text-center py-16 reveal">

@@ -2,13 +2,16 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
 import OneOfOne from '@/components/OneOfOne';
+import CurrentlyAvailable from '@/components/CurrentlyAvailable';
 import Collections from '@/components/Collections';
+import AotearoaTeaser from '@/components/AotearoaTeaser';
 import WornByYouTeaser from '@/components/WornByYouTeaser';
 import Atelier from '@/components/Atelier';
 import {
   getHomepage,
   getCollections,
-  getBuyerShowcase
+  getBuyerShowcase,
+  getShopProducts
 } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 
@@ -24,10 +27,11 @@ export default async function HomePage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [home, collections, showcase] = await Promise.all([
+  const [home, collections, showcase, shopProducts] = await Promise.all([
     getHomepage(),
     getCollections(),
-    getBuyerShowcase()
+    getBuyerShowcase(),
+    getShopProducts()
   ]);
 
   const t = await getTranslations();
@@ -79,6 +83,26 @@ export default async function HomePage({
     viewAll: t('collections.viewAll')
   };
 
+  const allProducts = shopProducts?.length ? shopProducts : fallback.shopProducts;
+  const availableProducts = allProducts.filter((p: any) => p.status === 'available');
+  const currentlyAvailableLabels = {
+    eyebrow: t('currentlyAvailable.eyebrow'),
+    title: t('currentlyAvailable.title'),
+    oneOfOne: t('shop.oneOfOne'),
+    cta: t('currentlyAvailable.cta')
+  };
+
+  const aotearoaProducts = allProducts.filter(
+    (p: any) => (p.productLine ?? 'beaded') === 'aotearoa' && p.status !== 'sold'
+  );
+  const aotearoaLabels = {
+    eyebrow: t('aotearoaTeaser.eyebrow'),
+    title: t('aotearoaTeaser.title'),
+    intro: t('aotearoaTeaser.intro'),
+    oneOfOne: t('shop.oneOfOne'),
+    cta: t('aotearoaTeaser.cta')
+  };
+
   const wornByYouLabels = {
     eyebrow: t('wornByYouTeaser.eyebrow'),
     title: t('wornByYouTeaser.title'),
@@ -104,11 +128,13 @@ export default async function HomePage({
     <>
       <Hero data={heroData} />
       <Philosophy data={philosophyData} />
+      <CurrentlyAvailable items={availableProducts} labels={currentlyAvailableLabels} />
       <OneOfOne data={oneOfOneData} />
       <Collections
         items={homepageCollections.length ? homepageCollections : allCollections.slice(0, 3)}
         labels={collectionsLabels}
       />
+      <AotearoaTeaser items={aotearoaProducts} labels={aotearoaLabels} />
       <WornByYouTeaser items={showcase ?? []} labels={wornByYouLabels} />
       <Atelier data={atelierData} />
     </>

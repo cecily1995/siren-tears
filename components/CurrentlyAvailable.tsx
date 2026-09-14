@@ -22,7 +22,7 @@ export default function CurrentlyAvailable({
   if (!items.length) return null;
 
   return (
-    <section className="bg-ivory py-28 md:py-36 px-6 md:px-12">
+    <section className="bg-ivory py-20 md:py-36 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="text-center mb-16 reveal">
           <p className="eyebrow mb-5">{labels.eyebrow}</p>
@@ -31,8 +31,8 @@ export default function CurrentlyAvailable({
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {items.slice(0, 4).map((p, i) => (
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
+          {items.slice(0, 6).map((p, i) => (
             <Link
               key={p._id}
               href={`/shop/${p.slug?.current ?? ''}`}

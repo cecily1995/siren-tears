@@ -61,15 +61,21 @@ export default function ShopGrid({
   products,
   labels,
   collectionNames,
-  initialFilter
+  initialFilter,
+  initialLine,
+  initialCollection
 }: {
   products: ShopProduct[];
   labels: Labels;
   collectionNames: string[];
   initialFilter?: string;
+  initialLine?: string;
+  initialCollection?: string;
 }) {
-  const [line, setLine] = useState<Line>('all');
-  const [subFilter, setSubFilter] = useState<string>(initialFilter ?? 'all');
+  const [line, setLine] = useState<Line>(
+    initialLine === 'beaded' || initialLine === 'aotearoa' ? initialLine : 'all'
+  );
+  const [subFilter, setSubFilter] = useState<string>(initialCollection ?? initialFilter ?? 'all');
 
   function changeLine(next: Line) {
     setLine(next);
