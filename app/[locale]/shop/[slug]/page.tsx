@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing';
 import { getShopProductBySlug, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import RequestPurchaseForm from '@/components/RequestPurchaseForm';
+import ProductGallery from '@/components/ProductGallery';
 import { translateFields } from '@/lib/translate';
 
 export const revalidate = 60;
@@ -77,34 +78,12 @@ export default async function ShopProductPage({
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
           <div className="md:col-span-6 reveal">
-            <div className="aspect-[4/5] overflow-hidden bg-charcoal/5 relative">
-              {product.images?.[0]?.url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={product.images[0].url}
-                  alt={product.images[0].alt || product.name}
-                  className={`w-full h-full object-cover ${isSold ? 'grayscale opacity-70' : ''}`}
-                />
-              )}
-              {statusLabel && (
-                <span className="absolute top-4 left-4 bg-ivory/95 text-charcoal text-[10px] tracking-[0.24em] uppercase px-3 py-1.5 font-light">
-                  {statusLabel}
-                </span>
-              )}
-            </div>
-            {product.images && product.images.length > 1 && (
-              <div className="mt-4 grid grid-cols-4 gap-3">
-                {product.images.slice(1, 5).map((img: any, i: number) => (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={i}
-                    src={img.url}
-                    alt={img.alt || ''}
-                    className="aspect-square object-cover w-full bg-charcoal/5"
-                  />
-                ))}
-              </div>
-            )}
+            <ProductGallery
+              images={product.images ?? []}
+              productName={product.name}
+              isSold={isSold}
+              statusLabel={statusLabel}
+            />
           </div>
 
           <div className="md:col-span-6 reveal" style={{ transitionDelay: '120ms' }}>
