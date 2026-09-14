@@ -2,7 +2,7 @@ import { groq } from 'next-sanity';
 import { client, hasSanityConfig } from './client';
 
 export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
-  brandName, tagline, instagramUrl, tiktokUrl, whatsappUrl, xiaohongshuUrl, wechatHandle, email
+  brandName, tagline, instagramUrl, tiktokUrl, whatsappUrl, xiaohongshuUrl, douyinUrl, wechatHandle, email
 }`;
 
 export const homepageQuery = groq`*[_type == "homepage"][0]{

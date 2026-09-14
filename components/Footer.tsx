@@ -5,6 +5,7 @@ type FooterData = {
   tiktokUrl?: string;
   whatsappUrl?: string;
   xiaohongshuUrl?: string;
+  douyinUrl?: string;
   wechatHandle?: string;
   email?: string;
 };
@@ -200,7 +201,19 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                     rel="noopener noreferrer"
                     className="link-underline text-charcoal/80 hover:text-charcoal"
                   >
-                    Xiaohongshu
+                    RedNote
+                  </a>
+                </li>
+              )}
+              {data.douyinUrl && (
+                <li>
+                  <a
+                    href={data.douyinUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-charcoal/80 hover:text-charcoal"
+                  >
+                    Douyin
                   </a>
                 </li>
               )}
@@ -325,7 +338,14 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               {data.xiaohongshuUrl && (
                 <li>
                   <a href={data.xiaohongshuUrl} target="_blank" rel="noopener noreferrer" className="link-underline text-charcoal/80">
-                    Xiaohongshu
+                    RedNote
+                  </a>
+                </li>
+              )}
+              {data.douyinUrl && (
+                <li>
+                  <a href={data.douyinUrl} target="_blank" rel="noopener noreferrer" className="link-underline text-charcoal/80">
+                    Douyin
                   </a>
                 </li>
               )}
