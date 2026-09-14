@@ -326,7 +326,8 @@
       "all": "Alle Linien",
       "beaded": "Perlen-Kollektionen",
       "aotearoa": "Aotearoa — Edelsteinschmuck"
-    }
+    },
+    "searchPlaceholder": "Stücke, Steine suchen…"
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",

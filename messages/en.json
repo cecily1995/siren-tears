@@ -326,7 +326,8 @@
       "all": "All Lines",
       "beaded": "Beaded Collections",
       "aotearoa": "Aotearoa — Gemstone"
-    }
+    },
+    "searchPlaceholder": "Search pieces, stones…"
   },
   "membership": {
     "eyebrow": "Membership",

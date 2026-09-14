@@ -326,7 +326,8 @@
       "all": "Все линии",
       "beaded": "Бисерные коллекции",
       "aotearoa": "Aotearoa — Драгоценные камни"
-    }
+    },
+    "searchPlaceholder": "Поиск изделий, камней…"
   },
   "membership": {
     "eyebrow": "Членство",

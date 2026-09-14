@@ -326,7 +326,8 @@
       "all": "すべてのライン",
       "beaded": "ビーズコレクション",
       "aotearoa": "Aotearoa — ジェムストーン"
-    }
+    },
+    "searchPlaceholder": "作品や石を検索…"
   },
   "membership": {
     "eyebrow": "メンバーシップ",

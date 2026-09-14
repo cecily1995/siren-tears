@@ -326,7 +326,8 @@
       "all": "Toutes les lignes",
       "beaded": "Collections Perlées",
       "aotearoa": "Aotearoa — Joaillerie"
-    }
+    },
+    "searchPlaceholder": "Rechercher une pièce, une pierre…"
   },
   "membership": {
     "eyebrow": "Adhésion",

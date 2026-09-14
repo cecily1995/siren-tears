@@ -326,7 +326,8 @@
       "all": "전체 라인",
       "beaded": "비즈 컬렉션",
       "aotearoa": "Aotearoa — 젬스톤"
-    }
+    },
+    "searchPlaceholder": "작품, 스톤 검색…"
   },
   "membership": {
     "eyebrow": "멤버십",

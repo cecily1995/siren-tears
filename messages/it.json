@@ -326,7 +326,8 @@
       "all": "Tutte le linee",
       "beaded": "Collezioni Beaded",
       "aotearoa": "Aotearoa — Gioielleria"
-    }
+    },
+    "searchPlaceholder": "Cerca pezzi, pietre…"
   },
   "membership": {
     "eyebrow": "Membership",

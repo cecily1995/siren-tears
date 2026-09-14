@@ -326,7 +326,8 @@
       "all": "全部系列",
       "beaded": "Beaded 串珠系列",
       "aotearoa": "Aotearoa 镶嵌珠宝"
-    }
+    },
+    "searchPlaceholder": "搜索作品或石材…"
   },
   "membership": {
     "eyebrow": "会员",

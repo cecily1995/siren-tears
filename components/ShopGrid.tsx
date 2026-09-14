@@ -63,7 +63,8 @@ export default function ShopGrid({
   collectionNames,
   initialFilter,
   initialLine,
-  initialCollection
+  initialCollection,
+  initialQuery
 }: {
   products: ShopProduct[];
   labels: Labels;
@@ -71,11 +72,13 @@ export default function ShopGrid({
   initialFilter?: string;
   initialLine?: string;
   initialCollection?: string;
+  initialQuery?: string;
 }) {
   const [line, setLine] = useState<Line>(
     initialLine === 'beaded' || initialLine === 'aotearoa' ? initialLine : 'all'
   );
   const [subFilter, setSubFilter] = useState<string>(initialCollection ?? initialFilter ?? 'all');
+  const [query] = useState(initialQuery ?? '');
 
   function changeLine(next: Line) {
     setLine(next);
@@ -105,6 +108,10 @@ export default function ShopGrid({
   }, [line, collectionNames, labels]);
 
   const filtered = products.filter((p) => {
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      return (p.name?.toLowerCase().includes(q) || p.stone?.toLowerCase().includes(q)) ?? false;
+    }
     const productLine = p.productLine ?? 'beaded';
     if (line !== 'all' && productLine !== line) return false;
 
