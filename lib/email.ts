@@ -34,7 +34,7 @@ export async function sendEmail({
     if (!res.ok) {
       const body = await res.text();
       console.error('Resend send failed', res.status, body);
-      return { ok: false, error: 'Email provider rejected the message.' };
+      return { ok: false, error: `Email provider rejected the message (HTTP ${res.status}): ${body}` };
     }
 
     return { ok: true };
