@@ -468,7 +468,19 @@
     "accountCreatedTitle": "Ihr Konto ist bereit.",
     "accountCreatedBody": "Sie können sich jederzeit über My Siren anmelden. Die Mitgliedschaft ist ein separater Schritt, wann immer Sie möchten.",
     "joinCircleCta": "Dem Siren Circle beitreten",
-    "notMemberYet": "Noch kein Siren-Circle-Mitglied"
+    "notMemberYet": "Noch kein Siren-Circle-Mitglied",
+    "resetPasswordTitle": "Passwort zurücksetzen",
+    "resetLinkMissing": "Dieser Link zum Zurücksetzen fehlt oder ist ungültig. Bitte fordern Sie einen neuen von der Anmeldeseite an.",
+    "resetSuccessTitle": "Ihr Passwort wurde aktualisiert.",
+    "resetSuccessCta": "Zu My Siren",
+    "newPasswordLabel": "Neues Passwort",
+    "resetSubmit": "Neues Passwort festlegen",
+    "forgotPasswordLink": "Passwort vergessen?",
+    "forgotPasswordBody": "Geben Sie Ihre E-Mail ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.",
+    "sendResetLink": "Link senden",
+    "backToLogin": "Zurück zur Anmeldung",
+    "resetEmailSentBody": "Falls für diese E-Mail ein Konto besteht, haben wir einen Link zum Zurücksetzen gesendet. Er läuft in 1 Stunde ab.",
+    "gateJoinTitle": "Willkommen. Das bietet der Siren Circle."
   },
   "wornByYouTeaser": {
     "eyebrow": "Getragen von Ihnen",

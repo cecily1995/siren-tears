@@ -130,8 +130,9 @@ export default function AccountLookupForm() {
   const [member, setMember] = useState<Member | null>(null);
   const [purchases, setPurchases] = useState<PurchaseItem[]>([]);
   const [bespokeRequests, setBespokeRequests] = useState<BespokeItem[]>([]);
-  const [mode, setMode] = useState<'login' | 'register'>('login');
+  const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [editing, setEditing] = useState(false);
+  const [forgotStatus, setForgotStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
 
   async function loadSession() {
     try {
@@ -213,6 +214,23 @@ export default function AccountLookupForm() {
     } catch {
       setErrorMsg(t('errorGeneric'));
       setStatus('error');
+    }
+  }
+
+  async function handleForgot(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setForgotStatus('submitting');
+    const form = new FormData(e.currentTarget);
+    try {
+      await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.get('email')?.toString() })
+      });
+    } catch {
+      /* still show the generic "check your email" state either way */
+    } finally {
+      setForgotStatus('sent');
     }
   }
 
@@ -364,6 +382,55 @@ export default function AccountLookupForm() {
     );
   }
 
+  if (mode === 'forgot') {
+    if (forgotStatus === 'sent') {
+      return (
+        <div className="max-w-md mx-auto text-center">
+          <p className="text-[0.9rem] text-ash font-light leading-relaxed mb-6">
+            {t('resetEmailSentBody')}
+          </p>
+          <button
+            type="button"
+            onClick={() => {
+              setMode('login');
+              setForgotStatus('idle');
+            }}
+            className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+          >
+            {t('backToLogin')}
+          </button>
+        </div>
+      );
+    }
+    return (
+      <form onSubmit={handleForgot} className="max-w-md mx-auto">
+        <p className="text-[0.85rem] text-ash font-light leading-relaxed mb-6 text-center">
+          {t('forgotPasswordBody')}
+        </p>
+        <div>
+          <label className={labelClass}>{t('emailLabel')} *</label>
+          <input name="email" type="email" required className={inputClass} />
+        </div>
+        <button
+          type="submit"
+          disabled={forgotStatus === 'submitting'}
+          className="mt-8 w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+        >
+          {forgotStatus === 'submitting' ? t('submitting') : t('sendResetLink')}
+        </button>
+        <div className="mt-5 text-center">
+          <button
+            type="button"
+            onClick={() => setMode('login')}
+            className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+          >
+            {t('backToLogin')}
+          </button>
+        </div>
+      </form>
+    );
+  }
+
   if (mode === 'register') {
     return (
       <form onSubmit={handleRegister} className="max-w-md mx-auto">
@@ -437,14 +504,24 @@ export default function AccountLookupForm() {
       >
         {status === 'submitting' ? t('submitting') : t('loginCta')}
       </button>
-      <div className="mt-5 text-center">
+      <div className="mt-5 text-center space-y-2">
+        <button
+          type="button"
+          onClick={() => {
+            setMode('forgot');
+            setStatus('idle');
+          }}
+          className="block w-full text-[11px] tracking-[0.24em] uppercase text-ash/70 link-underline"
+        >
+          {t('forgotPasswordLink')}
+        </button>
         <button
           type="button"
           onClick={() => {
             setMode('register');
             setStatus('idle');
           }}
-          className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+          className="block w-full text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
         >
           {t('noAccount')}
         </button>

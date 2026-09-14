@@ -468,7 +468,19 @@
     "accountCreatedTitle": "Ваш аккаунт готов.",
     "accountCreatedBody": "Теперь вы можете в любой момент войти через My Siren. Членство — отдельный шаг, доступный, когда вы будете готовы.",
     "joinCircleCta": "Вступить в Siren Circle",
-    "notMemberYet": "Ещё не участник Siren Circle"
+    "notMemberYet": "Ещё не участник Siren Circle",
+    "resetPasswordTitle": "Сбросить пароль",
+    "resetLinkMissing": "Эта ссылка для сброса отсутствует или недействительна. Запросите новую на странице входа.",
+    "resetSuccessTitle": "Ваш пароль обновлён.",
+    "resetSuccessCta": "Перейти в My Siren",
+    "newPasswordLabel": "Новый пароль",
+    "resetSubmit": "Установить новый пароль",
+    "forgotPasswordLink": "Забыли пароль?",
+    "forgotPasswordBody": "Введите свой email, и мы вышлем ссылку для сброса пароля.",
+    "sendResetLink": "Отправить ссылку",
+    "backToLogin": "Назад ко входу",
+    "resetEmailSentBody": "Если для этого email существует аккаунт, мы отправили ссылку для сброса пароля. Она действительна 1 час.",
+    "gateJoinTitle": "Добро пожаловать. Вот что предлагает Siren Circle."
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",

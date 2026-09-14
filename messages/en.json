@@ -468,7 +468,19 @@
     "accountCreatedTitle": "Your account is ready.",
     "accountCreatedBody": "You can now log in anytime from My Siren. Membership is a separate step, whenever you'd like.",
     "joinCircleCta": "Join the Siren Circle",
-    "notMemberYet": "Not a Siren Circle member yet"
+    "notMemberYet": "Not a Siren Circle member yet",
+    "resetPasswordTitle": "Reset your password",
+    "resetLinkMissing": "This reset link is missing or invalid. Please request a new one from the login page.",
+    "resetSuccessTitle": "Your password has been updated.",
+    "resetSuccessCta": "Go to My Siren",
+    "newPasswordLabel": "New password",
+    "resetSubmit": "Set New Password",
+    "forgotPasswordLink": "Forgot your password?",
+    "forgotPasswordBody": "Enter your email and we'll send you a link to reset your password.",
+    "sendResetLink": "Send Reset Link",
+    "backToLogin": "Back to login",
+    "resetEmailSentBody": "If an account exists for that email, we've sent a link to reset your password. It expires in 1 hour.",
+    "gateJoinTitle": "Welcome. Here's what the Siren Circle offers."
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",

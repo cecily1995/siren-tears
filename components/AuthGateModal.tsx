@@ -10,9 +10,10 @@ export default function AuthGateModal() {
   const t = useTranslations('account');
   const [mounted, setMounted] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [mode, setMode] = useState<'login' | 'register'>('register');
+  const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('register');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
+  const [forgotSent, setForgotSent] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -102,6 +103,24 @@ export default function AuthGateModal() {
     }
   }
 
+  async function handleForgot(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus('submitting');
+    const form = new FormData(e.currentTarget);
+    try {
+      await fetch('/api/auth/forgot-password', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: form.get('email')?.toString() })
+      });
+    } catch {
+      /* show the same generic confirmation either way */
+    } finally {
+      setForgotSent(true);
+      setStatus('idle');
+    }
+  }
+
   if (!mounted || !visible) return null;
 
   const inputClass =
@@ -126,14 +145,22 @@ export default function AuthGateModal() {
         {status === 'success' ? (
           <div className="text-center pt-4">
             <p className="serif-display text-[1.4rem] font-light text-charcoal mb-3">
-              {t('accountCreatedTitle')}
+              {t('gateJoinTitle')}
             </p>
-            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-6">
+            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-5">
               {t('accountCreatedBody')}
             </p>
+            <ul className="text-left space-y-1.5 mb-7 inline-block">
+              {(t.raw('circleBenefits2') as string[]).map((b, i) => (
+                <li key={i} className="text-[0.85rem] text-ash font-light pl-4 relative">
+                  <span className="absolute left-0 top-[0.55em] w-1 h-1 rounded-full bg-gold/70" />
+                  {b}
+                </li>
+              ))}
+            </ul>
             <a
               href="/membership"
-              className="inline-block text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+              className="block w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
             >
               {t('joinCircleCta')}
             </a>
@@ -145,6 +172,47 @@ export default function AuthGateModal() {
               {t('continueExploring')}
             </button>
           </div>
+        ) : mode === 'forgot' ? (
+          <>
+            <p className="eyebrow mb-2 text-center">{t('gateEyebrow')}</p>
+            <h2 className="serif-display text-[1.5rem] font-light text-charcoal text-center mb-6">
+              {t('resetPasswordTitle')}
+            </h2>
+            {forgotSent ? (
+              <p className="text-[0.85rem] text-ash font-light leading-relaxed text-center">
+                {t('resetEmailSentBody')}
+              </p>
+            ) : (
+              <form onSubmit={handleForgot} className="space-y-5">
+                <p className="text-[0.85rem] text-ash font-light leading-relaxed text-center">
+                  {t('forgotPasswordBody')}
+                </p>
+                <div>
+                  <label className={labelClass}>{t('emailLabel')} *</label>
+                  <input name="email" type="email" required className={inputClass} />
+                </div>
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+                >
+                  {status === 'submitting' ? t('submitting') : t('sendResetLink')}
+                </button>
+              </form>
+            )}
+            <div className="text-center mt-5">
+              <button
+                type="button"
+                onClick={() => {
+                  setMode('login');
+                  setForgotSent(false);
+                }}
+                className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+              >
+                {t('backToLogin')}
+              </button>
+            </div>
+          </>
         ) : (
           <>
             <p className="eyebrow mb-2 text-center">{t('gateEyebrow')}</p>
@@ -209,14 +277,21 @@ export default function AuthGateModal() {
                 >
                   {status === 'submitting' ? t('submitting') : t('loginCta')}
                 </button>
-                <div className="text-center">
+                <div className="text-center space-y-2">
+                  <button
+                    type="button"
+                    onClick={() => setMode('forgot')}
+                    className="block w-full text-[11px] tracking-[0.24em] uppercase text-ash/70 link-underline"
+                  >
+                    {t('forgotPasswordLink')}
+                  </button>
                   <button
                     type="button"
                     onClick={() => {
                       setMode('register');
                       setStatus('idle');
                     }}
-                    className="text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
+                    className="block w-full text-[11px] tracking-[0.24em] uppercase text-ash link-underline"
                   >
                     {t('noAccount')}
                   </button>

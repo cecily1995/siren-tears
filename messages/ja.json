@@ -468,7 +468,19 @@
     "accountCreatedTitle": "アカウントの準備が整いました。",
     "accountCreatedBody": "いつでもMy Sirenからログインいただけます。会員登録は別のステップですので、ご都合の良いタイミングでどうぞ。",
     "joinCircleCta": "Siren Circleに参加する",
-    "notMemberYet": "まだSiren Circle会員ではありません"
+    "notMemberYet": "まだSiren Circle会員ではありません",
+    "resetPasswordTitle": "パスワードを再設定",
+    "resetLinkMissing": "このリセットリンクが見つからないか無効です。ログインページから再度リクエストしてください。",
+    "resetSuccessTitle": "パスワードが更新されました。",
+    "resetSuccessCta": "My Sirenへ",
+    "newPasswordLabel": "新しいパスワード",
+    "resetSubmit": "新しいパスワードを設定",
+    "forgotPasswordLink": "パスワードをお忘れですか?",
+    "forgotPasswordBody": "メールアドレスをご入力いただくと、パスワード再設定用のリンクをお送りします。",
+    "sendResetLink": "リセットリンクを送信",
+    "backToLogin": "ログインに戻る",
+    "resetEmailSentBody": "このメールアドレスのアカウントが存在する場合、パスワード再設定用のリンクをお送りしました。1時間有効です。",
+    "gateJoinTitle": "ようこそ。Siren Circleの特典はこちらです。"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",
