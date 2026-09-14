@@ -30,7 +30,7 @@ export default function Atelier({ data }: { data: Data }) {
       <div className="hidden md:block px-12 py-40">
         <div className="mx-auto max-w-[1280px] grid grid-cols-12 gap-16 items-center">
           <div className="col-span-6 reveal">
-            <div className="relative aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom">
+            <div className="relative aspect-[3/4] overflow-hidden bg-charcoal/5 frame-zoom">
               {data.imageUrl && (
                 <div
                   className="bg-img absolute inset-0 bg-center bg-cover"
