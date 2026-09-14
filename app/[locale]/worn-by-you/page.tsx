@@ -51,7 +51,7 @@ export default async function GalleryPage({
                 rel="noopener noreferrer"
                 className="text-charcoal link-underline"
               >
-                @sirentears_1995
+                @sirentears.jewellry
               </a>
             </>
           )}

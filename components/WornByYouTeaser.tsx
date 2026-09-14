@@ -62,12 +62,14 @@ export default function WornByYouTeaser({ items, labels }: { items: Item[]; labe
         >
           {labels.viewCta}
         </Link>
-        <Link
-          href="/#contact"
+        <a
+          href="https://wa.me/64274326262"
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-[11px] tracking-[0.32em] uppercase text-gold link-underline"
         >
           {labels.shareCta}
-        </Link>
+        </a>
       </div>
     </section>
   );

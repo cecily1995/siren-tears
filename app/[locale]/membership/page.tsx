@@ -38,25 +38,35 @@ export default async function MembershipPage({
       />
 
       <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
-        <div className="mx-auto max-w-[1100px] grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-10">
+        <div className="mx-auto max-w-[640px] space-y-20">
           {/* Siren Circle */}
-          <article className="reveal bg-ivory border border-charcoal/12 p-10 md:p-12 flex flex-col">
-            <p className="eyebrow mb-3">{t('circleTitle')}</p>
-            <p className="text-[0.95rem] text-gold font-light mb-8">{t('circleFree')}</p>
-            <ul className="space-y-4 flex-1">
-              {circleBenefits.map((b, i) => (
-                <li key={i} className="text-[0.92rem] leading-[1.8] text-ash font-light pl-5 relative">
-                  <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
-                  {b}
-                </li>
-              ))}
-            </ul>
-          </article>
+          <div>
+            <article className="reveal bg-ivory border border-charcoal/12 p-10 md:p-12 flex flex-col">
+              <p className="eyebrow mb-3">{t('circleTitle')}</p>
+              <p className="text-[0.95rem] text-gold font-light mb-8">{t('circleFree')}</p>
+              <ul className="space-y-4">
+                {circleBenefits.map((b, i) => (
+                  <li key={i} className="text-[0.92rem] leading-[1.8] text-ash font-light pl-5 relative">
+                    <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
+                    {b}
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <div className="mt-10 reveal">
+              <div className="text-center mb-8">
+                <p className="eyebrow mb-4">{t('circleCta')}</p>
+              </div>
+              <MembershipJoinForm />
+            </div>
+          </div>
+
+          <div className="h-px bg-charcoal/10" />
 
           {/* Private Client — distinguished with a charcoal border/accent, not a solid black fill */}
           <article
             className="reveal bg-sandLight/40 border-2 border-charcoal p-10 md:p-12 flex flex-col"
-            style={{ transitionDelay: '120ms' }}
           >
             <p className="eyebrow mb-3">{t('privateTitle')}</p>
             <p className="text-[0.95rem] text-ash font-light mb-8">{t('privateSubtitle')}</p>
@@ -75,15 +85,6 @@ export default async function MembershipPage({
               {t('privatePriceNote')}
             </p>
           </article>
-        </div>
-
-        <div className="mt-24 max-w-lg mx-auto reveal">
-          <div className="mx-auto h-px w-16 bg-gold/60 mb-8" />
-          <div className="text-center">
-            <p className="eyebrow mb-4">{t('circleCta')}</p>
-            <p className="text-[0.9rem] text-ash font-light leading-relaxed">{t('circleFree')}</p>
-          </div>
-          <MembershipJoinForm />
         </div>
       </section>
     </>

@@ -2,6 +2,8 @@ type FooterData = {
   brandName?: string;
   tagline?: string;
   instagramUrl?: string;
+  tiktokUrl?: string;
+  whatsappUrl?: string;
   xiaohongshuUrl?: string;
   wechatHandle?: string;
   email?: string;
@@ -160,6 +162,30 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                     className="link-underline text-ivory/80 hover:text-ivory"
                   >
                     Instagram
+                  </a>
+                </li>
+              )}
+              {data.tiktokUrl && (
+                <li>
+                  <a
+                    href={data.tiktokUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-ivory/80 hover:text-ivory"
+                  >
+                    TikTok
+                  </a>
+                </li>
+              )}
+              {data.whatsappUrl && (
+                <li>
+                  <a
+                    href={data.whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-underline text-ivory/80 hover:text-ivory"
+                  >
+                    WhatsApp
                   </a>
                 </li>
               )}

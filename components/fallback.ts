@@ -172,7 +172,9 @@ export const fallback = {
   settings: {
     brandName: 'SIREN TEARS',
     tagline: 'Natural crystal jewelry, made slowly by the southern sea.',
-    instagramUrl: 'https://instagram.com/',
+    instagramUrl: 'https://www.instagram.com/sirentears.jewellry',
+    tiktokUrl: 'https://www.tiktok.com/@siren.tears',
+    whatsappUrl: 'https://wa.me/64274326262',
     xiaohongshuUrl: 'https://www.xiaohongshu.com/',
     wechatHandle: 'sirentears.studio',
     email: 'studio@sirentears.com'
