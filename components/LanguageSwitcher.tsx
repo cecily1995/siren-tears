@@ -2,14 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname, localeNames, localeShortNames } from '@/i18n/routing';
+import { usePathname, getPathname, localeNames, localeShortNames } from '@/i18n/routing';
 import type { Locale } from '@/i18n/routing';
 
 const locales: Locale[] = ['en', 'zh', 'fr', 'de', 'ru', 'ko', 'ja', 'it'];
 
 export default function LanguageSwitcher({ light }: { light: boolean }) {
   const locale = useLocale() as Locale;
-  const router = useRouter();
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -29,11 +28,6 @@ export default function LanguageSwitcher({ light }: { light: boolean }) {
       document.removeEventListener('keydown', onEsc);
     };
   }, [open]);
-
-  const change = (next: Locale) => {
-    setOpen(false);
-    router.replace(pathname, { locale: next });
-  };
 
   const baseTextClass = light ? 'text-ivory/80 hover:text-ivory' : 'text-charcoal/70 hover:text-charcoal';
   const borderClass = light ? 'border-ivory/30 hover:border-ivory/60' : 'border-charcoal/20 hover:border-charcoal/40';
@@ -73,13 +67,14 @@ export default function LanguageSwitcher({ light }: { light: boolean }) {
         <ul className="py-2">
           {locales.map((l) => {
             const isActive = l === locale;
+            const href = getPathname({ href: pathname, locale: l });
             return (
               <li key={l}>
-                <button
-                  type="button"
+                <a
+                  href={href}
                   role="option"
                   aria-selected={isActive}
-                  onClick={() => change(l)}
+                  onClick={() => setOpen(false)}
                   className={`group w-full text-left px-5 py-2.5 flex items-center justify-between gap-3 text-[12px] font-light transition-colors duration-300 ${
                     light
                       ? isActive
@@ -94,7 +89,7 @@ export default function LanguageSwitcher({ light }: { light: boolean }) {
                   <span className={`text-[10px] tracking-[0.28em] uppercase ${isActive ? 'opacity-100' : 'opacity-50'}`}>
                     {localeShortNames[l]}
                   </span>
-                </button>
+                </a>
               </li>
             );
           })}
