@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   const { updates } = body ?? {};
 
   try {
-    const allowedFields = ['firstName', 'lastName', 'birthday', 'phone', 'address', 'country'];
+    const allowedFields = ['firstName', 'lastName', 'birthday', 'phoneCountryCode', 'phone', 'addressLine', 'city', 'postcode', 'country'];
     const patch: Record<string, string> = {};
     for (const key of allowedFields) {
       if (typeof updates?.[key] === 'string') patch[key] = updates[key];

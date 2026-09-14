@@ -29,7 +29,7 @@ export async function GET() {
   try {
     const member = await client.fetch(
       `*[_type == "member" && _id == $id][0]{
-        firstName, lastName, email, phone, address, country, birthday, memberCode, tier, isMember, joinedAt
+        firstName, lastName, email, phoneCountryCode, phone, addressLine, city, postcode, country, birthday, memberCode, tier, isMember, joinedAt
       }`,
       { id: session.id }
     );

@@ -372,7 +372,10 @@
       "errorGeneric": "Qualcosa è andato storto. Riprova, oppure contattaci direttamente.",
       "countryLabel": "Paese",
       "needAccountFirst": "L'iscrizione è separata dal tuo account. Accedi o crea prima un account, poi torna qui per entrare nel Siren Circle.",
-      "alreadyMemberTitle": "Fai già parte del Siren Circle."
+      "alreadyMemberTitle": "Fai già parte del Siren Circle.",
+      "addressLineLabel": "Indirizzo",
+      "cityLabel": "Città",
+      "postcodeLabel": "CAP"
     },
     "privatePriceNote": "Provvisorio: potrebbe essere richiesto un contributo una tantum di NZD $999 per entrare direttamente come Private Client, in attesa dei vantaggi definitivi."
   },

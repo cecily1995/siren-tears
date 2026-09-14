@@ -3,13 +3,17 @@
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import ProfileAddressFields from './ProfileAddressFields';
 
 type SessionMember = {
   firstName?: string;
   lastName?: string;
   email?: string;
+  phoneCountryCode?: string;
   phone?: string;
-  address?: string;
+  addressLine?: string;
+  city?: string;
+  postcode?: string;
   country?: string;
   birthday?: string;
   memberCode?: string;
@@ -42,8 +46,11 @@ export default function MembershipJoinForm() {
       firstName: form.get('firstName')?.toString() || '',
       lastName: form.get('lastName')?.toString() || '',
       birthday: form.get('birthday')?.toString() || '',
+      phoneCountryCode: form.get('phoneCountryCode')?.toString() || '',
       phone: form.get('phone')?.toString() || '',
-      address: form.get('address')?.toString() || '',
+      addressLine: form.get('addressLine')?.toString() || '',
+      city: form.get('city')?.toString() || '',
+      postcode: form.get('postcode')?.toString() || '',
       country: form.get('country')?.toString() || ''
     };
 
@@ -146,21 +153,26 @@ export default function MembershipJoinForm() {
           <input name="lastName" type="text" defaultValue={session.lastName} className={inputClass} />
         </div>
         <div>
-          <label className={labelClass}>{t('phoneLabel')}</label>
-          <input name="phone" type="tel" defaultValue={session.phone} className={inputClass} />
-        </div>
-        <div>
           <label className={labelClass}>{t('birthdayLabel')}</label>
           <input name="birthday" type="date" defaultValue={session.birthday} className={inputClass} />
         </div>
-        <div>
-          <label className={labelClass}>{t('addressLabel')}</label>
-          <input name="address" type="text" defaultValue={session.address} className={inputClass} />
-        </div>
-        <div>
-          <label className={labelClass}>{t('countryLabel')}</label>
-          <input name="country" type="text" defaultValue={session.country} className={inputClass} />
-        </div>
+        <ProfileAddressFields
+          labels={{
+            phoneLabel: t('phoneLabel'),
+            addressLine: t('addressLineLabel'),
+            city: t('cityLabel'),
+            postcode: t('postcodeLabel'),
+            country: t('countryLabel')
+          }}
+          defaults={{
+            phoneCountryCode: session.phoneCountryCode,
+            phone: session.phone,
+            addressLine: session.addressLine,
+            city: session.city,
+            postcode: session.postcode,
+            country: session.country
+          }}
+        />
       </div>
 
       {status === 'error' && (

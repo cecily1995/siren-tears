@@ -16,8 +16,11 @@ export default defineType({
       hidden: true,
       description: 'Never edit this manually — set only via the site\u2019s register/login flow.'
     }),
-    defineField({ name: 'phone', title: 'Phone', type: 'string' }),
-    defineField({ name: 'address', title: 'Usual address', type: 'text', rows: 2 }),
+    defineField({ name: 'phoneCountryCode', title: 'Phone country code', type: 'string' }),
+    defineField({ name: 'phone', title: 'Phone (local number)', type: 'string' }),
+    defineField({ name: 'addressLine', title: 'Street address', type: 'string' }),
+    defineField({ name: 'city', title: 'City', type: 'string' }),
+    defineField({ name: 'postcode', title: 'Postcode', type: 'string' }),
     defineField({ name: 'country', title: 'Country', type: 'string' }),
     defineField({
       name: 'isMember',

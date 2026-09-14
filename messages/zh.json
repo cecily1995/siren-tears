@@ -372,7 +372,10 @@
       "errorGeneric": "出了点问题,请重试,或直接联系我们。",
       "countryLabel": "国家/地区",
       "needAccountFirst": "会员和账户是分开的两件事。请先登录或注册一个账户,再回到这里加入 Siren Circle。",
-      "alreadyMemberTitle": "你已经是 Siren Circle 的会员了。"
+      "alreadyMemberTitle": "你已经是 Siren Circle 的会员了。",
+      "addressLineLabel": "街道地址",
+      "cityLabel": "城市",
+      "postcodeLabel": "邮编"
     },
     "privatePriceNote": "暂定:一次性支付 NZD $999 即可直接加入 Private Client,具体权益确定后可能调整。"
   },

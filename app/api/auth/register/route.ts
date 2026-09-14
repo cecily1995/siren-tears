@@ -33,8 +33,11 @@ export async function POST(request: Request) {
     email,
     password,
     birthday,
+    phoneCountryCode,
     phone,
-    address,
+    addressLine,
+    city,
+    postcode,
     country
   }: {
     firstName?: string;
@@ -42,8 +45,11 @@ export async function POST(request: Request) {
     email?: string;
     password?: string;
     birthday?: string;
+    phoneCountryCode?: string;
     phone?: string;
-    address?: string;
+    addressLine?: string;
+    city?: string;
+    postcode?: string;
     country?: string;
   } = body ?? {};
 
@@ -79,8 +85,11 @@ export async function POST(request: Request) {
       email,
       passwordHash: hashPassword(password),
       birthday: birthday || '',
+      phoneCountryCode: phoneCountryCode || '',
       phone: phone || '',
-      address: address || '',
+      addressLine: addressLine || '',
+      city: city || '',
+      postcode: postcode || '',
       country: country || '',
       isMember: false
       // joinedAt intentionally omitted here -- Sanity's datetime type

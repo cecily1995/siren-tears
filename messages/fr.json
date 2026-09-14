@@ -372,7 +372,10 @@
       "errorGeneric": "Une erreur s'est produite. Merci de réessayer, ou de nous contacter directement.",
       "countryLabel": "Pays",
       "needAccountFirst": "L'adhésion est distincte de votre compte. Connectez-vous ou créez un compte, puis revenez ici pour rejoindre le Siren Circle.",
-      "alreadyMemberTitle": "Vous faites déjà partie du Siren Circle."
+      "alreadyMemberTitle": "Vous faites déjà partie du Siren Circle.",
+      "addressLineLabel": "Adresse",
+      "cityLabel": "Ville",
+      "postcodeLabel": "Code postal"
     },
     "privatePriceNote": "Provisoire : des frais uniques de 999 NZD peuvent s'appliquer pour accéder directement au statut Private Client, en attendant les avantages définitifs."
   },

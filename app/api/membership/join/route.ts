@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     /* body is optional -- all fields can be left as-is */
   }
 
-  const { firstName, lastName, birthday, phone, address, country } = body ?? {};
+  const { firstName, lastName, birthday, phoneCountryCode, phone, addressLine, city, postcode, country } = body ?? {};
 
   try {
     const existing = await client.fetch<{ memberCode?: string; isMember?: boolean } | null>(
@@ -58,8 +58,11 @@ export async function POST(request: Request) {
     if (typeof firstName === 'string' && firstName) patch.firstName = firstName;
     if (typeof lastName === 'string') patch.lastName = lastName;
     if (typeof birthday === 'string') patch.birthday = birthday;
+    if (typeof phoneCountryCode === 'string') patch.phoneCountryCode = phoneCountryCode;
     if (typeof phone === 'string') patch.phone = phone;
-    if (typeof address === 'string') patch.address = address;
+    if (typeof addressLine === 'string') patch.addressLine = addressLine;
+    if (typeof city === 'string') patch.city = city;
+    if (typeof postcode === 'string') patch.postcode = postcode;
     if (typeof country === 'string') patch.country = country;
 
     let memberCode = existing.memberCode;

@@ -2,13 +2,17 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import ProfileAddressFields from './ProfileAddressFields';
 
 type Member = {
   firstName?: string;
   lastName?: string;
   email?: string;
+  phoneCountryCode?: string;
   phone?: string;
-  address?: string;
+  addressLine?: string;
+  city?: string;
+  postcode?: string;
   country?: string;
   birthday?: string;
   memberCode?: string;
@@ -46,8 +50,11 @@ function EditProfileForm({
       firstName: form.get('firstName')?.toString() || '',
       lastName: form.get('lastName')?.toString() || '',
       birthday: form.get('birthday')?.toString() || '',
+      phoneCountryCode: form.get('phoneCountryCode')?.toString() || '',
       phone: form.get('phone')?.toString() || '',
-      address: form.get('address')?.toString() || '',
+      addressLine: form.get('addressLine')?.toString() || '',
+      city: form.get('city')?.toString() || '',
+      postcode: form.get('postcode')?.toString() || '',
       country: form.get('country')?.toString() || ''
     };
     try {
@@ -85,17 +92,26 @@ function EditProfileForm({
           <input name="birthday" type="date" defaultValue={member.birthday} className={inputClass} />
         </div>
         <div>
-          <label className={labelClass}>{tForm('phoneLabel')}</label>
-          <input name="phone" defaultValue={member.phone} className={inputClass} />
+          <label className={labelClass}>{tForm('birthdayLabel')}</label>
+          <input name="birthday" type="date" defaultValue={member.birthday} className={inputClass} />
         </div>
-        <div>
-          <label className={labelClass}>{tForm('addressLabel')}</label>
-          <input name="address" defaultValue={member.address} className={inputClass} />
-        </div>
-        <div>
-          <label className={labelClass}>{tForm('countryLabel')}</label>
-          <input name="country" defaultValue={member.country} className={inputClass} />
-        </div>
+        <ProfileAddressFields
+          labels={{
+            phoneLabel: tForm('phoneLabel'),
+            addressLine: tForm('addressLineLabel'),
+            city: tForm('cityLabel'),
+            postcode: tForm('postcodeLabel'),
+            country: tForm('countryLabel')
+          }}
+          defaults={{
+            phoneCountryCode: member.phoneCountryCode,
+            phone: member.phone,
+            addressLine: member.addressLine,
+            city: member.city,
+            postcode: member.postcode,
+            country: member.country
+          }}
+        />
       </div>
 
       {saveStatus === 'error' && (
