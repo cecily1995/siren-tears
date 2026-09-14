@@ -22,8 +22,8 @@ import { useEffect, useRef } from 'react';
  */
 export default function HeroOceanRipple({
   src,
-  waterBandStart = 0.56,
-  waterBandEnd = 0.98
+  waterBandStart = 0.42,
+  waterBandEnd = 0.99
 }: {
   src?: string;
   waterBandStart?: number;
@@ -55,9 +55,11 @@ export default function HeroOceanRipple({
 
     const isNarrow = () => window.innerWidth < 768;
 
+    let dpr = 1;
+
     function sizeCanvas() {
       const rect = section!.getBoundingClientRect();
-      const dpr = Math.min(window.devicePixelRatio || 1, isNarrow() ? 1 : 1.5);
+      dpr = Math.min(window.devicePixelRatio || 1, isNarrow() ? 1.5 : 2);
       canvas!.width = Math.max(1, Math.round(rect.width * dpr));
       canvas!.height = Math.max(1, Math.round(rect.height * dpr));
       canvas!.style.width = `${rect.width}px`;
@@ -68,7 +70,7 @@ export default function HeroOceanRipple({
       raf = requestAnimationFrame(draw);
       if (disposed || !tabVisible || !inView) return;
 
-      const targetFps = isNarrow() ? 10 : 16;
+      const targetFps = isNarrow() ? 14 : 22;
       const interval = 1000 / targetFps;
       const last = (draw as any)._last ?? 0;
       if (time - last < interval) return;
@@ -102,16 +104,17 @@ export default function HeroOceanRipple({
 
       ctx!.clearRect(0, Math.max(0, bandTop - 4), cw, bandHeight + 8);
 
-      const strip = isNarrow() ? 5 : 3;
-      const maxAmpPx = (isNarrow() ? 1.4 : 2.2) * (cw / (isNarrow() ? 400 : 1400) + 0.6);
+      const strip = isNarrow() ? 4 : 3;
+      const maxAmpCss = isNarrow() ? 7 : 12; // clearly visible wave motion, in CSS px
+      const maxAmpPx = maxAmpCss * dpr;
       const t = time * 0.001;
 
       for (let y = bandTop; y < bandBottom; y += strip) {
         const progress = (y - bandTop) / bandHeight; // 0 at horizon edge, 1 at foot of frame
-        const amp = progress * progress * maxAmpPx; // ease-in so the line near the horizon is essentially still
-        // Two slightly de-tuned sine waves so the loop is not obviously periodic.
+        const amp = Math.sqrt(progress) * maxAmpPx; // eases in fast, so most of the band clearly moves
+        // Two de-tuned sine waves so the loop doesn't read as an obvious repeat.
         const wobble =
-          Math.sin(y * 0.012 + t * 0.11) * 0.6 + Math.sin(y * 0.021 - t * 0.07 + 1.3) * 0.4;
+          Math.sin(y * 0.012 + t * 0.35) * 0.65 + Math.sin(y * 0.023 - t * 0.22 + 1.3) * 0.35;
         const dx = wobble * amp;
 
         const srcY = ((y - offsetY) / drawH) * ih;
