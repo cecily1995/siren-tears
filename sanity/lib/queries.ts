@@ -54,6 +54,11 @@ export const shopProductBySlugQuery = groq`*[_type == "shopProduct" && slug.curr
   "images": images[]{ "url": asset->url, alt }
 }`;
 
+export const bespokeRequestByIdQuery = groq`*[_type == "bespokeRequest" && _id == $id][0]{
+  _id, name, productionTrack, pieceType, gender, birthday, zodiac,
+  wristSize, ringSize, colours, styles, note, status, submittedAt
+}`;
+
 async function safeFetch<T>(query: string, params: Record<string, unknown> = {}): Promise<T | null> {
   if (!hasSanityConfig || !client) return null;
   try {
@@ -71,3 +76,4 @@ export const getBrandStory = () => safeFetch<any>(brandStoryQuery);
 export const getBuyerShowcase = () => safeFetch<any[]>(buyerShowcaseQuery);
 export const getShopProducts = () => safeFetch<any[]>(shopProductsQuery);
 export const getShopProductBySlug = (slug: string) => safeFetch<any>(shopProductBySlugQuery, { slug });
+export const getBespokeRequestById = (id: string) => safeFetch<any>(bespokeRequestByIdQuery, { id });

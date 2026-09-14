@@ -47,7 +47,7 @@ export async function GET() {
       ),
       client.fetch(
         `*[_type == "bespokeRequest" && lower(email) == lower($email)] | order(_createdAt desc){
-          pieceType, status, _createdAt
+          _id, pieceType, status, _createdAt
         }`,
         { email: member.email }
       )

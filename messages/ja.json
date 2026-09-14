@@ -240,13 +240,19 @@
         "silver": "シルバー",
         "gold": "ゴールド"
       },
-      "noteLabel": "その他お伝えしたいことがあれば教えてください(お好みのスタイルやメモなど)"
+      "noteLabel": "その他お伝えしたいことがあれば教えてください(お好みのスタイルやメモなど)",
+      "shareLinkLabel": "このリクエストを共有",
+      "copyLink": "リンクをコピー",
+      "linkCopied": "コピーしました!",
+      "contactNowCta": "今すぐお問い合わせ",
+      "whatsappPrefix": "こんにちは!オーダーメイドのリクエストを送信しました:"
     },
     "contactTitle": "アトリエに相談する",
     "whatsappBody": "オーダーメイド作品について、より早くご相談いただけます。",
     "whatsappCta": "相談を始める",
     "emailBody": "詳細なご相談や参考イメージの共有に適しています。",
-    "emailCta": "メールを送る"
+    "emailCta": "メールを送る",
+    "chooseHint": "上のラインを選んでオーダーメイドのご依頼を始めてください。"
   },
   "care": {
     "eyebrow": "お手入れ",
@@ -484,7 +490,8 @@
     "backToLogin": "ログインに戻る",
     "resetEmailSentBody": "このメールアドレスのアカウントが存在する場合、6桁のコードをお送りしました。15分間有効です。",
     "gateJoinTitle": "ようこそ。Siren Circleの特典はこちらです。",
-    "resetCodeLabel": "リセットコード"
+    "resetCodeLabel": "リセットコード",
+    "viewRequest": "リクエストを見る"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",

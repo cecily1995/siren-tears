@@ -240,13 +240,19 @@
         "silver": "Argento",
         "gold": "Oro"
       },
-      "noteLabel": "C'è qualcosa che vorreste farci sapere? (preferenze di stile, note, qualsiasi cosa)"
+      "noteLabel": "C'è qualcosa che vorreste farci sapere? (preferenze di stile, note, qualsiasi cosa)",
+      "shareLinkLabel": "Condividi questa richiesta",
+      "copyLink": "Copia link",
+      "linkCopied": "Copiato!",
+      "contactNowCta": "Contattaci ora",
+      "whatsappPrefix": "Ciao! Ho appena inviato una richiesta su misura:"
     },
     "contactTitle": "Parla con l'Atelier",
     "whatsappBody": "Per una conversazione più rapida sul vostro pezzo su misura.",
     "whatsappCta": "Inizia una conversazione",
     "emailBody": "Per richieste dettagliate e per condividere ispirazioni.",
-    "emailCta": "Invia un'email"
+    "emailCta": "Invia un'email",
+    "chooseHint": "Scegli una linea qui sopra per iniziare la tua richiesta su misura."
   },
   "care": {
     "eyebrow": "Cura",
@@ -484,7 +490,8 @@
     "backToLogin": "Torna all'accesso",
     "resetEmailSentBody": "Se esiste un account per questa email, abbiamo inviato un codice a 6 cifre. Scade tra 15 minuti.",
     "gateJoinTitle": "Benvenuta/o. Ecco cosa offre il Siren Circle.",
-    "resetCodeLabel": "Codice di reimpostazione"
+    "resetCodeLabel": "Codice di reimpostazione",
+    "viewRequest": "Visualizza richiesta"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",

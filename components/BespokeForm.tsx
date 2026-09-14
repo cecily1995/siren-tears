@@ -35,16 +35,23 @@ function zodiacFromDate(dateStr: string): string {
 
 const COLOURS = ['pink', 'white', 'red', 'yellow', 'purple', 'green', 'blue', 'brown', 'orange'] as const;
 const STYLES = ['silver', 'gold'] as const;
-const PIECE_TYPES = ['bracelet', 'necklace', 'ring', 'pendant', 'other'] as const;
+const PIECE_TYPES_BY_TRACK: Record<'beaded' | 'gemstone', readonly string[]> = {
+  beaded: ['bracelet', 'necklace', 'other'],
+  gemstone: ['ring', 'pendant', 'other']
+};
+const WHATSAPP_NUMBER = '64274326262';
 
-export default function BespokeForm() {
+export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' }) {
   const t = useTranslations('bespoke.form');
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [pieceType, setPieceType] = useState<(typeof PIECE_TYPES)[number]>('bracelet');
+  const pieceTypes = PIECE_TYPES_BY_TRACK[track];
+  const [pieceType, setPieceType] = useState<string>(pieceTypes[0]);
   const [colours, setColours] = useState<string[]>([]);
   const [styles, setStyles] = useState<string[]>([]);
+  const [requestId, setRequestId] = useState('');
+  const [copied, setCopied] = useState(false);
 
   const zodiac = useMemo(() => zodiacFromDate(birthday), [birthday]);
 
@@ -64,6 +71,7 @@ export default function BespokeForm() {
       gender: form.get('gender')?.toString() || '',
       birthday,
       zodiac,
+      productionTrack: track,
       pieceType,
       wristSize: pieceType === 'bracelet' ? form.get('wristSize')?.toString() || '' : '',
       ringSize: pieceType === 'ring' ? form.get('ringSize')?.toString() || '' : '',
@@ -84,6 +92,7 @@ export default function BespokeForm() {
         setStatus('error');
         return;
       }
+      setRequestId(data.id || '');
       setStatus('success');
     } catch {
       setErrorMsg(t('errorGeneric'));
@@ -92,14 +101,55 @@ export default function BespokeForm() {
   }
 
   if (status === 'success') {
+    const shareLink =
+      requestId && typeof window !== 'undefined'
+        ? `${window.location.origin}/bespoke/request/${requestId}`
+        : '';
+
+    function copyLink() {
+      if (!shareLink) return;
+      navigator.clipboard.writeText(shareLink).then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      });
+    }
+
     return (
       <div className="text-center py-16">
         <p className="serif-display text-[1.8rem] font-light mb-5 text-charcoal">
           {t('successTitle')}
         </p>
-        <p className="text-[0.95rem] leading-[1.9] text-ash font-light max-w-md mx-auto">
+        <p className="text-[0.95rem] leading-[1.9] text-ash font-light max-w-md mx-auto mb-8">
           {t('successBody')}
         </p>
+
+        {shareLink && (
+          <div className="max-w-md mx-auto border border-charcoal/12 bg-ivory p-6 mb-8">
+            <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-3">
+              {t('shareLinkLabel')}
+            </p>
+            <p className="text-[0.82rem] text-charcoal font-light break-all mb-4">{shareLink}</p>
+            <div className="flex flex-wrap items-center justify-center gap-6">
+              <button
+                type="button"
+                onClick={copyLink}
+                className="text-[11px] tracking-[0.28em] uppercase text-charcoal link-underline"
+              >
+                {copied ? t('linkCopied') : t('copyLink')}
+              </button>
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                  `${t('whatsappPrefix')} ${shareLink}`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[11px] tracking-[0.28em] uppercase text-gold link-underline"
+              >
+                {t('contactNowCta')}
+              </a>
+            </div>
+          </div>
+        )}
       </div>
     );
   }
@@ -150,7 +200,7 @@ export default function BespokeForm() {
         <div className="md:col-span-2">
           <label className={labelClass}>{t('pieceTypeLabel')}</label>
           <div className="flex flex-wrap gap-3">
-            {PIECE_TYPES.map((p) => (
+            {pieceTypes.map((p) => (
               <button
                 key={p}
                 type="button"

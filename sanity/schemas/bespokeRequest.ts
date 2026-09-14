@@ -7,6 +7,12 @@ export default defineType({
   fields: [
     defineField({ name: 'name', title: 'Name', type: 'string' }),
     defineField({ name: 'email', title: 'Email', type: 'string' }),
+    defineField({
+      name: 'productionTrack',
+      title: 'Production track',
+      type: 'string',
+      options: { list: [{ title: 'Beaded (Bracelets & Necklaces)', value: 'beaded' }, { title: 'Gemstone (Rings & Fine Jewellery)', value: 'gemstone' }] }
+    }),
     defineField({ name: 'gender', title: 'Gender', type: 'string' }),
     defineField({ name: 'birthday', title: 'Date of birth', type: 'string' }),
     defineField({ name: 'zodiac', title: 'Zodiac sign', type: 'string' }),

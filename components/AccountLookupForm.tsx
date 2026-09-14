@@ -22,7 +22,7 @@ type Member = {
 };
 
 type PurchaseItem = { productName?: string; status?: string; trackingNumber?: string; _createdAt?: string };
-type BespokeItem = { pieceType?: string; status?: string; _createdAt?: string };
+type BespokeItem = { _id?: string; pieceType?: string; status?: string; _createdAt?: string };
 
 function EditProfileForm({
   member,
@@ -393,6 +393,16 @@ export default function AccountLookupForm() {
                   <li key={i} className="border-b border-charcoal/10 pb-3 text-[0.85rem] font-light">
                     <span className="text-charcoal capitalize">{b.pieceType || '—'}</span>
                     <span className="text-ash/60"> · {b.status}</span>
+                    {b._id && (
+                      <a
+                        href={`/bespoke/request/${b._id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block mt-1 text-charcoal link-underline"
+                      >
+                        {t('viewRequest')}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>

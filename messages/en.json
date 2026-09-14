@@ -240,13 +240,19 @@
         "silver": "Silver",
         "gold": "Gold"
       },
-      "noteLabel": "Anything you'd like us to know? (style preferences, notes, anything at all)"
+      "noteLabel": "Anything you'd like us to know? (style preferences, notes, anything at all)",
+      "shareLinkLabel": "Share this request",
+      "copyLink": "Copy Link",
+      "linkCopied": "Copied!",
+      "contactNowCta": "Contact Us Now",
+      "whatsappPrefix": "Hi! I just submitted a bespoke request:"
     },
     "contactTitle": "Speak With the Atelier",
     "whatsappBody": "For a quicker conversation about your bespoke piece.",
     "whatsappCta": "Start a Conversation",
     "emailBody": "For detailed bespoke enquiries and inspiration.",
-    "emailCta": "Send an Email"
+    "emailCta": "Send an Email",
+    "chooseHint": "Choose a track above to begin your bespoke request."
   },
   "care": {
     "eyebrow": "Care",
@@ -484,7 +490,8 @@
     "backToLogin": "Back to login",
     "resetEmailSentBody": "If an account exists for that email, we've sent a 6-digit code. It expires in 15 minutes.",
     "gateJoinTitle": "Welcome. Here's what the Siren Circle offers.",
-    "resetCodeLabel": "Reset code"
+    "resetCodeLabel": "Reset code",
+    "viewRequest": "View request"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",

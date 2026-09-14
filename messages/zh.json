@@ -240,13 +240,19 @@
         "silver": "银色",
         "gold": "金色"
       },
-      "noteLabel": "还有什么想告诉我们的?(喜欢的风格、任何备注都可以)"
+      "noteLabel": "还有什么想告诉我们的?(喜欢的风格、任何备注都可以)",
+      "shareLinkLabel": "分享这条申请",
+      "copyLink": "复制链接",
+      "linkCopied": "已复制!",
+      "contactNowCta": "立即联系我们",
+      "whatsappPrefix": "你好!我刚提交了一份定制申请:"
     },
     "contactTitle": "与工作室对话",
     "whatsappBody": "如需更快速地讨论你的定制作品。",
     "whatsappCta": "开始对话",
     "emailBody": "适合详细的定制咨询与灵感分享。",
-    "emailCta": "发送邮件"
+    "emailCta": "发送邮件",
+    "chooseHint": "请先在上方选择定制方向,再开始填写定制申请。"
   },
   "care": {
     "eyebrow": "保养",
@@ -484,7 +490,8 @@
     "backToLogin": "返回登录",
     "resetEmailSentBody": "如果这个邮箱对应一个账户,我们已经发送了一个6位验证码过去,15分钟内有效。",
     "gateJoinTitle": "欢迎加入。这些是 Siren Circle 的会员权益。",
-    "resetCodeLabel": "验证码"
+    "resetCodeLabel": "验证码",
+    "viewRequest": "查看申请详情"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",

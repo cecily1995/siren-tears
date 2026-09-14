@@ -39,6 +39,7 @@ export async function POST(request: Request) {
     gender,
     birthday,
     zodiac,
+    productionTrack,
     pieceType,
     wristSize,
     ringSize,
@@ -51,6 +52,7 @@ export async function POST(request: Request) {
     gender?: string;
     birthday?: string;
     zodiac?: string;
+    productionTrack?: string;
     pieceType?: string;
     wristSize?: string;
     ringSize?: string;
@@ -67,13 +69,14 @@ export async function POST(request: Request) {
   }
 
   try {
-    await client.create({
+    const created = await client.create({
       _type: 'bespokeRequest',
       name,
       email,
       gender: gender || '',
       birthday: birthday || '',
       zodiac: zodiac || '',
+      productionTrack: productionTrack || '',
       pieceType: pieceType || '',
       wristSize: wristSize || '',
       ringSize: ringSize || '',
@@ -84,7 +87,7 @@ export async function POST(request: Request) {
       submittedAt: new Date().toISOString()
     });
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true, id: created._id });
   } catch (err) {
     console.error('Bespoke request submission failed', err);
     return NextResponse.json(
