@@ -94,7 +94,8 @@
     "terms": "Conditions",
     "shopHeader": "Boutique",
     "support": "Assistance",
-    "brandStoryLabel": "Notre histoire"
+    "brandStoryLabel": "Notre histoire",
+    "sizeGuide": "Guide des tailles"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "Notre histoire"
+  },
+  "sizeGuide": {
+    "title": "Guide des tailles",
+    "triggerLabel": "Vous ne connaissez pas votre taille ? Mesurez ici",
+    "ringTab": "Taille de bague",
+    "braceletTab": "Bracelet / Tour de poignet",
+    "ringMethod1Title": "Méthode 1 — mesurer une bague qui vous va déjà",
+    "ringMethod1Body": "Prenez une bague que vous portez déjà confortablement au doigt concerné. Mesurez le diamètre intérieur avec une règle, en millimètres, et reportez-vous au tableau ci-dessous.",
+    "ringMethod2Title": "Méthode 2 — mesurer votre doigt directement",
+    "ringMethod2Body": "Enroulez une fine bande de papier ou de fil autour de la base de votre doigt. Marquez le point de chevauchement, puis mesurez cette longueur en millimètres — c'est votre circonférence de doigt.",
+    "ringTableTitle": "Tableau de conversion",
+    "ringColCircumference": "Circonférence / Diamètre (mm)",
+    "ringColUS": "US",
+    "ringColUK": "UK / AU / NZ",
+    "ringNote": "Entre deux tailles, nous recommandons de prendre la taille supérieure pour plus de confort. Les doigts varient aussi en taille dans la journée — mesurer le soir, quand ils sont légèrement plus larges, est généralement plus précis.",
+    "braceletMethodTitle": "Comment mesurer votre poignet",
+    "braceletMethodBody": "Enroulez un mètre ruban souple (ou une ficelle, à mesurer ensuite avec une règle) autour de votre poignet, juste sous l'os. Pour un ajustement confortable avec un peu de mouvement, ajoutez environ 1 à 1,5 cm à cette mesure.",
+    "braceletTableTitle": "Guide des tailles général",
+    "braceletColWrist": "Tour de poignet",
+    "braceletColSize": "Taille suggérée",
+    "braceletNote": "Les pièces en perles se portent généralement un peu plus ajustées que les chaînes. Pour un tombé plus lâche, prenez une taille au-dessus."
   }
 }

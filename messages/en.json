@@ -94,7 +94,8 @@
     "terms": "Terms",
     "shopHeader": "Shop",
     "support": "Support",
-    "brandStoryLabel": "Brand Story"
+    "brandStoryLabel": "Brand Story",
+    "sizeGuide": "Size Guide"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "Our Story"
+  },
+  "sizeGuide": {
+    "title": "Size Guide",
+    "triggerLabel": "Not sure of your size? Measure here",
+    "ringTab": "Ring Size",
+    "braceletTab": "Bracelet / Wrist Size",
+    "ringMethod1Title": "Method 1 — measure a ring that already fits",
+    "ringMethod1Body": "Take a ring you already wear comfortably on the intended finger. Measure the inner diameter with a ruler, in millimetres, and match it to the table below.",
+    "ringMethod2Title": "Method 2 — measure your finger directly",
+    "ringMethod2Body": "Wrap a thin strip of paper or string snugly around the base of your finger. Mark where it overlaps, then measure that length in millimetres — this is your finger circumference.",
+    "ringTableTitle": "Conversion table",
+    "ringColCircumference": "Circumference / Diameter (mm)",
+    "ringColUS": "US",
+    "ringColUK": "UK / AU / NZ",
+    "ringNote": "If you're between two sizes, we recommend sizing up slightly for comfort. Fingers can also vary in size through the day — measuring in the evening, when fingers are slightly larger, tends to be more accurate.",
+    "braceletMethodTitle": "How to measure your wrist",
+    "braceletMethodBody": "Wrap a soft measuring tape (or a strip of string, then measure it against a ruler) snugly around your wrist, just below the wrist bone. For a comfortable, gently moving fit, add roughly 1–1.5cm to that measurement.",
+    "braceletTableTitle": "General size guide",
+    "braceletColWrist": "Wrist circumference",
+    "braceletColSize": "Suggested size",
+    "braceletNote": "Beaded pieces are generally worn slightly snugger than chain bracelets. If you prefer a looser, more relaxed drape, size up."
   }
 }

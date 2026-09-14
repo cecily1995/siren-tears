@@ -76,6 +76,7 @@ export default async function LocaleLayout({
     journal: t('nav.journal'),
     care: t('footer.care'),
     faq: t('footer.faq'),
+    sizeGuide: t('footer.sizeGuide'),
     privacy: t('footer.privacy'),
     terms: t('footer.terms'),
     aboutLabel: t('footer.brandStoryLabel'),

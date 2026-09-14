@@ -94,7 +94,8 @@
     "terms": "利用規約",
     "shopHeader": "ショップ",
     "support": "サポート",
-    "brandStoryLabel": "ブランドストーリー"
+    "brandStoryLabel": "ブランドストーリー",
+    "sizeGuide": "サイズガイド"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "私たちの物語"
+  },
+  "sizeGuide": {
+    "title": "サイズガイド",
+    "triggerLabel": "サイズがわからない方はこちらで測定",
+    "ringTab": "リングサイズ",
+    "braceletTab": "ブレスレット / 手首周り",
+    "ringMethod1Title": "方法1 — すでに合っている指輪を測る",
+    "ringMethod1Body": "対象の指に普段心地よく着けている指輪をご用意ください。定規で内径をミリ単位で測り、下の表と照らし合わせてください。",
+    "ringMethod2Title": "方法2 — 指を直接測る",
+    "ringMethod2Body": "細い紙のテープや糸を指の付け根にぴったりと巻きつけます。重なった位置に印をつけ、その長さをミリ単位で測ってください。これが指の周囲長です。",
+    "ringTableTitle": "換算表",
+    "ringColCircumference": "周囲長 / 直径 (mm)",
+    "ringColUS": "米国(US)",
+    "ringColUK": "英国(UK) / 豪州 / NZ",
+    "ringNote": "2つのサイズの間で迷う場合は、快適さのために少し大きめをおすすめします。指のサイズは一日の中でも変化するため、やや指が大きくなる夕方の測定がより正確です。",
+    "braceletMethodTitle": "手首の測り方",
+    "braceletMethodBody": "柔らかいメジャー(または糸を巻いてから定規で測定)を手首の骨のすぐ下にぴったりと巻きつけてください。心地よく、少し余裕のある着け心地にするには、その測定値に約1〜1.5cmを加えてください。",
+    "braceletTableTitle": "一般的なサイズガイド",
+    "braceletColWrist": "手首周り",
+    "braceletColSize": "おすすめサイズ",
+    "braceletNote": "ビーズのアイテムは一般的にチェーンブレスレットよりやや小さめに着用されます。ゆったりとした着け心地がお好みの場合は、ワンサイズ大きめをお選びください。"
   }
 }

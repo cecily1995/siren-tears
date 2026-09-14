@@ -94,7 +94,8 @@
     "terms": "Termini",
     "shopHeader": "Shop",
     "support": "Assistenza",
-    "brandStoryLabel": "La nostra storia"
+    "brandStoryLabel": "La nostra storia",
+    "sizeGuide": "Guida alle taglie"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "La nostra storia"
+  },
+  "sizeGuide": {
+    "title": "Guida alle taglie",
+    "triggerLabel": "Non conosci la tua taglia? Misura qui",
+    "ringTab": "Misura dell'anello",
+    "braceletTab": "Bracciale / Circonferenza polso",
+    "ringMethod1Title": "Metodo 1 — misura un anello che già indossi",
+    "ringMethod1Body": "Prendi un anello che indossi già comodamente al dito desiderato. Misura il diametro interno con un righello, in millimetri, e confrontalo con la tabella qui sotto.",
+    "ringMethod2Title": "Metodo 2 — misura direttamente il dito",
+    "ringMethod2Body": "Avvolgi una sottile striscia di carta o filo attorno alla base del dito. Segna il punto di sovrapposizione, poi misura quella lunghezza in millimetri: è la circonferenza del tuo dito.",
+    "ringTableTitle": "Tabella di conversione",
+    "ringColCircumference": "Circonferenza / Diametro (mm)",
+    "ringColUS": "US",
+    "ringColUK": "UK / AU / NZ",
+    "ringNote": "Se sei tra due taglie, consigliamo di scegliere quella più grande per maggior comfort. Anche le dita variano leggermente di dimensione durante il giorno: misurare la sera, quando sono leggermente più grandi, è generalmente più preciso.",
+    "braceletMethodTitle": "Come misurare il polso",
+    "braceletMethodBody": "Avvolgi un metro da sarta morbido (oppure un filo, da misurare poi con un righello) attorno al polso, appena sotto l'osso. Per una vestibilità comoda e con un po' di movimento, aggiungi circa 1-1,5 cm a questa misura.",
+    "braceletTableTitle": "Guida generale alle taglie",
+    "braceletColWrist": "Circonferenza polso",
+    "braceletColSize": "Taglia consigliata",
+    "braceletNote": "I pezzi con perline si indossano generalmente un po' più aderenti rispetto ai bracciali a catena. Se preferisci una vestibilità più morbida, scegli una taglia più grande."
   }
 }

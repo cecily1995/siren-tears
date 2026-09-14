@@ -94,7 +94,8 @@
     "terms": "이용약관",
     "shopHeader": "쇼핑",
     "support": "고객 지원",
-    "brandStoryLabel": "브랜드 스토리"
+    "brandStoryLabel": "브랜드 스토리",
+    "sizeGuide": "사이즈 가이드"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "우리의 이야기"
+  },
+  "sizeGuide": {
+    "title": "사이즈 가이드",
+    "triggerLabel": "사이즈를 모르시나요? 여기서 측정해 보세요",
+    "ringTab": "반지 사이즈",
+    "braceletTab": "팔찌 / 손목 둘레",
+    "ringMethod1Title": "방법 1 — 이미 맞는 반지로 측정하기",
+    "ringMethod1Body": "해당 손가락에 이미 편안하게 착용 중인 반지를 준비하세요. 자를 이용해 안쪽 지름을 밀리미터 단위로 측정한 뒤, 아래 표와 비교하세요.",
+    "ringMethod2Title": "방법 2 — 손가락을 직접 측정하기",
+    "ringMethod2Body": "얇은 종이 띠나 실을 손가락 밑동에 꼭 맞게 감아주세요. 겹치는 지점을 표시한 뒤 그 길이를 밀리미터로 측정하면 손가락 둘레가 됩니다.",
+    "ringTableTitle": "환산표",
+    "ringColCircumference": "둘레 / 지름 (mm)",
+    "ringColUS": "미국(US)",
+    "ringColUK": "영국(UK) / 호주 / 뉴질랜드",
+    "ringNote": "두 사이즈 사이에서 고민된다면 편안함을 위해 한 치수 크게 선택하시길 권장합니다. 손가락은 하루 중에도 조금씩 변하므로, 저녁 시간에 측정하는 것이 더 정확할 수 있습니다.",
+    "braceletMethodTitle": "손목 측정 방법",
+    "braceletMethodBody": "부드러운 줄자(또는 실을 감은 뒤 자로 측정)를 손목뼈 바로 아래에 꼭 맞게 둘러주세요. 편안하게 약간 여유 있는 착용감을 원하시면 측정값에 약 1~1.5cm를 더해주세요.",
+    "braceletTableTitle": "일반 사이즈 가이드",
+    "braceletColWrist": "손목 둘레",
+    "braceletColSize": "추천 사이즈",
+    "braceletNote": "비즈 제품은 일반적으로 체인 팔찌보다 약간 더 타이트하게 착용됩니다. 더 여유로운 착용감을 원하시면 한 치수 크게 선택하세요."
   }
 }

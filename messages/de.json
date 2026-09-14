@@ -94,7 +94,8 @@
     "terms": "AGB",
     "shopHeader": "Shop",
     "support": "Support",
-    "brandStoryLabel": "Markengeschichte"
+    "brandStoryLabel": "Markengeschichte",
+    "sizeGuide": "Größentabelle"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "Unsere Geschichte"
+  },
+  "sizeGuide": {
+    "title": "Größentabelle",
+    "triggerLabel": "Unsicher bei Ihrer Größe? Hier messen",
+    "ringTab": "Ringgröße",
+    "braceletTab": "Armband / Handgelenkumfang",
+    "ringMethod1Title": "Methode 1 — einen passenden Ring messen",
+    "ringMethod1Body": "Nehmen Sie einen Ring, den Sie bereits bequem am gewünschten Finger tragen. Messen Sie den Innendurchmesser in Millimetern mit einem Lineal und vergleichen Sie ihn mit der Tabelle unten.",
+    "ringMethod2Title": "Methode 2 — den Finger direkt messen",
+    "ringMethod2Body": "Wickeln Sie einen dünnen Papier- oder Fadenstreifen eng um die Basis Ihres Fingers. Markieren Sie die Überlappung und messen Sie diese Länge in Millimetern — das ist Ihr Fingerumfang.",
+    "ringTableTitle": "Umrechnungstabelle",
+    "ringColCircumference": "Umfang / Durchmesser (mm)",
+    "ringColUS": "US",
+    "ringColUK": "UK / AU / NZ",
+    "ringNote": "Liegen Sie zwischen zwei Größen, empfehlen wir für mehr Komfort die größere Variante. Finger verändern sich im Tagesverlauf leicht — abends sind sie meist etwas größer, was eine genauere Messung ermöglicht.",
+    "braceletMethodTitle": "So messen Sie Ihr Handgelenk",
+    "braceletMethodBody": "Wickeln Sie ein weiches Maßband (oder eine Schnur, die Sie anschließend mit einem Lineal messen) eng um Ihr Handgelenk, direkt unterhalb des Knochens. Für einen bequemen, leicht beweglichen Sitz addieren Sie etwa 1–1,5 cm zu diesem Maß.",
+    "braceletTableTitle": "Allgemeine Größentabelle",
+    "braceletColWrist": "Handgelenkumfang",
+    "braceletColSize": "Empfohlene Größe",
+    "braceletNote": "Perlenarmbänder werden meist etwas enger getragen als Kettenarmbänder. Für einen lockereren Sitz wählen Sie eine Größe größer."
   }
 }

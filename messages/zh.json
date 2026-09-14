@@ -94,7 +94,8 @@
     "terms": "条款",
     "shopHeader": "购买",
     "support": "支持",
-    "brandStoryLabel": "品牌故事"
+    "brandStoryLabel": "品牌故事",
+    "sizeGuide": "尺寸指南"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -513,5 +514,26 @@
   },
   "brandStory": {
     "pageTitle": "我们的故事"
+  },
+  "sizeGuide": {
+    "title": "尺寸指南",
+    "triggerLabel": "不确定自己的尺寸?点这里量一下",
+    "ringTab": "戒指尺寸",
+    "braceletTab": "手链 / 手围尺寸",
+    "ringMethod1Title": "方法一 —— 用一枚已经合适的戒指测量",
+    "ringMethod1Body": "找一枚你已经戴在对应手指上、感觉舒适的戒指。用直尺量出内圈的直径(单位:毫米),对照下方表格查找。",
+    "ringMethod2Title": "方法二 —— 直接测量手指",
+    "ringMethod2Body": "用一条细纸条或细线,贴合地绕手指根部一圈。在重叠的地方做个记号,量出这段长度(单位:毫米),这个数值就是你的手指周长。",
+    "ringTableTitle": "尺码对照表",
+    "ringColCircumference": "周长 / 直径(毫米)",
+    "ringColUS": "美码(US)",
+    "ringColUK": "英码 / 澳洲 / 新西兰",
+    "ringNote": "如果你正好处于两个尺码之间,建议选偏大一号会更舒适。手指粗细在一天当中也会有变化,晚上手指会稍微粗一点,这时候量出来的数据通常更准确。",
+    "braceletMethodTitle": "手围的测量方法",
+    "braceletMethodBody": "用一根软尺(或者细绳,量完之后再用直尺量绳子的长度)贴合地绕手腕骨下方一圈。想要佩戴时更舒适、有一点活动余量,建议在测量结果上再加1-1.5厘米。",
+    "braceletTableTitle": "常规尺码参考",
+    "braceletColWrist": "手围",
+    "braceletColSize": "建议尺码",
+    "braceletNote": "串珠款一般会戴得比链条款稍微贴合一些。如果你更喜欢宽松一点的佩戴感,建议选大一号。"
   }
 }

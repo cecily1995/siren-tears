@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import SizeGuideTrigger from './SizeGuideTrigger';
 
 const ZODIAC_RANGES: { name: string; start: [number, number]; end: [number, number] }[] = [
   { name: 'Capricorn', start: [12, 22], end: [1, 19] },
@@ -221,12 +222,14 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
           <div>
             <label className={labelClass}>{t('wristSizeLabel')}</label>
             <input name="wristSize" type="text" inputMode="decimal" className={inputClass} />
+            <SizeGuideTrigger type="bracelet" />
           </div>
         )}
         {pieceType === 'ring' && (
           <div>
             <label className={labelClass}>{t('ringSizeLabel')}</label>
             <input name="ringSize" type="text" className={inputClass} />
+            <SizeGuideTrigger type="ring" />
           </div>
         )}
 

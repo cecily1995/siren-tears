@@ -32,6 +32,7 @@ type Labels = {
   journal: string;
   care: string;
   faq: string;
+  sizeGuide: string;
   privacy: string;
   terms: string;
   aboutLabel: string;
@@ -136,6 +137,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               <li>
                 <Link href="/faq" className="link-underline text-charcoal/85 hover:text-charcoal">
                   {labels.faq}
+                </Link>
+              </li>
+              <li>
+                <Link href="/size-guide" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.sizeGuide}
                 </Link>
               </li>
             </ul>
@@ -294,6 +300,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               <li>
                 <Link href="/faq" className="link-underline text-charcoal/85">
                   {labels.faq}
+                </Link>
+              </li>
+              <li>
+                <Link href="/size-guide" className="link-underline text-charcoal/85">
+                  {labels.sizeGuide}
                 </Link>
               </li>
             </ul>
