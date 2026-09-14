@@ -41,6 +41,7 @@ type Labels = {
 import { Link } from '@/i18n/routing';
 import FooterAccordionSection from './FooterAccordionSection';
 import CurrencySelector from './CurrencySelector';
+import { Mail, Camera, Music2, Phone, BookOpen } from 'lucide-react';
 
 export default function Footer({ data, labels }: { data: FooterData; labels: Labels }) {
   return (
@@ -359,7 +360,37 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
           </FooterAccordionSection>
         </div>
 
-        <div className="mt-10 md:mt-20 pt-6 md:pt-8 border-t border-charcoal/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4 text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.3em] uppercase text-charcoal/45 font-light">
+        {/* Icon row: quick-tap social links, replacing what used to be an
+            oddly empty gap between the accordion list and the copyright bar. */}
+        <div className="mt-10 md:mt-14 flex items-center justify-center md:justify-start gap-6">
+          {data.email && (
+            <a href={`mailto:${data.email}`} aria-label="Email" className="text-charcoal/55 hover:text-charcoal transition-colors">
+              <Mail size={18} strokeWidth={1.4} />
+            </a>
+          )}
+          {data.instagramUrl && (
+            <a href={data.instagramUrl} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-charcoal/55 hover:text-charcoal transition-colors">
+              <Camera size={18} strokeWidth={1.4} />
+            </a>
+          )}
+          {data.tiktokUrl && (
+            <a href={data.tiktokUrl} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-charcoal/55 hover:text-charcoal transition-colors">
+              <Music2 size={18} strokeWidth={1.4} />
+            </a>
+          )}
+          {data.whatsappUrl && (
+            <a href={data.whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="text-charcoal/55 hover:text-charcoal transition-colors">
+              <Phone size={18} strokeWidth={1.4} />
+            </a>
+          )}
+          {data.xiaohongshuUrl && (
+            <a href={data.xiaohongshuUrl} target="_blank" rel="noopener noreferrer" aria-label="RedNote" className="text-charcoal/55 hover:text-charcoal transition-colors">
+              <BookOpen size={18} strokeWidth={1.4} />
+            </a>
+          )}
+        </div>
+
+        <div className="mt-6 md:mt-10 pt-6 md:pt-8 border-t border-charcoal/15 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4 text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.3em] uppercase text-charcoal/45 font-light">
           <span>{labels.copyright}</span>
           <div className="flex items-center gap-5 md:gap-6">
             <Link href="/privacy" className="hover:text-charcoal/70 transition-colors">
