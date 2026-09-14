@@ -352,9 +352,9 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             <CurrencySelector />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/logo/siren-tears-mark.png"
+              src="/logo/siren-tears-mermaid-mark.png"
               alt="Siren Tears"
-              className="h-5 w-5 object-contain opacity-70"
+              className="h-4 md:h-5 w-auto object-contain opacity-70"
             />
           </div>
         </div>
