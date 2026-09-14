@@ -65,8 +65,8 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
         </div>
 
         {/* Desktop: full column grid, unchanged */}
-        <div className="hidden md:grid md:grid-cols-12 gap-8 md:mt-14">
-          <div className="md:col-span-2 reveal" style={{ transitionDelay: '60ms' }}>
+        <div className="hidden md:grid md:grid-cols-4 gap-8 md:mt-14">
+          <div className="reveal" style={{ transitionDelay: '60ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.shopHeader}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
@@ -82,7 +82,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             </ul>
           </div>
 
-          <div className="md:col-span-2 reveal" style={{ transitionDelay: '110ms' }}>
+          <div className="reveal" style={{ transitionDelay: '110ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.explore}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
@@ -113,7 +113,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             </ul>
           </div>
 
-          <div className="md:col-span-2 reveal" style={{ transitionDelay: '160ms' }}>
+          <div className="reveal" style={{ transitionDelay: '160ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.support}</p>
             <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
@@ -139,7 +139,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
             </ul>
           </div>
 
-          <div className="md:col-span-2 reveal" style={{ transitionDelay: '210ms' }}>
+          <div className="reveal" style={{ transitionDelay: '210ms' }}>
             <p className="eyebrow text-ivory/50 mb-6">{labels.studio}</p>
             {data.email && (
               <a

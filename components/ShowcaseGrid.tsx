@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type ShowcaseItem = {
   _id: string;
@@ -23,6 +23,7 @@ function mediaFor(item: ShowcaseItem): Media[] {
 export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   const active = activeIndex !== null ? items[activeIndex] : null;
 
@@ -45,6 +46,25 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   }
 
   const photos = active ? mediaFor(active) : [];
+
+  function goNext() {
+    setPhotoIndex((i) => (i + 1) % photos.length);
+  }
+  function goPrev() {
+    setPhotoIndex((i) => (i - 1 + photos.length) % photos.length);
+  }
+  function onTouchStart(e: React.TouchEvent) {
+    touchStartX.current = e.touches[0].clientX;
+  }
+  function onTouchEnd(e: React.TouchEvent) {
+    if (touchStartX.current === null || photos.length <= 1) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 40) {
+      if (delta < 0) goNext();
+      else goPrev();
+    }
+    touchStartX.current = null;
+  }
 
   return (
     <>
@@ -101,7 +121,11 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
           </button>
 
           <div className="relative z-[1] w-full max-w-[900px] max-h-[88vh] overflow-y-auto bg-ivory">
-            <div className="relative bg-charcoal/5">
+            <div
+              className="relative bg-charcoal/5 touch-pan-y select-none"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               {photos[photoIndex] &&
                 (photos[photoIndex].type === 'video' ? (
                   <video
@@ -137,7 +161,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
                 <>
                   <button
                     type="button"
-                    onClick={() => setPhotoIndex((i) => (i - 1 + photos.length) % photos.length)}
+                    onClick={goPrev}
                     aria-label="Previous photo"
                     className="absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-charcoal bg-ivory/80"
                   >
@@ -145,7 +169,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
                   </button>
                   <button
                     type="button"
-                    onClick={() => setPhotoIndex((i) => (i + 1) % photos.length)}
+                    onClick={goNext}
                     aria-label="Next photo"
                     className="absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 flex items-center justify-center text-charcoal bg-ivory/80"
                   >

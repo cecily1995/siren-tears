@@ -82,8 +82,10 @@ export async function POST(request: Request) {
       phone: phone || '',
       address: address || '',
       country: country || '',
-      isMember: false,
-      joinedAt: ''
+      isMember: false
+      // joinedAt intentionally omitted here -- Sanity's datetime type
+      // rejects an empty string, and it isn't set until they actually
+      // join the Siren Circle via /api/membership/join.
     });
 
     const token = createSessionToken({ id: created._id, email });
