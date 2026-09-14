@@ -36,7 +36,7 @@ export default function ProfileAddressFields({
           <select
             name="phoneCountryCode"
             defaultValue={defaults?.phoneCountryCode || '+64'}
-            className={`${inputClass} w-24 shrink-0`}
+            className="bg-transparent border-b border-charcoal/20 focus:border-gold outline-none py-2.5 text-[0.9rem] font-light text-charcoal transition-colors !w-24 shrink-0"
           >
             {DIAL_CODES.map((d) => (
               <option key={d} value={d}>
@@ -49,7 +49,7 @@ export default function ProfileAddressFields({
             type="tel"
             defaultValue={defaults?.phone}
             placeholder="21 234 5678"
-            className={inputClass}
+            className={`${inputClass} flex-1 min-w-0`}
           />
         </div>
       </div>
