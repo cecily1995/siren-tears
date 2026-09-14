@@ -49,6 +49,12 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
 
       <div className="relative px-6 md:px-12 pt-36 pb-24 md:pt-44 md:pb-32">
         <div className="mx-auto max-w-[760px] text-center reveal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/logo/siren-tears-logo-full-ivory.png"
+            alt="Siren Tears"
+            className="mx-auto w-full max-w-[420px] h-auto opacity-90 mb-10 md:mb-14"
+          />
           <p className="eyebrow text-gold/90 mb-6">{data.eyebrow || t('pageTitle')}</p>
           {data.title && (
             <h1 className="serif-display text-[clamp(2.2rem,4.6vw,3.6rem)] font-light leading-[1.12]">
@@ -60,7 +66,9 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
 
           <div className="mt-10 space-y-6 text-[0.98rem] md:text-[1.02rem] leading-[1.95] text-ivory/80 font-light text-left md:text-center">
             {(data.paragraphs ?? []).map((p: string, i: number) => (
-              <p key={i}>{p}</p>
+              <p key={i} className="whitespace-pre-line">
+                {p}
+              </p>
             ))}
           </div>
 

@@ -161,7 +161,7 @@ export const fallback = {
     imageAlt: 'Linen and warm sunlight by an ocean window',
     stats: [
       { value: '06', label: 'Years of dedication' },
-      { value: '30+', label: 'Countries' },
+      { value: '35+', label: 'Countries' },
       { value: '01', label: 'Coastal atelier' }
     ]
   },
