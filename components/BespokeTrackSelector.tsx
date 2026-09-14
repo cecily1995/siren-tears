@@ -65,7 +65,7 @@ export default function BespokeTrackSelector({
                   </h2>
                   <p className="text-[0.82rem] md:text-[1rem] font-light mb-2 md:mb-5">{track.time}</p>
                   <p
-                    className={`hidden md:block text-[0.92rem] leading-[1.9] font-light ${
+                    className={`text-[0.78rem] md:text-[0.92rem] leading-[1.7] md:leading-[1.9] font-light ${
                       isSelected ? 'text-ivory/80' : 'text-ash'
                     }`}
                   >
