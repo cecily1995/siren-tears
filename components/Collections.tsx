@@ -34,9 +34,9 @@ export default function Collections({
   labels: Labels;
 }) {
   return (
-    <section id="collections" className="bg-ivory py-32 md:py-44 px-6 md:px-12">
+    <section id="collections" className="bg-pearl py-16 md:py-44 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20 reveal">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8 md:mb-20 reveal">
           <div className="max-w-xl">
             <p className="eyebrow mb-5">{labels.eyebrow}</p>
             <h2 className="serif-display text-[clamp(2.2rem,4.5vw,3.8rem)] font-light leading-[1.1]">
@@ -89,7 +89,7 @@ export default function Collections({
         </div>
 
         {labels.viewAll && (
-          <div className="mt-16 md:mt-20 text-center reveal">
+          <div className="mt-8 md:mt-20 text-center reveal">
             <Link
               href="/collections"
               className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"

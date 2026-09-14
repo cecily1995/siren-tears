@@ -1,15 +1,18 @@
-'use client';
-
-import { useEffect, useRef, useState } from 'react';
-
 /**
- * A smoother version of the "next section pulls up and covers the previous
- * one" effect. Unlike a plain position:sticky stack (which snaps abruptly
- * once the boundary is reached), this tracks scroll progress through a
- * dedicated "reveal zone" the height of one viewport, and continuously
- * interpolates the "above" panel's position — so it visibly rises into
- * place over a scroll distance, and reverses just as smoothly when
- * scrolling back up.
+ * "Next section pulls up and covers the previous one" — implemented with
+ * plain position:sticky and z-index stacking, deliberately with NO forced
+ * heights on either panel. Both sections keep their own natural height;
+ * neither one is stretched to fill the viewport, so there's no risk of
+ * blank leftover space if content happens to be shorter than a screen.
+ *
+ * `below` sticks to the top of the viewport as the page scrolls past it,
+ * then naturally scrolls away once its own height is exhausted. `above`
+ * follows right after in the document, is also sticky, and sits at a
+ * higher z-index with its own opaque background — so as it reaches the
+ * top of the viewport it visually rises up and settles over `below`
+ * instead of just fading in. This is driven entirely by native scroll
+ * position (not JS/transform math), so it reverses naturally when
+ * scrolling back up and behaves correctly with normal touch scrolling.
  */
 export default function PullUpStack({
   below,
@@ -18,71 +21,10 @@ export default function PullUpStack({
   below: React.ReactNode;
   above: React.ReactNode;
 }) {
-  const outerRef = useRef<HTMLDivElement>(null);
-  const belowWrapRef = useRef<HTMLDivElement>(null);
-  const aboveRef = useRef<HTMLDivElement>(null);
-  const [belowHeight, setBelowHeight] = useState(0);
-
-  useEffect(() => {
-    function measure() {
-      if (belowWrapRef.current) setBelowHeight(belowWrapRef.current.offsetHeight);
-    }
-    measure();
-    window.addEventListener('resize', measure);
-    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(measure) : null;
-    if (ro && belowWrapRef.current) ro.observe(belowWrapRef.current);
-    return () => {
-      window.removeEventListener('resize', measure);
-      ro?.disconnect();
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!belowHeight) return;
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let raf = 0;
-    let lastProgress = -1;
-
-    function update() {
-      raf = requestAnimationFrame(update);
-      const outer = outerRef.current;
-      const aboveEl = aboveRef.current;
-      if (!outer || !aboveEl) return;
-
-      const rect = outer.getBoundingClientRect();
-      const scrolledIntoWrapper = -rect.top;
-      const progress = Math.min(1, Math.max(0, scrolledIntoWrapper / belowHeight));
-
-      if (Math.abs(progress - lastProgress) < 0.002) return;
-      lastProgress = progress;
-
-      if (reduceMotion) {
-        aboveEl.style.transform = progress > 0.5 ? 'translateY(0%)' : 'translateY(100%)';
-      } else {
-        aboveEl.style.transform = `translateY(${(1 - progress) * 100}%)`;
-      }
-    }
-
-    raf = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(raf);
-  }, [belowHeight]);
-
   return (
-    <div
-      ref={outerRef}
-      className="relative"
-      style={{ height: belowHeight ? `calc(${belowHeight}px + 100vh)` : undefined }}
-    >
-      <div ref={belowWrapRef} className="sticky top-0">
-        {below}
-      </div>
-      <div
-        ref={aboveRef}
-        className="sticky top-0 h-screen overflow-y-auto no-scrollbar will-change-transform"
-        style={{ transform: 'translateY(100%)' }}
-      >
-        {above}
-      </div>
+    <div className="relative">
+      <div className="sticky top-0 z-0">{below}</div>
+      <div className="sticky top-0 z-10">{above}</div>
     </div>
   );
 }
