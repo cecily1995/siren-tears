@@ -7,7 +7,7 @@
     "contact": "Kontakt",
     "enquire": "Anfrage",
     "language": "Sprache",
-    "shipping": "Versand",
+    "shipping": "Versand & Lieferung",
     "gallery": "Getragen von Ihnen",
     "shop": "Shop",
     "membership": "Mitgliedschaft",
@@ -95,7 +95,8 @@
     "shopHeader": "Shop",
     "support": "Support",
     "brandStoryLabel": "Markengeschichte",
-    "sizeGuide": "Größentabelle"
+    "sizeGuide": "Größentabelle",
+    "shipping": "Versand & Lieferung"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -126,7 +127,9 @@
     "carrierNote": "Alle SIREN TEARS Bestellungen werden von unserem Atelier in Neuseeland per NZ Post versandt.",
     "checkTitle": "Lieferzeit prüfen",
     "checkBody": "Möchten Sie wissen, wie lange die Lieferung an Ihren Zielort ungefähr dauert?",
-    "checkCta": "Bei NZ Post nachsehen"
+    "checkCta": "Bei NZ Post nachsehen",
+    "contactSubtext": "Melden Sie sich an, um die Bestellung auszuwählen und uns eine Nachricht zu senden.",
+    "orEmailPrefix": "Oder schreiben Sie uns direkt an"
   },
   "gallery": {
     "eyebrow": "Getragen von Ihnen",
@@ -574,5 +577,39 @@
     "sold": "Verkauft",
     "reserved": "Reserviert",
     "discoverAnother": "Ein anderes Stück entdecken"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "Bitte melden Sie sich an, um Ihre Bestellungen zu sehen und uns zu einer bestimmten Bestellung zu kontaktieren.",
+    "signInCta": "Anmelden / Mein Konto",
+    "noOrders": "Sie haben noch keine Bestellungen.",
+    "selectOrderLabel": "Bestellung auswählen",
+    "messageLabel": "Ihre Nachricht",
+    "sendCta": "Anfrage senden",
+    "submitting": "Wird gesendet…",
+    "successMessage": "Ihre Anfrage wurde empfangen. Wir melden uns in Kürze.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "chat": {
+    "brand": "Siren Tears",
+    "subBrand": "Privates Atelier",
+    "greeting": "Wie können wir helfen?",
+    "topicLabel": "Worum geht es?",
+    "topics": {
+      "order": "Eine Bestellung",
+      "product": "Ein Produkt",
+      "shipping": "Versand & Lieferung",
+      "bespoke": "Maßanfertigung",
+      "other": "Sonstiges"
+    },
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "messageLabel": "Nachricht",
+    "messagePlaceholder": "Ihre Nachricht…",
+    "sendCta": "Senden",
+    "sending": "Wird gesendet…",
+    "successTitle": "Nachricht erhalten.",
+    "successBody": "Vielen Dank für Ihre Nachricht. Unser Atelier liest sie und antwortet Ihnen in Kürze per E-Mail.",
+    "closeCta": "Schließen",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
   }
 }

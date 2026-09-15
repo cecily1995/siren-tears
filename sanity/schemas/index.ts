@@ -8,6 +8,8 @@ import buyerShowcase from './buyerShowcase';
 import shopProduct from './shopProduct';
 import bespokeRequest from './bespokeRequest';
 import purchaseRequest from './purchaseRequest';
+import orderEnquiry from './orderEnquiry';
+import chatEnquiry from './chatEnquiry';
 import member from './member';
 
 export const schemaTypes = [
@@ -21,5 +23,7 @@ export const schemaTypes = [
   shopProduct,
   bespokeRequest,
   purchaseRequest,
+  orderEnquiry,
+  chatEnquiry,
   member
 ];

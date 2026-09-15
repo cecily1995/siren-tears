@@ -41,6 +41,7 @@ export async function GET() {
     const [purchases, bespokeRequests] = await Promise.all([
       client.fetch(
         `*[_type == "purchaseRequest" && lower(email) == lower($email)] | order(_createdAt desc){
+          _id, orderNumber,
           "productName": items[0].productName,
           "itemCount": count(items),
           status, trackingNumber, _createdAt

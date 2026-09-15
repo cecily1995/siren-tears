@@ -10,6 +10,15 @@ function getWriteClient() {
   return createClient({ apiVersion, dataset, projectId, useCdn: false, token });
 }
 
+function generateOrderNumber() {
+  const date = new Date();
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  const suffix = Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `ST-${y}${m}${d}-${suffix}`;
+}
+
 export async function POST(request: Request) {
   const client = getWriteClient();
   if (!client) {
@@ -95,6 +104,7 @@ export async function POST(request: Request) {
 
     await client.create({
       _type: 'purchaseRequest',
+      orderNumber: generateOrderNumber(),
       items: itemDocs,
       name,
       email,

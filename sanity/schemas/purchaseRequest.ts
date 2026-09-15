@@ -6,6 +6,12 @@ export default defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'orderNumber',
+      title: 'Order number',
+      type: 'string',
+      description: 'Generated automatically when the request is submitted, e.g. ST-20260915-A1B2.'
+    }),
+    defineField({
       name: 'items',
       title: 'Items',
       type: 'array',
@@ -63,10 +69,13 @@ export default defineType({
     { title: 'Newest first', name: 'submittedDesc', by: [{ field: 'submittedAt', direction: 'desc' }] }
   ],
   preview: {
-    select: { title: 'name', items: 'items' },
-    prepare({ title, items }) {
+    select: { title: 'orderNumber', name: 'name', items: 'items' },
+    prepare({ title, name, items }) {
       const count = Array.isArray(items) ? items.length : 0;
-      return { title: title || 'Purchase request', subtitle: `${count} item${count === 1 ? '' : 's'}` };
+      return {
+        title: title || name || 'Purchase request',
+        subtitle: `${name || ''} · ${count} item${count === 1 ? '' : 's'}`
+      };
     }
   }
 });

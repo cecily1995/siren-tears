@@ -7,7 +7,7 @@
     "contact": "Contatti",
     "enquire": "Scrivici",
     "language": "Lingua",
-    "shipping": "Spedizioni",
+    "shipping": "Spedizione e consegna",
     "gallery": "Indossato da voi",
     "shop": "Shop",
     "membership": "Membership",
@@ -95,7 +95,8 @@
     "shopHeader": "Shop",
     "support": "Assistenza",
     "brandStoryLabel": "La nostra storia",
-    "sizeGuide": "Guida alle taglie"
+    "sizeGuide": "Guida alle taglie",
+    "shipping": "Spedizione e consegna"
   },
   "languageSwitcher": {
     "label": "Lingua",
@@ -126,7 +127,9 @@
     "carrierNote": "Tutti gli ordini SIREN TEARS vengono spediti dal nostro atelier in Nuova Zelanda tramite NZ Post.",
     "checkTitle": "Verifica i tempi di consegna",
     "checkBody": "Volete sapere approssimativamente quanto tempo richiederà la consegna verso la vostra destinazione?",
-    "checkCta": "Verifica con NZ Post"
+    "checkCta": "Verifica con NZ Post",
+    "contactSubtext": "Accedi per selezionare l'ordine e inviarci un messaggio.",
+    "orEmailPrefix": "Oppure scrivici direttamente a"
   },
   "gallery": {
     "eyebrow": "Indossato da voi",
@@ -574,5 +577,39 @@
     "sold": "Venduto",
     "reserved": "Riservato",
     "discoverAnother": "Scopri un altro pezzo"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "Accedi per visualizzare i tuoi ordini e contattarci riguardo a un ordine specifico.",
+    "signInCta": "Accedi / Il mio account",
+    "noOrders": "Non hai ancora effettuato ordini.",
+    "selectOrderLabel": "Seleziona l'ordine",
+    "messageLabel": "Il tuo messaggio",
+    "sendCta": "Invia richiesta",
+    "submitting": "Invio…",
+    "successMessage": "La tua richiesta è stata ricevuta. Ti risponderemo a breve.",
+    "errorGeneric": "Qualcosa è andato storto. Riprova."
+  },
+  "chat": {
+    "brand": "Siren Tears",
+    "subBrand": "Atelier privato",
+    "greeting": "Come possiamo aiutarti?",
+    "topicLabel": "Di cosa si tratta?",
+    "topics": {
+      "order": "Un ordine",
+      "product": "Un prodotto",
+      "shipping": "Spedizione e consegna",
+      "bespoke": "Su misura",
+      "other": "Altro"
+    },
+    "nameLabel": "Nome",
+    "emailLabel": "Email",
+    "messageLabel": "Messaggio",
+    "messagePlaceholder": "Scrivi il tuo messaggio…",
+    "sendCta": "Invia",
+    "sending": "Invio…",
+    "successTitle": "Messaggio ricevuto.",
+    "successBody": "Grazie per averci contattato. Il nostro atelier leggerà il tuo messaggio e ti risponderà via email a breve.",
+    "closeCta": "Chiudi",
+    "errorGeneric": "Qualcosa è andato storto. Riprova."
   }
 }

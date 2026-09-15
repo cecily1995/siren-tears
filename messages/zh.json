@@ -7,7 +7,7 @@
     "contact": "联系",
     "enquire": "咨询",
     "language": "语言",
-    "shipping": "配送说明",
+    "shipping": "配送与运输",
     "gallery": "买家秀",
     "shop": "商店",
     "membership": "会员",
@@ -95,7 +95,8 @@
     "shopHeader": "购买",
     "support": "支持",
     "brandStoryLabel": "品牌故事",
-    "sizeGuide": "尺寸指南"
+    "sizeGuide": "尺寸指南",
+    "shipping": "配送与运输"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -126,7 +127,9 @@
     "carrierNote": "SIREN TEARS 所有订单均从新西兰工作室发出,使用 NZ Post(新西兰邮政)配送。",
     "checkTitle": "查询配送时效",
     "checkBody": "想知道包裹寄到你所在地大概需要多久?",
-    "checkCta": "前往 NZ Post 官网查询"
+    "checkCta": "前往 NZ Post 官网查询",
+    "contactSubtext": "登录后可以选择订单并给我们留言。",
+    "orEmailPrefix": "或者直接发邮件给我们:"
   },
   "gallery": {
     "eyebrow": "买家秀",
@@ -574,5 +577,39 @@
     "sold": "已售出",
     "reserved": "已预留",
     "discoverAnother": "看看其他作品"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "请登录后查看你的订单,并针对特定订单联系我们。",
+    "signInCta": "登录 / 我的账户",
+    "noOrders": "你还没有任何订单。",
+    "selectOrderLabel": "选择订单",
+    "messageLabel": "你的留言",
+    "sendCta": "发送咨询",
+    "submitting": "发送中…",
+    "successMessage": "你的咨询已收到,我们会尽快联系你。",
+    "errorGeneric": "出了点问题,请重试。"
+  },
+  "chat": {
+    "brand": "SIREN TEARS",
+    "subBrand": "私人工作室",
+    "greeting": "有什么可以帮你的?",
+    "topicLabel": "这是关于什么的?",
+    "topics": {
+      "order": "订单相关",
+      "product": "产品相关",
+      "shipping": "配送与运输",
+      "bespoke": "定制相关",
+      "other": "其他"
+    },
+    "nameLabel": "姓名",
+    "emailLabel": "邮箱",
+    "messageLabel": "留言",
+    "messagePlaceholder": "输入你的留言…",
+    "sendCta": "发送",
+    "sending": "发送中…",
+    "successTitle": "消息已收到。",
+    "successBody": "感谢你的留言,我们会尽快通过邮件回复你。",
+    "closeCta": "关闭",
+    "errorGeneric": "出了点问题,请重试。"
   }
 }

@@ -95,7 +95,8 @@
     "shopHeader": "ショップ",
     "support": "サポート",
     "brandStoryLabel": "ブランドストーリー",
-    "sizeGuide": "サイズガイド"
+    "sizeGuide": "サイズガイド",
+    "shipping": "配送について"
   },
   "languageSwitcher": {
     "label": "言語",
@@ -126,7 +127,9 @@
     "carrierNote": "SIREN TEARSのすべてのご注文は、ニュージーランドのアトリエからNZ Postを利用して発送されます。",
     "checkTitle": "配送日数を確認する",
     "checkBody": "お届け先までのおおよその配送日数を確認しますか?",
-    "checkCta": "NZ Postで確認する"
+    "checkCta": "NZ Postで確認する",
+    "contactSubtext": "サインインして注文を選択し、メッセージをお送りください。",
+    "orEmailPrefix": "または、こちらへ直接メールでお問い合わせください:"
   },
   "gallery": {
     "eyebrow": "お客様の着用写真",
@@ -574,5 +577,39 @@
     "sold": "売約済み",
     "reserved": "予約済み",
     "discoverAnother": "他の作品を見る"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "ご注文を確認し、特定の注文についてお問い合わせいただくには、サインインしてください。",
+    "signInCta": "サインイン / マイページ",
+    "noOrders": "まだご注文はありません。",
+    "selectOrderLabel": "注文を選択",
+    "messageLabel": "メッセージ",
+    "sendCta": "問い合わせを送信",
+    "submitting": "送信中…",
+    "successMessage": "お問い合わせを受け付けました。追ってご連絡いたします。",
+    "errorGeneric": "問題が発生しました。もう一度お試しください。"
+  },
+  "chat": {
+    "brand": "Siren Tears",
+    "subBrand": "プライベートアトリエ",
+    "greeting": "どのようなご用件でしょうか?",
+    "topicLabel": "ご用件を選んでください",
+    "topics": {
+      "order": "ご注文について",
+      "product": "商品について",
+      "shipping": "配送について",
+      "bespoke": "オーダーメイド",
+      "other": "その他"
+    },
+    "nameLabel": "お名前",
+    "emailLabel": "メールアドレス",
+    "messageLabel": "メッセージ",
+    "messagePlaceholder": "メッセージを入力…",
+    "sendCta": "送信",
+    "sending": "送信中…",
+    "successTitle": "メッセージを受け付けました。",
+    "successBody": "お問い合わせありがとうございます。アトリエにて確認後、メールにてご返信いたします。",
+    "closeCta": "閉じる",
+    "errorGeneric": "問題が発生しました。もう一度お試しください。"
   }
 }

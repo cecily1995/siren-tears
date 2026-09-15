@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import PageHeader from '@/components/PageHeader';
+import OrderEnquiryForm from '@/components/OrderEnquiryForm';
 
 export const revalidate = 60;
 
@@ -78,15 +79,17 @@ export default async function ShippingPage({
             </a>
           </div>
 
-          <div className="mt-20 pt-12 border-t border-charcoal/10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 reveal">
-            <p className="text-[0.95rem] text-ash font-light">{t('contactPrompt')}</p>
+          <div className="mt-20 pt-12 border-t border-charcoal/10 reveal">
+            <p className="eyebrow mb-2">{t('contactPrompt')}</p>
+            <p className="text-[0.85rem] text-ash/70 font-light mb-6">{t('contactSubtext')}</p>
+            <OrderEnquiryForm />
             {email && (
-              <a
-                href={`mailto:${email}`}
-                className="text-[11px] tracking-[0.3em] uppercase text-charcoal link-underline w-fit"
-              >
-                {t('contactCta')} — {email}
-              </a>
+              <p className="mt-8 text-[0.82rem] text-ash/60 font-light">
+                {t('orEmailPrefix')}{' '}
+                <a href={`mailto:${email}`} className="text-charcoal link-underline">
+                  {email}
+                </a>
+              </p>
             )}
           </div>
         </div>

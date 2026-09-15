@@ -37,6 +37,7 @@ export default defineConfig({
             S.documentTypeListItem('buyerShowcase').title('Buyer Showcase (As Worn)'),
             S.divider(),
             S.documentTypeListItem('purchaseRequest').title('Purchase Requests'),
+            S.documentTypeListItem('orderEnquiry').title('Order Enquiries'),
             S.documentTypeListItem('bespokeRequest').title('Bespoke Requests'),
             S.documentTypeListItem('member').title('Siren Circle Members')
           ])

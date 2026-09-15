@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import PageHeader from '@/components/PageHeader';
+import { Link } from '@/i18n/routing';
 
 export const revalidate = 3600;
 
@@ -17,11 +18,19 @@ const FAQS = [
   },
   {
     q: 'Do you ship internationally?',
-    a: 'Yes. We ship worldwide from our New Zealand studio via NZ Post. Orders over NZD $500 ship free internationally; see our Shipping page for details.'
+    a: 'Yes. We ship worldwide from our New Zealand studio via NZ Post. Orders over NZD $500 ship free internationally; see our Shipping & Delivery page for details.',
+    extra: (
+      <>
+        Members of The Siren Circle enjoy free shipping on orders over NZD $400.{' '}
+        <Link href="/membership" className="text-gold hover:text-gold/80 link-underline">
+          → Join the Siren Circle
+        </Link>
+      </>
+    )
   },
   {
     q: 'Will I need to pay customs or import duties?',
-    a: "Possibly, depending on your country. Any customs duties, taxes, or import charges are set by your local authorities and are the responsibility of the recipient. See our Shipping page for more."
+    a: "Possibly, depending on your country. Any customs duties, taxes, or import charges are set by your local authorities and are the responsibility of the recipient. See our Shipping & Delivery page for more."
   },
   {
     q: 'How long does a bespoke piece take?',
@@ -65,6 +74,9 @@ export default async function FaqPage({
                 {item.q}
               </h2>
               <p className="text-[0.92rem] leading-[1.9] text-ash font-light">{item.a}</p>
+              {'extra' in item && item.extra && (
+                <p className="mt-3 text-[0.92rem] leading-[1.9] text-ash font-light">{item.extra}</p>
+              )}
             </div>
           ))}
         </div>

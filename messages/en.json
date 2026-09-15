@@ -7,7 +7,7 @@
     "contact": "Contact",
     "enquire": "Enquire",
     "language": "Language",
-    "shipping": "Shipping",
+    "shipping": "Shipping & Delivery",
     "gallery": "Worn By You",
     "shop": "Shop",
     "membership": "Membership",
@@ -95,7 +95,8 @@
     "shopHeader": "Shop",
     "support": "Support",
     "brandStoryLabel": "Brand Story",
-    "sizeGuide": "Size Guide"
+    "sizeGuide": "Size Guide",
+    "shipping": "Shipping & Delivery"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -126,7 +127,9 @@
     "carrierNote": "All SIREN TEARS orders are shipped from our New Zealand studio using NZ Post.",
     "checkTitle": "Check Delivery Time",
     "checkBody": "Want to know roughly how long delivery may take to your destination?",
-    "checkCta": "Check with NZ Post"
+    "checkCta": "Check with NZ Post",
+    "contactSubtext": "Sign in to select the order and send us a message.",
+    "orEmailPrefix": "Or email us directly at"
   },
   "gallery": {
     "eyebrow": "As Worn",
@@ -574,5 +577,39 @@
     "sold": "Sold",
     "reserved": "Reserved",
     "discoverAnother": "Discover Another Piece"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "Please sign in to view your orders and contact us about a specific order.",
+    "signInCta": "Sign In / My Siren",
+    "noOrders": "You don't have any orders yet.",
+    "selectOrderLabel": "Select Order",
+    "messageLabel": "Your Message",
+    "sendCta": "Send Enquiry",
+    "submitting": "Sending…",
+    "successMessage": "Your enquiry has been received. We will be in touch shortly.",
+    "errorGeneric": "Something went wrong. Please try again."
+  },
+  "chat": {
+    "brand": "Siren Tears",
+    "subBrand": "Private Atelier",
+    "greeting": "How may we help?",
+    "topicLabel": "What is this about?",
+    "topics": {
+      "order": "An order",
+      "product": "A product",
+      "shipping": "Shipping & Delivery",
+      "bespoke": "Bespoke / Custom",
+      "other": "Other"
+    },
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Type your message…",
+    "sendCta": "Send",
+    "sending": "Sending…",
+    "successTitle": "Message received.",
+    "successBody": "Thank you for reaching out. Our studio will read your message and reply by email shortly.",
+    "closeCta": "Close",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

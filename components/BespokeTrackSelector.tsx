@@ -30,10 +30,10 @@ export default function BespokeTrackSelector({
 
   return (
     <>
-      <section className="bg-pearl px-6 md:px-12 py-20 md:py-32">
+      <section className="bg-pearl px-6 md:px-12 py-10 md:py-16">
         <div className="mx-auto max-w-[1100px]">
           <p className="eyebrow text-center mb-4">{labels.tracksTitle}</p>
-          <div className="mx-auto h-px w-16 bg-gold/60 mb-10 md:mb-16" />
+          <div className="mx-auto h-px w-16 bg-gold/60 mb-6 md:mb-10" />
 
           <div className="grid grid-cols-2 gap-3 md:gap-8">
             {tracks.map((track, i) => {

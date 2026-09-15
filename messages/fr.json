@@ -95,7 +95,8 @@
     "shopHeader": "Boutique",
     "support": "Assistance",
     "brandStoryLabel": "Notre histoire",
-    "sizeGuide": "Guide des tailles"
+    "sizeGuide": "Guide des tailles",
+    "shipping": "Livraison"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -126,7 +127,9 @@
     "carrierNote": "Toutes les commandes SIREN TEARS sont expédiées depuis notre atelier en Nouvelle-Zélande via NZ Post.",
     "checkTitle": "Vérifier le délai de livraison",
     "checkBody": "Vous voulez savoir approximativement combien de temps prendra la livraison vers votre destination ?",
-    "checkCta": "Vérifier avec NZ Post"
+    "checkCta": "Vérifier avec NZ Post",
+    "contactSubtext": "Connectez-vous pour sélectionner la commande et nous envoyer un message.",
+    "orEmailPrefix": "Ou écrivez-nous directement à"
   },
   "gallery": {
     "eyebrow": "Portée par vous",
@@ -574,5 +577,39 @@
     "sold": "Vendu",
     "reserved": "Réservé",
     "discoverAnother": "Découvrir une autre pièce"
+  },
+  "orderEnquiry": {
+    "signInPrompt": "Veuillez vous connecter pour voir vos commandes et nous contacter à propos d'une commande spécifique.",
+    "signInCta": "Se connecter / Mon compte",
+    "noOrders": "Vous n'avez pas encore de commande.",
+    "selectOrderLabel": "Sélectionner la commande",
+    "messageLabel": "Votre message",
+    "sendCta": "Envoyer la demande",
+    "submitting": "Envoi…",
+    "successMessage": "Votre demande a bien été reçue. Nous vous répondrons rapidement.",
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "chat": {
+    "brand": "Siren Tears",
+    "subBrand": "Atelier privé",
+    "greeting": "Comment pouvons-nous vous aider ?",
+    "topicLabel": "De quoi s'agit-il ?",
+    "topics": {
+      "order": "Une commande",
+      "product": "Un produit",
+      "shipping": "Livraison",
+      "bespoke": "Sur mesure",
+      "other": "Autre"
+    },
+    "nameLabel": "Nom",
+    "emailLabel": "E-mail",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Écrivez votre message…",
+    "sendCta": "Envoyer",
+    "sending": "Envoi…",
+    "successTitle": "Message reçu.",
+    "successBody": "Merci de nous avoir contactés. Notre atelier lira votre message et vous répondra bientôt par e-mail.",
+    "closeCta": "Fermer",
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
   }
 }
