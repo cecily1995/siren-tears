@@ -38,6 +38,7 @@ export default defineConfig({
             S.divider(),
             S.documentTypeListItem('purchaseRequest').title('Purchase Requests'),
             S.documentTypeListItem('orderEnquiry').title('Order Enquiries'),
+            S.documentTypeListItem('chatEnquiry').title('Chat Enquiries'),
             S.documentTypeListItem('bespokeRequest').title('Bespoke Requests'),
             S.documentTypeListItem('member').title('Siren Circle Members')
           ])

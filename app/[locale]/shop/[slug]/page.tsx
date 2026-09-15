@@ -140,8 +140,22 @@ export default async function ShopProductPage({
             <div className="mt-8">
               <ProductAccordionSection title={t('descriptionTitle')} defaultOpen>
                 <div className="space-y-4">
-                  {translated.stoneStory && <p>{translated.stoneStory}</p>}
-                  {translated.pieceStory && <p>{translated.pieceStory}</p>}
+                  {translated.stoneStory && (
+                    <div>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-ash/50 mb-1.5">
+                        {t('stoneTitle')}
+                      </p>
+                      <p>{translated.stoneStory}</p>
+                    </div>
+                  )}
+                  {translated.pieceStory && (
+                    <div>
+                      <p className="text-[10px] tracking-[0.2em] uppercase text-ash/50 mb-1.5">
+                        {t('pieceTitle')}
+                      </p>
+                      <p>{translated.pieceStory}</p>
+                    </div>
+                  )}
                   {!translated.stoneStory && !translated.pieceStory && <p>{t('descriptionFallback')}</p>}
                 </div>
               </ProductAccordionSection>
@@ -173,7 +187,7 @@ export default async function ShopProductPage({
                     <img
                       src={product.packagingImageUrl}
                       alt={product.packagingImageAlt || `${product.name} packaging`}
-                      className="w-full aspect-[4/3] object-cover"
+                      className="w-full h-auto object-contain"
                     />
                   )}
                 </ProductAccordionSection>
