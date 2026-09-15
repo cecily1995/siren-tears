@@ -16,7 +16,7 @@ function getStripe() {
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const secret = url.searchParams.get('secret');
-  const expected = process.env.SANITY_WEBHOOK_SECRET;
+  const expected = process.env.ADMIN_DEBUG_SECRET;
   if (!expected || secret !== expected) {
     return NextResponse.json({ ok: false, error: 'Unauthorized' }, { status: 401 });
   }
