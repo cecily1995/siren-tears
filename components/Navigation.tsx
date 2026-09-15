@@ -41,6 +41,13 @@ export default function Navigation() {
 
   const light = !scrolled;
 
+  // Checkout and the order confirmation page get their own minimal header
+  // (logo + bag icon only) -- the full site nav would be a distraction
+  // during payment, per the checkout brief.
+  if (pathname === '/checkout' || pathname.startsWith('/order-confirmation')) {
+    return null;
+  }
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-editorial ${
