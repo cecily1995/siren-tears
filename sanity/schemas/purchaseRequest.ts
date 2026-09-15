@@ -48,20 +48,40 @@ export default defineType({
     defineField({ name: 'message', title: 'Customer notes', type: 'text', rows: 4 }),
     defineField({ name: 'trackingNumber', title: 'NZ Post tracking number', type: 'string' }),
     defineField({
+      name: 'stripeSessionId',
+      title: 'Stripe Checkout session ID',
+      type: 'string',
+      description: 'Set automatically once the customer starts checkout. Used to match the payment webhook to this order.',
+      readOnly: true
+    }),
+    defineField({
+      name: 'stripePaymentIntentId',
+      title: 'Stripe payment ID',
+      type: 'string',
+      description: 'Set automatically once payment succeeds. Look this ID up in the Stripe Dashboard for full payment details.',
+      readOnly: true
+    }),
+    defineField({
+      name: 'paidAt',
+      title: 'Paid at',
+      type: 'datetime',
+      readOnly: true
+    }),
+    defineField({
       name: 'status',
       title: 'Status',
       type: 'string',
       options: {
         list: [
-          { title: 'New', value: 'new' },
-          { title: 'Confirmed availability', value: 'confirmed' },
-          { title: 'Payment link sent', value: 'payment_sent' },
+          { title: 'New (enquiry, not paid)', value: 'new' },
+          { title: 'Awaiting payment', value: 'payment_pending' },
           { title: 'Paid', value: 'paid' },
           { title: 'Shipped', value: 'shipped' },
           { title: 'Declined / unavailable', value: 'declined' }
         ]
       },
-      initialValue: 'new'
+      initialValue: 'new',
+      validation: (r) => r.required()
     }),
     defineField({ name: 'submittedAt', title: 'Submitted at', type: 'datetime' })
   ],

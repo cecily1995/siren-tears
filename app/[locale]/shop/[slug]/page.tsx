@@ -125,7 +125,7 @@ export default async function ShopProductPage({
             <div className="mt-8 pt-8 border-t border-charcoal/10">
               {isSold || isReserved ? (
                 <p className="text-[0.9rem] text-ash font-light leading-relaxed">
-                  {t('purchaseNote')}
+                  {isSold ? t('soldNote') : t('reservedNote')}
                 </p>
               ) : (
                 <AddToBagButton

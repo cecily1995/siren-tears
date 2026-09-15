@@ -343,7 +343,9 @@
     "descriptionTitle": "Description",
     "descriptionFallback": "Une description détaillée de cette pièce sera bientôt ajoutée.",
     "materialsCareTitle": "Matières & Entretien",
-    "packagingTitle": "Emballage"
+    "packagingTitle": "Emballage",
+    "soldNote": "Cette pièce a trouvé son foyer et ne sera pas recréée. Découvrez d'autres pièces disponibles dans la Boutique.",
+    "reservedNote": "Cette pièce est actuellement réservée pour un autre client. Contactez-nous pour être averti si elle redevient disponible."
   },
   "membership": {
     "eyebrow": "Adhésion",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "Tour de poignet",
     "ringSizeLabel": "Taille de bague",
     "messageLabel": "Remarques (facultatif)",
-    "submitCta": "Demander l'achat",
+    "submitCta": "Continuer vers le paiement",
     "submitting": "Envoi…",
     "successTitle": "Demande reçue.",
     "successBody": "Nous avons bien reçu votre demande et vous contacterons prochainement pour confirmer la disponibilité et organiser le paiement.",
@@ -611,5 +613,12 @@
     "successBody": "Merci de nous avoir contactés. Notre atelier lira votre message et vous répondra bientôt par e-mail.",
     "closeCta": "Fermer",
     "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "orderConfirmation": {
+    "eyebrow": "Commande confirmée",
+    "title": "Merci pour votre commande.",
+    "body": "Votre paiement a bien été reçu. Notre atelier va préparer votre pièce pour l'expédition et vous communiquera le numéro de suivi.",
+    "orderLabel": "Numéro de commande",
+    "backToShopCta": "Continuer mes achats"
   }
 }

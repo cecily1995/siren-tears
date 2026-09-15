@@ -343,7 +343,9 @@
     "descriptionTitle": "Description",
     "descriptionFallback": "A detailed description of this piece will be added soon.",
     "materialsCareTitle": "Materials & Care",
-    "packagingTitle": "Packaging"
+    "packagingTitle": "Packaging",
+    "soldNote": "This piece has found its home and won't be recreated. Explore other available pieces in the Shop.",
+    "reservedNote": "This piece is currently reserved for another customer. Get in touch to be notified if it becomes available again."
   },
   "membership": {
     "eyebrow": "Membership",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "Wrist Size",
     "ringSizeLabel": "Ring Size",
     "messageLabel": "Notes (optional)",
-    "submitCta": "Request Purchase",
+    "submitCta": "Continue to Payment",
     "submitting": "Sending…",
     "successTitle": "Request received.",
     "successBody": "We've received your request and will be in touch shortly to confirm availability and arrange payment.",
@@ -611,5 +613,12 @@
     "successBody": "Thank you for reaching out. Our studio will read your message and reply by email shortly.",
     "closeCta": "Close",
     "errorGeneric": "Something went wrong. Please try again."
+  },
+  "orderConfirmation": {
+    "eyebrow": "Order confirmed",
+    "title": "Thank you for your order.",
+    "body": "Your payment has been received. Our Atelier will prepare your piece for shipping and will be in touch with tracking details.",
+    "orderLabel": "Order number",
+    "backToShopCta": "Continue Browsing"
   }
 }

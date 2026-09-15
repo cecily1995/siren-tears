@@ -343,7 +343,9 @@
     "descriptionTitle": "상세 설명",
     "descriptionFallback": "이 작품에 대한 자세한 설명이 곧 추가될 예정입니다.",
     "materialsCareTitle": "소재 및 관리",
-    "packagingTitle": "패키지"
+    "packagingTitle": "패키지",
+    "soldNote": "이 작품은 이미 새 주인을 찾아 다시 제작되지 않습니다. 샵에서 다른 판매 중인 작품을 둘러보세요.",
+    "reservedNote": "이 작품은 현재 다른 고객을 위해 예약되어 있습니다. 다시 구매 가능해지면 알림을 받고 싶으시면 문의해 주세요."
   },
   "membership": {
     "eyebrow": "멤버십",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "손목 둘레",
     "ringSizeLabel": "반지 사이즈",
     "messageLabel": "메모 (선택)",
-    "submitCta": "구매 요청",
+    "submitCta": "결제로 이동",
     "submitting": "전송 중…",
     "successTitle": "요청이 접수되었습니다.",
     "successBody": "요청을 받았습니다. 재고 확인 및 결제 안내를 위해 곧 연락드리겠습니다.",
@@ -611,5 +613,12 @@
     "successBody": "문의해 주셔서 감사합니다. 저희 스튜디오에서 확인 후 이메일로 답변드리겠습니다.",
     "closeCta": "닫기",
     "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요."
+  },
+  "orderConfirmation": {
+    "eyebrow": "주문 확인",
+    "title": "주문해 주셔서 감사합니다.",
+    "body": "결제가 확인되었습니다. 아틀리에에서 작품을 배송 준비하고 추적 정보를 보내드리겠습니다.",
+    "orderLabel": "주문 번호",
+    "backToShopCta": "계속 둘러보기"
   }
 }

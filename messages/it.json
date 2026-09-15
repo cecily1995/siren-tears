@@ -343,7 +343,9 @@
     "descriptionTitle": "Descrizione",
     "descriptionFallback": "Una descrizione dettagliata di questo pezzo sarà aggiunta a breve.",
     "materialsCareTitle": "Materiali e cura",
-    "packagingTitle": "Confezione"
+    "packagingTitle": "Confezione",
+    "soldNote": "Questo pezzo ha trovato casa e non verrà ricreato. Scopri altri pezzi disponibili nel Negozio.",
+    "reservedNote": "Questo pezzo è attualmente riservato per un altro cliente. Contattaci per essere avvisato se torna disponibile."
   },
   "membership": {
     "eyebrow": "Membership",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "Circonferenza polso",
     "ringSizeLabel": "Misura dell'anello",
     "messageLabel": "Note (facoltativo)",
-    "submitCta": "Richiedi l'acquisto",
+    "submitCta": "Procedi al pagamento",
     "submitting": "Invio…",
     "successTitle": "Richiesta ricevuta.",
     "successBody": "Abbiamo ricevuto la tua richiesta e ti contatteremo a breve per confermare la disponibilità e organizzare il pagamento.",
@@ -611,5 +613,12 @@
     "successBody": "Grazie per averci contattato. Il nostro atelier leggerà il tuo messaggio e ti risponderà via email a breve.",
     "closeCta": "Chiudi",
     "errorGeneric": "Qualcosa è andato storto. Riprova."
+  },
+  "orderConfirmation": {
+    "eyebrow": "Ordine confermato",
+    "title": "Grazie per il tuo ordine.",
+    "body": "Il pagamento è stato ricevuto. Il nostro atelier preparerà il tuo pezzo per la spedizione e ti invierà i dettagli del tracciamento.",
+    "orderLabel": "Numero d'ordine",
+    "backToShopCta": "Continua a navigare"
   }
 }

@@ -343,7 +343,9 @@
     "descriptionTitle": "商品説明",
     "descriptionFallback": "この作品の詳しい説明は近日追加予定です。",
     "materialsCareTitle": "素材とお手入れ",
-    "packagingTitle": "パッケージ"
+    "packagingTitle": "パッケージ",
+    "soldNote": "こちらの作品はすでに新しい持ち主が見つかり、再制作は行いません。ショップで他の作品もご覧ください。",
+    "reservedNote": "こちらの作品は現在別のお客様のために確保されています。再度販売可能になった際にご連絡をご希望の場合はお問い合わせください。"
   },
   "membership": {
     "eyebrow": "メンバーシップ",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "手首周り",
     "ringSizeLabel": "リングサイズ",
     "messageLabel": "備考(任意)",
-    "submitCta": "購入をリクエスト",
+    "submitCta": "支払いへ進む",
     "submitting": "送信中…",
     "successTitle": "リクエストを受け付けました。",
     "successBody": "ご依頼を受け付けました。在庫確認とお支払いのご案内のため、追ってご連絡いたします。",
@@ -611,5 +613,12 @@
     "successBody": "お問い合わせありがとうございます。アトリエにて確認後、メールにてご返信いたします。",
     "closeCta": "閉じる",
     "errorGeneric": "問題が発生しました。もう一度お試しください。"
+  },
+  "orderConfirmation": {
+    "eyebrow": "注文確定",
+    "title": "ご注文ありがとうございます。",
+    "body": "お支払いを確認いたしました。アトリエにて発送準備を行い、追跡番号をお送りいたします。",
+    "orderLabel": "注文番号",
+    "backToShopCta": "引き続き見る"
   }
 }

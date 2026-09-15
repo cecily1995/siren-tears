@@ -1,16 +1,17 @@
 'use client';
 
 import { useState } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useBag } from '@/lib/bag-context';
 import SizeGuideTrigger from './SizeGuideTrigger';
 
 const BRACELET_CATEGORIES = ['braceletBead', 'braceletChain'];
 
 export default function BagDrawer() {
-  const { items, removeItem, isOpen, close, clear } = useBag();
+  const { items, removeItem, isOpen, close } = useBag();
   const t = useTranslations('bag');
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const locale = useLocale();
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
   if (!isOpen) return null;
@@ -42,23 +43,27 @@ export default function BagDrawer() {
       whatsapp: form.get('whatsapp')?.toString() || '',
       country: form.get('country')?.toString() || '',
       shippingAddress: form.get('shippingAddress')?.toString() || '',
-      message: form.get('message')?.toString() || ''
+      message: form.get('message')?.toString() || '',
+      locale
     };
 
     try {
-      const res = await fetch('/api/purchase-request', {
+      const res = await fetch('/api/checkout/create-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
       const data = await res.json();
-      if (!res.ok || !data.ok) {
+      if (!res.ok || !data.ok || !data.url) {
         setErrorMsg(data.error || t('errorGeneric'));
         setStatus('error');
         return;
       }
-      setStatus('success');
-      clear();
+      // Note: we deliberately don't clear the bag or close the drawer here --
+      // the browser is about to navigate away to Stripe's checkout page. The
+      // bag only gets cleared once payment actually succeeds and the
+      // customer lands back on our order-confirmation page.
+      window.location.href = data.url;
     } catch {
       setErrorMsg(t('errorGeneric'));
       setStatus('error');
@@ -85,23 +90,7 @@ export default function BagDrawer() {
         </div>
 
         <div className="px-6 py-6">
-          {status === 'success' ? (
-            <div className="text-center py-10">
-              <p className="serif-display text-[1.4rem] font-light text-charcoal mb-3">
-                {t('successTitle')}
-              </p>
-              <p className="text-[0.88rem] text-ash font-light leading-relaxed mb-8">
-                {t('successBody')}
-              </p>
-              <button
-                type="button"
-                onClick={close}
-                className="text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
-              >
-                {t('continueCta')}
-              </button>
-            </div>
-          ) : items.length === 0 ? (
+          {items.length === 0 ? (
             <div className="text-center py-16">
               <p className="text-[0.9rem] text-ash font-light">{t('empty')}</p>
               <button

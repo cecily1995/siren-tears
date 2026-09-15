@@ -14,7 +14,7 @@ const FAQS = [
   },
   {
     q: 'How can I purchase a piece right now?',
-    a: "Our online checkout is launching soon. In the meantime, browse the Shop and use the Enquire, Email, or WhatsApp option on any piece you're drawn to, and we'll help you complete the purchase directly."
+    a: "Add the piece to your bag, fill in your details, and pay securely by card at checkout. Prefer to talk it through first? You're welcome to use the Enquire, Email, or WhatsApp option on any piece instead."
   },
   {
     q: 'Do you ship internationally?',

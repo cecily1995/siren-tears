@@ -343,7 +343,9 @@
     "descriptionTitle": "Beschreibung",
     "descriptionFallback": "Eine ausführliche Beschreibung dieses Stücks folgt in Kürze.",
     "materialsCareTitle": "Materialien & Pflege",
-    "packagingTitle": "Verpackung"
+    "packagingTitle": "Verpackung",
+    "soldNote": "Dieses Stück hat bereits ein Zuhause gefunden und wird nicht erneut angefertigt. Entdecken Sie andere verfügbare Stücke im Shop.",
+    "reservedNote": "Dieses Stück ist derzeit für eine andere Kundin reserviert. Kontaktieren Sie uns, wenn Sie benachrichtigt werden möchten, falls es wieder verfügbar wird."
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",
@@ -561,7 +563,7 @@
     "wristSizeLabel": "Handgelenkumfang",
     "ringSizeLabel": "Ringgröße",
     "messageLabel": "Anmerkungen (optional)",
-    "submitCta": "Kauf anfragen",
+    "submitCta": "Weiter zur Zahlung",
     "submitting": "Wird gesendet…",
     "successTitle": "Anfrage erhalten.",
     "successBody": "Wir haben Ihre Anfrage erhalten und melden uns in Kürze, um die Verfügbarkeit zu bestätigen und die Zahlung zu vereinbaren.",
@@ -611,5 +613,12 @@
     "successBody": "Vielen Dank für Ihre Nachricht. Unser Atelier liest sie und antwortet Ihnen in Kürze per E-Mail.",
     "closeCta": "Schließen",
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "orderConfirmation": {
+    "eyebrow": "Bestellung bestätigt",
+    "title": "Vielen Dank für Ihre Bestellung.",
+    "body": "Ihre Zahlung ist eingegangen. Unser Atelier bereitet Ihr Stück für den Versand vor und sendet Ihnen die Sendungsverfolgung zu.",
+    "orderLabel": "Bestellnummer",
+    "backToShopCta": "Weiter stöbern"
   }
 }
