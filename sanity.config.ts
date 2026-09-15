@@ -5,6 +5,7 @@ import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './sanity/schemas';
 import { apiVersion, dataset, projectId } from './sanity/env';
+import { markProductsSoldAction } from './sanity/actions/markProductsSoldAction';
 
 export default defineConfig({
   basePath: '/studio',
@@ -13,6 +14,10 @@ export default defineConfig({
   projectId,
   dataset,
   schema: { types: schemaTypes },
+  document: {
+    actions: (prev, context) =>
+      context.schemaType === 'purchaseRequest' ? [...prev, markProductsSoldAction] : prev
+  },
   plugins: [
     structureTool({
       structure: (S) =>

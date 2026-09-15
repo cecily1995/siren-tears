@@ -58,8 +58,10 @@ export default async function ShopProductPage({
   const isReserved = product.status === 'reserved';
   const statusLabel = isSold ? t('status.sold') : isReserved ? t('status.reserved') : null;
 
+  // "The Stone" is deliberately left out here -- it's already shown as the
+  // subtitle right under the product title, so repeating it in this list
+  // was pure duplication.
   const details = [
-    translated.stone && { label: t('stoneTitle'), value: translated.stone },
     product.material && { label: t('materialLabel'), value: product.material },
     product.length && { label: t('lengthLabel'), value: product.length },
     product.craftedIn && { label: t('craftedInLabel'), value: product.craftedIn }
@@ -162,10 +164,12 @@ export default async function ShopProductPage({
 
               {details.length > 0 && (
                 <ProductAccordionSection title={t('detailsTitle')}>
-                  <dl className="space-y-2.5">
+                  <dl className="space-y-4">
                     {details.map((d, i) => (
-                      <div key={i} className="flex justify-between">
-                        <dt className="text-ash/70">{d.label}</dt>
+                      <div key={i}>
+                        <dt className="text-[10px] tracking-[0.2em] uppercase text-ash/50 mb-1">
+                          {d.label}
+                        </dt>
                         <dd className="text-charcoal">{d.value}</dd>
                       </div>
                     ))}
