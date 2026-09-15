@@ -503,7 +503,9 @@
     "resetEmailSentBody": "Если для этого email существует аккаунт, мы отправили 6-значный код. Он действителен 15 минут.",
     "gateJoinTitle": "Добро пожаловать. Вот что предлагает Siren Circle.",
     "resetCodeLabel": "Код сброса",
-    "viewRequest": "Посмотреть заявку"
+    "viewRequest": "Посмотреть заявку",
+    "shippingMethodLabel": "Доставка",
+    "freeShippingLabel": "Бесплатно"
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",
@@ -620,7 +622,9 @@
     "title": "Спасибо за ваш заказ.",
     "body": "Оплата получена. Наша мастерская подготовит изделие к отправке и пришлёт номер для отслеживания.",
     "orderLabel": "Номер заказа",
-    "backToShopCta": "Продолжить покупки"
+    "backToShopCta": "Продолжить покупки",
+    "shippingMethodLabel": "Доставка",
+    "freeLabel": "Бесплатно"
   },
   "checkout": {
     "orderSummaryTitle": "Сводка заказа",
@@ -659,6 +663,10 @@
     "recommendedTitle": "Вам может понравиться",
     "addCta": "Добавить",
     "continueToPaymentCta": "Перейти к оплате",
-    "paymentError": "Произошла ошибка при оплате. Попробуйте снова."
+    "paymentError": "Произошла ошибка при оплате. Попробуйте снова.",
+    "loginRequiredMessage": "Пожалуйста, войдите в систему, чтобы завершить покупку.",
+    "membershipPromoTitle": "Вступить в Siren Circle",
+    "membershipPromoBody": "Участники получают бесплатную доставку при заказе от $400, а при вступлении сегодня — подарочный мешочек к заказу.",
+    "continueWithoutMembershipCta": "Продолжить без вступления"
   }
 }

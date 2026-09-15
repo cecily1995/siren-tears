@@ -106,6 +106,17 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  // Require a logged-in My Siren session to actually pay. The /checkout UI
+  // already gates the button on this client-side, but that's only a nicety
+  // -- a request straight to this endpoint must be checked here too.
+  const sessionToken = cookies().get(SESSION_COOKIE_NAME)?.value;
+  const session = verifySessionToken(sessionToken);
+  if (!session) {
+    return NextResponse.json(
+      { ok: false, error: 'Please sign in to complete your purchase.' },
+      { status: 401 }
+    );
+  }
   if (!deliveryAddress || !deliveryCity || !deliveryPostalCode || !country) {
     return NextResponse.json(
       { ok: false, error: 'Please complete your delivery address.' },
@@ -226,23 +237,18 @@ export async function POST(request: Request) {
 
     const subtotal = items.reduce((sum, i) => sum + (i.price || 0), 0);
 
-    // If the customer is logged in, members get a lower free-shipping
-    // threshold ($400 vs $500) -- check their session the same way the
-    // account API does, so the price we actually charge always matches
-    // what /checkout showed them.
+    // Membership status (lower free-shipping threshold, $400 vs $500) --
+    // we already required a valid session above, so just look up this
+    // member's isMember flag directly.
     let isMember = false;
     try {
-      const sessionToken = cookies().get(SESSION_COOKIE_NAME)?.value;
-      const session = verifySessionToken(sessionToken);
-      if (session) {
-        const member = await client.fetch<{ isMember?: boolean } | null>(
-          `*[_type == "member" && _id == $id][0]{ isMember }`,
-          { id: session.id }
-        );
-        isMember = Boolean(member?.isMember);
-      }
+      const memberDoc = await client.fetch<{ isMember?: boolean } | null>(
+        `*[_type == "member" && _id == $id][0]{ isMember }`,
+        { id: session.id }
+      );
+      isMember = Boolean(memberDoc?.isMember);
     } catch {
-      // Not logged in / bad session -- just treat as a non-member.
+      // Fine -- worst case we just treat them as a non-member.
     }
 
     const shippingQuote = calculateShipping({ subtotal, country, isMember });

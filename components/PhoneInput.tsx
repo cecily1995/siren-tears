@@ -30,17 +30,19 @@ export default function PhoneInput({
   name,
   defaultCallingCode = '+64',
   defaultNumber,
+  placeholder,
   required
 }: {
   name: string;
   defaultCallingCode?: string;
   defaultNumber?: string;
+  placeholder?: string;
   required?: boolean;
 }) {
   const selectClass =
-    'bg-transparent border border-charcoal/20 focus:border-charcoal outline-none pl-3 pr-7 py-3 text-[0.85rem] font-light text-charcoal transition-colors appearance-none shrink-0';
+    'bg-white border border-charcoal/20 focus:border-charcoal outline-none pl-2.5 pr-6 py-2.5 text-[0.75rem] font-light text-charcoal transition-colors appearance-none shrink-0';
   const inputClass =
-    'flex-1 min-w-0 bg-transparent border border-charcoal/20 focus:border-charcoal outline-none px-4 py-3 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
+    'flex-1 min-w-0 bg-white border border-charcoal/20 focus:border-charcoal outline-none px-3.5 py-2.5 text-[0.8rem] font-light text-charcoal placeholder:text-ash/60 placeholder:uppercase placeholder:tracking-[0.08em] placeholder:text-[0.7rem] transition-colors';
 
   return (
     <div className="flex gap-2">
@@ -56,6 +58,7 @@ export default function PhoneInput({
         type="tel"
         inputMode="tel"
         required={required}
+        placeholder={placeholder}
         defaultValue={defaultNumber}
         className={inputClass}
       />

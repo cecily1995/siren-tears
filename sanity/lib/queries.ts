@@ -60,6 +60,16 @@ export const bespokeRequestByIdQuery = groq`*[_type == "bespokeRequest" && _id =
   wristSize, ringSize, colours, styles, note, status, submittedAt
 }`;
 
+export const purchaseRequestByOrderNumberQuery = groq`*[_type == "purchaseRequest" && orderNumber == $orderNumber][0]{
+  _id, orderNumber,
+  "items": items[]{
+    productName, price, wristSize, ringSize,
+    "imageUrl": product->images[0].asset->url
+  },
+  shippingMethod, shippingCost,
+  deliveryAddress, deliveryCity, deliveryRegion, deliveryPostalCode, country
+}`;
+
 async function safeFetch<T>(query: string, params: Record<string, unknown> = {}): Promise<T | null> {
   if (!hasSanityConfig || !client) return null;
   try {
@@ -78,3 +88,5 @@ export const getBuyerShowcase = () => safeFetch<any[]>(buyerShowcaseQuery);
 export const getShopProducts = () => safeFetch<any[]>(shopProductsQuery);
 export const getShopProductBySlug = (slug: string) => safeFetch<any>(shopProductBySlugQuery, { slug });
 export const getBespokeRequestById = (id: string) => safeFetch<any>(bespokeRequestByIdQuery, { id });
+export const getPurchaseRequestByOrderNumber = (orderNumber: string) =>
+  safeFetch<any>(purchaseRequestByOrderNumberQuery, { orderNumber });

@@ -503,7 +503,9 @@
     "resetEmailSentBody": "Falls für diese E-Mail ein Konto besteht, haben wir einen 6-stelligen Code gesendet. Er läuft in 15 Minuten ab.",
     "gateJoinTitle": "Willkommen. Das bietet der Siren Circle.",
     "resetCodeLabel": "Reset-Code",
-    "viewRequest": "Anfrage ansehen"
+    "viewRequest": "Anfrage ansehen",
+    "shippingMethodLabel": "Versand",
+    "freeShippingLabel": "Kostenlos"
   },
   "wornByYouTeaser": {
     "eyebrow": "Getragen von Ihnen",
@@ -620,7 +622,9 @@
     "title": "Vielen Dank für Ihre Bestellung.",
     "body": "Ihre Zahlung ist eingegangen. Unser Atelier bereitet Ihr Stück für den Versand vor und sendet Ihnen die Sendungsverfolgung zu.",
     "orderLabel": "Bestellnummer",
-    "backToShopCta": "Weiter stöbern"
+    "backToShopCta": "Weiter stöbern",
+    "shippingMethodLabel": "Versand",
+    "freeLabel": "Kostenlos"
   },
   "checkout": {
     "orderSummaryTitle": "Bestellübersicht",
@@ -659,6 +663,10 @@
     "recommendedTitle": "Das könnte Ihnen auch gefallen",
     "addCta": "Hinzufügen",
     "continueToPaymentCta": "Weiter zur Zahlung",
-    "paymentError": "Bei der Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+    "paymentError": "Bei der Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+    "loginRequiredMessage": "Bitte melden Sie sich an, um Ihren Kauf abzuschließen.",
+    "membershipPromoTitle": "Dem Siren Circle beitreten",
+    "membershipPromoBody": "Mitglieder erhalten kostenlosen Versand ab $400, und bei einem Beitritt heute erhalten Sie zu jeder Bestellung ein Geschenkbeutel dazu.",
+    "continueWithoutMembershipCta": "Ohne Mitgliedschaft fortfahren"
   }
 }

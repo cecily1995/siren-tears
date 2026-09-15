@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
@@ -17,19 +18,30 @@ export default function BagDrawer() {
     <div className="fixed inset-0 z-[70] flex justify-end" onClick={close}>
       <div className="absolute inset-0 bg-charcoal/40" />
       <div
-        className="relative w-full sm:max-w-[440px] h-full bg-ivory overflow-y-auto flex flex-col"
+        className="relative w-full sm:max-w-[440px] h-full bg-ivory overflow-y-auto flex flex-col animate-slide-in-right"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-ivory z-10 flex items-center justify-between px-6 pt-6 pb-4 border-b border-charcoal/10">
+        <div className="sticky top-0 bg-ivory z-10 px-6 pt-5 pb-4 border-b border-charcoal/10">
+          <div className="flex items-center justify-between mb-4">
+            <Link href="/" onClick={close}>
+              <Image
+                src="/brand/siren-tears-logo.png"
+                alt="Siren Tears"
+                width={320}
+                height={121}
+                className="h-7 w-auto object-contain"
+              />
+            </Link>
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Close"
+              className="text-charcoal/50 hover:text-charcoal text-2xl leading-none px-1"
+            >
+              ×
+            </button>
+          </div>
           <p className="eyebrow">{t('title')}</p>
-          <button
-            type="button"
-            onClick={close}
-            aria-label="Close"
-            className="text-charcoal/50 hover:text-charcoal text-2xl leading-none px-1"
-          >
-            ×
-          </button>
         </div>
 
         <div className="px-6 py-6 flex-1 flex flex-col">

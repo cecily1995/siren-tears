@@ -503,7 +503,9 @@
     "resetEmailSentBody": "Se esiste un account per questa email, abbiamo inviato un codice a 6 cifre. Scade tra 15 minuti.",
     "gateJoinTitle": "Benvenuta/o. Ecco cosa offre il Siren Circle.",
     "resetCodeLabel": "Codice di reimpostazione",
-    "viewRequest": "Visualizza richiesta"
+    "viewRequest": "Visualizza richiesta",
+    "shippingMethodLabel": "Spedizione",
+    "freeShippingLabel": "Gratis"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",
@@ -620,7 +622,9 @@
     "title": "Grazie per il tuo ordine.",
     "body": "Il pagamento è stato ricevuto. Il nostro atelier preparerà il tuo pezzo per la spedizione e ti invierà i dettagli del tracciamento.",
     "orderLabel": "Numero d'ordine",
-    "backToShopCta": "Continua a navigare"
+    "backToShopCta": "Continua a navigare",
+    "shippingMethodLabel": "Spedizione",
+    "freeLabel": "Gratis"
   },
   "checkout": {
     "orderSummaryTitle": "Riepilogo dell'ordine",
@@ -659,6 +663,10 @@
     "recommendedTitle": "Potrebbe piacerti anche",
     "addCta": "Aggiungi",
     "continueToPaymentCta": "Procedi al pagamento",
-    "paymentError": "Si è verificato un problema con il pagamento. Riprova."
+    "paymentError": "Si è verificato un problema con il pagamento. Riprova.",
+    "loginRequiredMessage": "Accedi per completare il tuo acquisto.",
+    "membershipPromoTitle": "Unisciti al Siren Circle",
+    "membershipPromoBody": "I membri godono di spedizione gratuita per ordini oltre i $400, e ogni ordine include una pochette omaggio se ti unisci oggi.",
+    "continueWithoutMembershipCta": "Continua senza iscriverti"
   }
 }

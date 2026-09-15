@@ -503,7 +503,9 @@
     "resetEmailSentBody": "If an account exists for that email, we've sent a 6-digit code. It expires in 15 minutes.",
     "gateJoinTitle": "Welcome. Here's what the Siren Circle offers.",
     "resetCodeLabel": "Reset code",
-    "viewRequest": "View request"
+    "viewRequest": "View request",
+    "shippingMethodLabel": "Shipping",
+    "freeShippingLabel": "Free"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",
@@ -620,7 +622,9 @@
     "title": "Thank you for your order.",
     "body": "Your payment has been received. Our Atelier will prepare your piece for shipping and will be in touch with tracking details.",
     "orderLabel": "Order number",
-    "backToShopCta": "Continue Browsing"
+    "backToShopCta": "Continue Browsing",
+    "shippingMethodLabel": "Shipping",
+    "freeLabel": "Free"
   },
   "checkout": {
     "orderSummaryTitle": "Order Summary",
@@ -659,6 +663,10 @@
     "recommendedTitle": "You May Also Like",
     "addCta": "Add",
     "continueToPaymentCta": "Continue to Payment",
-    "paymentError": "Something went wrong with your payment. Please try again."
+    "paymentError": "Something went wrong with your payment. Please try again.",
+    "loginRequiredMessage": "Please sign in to complete your purchase.",
+    "membershipPromoTitle": "Join the Siren Circle",
+    "membershipPromoBody": "Members enjoy free shipping on orders over $400, and every order comes with a complimentary pouch when you join today.",
+    "continueWithoutMembershipCta": "Continue without joining"
   }
 }

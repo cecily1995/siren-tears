@@ -503,7 +503,9 @@
     "resetEmailSentBody": "해당 이메일의 계정이 있다면 6자리 코드를 보내드렸습니다. 15분 동안 유효합니다.",
     "gateJoinTitle": "환영합니다. Siren Circle의 혜택을 소개합니다.",
     "resetCodeLabel": "재설정 코드",
-    "viewRequest": "신청 내용 보기"
+    "viewRequest": "신청 내용 보기",
+    "shippingMethodLabel": "배송 방법",
+    "freeShippingLabel": "무료"
   },
   "wornByYouTeaser": {
     "eyebrow": "고객 착용 사진",
@@ -620,7 +622,9 @@
     "title": "주문해 주셔서 감사합니다.",
     "body": "결제가 확인되었습니다. 아틀리에에서 작품을 배송 준비하고 추적 정보를 보내드리겠습니다.",
     "orderLabel": "주문 번호",
-    "backToShopCta": "계속 둘러보기"
+    "backToShopCta": "계속 둘러보기",
+    "shippingMethodLabel": "배송 방법",
+    "freeLabel": "무료"
   },
   "checkout": {
     "orderSummaryTitle": "주문 요약",
@@ -659,6 +663,10 @@
     "recommendedTitle": "함께 보면 좋은 상품",
     "addCta": "추가",
     "continueToPaymentCta": "결제로 이동",
-    "paymentError": "결제 중 문제가 발생했습니다. 다시 시도해 주세요."
+    "paymentError": "결제 중 문제가 발생했습니다. 다시 시도해 주세요.",
+    "loginRequiredMessage": "구매를 완료하려면 로그인해 주세요.",
+    "membershipPromoTitle": "Siren Circle 가입하기",
+    "membershipPromoBody": "회원은 $400 이상 주문 시 무료 배송 혜택을 받으며, 오늘 가입하시면 파우치를 증정해 드립니다.",
+    "continueWithoutMembershipCta": "가입하지 않고 계속하기"
   }
 }

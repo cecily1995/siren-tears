@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
@@ -33,27 +33,36 @@ export default function CheckoutForm() {
   const locale = useLocale();
 
   const [member, setMember] = useState<MemberPrefill | null>(null);
+  const [authChecked, setAuthChecked] = useState(false);
   const [summaryOpen, setSummaryOpen] = useState(false);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [country, setCountry] = useState('');
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [orderNumber, setOrderNumber] = useState<string | null>(null);
+  const [showMembershipPrompt, setShowMembershipPrompt] = useState(false);
+  const [membershipPromptAcknowledged, setMembershipPromptAcknowledged] = useState(false);
+  const pendingPayloadRef = useRef<Record<string, unknown> | null>(null);
 
   // If the customer is already logged into My Siren, prefill what we can --
   // spec item 6: auto-fill email (and it's a nicer experience to prefill the
   // rest of the delivery details too, since we already have them on file).
+  // We also use this to require login before paying (see handleSubmit).
   useEffect(() => {
     let cancelled = false;
     fetch('/api/auth/me')
       .then((r) => r.json())
       .then((data) => {
-        if (!cancelled && data?.member) {
+        if (cancelled) return;
+        if (data?.member) {
           setMember(data.member);
           if (data.member.country) setCountry(data.member.country);
         }
+        setAuthChecked(true);
       })
-      .catch(() => undefined);
+      .catch(() => {
+        if (!cancelled) setAuthChecked(true);
+      });
     return () => {
       cancelled = true;
     };
@@ -71,13 +80,42 @@ export default function CheckoutForm() {
   const amountToFreeShipping = Math.max(0, threshold - subtotal);
 
   const inputClass =
-    'w-full bg-transparent border border-charcoal/20 focus:border-charcoal outline-none px-4 py-3 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
-  const labelClass = 'block text-[10px] tracking-[0.24em] uppercase text-ash mb-1.5 font-light';
+    'w-full bg-white border border-charcoal/20 focus:border-charcoal outline-none px-3.5 py-2.5 text-[0.8rem] font-light text-charcoal placeholder:text-ash/60 placeholder:uppercase placeholder:tracking-[0.08em] placeholder:text-[0.7rem] transition-colors';
+
+  async function proceedToPayment(payload: Record<string, unknown>) {
+    setStatus('submitting');
+    setErrorMsg('');
+    try {
+      const res = await fetch('/api/checkout/create-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok || !data.clientSecret) {
+        setErrorMsg(data.error || tBag('errorGeneric'));
+        setStatus('error');
+        return;
+      }
+      setClientSecret(data.clientSecret);
+      setOrderNumber(data.orderNumber);
+      setStatus('idle');
+    } catch {
+      setErrorMsg(tBag('errorGeneric'));
+      setStatus('error');
+    }
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus('submitting');
     setErrorMsg('');
+
+    // Require login before paying -- guests can browse and fill in the
+    // form, but must sign in to actually complete a purchase.
+    if (!member) {
+      setErrorMsg(t('loginRequiredMessage'));
+      return;
+    }
 
     const form = new FormData(e.currentTarget);
     const payload = {
@@ -104,30 +142,21 @@ export default function CheckoutForm() {
       locale
     };
 
-    try {
-      const res = await fetch('/api/checkout/create-session', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json();
-      if (!res.ok || !data.ok || !data.clientSecret) {
-        setErrorMsg(data.error || tBag('errorGeneric'));
-        setStatus('error');
-        return;
-      }
-      setClientSecret(data.clientSecret);
-      setOrderNumber(data.orderNumber);
-      setStatus('idle');
-    } catch {
-      setErrorMsg(tBag('errorGeneric'));
-      setStatus('error');
+    // Non-members get a one-time promo interstitial ("join for free
+    // shipping over $400 + a free pouch") before continuing -- doesn't
+    // block them, just a nudge.
+    if (!member.isMember && !membershipPromptAcknowledged) {
+      pendingPayloadRef.current = payload;
+      setShowMembershipPrompt(true);
+      return;
     }
+
+    await proceedToPayment(payload);
   }
 
   if (items.length === 0) {
     return (
-      <>
+      <div className="min-h-screen bg-white">
         <CheckoutHeader />
         <div className="max-w-lg mx-auto text-center py-24 px-6">
           <p className="serif-display text-[1.4rem] font-light text-charcoal mb-6">{t('emptyBagTitle')}</p>
@@ -138,7 +167,7 @@ export default function CheckoutForm() {
             {t('emptyBagCta')}
           </Link>
         </div>
-      </>
+      </div>
     );
   }
 
@@ -182,7 +211,7 @@ export default function CheckoutForm() {
   );
 
   return (
-    <>
+    <div className="min-h-screen bg-white">
       <CheckoutHeader />
 
       <div className="mx-auto max-w-[1100px] px-6 md:px-12 py-10 md:py-14 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
@@ -213,95 +242,93 @@ export default function CheckoutForm() {
         <form onSubmit={handleSubmit} className="md:col-span-7 space-y-10">
           <fieldset disabled={Boolean(clientSecret)} className="space-y-10 disabled:opacity-60">
           <section>
-            <div className="flex items-center justify-between mb-4">
+            <div className="flex items-center justify-between mb-3">
               <p className="eyebrow">{t('contactTitle')}</p>
               <Link href="/account" className="text-[11px] tracking-[0.2em] uppercase text-charcoal link-underline">
                 {t('signInCta')}
               </Link>
             </div>
-            <label className={labelClass}>{t('emailLabel')} *</label>
             <input
               name="email"
               type="email"
               required
+              placeholder={`${t('emailLabel')} *`}
               defaultValue={member?.email}
               className={inputClass}
             />
           </section>
 
           <section>
-            <p className="eyebrow mb-4">{t('deliveryTitle')}</p>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className={labelClass}>{t('firstNameLabel')} *</label>
-                  <input name="firstName" required defaultValue={member?.firstName} className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t('lastNameLabel')} *</label>
-                  <input name="lastName" required defaultValue={member?.lastName} className={inputClass} />
-                </div>
-              </div>
-              <div>
-                <label className={labelClass}>{t('companyLabel')}</label>
-                <input name="company" className={inputClass} />
-              </div>
-              <div>
-                <label className={labelClass}>{t('addressLabel')} *</label>
-                <input name="address" required defaultValue={member?.addressLine} className={inputClass} />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className={labelClass}>{t('cityLabel')} *</label>
-                  <input name="city" required defaultValue={member?.city} className={inputClass} />
-                </div>
-                <div>
-                  <label className={labelClass}>{t('regionLabel')}</label>
-                  <input name="region" className={inputClass} />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className={labelClass}>{t('postalCodeLabel')} *</label>
-                  <input
-                    name="postalCode"
-                    required
-                    defaultValue={member?.postcode}
-                    className={inputClass}
-                  />
-                </div>
-                <div>
-                  <label className={labelClass}>{t('countryLabel')} *</label>
-                  <input
-                    name="country"
-                    required
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className={inputClass}
-                  />
-                </div>
-              </div>
-              <div>
-                <label className={labelClass}>{t('phoneLabel')} *</label>
-                <PhoneInput
-                  name="phone"
-                  defaultCallingCode={member?.phoneCountryCode || '+64'}
-                  defaultNumber={member?.phone}
+            <p className="eyebrow mb-3">{t('deliveryTitle')}</p>
+            <div className="space-y-2.5">
+              <div className="grid grid-cols-2 gap-2.5">
+                <input
+                  name="firstName"
                   required
+                  placeholder={`${t('firstNameLabel')} *`}
+                  defaultValue={member?.firstName}
+                  className={inputClass}
+                />
+                <input
+                  name="lastName"
+                  required
+                  placeholder={`${t('lastNameLabel')} *`}
+                  defaultValue={member?.lastName}
+                  className={inputClass}
                 />
               </div>
+              <input name="company" placeholder={t('companyLabel')} className={inputClass} />
+              <input
+                name="address"
+                required
+                placeholder={`${t('addressLabel')} *`}
+                defaultValue={member?.addressLine}
+                className={inputClass}
+              />
+              <div className="grid grid-cols-2 gap-2.5">
+                <input
+                  name="city"
+                  required
+                  placeholder={`${t('cityLabel')} *`}
+                  defaultValue={member?.city}
+                  className={inputClass}
+                />
+                <input name="region" placeholder={t('regionLabel')} className={inputClass} />
+              </div>
+              <div className="grid grid-cols-2 gap-2.5">
+                <input
+                  name="postalCode"
+                  required
+                  placeholder={`${t('postalCodeLabel')} *`}
+                  defaultValue={member?.postcode}
+                  className={inputClass}
+                />
+                <input
+                  name="country"
+                  required
+                  placeholder={`${t('countryLabel')} *`}
+                  value={country}
+                  onChange={(e) => setCountry(e.target.value)}
+                  className={inputClass}
+                />
+              </div>
+              <PhoneInput
+                name="phone"
+                placeholder={`${t('phoneLabel')} *`}
+                defaultCallingCode={member?.phoneCountryCode || '+64'}
+                defaultNumber={member?.phone}
+                required
+              />
 
               {needsWristSize && (
                 <div>
-                  <label className={labelClass}>{tBag('wristSizeLabel')}</label>
-                  <input name="wristSize" type="text" inputMode="decimal" className={inputClass} />
+                  <input name="wristSize" type="text" inputMode="decimal" placeholder={tBag('wristSizeLabel')} className={inputClass} />
                   <SizeGuideTrigger type="bracelet" />
                 </div>
               )}
               {needsRingSize && (
                 <div>
-                  <label className={labelClass}>{tBag('ringSizeLabel')}</label>
-                  <input name="ringSize" type="text" className={inputClass} />
+                  <input name="ringSize" type="text" placeholder={tBag('ringSizeLabel')} className={inputClass} />
                   <SizeGuideTrigger type="ring" />
                 </div>
               )}
@@ -340,7 +367,19 @@ export default function CheckoutForm() {
 
           {!clientSecret && (
             <>
-              {status === 'error' && <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
+              {errorMsg && (
+                <p className="text-[0.8rem] text-red-700/80 font-light">
+                  {errorMsg}
+                  {!member && authChecked && (
+                    <>
+                      {' '}
+                      <Link href="/account" className="text-charcoal link-underline">
+                        {t('signInCta')}
+                      </Link>
+                    </>
+                  )}
+                </p>
+              )}
               <div className="pt-2">
                 <button
                   type="submit"
@@ -354,7 +393,7 @@ export default function CheckoutForm() {
           )}
 
           {clientSecret && orderNumber && (
-            <div>
+            <div className="animate-slide-down">
               <StripePaymentSection
                 clientSecret={clientSecret}
                 returnUrl={`${window.location.origin}${locale === 'en' ? '' : `/${locale}`}/order-confirmation?order=${orderNumber}`}
@@ -380,6 +419,40 @@ export default function CheckoutForm() {
           </div>
         </aside>
       </div>
-    </>
+
+      {showMembershipPrompt && (
+        <div
+          className="fixed inset-0 z-[80] flex items-center justify-center bg-charcoal/50 px-6"
+          onClick={() => setShowMembershipPrompt(false)}
+        >
+          <div
+            className="bg-white max-w-sm w-full px-7 py-8 text-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <p className="eyebrow mb-4">{t('membershipPromoTitle')}</p>
+            <p className="text-[0.88rem] text-ash font-light leading-relaxed mb-7">{t('membershipPromoBody')}</p>
+            <Link
+              href="/membership"
+              className="block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 mb-3 hover:bg-charcoal/85 transition-colors"
+            >
+              {t('joinMembershipCta')}
+            </Link>
+            <button
+              type="button"
+              onClick={() => {
+                setShowMembershipPrompt(false);
+                setMembershipPromptAcknowledged(true);
+                if (pendingPayloadRef.current) {
+                  proceedToPayment(pendingPayloadRef.current);
+                }
+              }}
+              className="w-full text-center text-[11px] tracking-[0.2em] uppercase text-charcoal link-underline py-2"
+            >
+              {t('continueWithoutMembershipCta')}
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

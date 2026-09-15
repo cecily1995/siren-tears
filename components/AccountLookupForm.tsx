@@ -21,9 +21,20 @@ type Member = {
   joinedAt?: string;
 };
 
+type PurchaseLineItem = {
+  productName?: string;
+  price?: number;
+  wristSize?: string;
+  ringSize?: string;
+  imageUrl?: string;
+};
+
 type PurchaseItem = {
   productName?: string;
   itemCount?: number;
+  items?: PurchaseLineItem[];
+  shippingMethod?: string;
+  shippingCost?: number;
   paymentStatus?: string;
   orderStatus?: string;
   shippingStatus?: string;
@@ -421,37 +432,63 @@ export default function AccountLookupForm() {
             {purchases.length === 0 ? (
               <p className="text-[0.85rem] text-ash/70 font-light">{t('noPurchases')}</p>
             ) : (
-              <ul className="space-y-3">
+              <ul className="space-y-6">
                 {purchases.map((p, i) => (
-                  <li key={i} className="border-b border-charcoal/10 pb-3 text-[0.85rem] font-light">
-                    <span className="text-charcoal">
-                      {p.productName}
-                      {p.itemCount && p.itemCount > 1 ? ` +${p.itemCount - 1}` : ''}
-                    </span>
-                    <span className="text-ash/60">
-                      {' '}
-                      ·{' '}
-                      {p.shippingStatus && p.shippingStatus !== 'not_shipped'
-                        ? p.shippingStatus
-                        : p.paymentStatus === 'paid'
-                          ? p.orderStatus || 'processing'
-                          : p.paymentStatus || 'pending'}
-                    </span>
-                    <div className="text-ash/60 mt-1">
-                      {t('trackingLabel')}: {p.trackingNumber || t('notShippedYet')}
-                      {p.trackingNumber && (
-                        <>
-                          {' — '}
-                          <a
-                            href="https://www.nzpost.co.nz/tools/tracking"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-charcoal link-underline"
-                          >
-                            {t('trackWithNzPost')}
-                          </a>
-                        </>
-                      )}
+                  <li key={i} className="border-b border-charcoal/10 pb-5 text-[0.85rem] font-light">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[0.78rem] text-ash/60 font-light">
+                        {p._createdAt ? new Date(p._createdAt).toLocaleDateString() : ''}
+                      </span>
+                      <span className="text-[10px] tracking-[0.16em] uppercase text-ash/70">
+                        {p.shippingStatus && p.shippingStatus !== 'not_shipped'
+                          ? p.shippingStatus
+                          : p.paymentStatus === 'paid'
+                            ? p.orderStatus || 'processing'
+                            : p.paymentStatus || 'pending'}
+                      </span>
+                    </div>
+
+                    <ul className="space-y-2.5 mb-3">
+                      {(p.items && p.items.length ? p.items : [{ productName: p.productName }]).map((item, j) => (
+                        <li key={j} className="flex items-center gap-3">
+                          <div className="w-12 h-14 shrink-0 bg-charcoal/5 overflow-hidden">
+                            {item.imageUrl && (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={item.imageUrl} alt={item.productName || ''} className="w-full h-full object-cover" />
+                            )}
+                          </div>
+                          <p className="flex-1 min-w-0 text-[0.82rem] text-charcoal font-light truncate">
+                            {item.productName}
+                          </p>
+                          {typeof item.price === 'number' && (
+                            <p className="text-[0.8rem] text-ash font-light shrink-0">NZD ${item.price}</p>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="text-ash/60 space-y-1">
+                      <div>
+                        {t('shippingMethodLabel')}: {p.shippingMethod || '—'}
+                        {typeof p.shippingCost === 'number' &&
+                          ` (${p.shippingCost === 0 ? t('freeShippingLabel') : `NZD $${p.shippingCost}`})`}
+                      </div>
+                      <div>
+                        {t('trackingLabel')}: {p.trackingNumber || t('notShippedYet')}
+                        {p.trackingNumber && (
+                          <>
+                            {' — '}
+                            <a
+                              href="https://www.nzpost.co.nz/tools/tracking"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-charcoal link-underline"
+                            >
+                              {t('trackWithNzPost')}
+                            </a>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </li>
                 ))}

@@ -503,7 +503,9 @@
     "resetEmailSentBody": "如果这个邮箱对应一个账户,我们已经发送了一个6位验证码过去,15分钟内有效。",
     "gateJoinTitle": "欢迎加入。这些是 Siren Circle 的会员权益。",
     "resetCodeLabel": "验证码",
-    "viewRequest": "查看申请详情"
+    "viewRequest": "查看申请详情",
+    "shippingMethodLabel": "配送方式",
+    "freeShippingLabel": "免费"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",
@@ -620,7 +622,9 @@
     "title": "感谢你的购买。",
     "body": "已收到你的付款,我们的工作室会准备发货,并会把物流单号发给你。",
     "orderLabel": "订单号",
-    "backToShopCta": "继续浏览"
+    "backToShopCta": "继续浏览",
+    "shippingMethodLabel": "配送方式",
+    "freeLabel": "免费"
   },
   "checkout": {
     "orderSummaryTitle": "订单摘要",
@@ -659,6 +663,10 @@
     "recommendedTitle": "你可能也喜欢",
     "addCta": "加入",
     "continueToPaymentCta": "前往付款",
-    "paymentError": "付款时出了点问题,请重试。"
+    "paymentError": "付款时出了点问题,请重试。",
+    "loginRequiredMessage": "请先登录后再完成购买。",
+    "membershipPromoTitle": "加入 Siren Circle 会员",
+    "membershipPromoBody": "会员满$400即可享受包邮,今天加入还能获得一个赠送的收纳包。",
+    "continueWithoutMembershipCta": "暂不加入,继续付款"
   }
 }

@@ -44,6 +44,11 @@ export async function GET() {
           _id, orderNumber,
           "productName": items[0].productName,
           "itemCount": count(items),
+          "items": items[]{
+            productName, price, wristSize, ringSize,
+            "imageUrl": product->images[0].asset->url
+          },
+          shippingMethod, shippingCost,
           paymentStatus, orderStatus, shippingStatus, trackingNumber, _createdAt
         }`,
         { email: member.email }
