@@ -24,8 +24,15 @@ declare global {
  * studio owner getting them on the Tawk mobile app), but hides Tawk's own
  * default floating bubble and shows our own premium-styled vertical
  * "CHAT" tab instead -- clicking it opens the actual Tawk chat window via
- * their JS API. Same visual as the original custom tab, same real-time
- * backend as Tawk.
+ * their JS API.
+ *
+ * Important: Tawk_API.onLoad must be assigned in the SAME synchronous
+ * script block that creates Tawk_API, before the external embed script is
+ * inserted -- an inline <script>'s "load" event isn't a reliable signal
+ * (browsers don't consistently fire one for inline scripts the way they
+ * do for scripts with a src), so this can't depend on Next's Script
+ * onLoad callback firing at the right time. Everything Tawk-related runs
+ * in one inline script instead.
  */
 export default function TawkChat() {
   const t = useTranslations('common');
@@ -45,25 +52,15 @@ export default function TawkChat() {
     return () => observer.disconnect();
   }, []);
 
-  function handleTawkLoad() {
-    // Hide Tawk's own floating bubble once it's ready; we use our own
-    // trigger tab and call Tawk_API.toggle() to open their real widget.
-    window.Tawk_API = window.Tawk_API || {};
-    window.Tawk_API.onLoad = () => {
-      window.Tawk_API?.hideWidget?.();
-    };
-  }
-
   return (
     <>
-      <Script id="tawk-to-init" strategy="afterInteractive" onLoad={handleTawkLoad}>
+      <Script id="tawk-to-widget" strategy="afterInteractive">
         {`
           var Tawk_API = Tawk_API || {};
           var Tawk_LoadStart = new Date();
-        `}
-      </Script>
-      <Script id="tawk-to-widget" strategy="afterInteractive">
-        {`
+          Tawk_API.onLoad = function () {
+            if (Tawk_API.hideWidget) Tawk_API.hideWidget();
+          };
           (function () {
             var s1 = document.createElement('script'),
               s0 = document.getElementsByTagName('script')[0];
