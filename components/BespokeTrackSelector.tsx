@@ -43,7 +43,7 @@ export default function BespokeTrackSelector({
                 key={track.key}
                 type="button"
                 onClick={() => setSelected(track.key)}
-                className={`reveal text-left border p-5 md:p-11 transition-colors duration-500 ${
+                className={`text-left border p-5 md:p-11 transition-colors duration-500 ${
                   isSelected
                     ? 'bg-charcoal border-charcoal text-ivory'
                     : isOtherSelected
@@ -85,7 +85,7 @@ export default function BespokeTrackSelector({
             screen -- no separate section, no scroll required to reach it. */}
         {selected && (
           <div className="mt-10 md:mt-14 max-w-[760px] mx-auto">
-            <div className="text-center mb-10 reveal">
+            <div className="text-center mb-10">
               <p className="eyebrow mb-4">{labels.formTitle}</p>
               <p className="text-[0.95rem] leading-[1.9] text-ash font-light max-w-md mx-auto">
                 {labels.formIntro}
