@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import BagIcon from './BagIcon';
@@ -18,14 +18,25 @@ const links = [
 
 export default function Navigation() {
   const t = useTranslations('nav');
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  // Only the homepage opens with a full-bleed dark Hero photo behind the
+  // header, which is the one place a transparent/light-text nav actually
+  // makes sense. Every other page has a light background from the very
+  // top, so the header must be solid immediately -- otherwise light text
+  // on transparent over a light page reads as "the header disappeared".
+  const isHome = pathname === '/';
+  const [scrolled, setScrolled] = useState(!isHome);
 
   useEffect(() => {
+    if (!isHome) {
+      setScrolled(true);
+      return;
+    }
     const onScroll = () => setScrolled(window.scrollY > 60);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [isHome]);
 
   const light = !scrolled;
 
