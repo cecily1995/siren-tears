@@ -9,10 +9,19 @@ function getStripe() {
   return new Stripe(key);
 }
 
+function getSiteUrl(request: Request) {
+  return new URL(request.url).origin;
+}
+
 // One-off diagnostic: ask Stripe directly (via API, not the dashboard UI)
 // what's actually happened, so we don't have to keep interpreting
 // confusing dashboard screenshots. Visit with the secret appended, e.g.:
-//   /api/admin/debug-stripe?secret=YOUR_SANITY_WEBHOOK_SECRET
+//   /api/admin/debug-stripe?secret=YOUR_ADMIN_DEBUG_SECRET
+//
+// Add &createWebhook=1 to also create the webhook endpoint directly via
+// the API (using the exact same key/account this server already uses),
+// which sidesteps the Stripe dashboard's confusing "sandbox" switcher --
+// the dashboard-created webhook wasn't visible to this account/key at all.
 export async function GET(request: Request) {
   const url = new URL(request.url);
   const secret = url.searchParams.get('secret');
@@ -26,6 +35,29 @@ export async function GET(request: Request) {
     return NextResponse.json({ ok: false, error: 'STRIPE_SECRET_KEY not configured on the server' }, { status: 503 });
   }
 
+  const shouldCreateWebhook = url.searchParams.get('createWebhook') === '1';
+  let createdWebhook: { id: string; url: string; secret: string } | null = null;
+  let createWebhookError: string | null = null;
+
+  if (shouldCreateWebhook) {
+    const webhookUrl = `${getSiteUrl(request)}/api/webhooks/stripe`;
+    try {
+      const existing = await stripe.webhookEndpoints.list({ limit: 100 });
+      const already = existing.data.find((e) => e.url === webhookUrl);
+      if (already) {
+        createWebhookError = `An endpoint for ${webhookUrl} already exists (${already.id}) on this account -- not creating a duplicate. Its secret can't be re-shown; if you don't have it, delete it in the dashboard's Webhooks page for THIS account and reload this URL to recreate it.`;
+      } else {
+        const created = await stripe.webhookEndpoints.create({
+          url: webhookUrl,
+          enabled_events: ['checkout.session.completed']
+        });
+        createdWebhook = { id: created.id, url: created.url, secret: created.secret || '' };
+      }
+    } catch (err: any) {
+      createWebhookError = err?.message || 'Failed to create webhook endpoint';
+    }
+  }
+
   try {
     const [sessions, events, endpoints] = await Promise.all([
       stripe.checkout.sessions.list({ limit: 5 }),
@@ -35,6 +67,8 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       ok: true,
+      createdWebhook,
+      createWebhookError,
       webhookEndpointsRegisteredOnThisAccount: endpoints.data.map((e) => ({
         id: e.id,
         url: e.url,
