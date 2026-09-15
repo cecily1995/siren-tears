@@ -218,11 +218,18 @@ export default function ShopGrid({
                     }`}
                   />
                 )}
-                {(isSold || isReserved) && (
-                  <span className="absolute top-3 left-3 bg-ivory/95 text-charcoal text-[10px] tracking-[0.24em] uppercase px-3 py-1.5 font-light">
-                    {isSold ? labels.status.sold : labels.status.reserved}
-                  </span>
-                )}
+                {/* One badge slot, top-left of the image -- status label if
+                    sold/reserved, otherwise "One of One". Never both, so
+                    they can safely share the same fixed position instead of
+                    living in the flowing text below (where it used to shift
+                    depending on product name length). */}
+                <span className="absolute top-3 left-3 bg-ivory/95 text-[10px] tracking-[0.24em] uppercase px-3 py-1.5 font-light">
+                  {isSold || isReserved ? (
+                    <span className="text-charcoal">{isSold ? labels.status.sold : labels.status.reserved}</span>
+                  ) : (
+                    <span className="text-gold">{labels.oneOfOne}</span>
+                  )}
+                </span>
                 <WishlistButton
                   productId={p._id}
                   slug={p.slug?.current ?? ''}
@@ -237,24 +244,17 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-4">
-                {p.collectionTitle && (
-                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
-                    {p.collectionTitle}
-                  </p>
-                )}
-                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight">
+                <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light min-h-[1.1em]">
+                  {p.collectionTitle || ''}
+                </p>
+                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2 min-h-[2.6rem]">
                   {p.name}
                 </h3>
-                {p.stone && <p className="text-[0.82rem] text-ash font-light mt-1">{p.stone}</p>}
-                <div className="mt-2 flex items-center justify-between">
+                <p className="text-[0.82rem] text-ash font-light mt-1 min-h-[1.2em]">{p.stone || ''}</p>
+                <div className="mt-2">
                   <span className="text-[0.9rem] text-charcoal font-light">
                     {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
                   </span>
-                  {!isSold && !isReserved && (
-                    <span className="text-[9px] tracking-[0.22em] uppercase text-gold font-light">
-                      {labels.oneOfOne}
-                    </span>
-                  )}
                 </div>
               </div>
             </Link>

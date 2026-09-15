@@ -1,4 +1,5 @@
 import { Link } from '@/i18n/routing';
+import WishlistButton from './WishlistButton';
 
 type Product = {
   _id: string;
@@ -49,22 +50,29 @@ export default function CurrentlyAvailable({
                     className="bg-img w-full h-full object-cover"
                   />
                 )}
+                {/* Fixed to the image (not the flowing text below) so its
+                    position never shifts with product name length. */}
+                <span className="absolute top-3 left-3 bg-ivory/90 text-gold text-[9px] tracking-[0.22em] uppercase px-2.5 py-1 font-light">
+                  {labels.oneOfOne}
+                </span>
+                <WishlistButton
+                  productId={p._id}
+                  slug={p.slug?.current ?? ''}
+                  name={p.name ?? ''}
+                  price={p.price}
+                  imageUrl={p.images?.[0]?.url}
+                />
               </div>
               <div className="mt-4">
-                {p.collectionTitle && (
-                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
-                    {p.collectionTitle}
-                  </p>
-                )}
-                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight">
+                <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light min-h-[1.1em]">
+                  {p.collectionTitle || ''}
+                </p>
+                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2 min-h-[2.5rem]">
                   {p.name}
                 </h3>
-                <div className="mt-2 flex items-center justify-between">
+                <div className="mt-2">
                   <span className="text-[0.88rem] text-charcoal font-light">
                     {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
-                  </span>
-                  <span className="text-[9px] tracking-[0.22em] uppercase text-gold font-light">
-                    {labels.oneOfOne}
                   </span>
                 </div>
               </div>
