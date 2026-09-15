@@ -36,8 +36,8 @@ export async function GET(request: Request) {
   }
 
   const REQUIRED_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
-    'checkout.session.completed',
-    'checkout.session.expired'
+    'payment_intent.succeeded',
+    'payment_intent.payment_failed'
   ];
 
   const shouldCreateWebhook = url.searchParams.get('createWebhook') === '1';

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
+import RecommendedProducts from './RecommendedProducts';
 
 export default function BagDrawer() {
   const { items, removeItem, isOpen, close } = useBag();
@@ -70,6 +71,10 @@ export default function BagDrawer() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mb-8 pb-8 border-b border-charcoal/10">
+                <RecommendedProducts />
+              </div>
 
               <div className="mt-auto">
                 <div className="flex items-center justify-between py-4 border-t border-b border-charcoal/10 mb-6">

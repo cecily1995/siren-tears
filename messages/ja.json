@@ -652,6 +652,13 @@
     "redirecting": "安全な決済ページへ移動しています…",
     "backToBag": "バッグに戻る",
     "emptyBagTitle": "バッグは空です。",
-    "emptyBagCta": "引き続き見る"
+    "emptyBagCta": "引き続き見る",
+    "freeShippingProgress": "あと NZD {amount} で送料無料になります。または",
+    "freeShippingProgressMember": "あと NZD {amount} で送料無料になります。",
+    "joinMembershipCta": "Siren Circleに入会すると$400以上で送料無料。",
+    "recommendedTitle": "あわせて人気",
+    "addCta": "追加",
+    "continueToPaymentCta": "支払いへ進む",
+    "paymentError": "お支払いに問題が発生しました。もう一度お試しください。"
   }
 }

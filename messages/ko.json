@@ -652,6 +652,13 @@
     "redirecting": "안전한 결제 페이지로 이동 중…",
     "backToBag": "가방으로 돌아가기",
     "emptyBagTitle": "가방이 비어 있습니다.",
-    "emptyBagCta": "계속 둘러보기"
+    "emptyBagCta": "계속 둘러보기",
+    "freeShippingProgress": "NZD {amount} 더 담으면 무료 배송, 또는",
+    "freeShippingProgressMember": "NZD {amount} 더 담으면 무료 배송입니다.",
+    "joinMembershipCta": "Siren Circle에 가입하면 $400 이상 무료 배송.",
+    "recommendedTitle": "함께 보면 좋은 상품",
+    "addCta": "추가",
+    "continueToPaymentCta": "결제로 이동",
+    "paymentError": "결제 중 문제가 발생했습니다. 다시 시도해 주세요."
   }
 }

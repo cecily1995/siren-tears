@@ -4,9 +4,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
-import { calculateShipping } from '@/lib/shipping';
+import { calculateShipping, freeShippingThreshold } from '@/lib/shipping';
 import SizeGuideTrigger from './SizeGuideTrigger';
 import CheckoutHeader from './CheckoutHeader';
+import PhoneInput from './PhoneInput';
+import RecommendedProducts from './RecommendedProducts';
+import StripePaymentSection from './StripePaymentSection';
 
 const BRACELET_CATEGORIES = ['braceletBead', 'braceletChain'];
 
@@ -15,10 +18,12 @@ type MemberPrefill = {
   lastName?: string;
   email?: string;
   phone?: string;
+  phoneCountryCode?: string;
   addressLine?: string;
   city?: string;
   postcode?: string;
   country?: string;
+  isMember?: boolean;
 };
 
 export default function CheckoutForm() {
@@ -32,6 +37,8 @@ export default function CheckoutForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
   const [country, setCountry] = useState('');
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
+  const [orderNumber, setOrderNumber] = useState<string | null>(null);
 
   // If the customer is already logged into My Siren, prefill what we can --
   // spec item 6: auto-fill email (and it's a nicer experience to prefill the
@@ -55,8 +62,13 @@ export default function CheckoutForm() {
   const needsWristSize = items.some((i) => i.category && BRACELET_CATEGORIES.includes(i.category));
   const needsRingSize = items.some((i) => i.category === 'ring');
   const subtotal = useMemo(() => items.reduce((sum, i) => sum + (i.price || 0), 0), [items]);
-  const shippingQuote = useMemo(() => calculateShipping({ subtotal, country }), [subtotal, country]);
+  const shippingQuote = useMemo(
+    () => calculateShipping({ subtotal, country, isMember: member?.isMember }),
+    [subtotal, country, member?.isMember]
+  );
   const total = subtotal + shippingQuote.cost;
+  const threshold = freeShippingThreshold(member?.isMember);
+  const amountToFreeShipping = Math.max(0, threshold - subtotal);
 
   const inputClass =
     'w-full bg-transparent border border-charcoal/20 focus:border-charcoal outline-none px-4 py-3 text-[0.9rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
@@ -71,6 +83,7 @@ export default function CheckoutForm() {
     const payload = {
       items: items.map((i) => ({
         productSlug: i.slug,
+        imageUrl: i.imageUrl,
         productName: i.name,
         price: i.price,
         wristSize: needsWristSize ? form.get('wristSize')?.toString() || '' : '',
@@ -78,7 +91,7 @@ export default function CheckoutForm() {
       })),
       name: `${form.get('firstName') || ''} ${form.get('lastName') || ''}`.trim(),
       email: form.get('email')?.toString() || '',
-      whatsapp: form.get('phone')?.toString() || '',
+      whatsapp: `${form.get('phoneCode') || ''} ${form.get('phoneNumber') || ''}`.trim(),
       country: form.get('country')?.toString() || '',
       deliveryFirstName: form.get('firstName')?.toString() || '',
       deliveryLastName: form.get('lastName')?.toString() || '',
@@ -98,12 +111,14 @@ export default function CheckoutForm() {
         body: JSON.stringify(payload)
       });
       const data = await res.json();
-      if (!res.ok || !data.ok || !data.url) {
+      if (!res.ok || !data.ok || !data.clientSecret) {
         setErrorMsg(data.error || tBag('errorGeneric'));
         setStatus('error');
         return;
       }
-      window.location.href = data.url;
+      setClientSecret(data.clientSecret);
+      setOrderNumber(data.orderNumber);
+      setStatus('idle');
     } catch {
       setErrorMsg(tBag('errorGeneric'));
       setStatus('error');
@@ -187,12 +202,16 @@ export default function CheckoutForm() {
             <div className="px-5 pb-5">
               {OrderSummaryList}
               {OrderTotals}
+              <div className="mt-6 pt-6 border-t border-charcoal/10">
+                <RecommendedProducts />
+              </div>
             </div>
           )}
         </div>
 
         {/* Left column: form */}
         <form onSubmit={handleSubmit} className="md:col-span-7 space-y-10">
+          <fieldset disabled={Boolean(clientSecret)} className="space-y-10 disabled:opacity-60">
           <section>
             <div className="flex items-center justify-between mb-4">
               <p className="eyebrow">{t('contactTitle')}</p>
@@ -264,12 +283,11 @@ export default function CheckoutForm() {
               </div>
               <div>
                 <label className={labelClass}>{t('phoneLabel')} *</label>
-                <input
+                <PhoneInput
                   name="phone"
-                  type="tel"
+                  defaultCallingCode={member?.phoneCountryCode || '+64'}
+                  defaultNumber={member?.phone}
                   required
-                  defaultValue={member?.phone}
-                  className={inputClass}
                 />
               </div>
 
@@ -293,37 +311,60 @@ export default function CheckoutForm() {
           <section>
             <p className="eyebrow mb-4">{t('shippingMethodTitle')}</p>
             {country ? (
-              <div className="border border-charcoal/15 px-4 py-3.5 flex items-center justify-between text-[0.85rem] font-light">
-                <span className="text-charcoal">{shippingQuote.label}</span>
-                <span className="text-ash">{shippingQuote.cost === 0 ? t('freeLabel') : `NZD $${shippingQuote.cost}`}</span>
-              </div>
+              <>
+                <div className="border border-charcoal/15 px-4 py-3.5 flex items-center justify-between text-[0.85rem] font-light">
+                  <span className="text-charcoal">{shippingQuote.label}</span>
+                  <span className="text-ash">{shippingQuote.cost === 0 ? t('freeLabel') : `NZD $${shippingQuote.cost}`}</span>
+                </div>
+                {amountToFreeShipping > 0 && (
+                  <p className="mt-3 text-[0.8rem] text-ash/80 font-light">
+                    {member?.isMember
+                      ? t('freeShippingProgressMember', { amount: amountToFreeShipping })
+                      : t('freeShippingProgress', { amount: amountToFreeShipping })}
+                    {!member?.isMember && (
+                      <>
+                        {' '}
+                        <Link href="/membership" className="text-charcoal link-underline">
+                          {t('joinMembershipCta')}
+                        </Link>
+                      </>
+                    )}
+                  </p>
+                )}
+              </>
             ) : (
               <p className="text-[0.85rem] text-ash/70 font-light">{t('shippingMethodEnterAddress')}</p>
             )}
           </section>
+          </fieldset>
 
-          <section>
-            <p className="eyebrow mb-1.5">{t('paymentTitle')}</p>
-            <p className="text-[0.78rem] text-ash/70 font-light mb-4">{t('paymentSubtitle')}</p>
-            <div className="border border-charcoal/15 px-5 py-6 text-[0.85rem] text-ash font-light leading-relaxed">
-              {t('paymentNote')}
+          {!clientSecret && (
+            <>
+              {status === 'error' && <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
+              <div className="pt-2">
+                <button
+                  type="submit"
+                  disabled={status === 'submitting'}
+                  className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-4 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
+                >
+                  {status === 'submitting' ? t('redirecting') : t('continueToPaymentCta')}
+                </button>
+              </div>
+            </>
+          )}
+
+          {clientSecret && orderNumber && (
+            <div>
+              <StripePaymentSection
+                clientSecret={clientSecret}
+                returnUrl={`${window.location.origin}${locale === 'en' ? '' : `/${locale}`}/order-confirmation?order=${orderNumber}`}
+              />
             </div>
-          </section>
+          )}
 
-          {status === 'error' && <p className="text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
-
-          <div className="pt-2">
-            <div className="flex items-center justify-between mb-4 text-charcoal">
-              <span className="text-[11px] tracking-[0.2em] uppercase">{t('totalLabel')}</span>
-              <span className="text-[1.2rem] font-light">NZD ${total}</span>
-            </div>
-            <button
-              type="submit"
-              disabled={status === 'submitting'}
-              className="w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-4 hover:bg-charcoal/85 transition-colors disabled:opacity-60"
-            >
-              {status === 'submitting' ? t('redirecting') : t('payNowCta')}
-            </button>
+          <div className="flex items-center justify-between pt-2 text-charcoal border-t border-charcoal/10">
+            <span className="text-[11px] tracking-[0.2em] uppercase pt-4">{t('totalLabel')}</span>
+            <span className="text-[1.2rem] font-light pt-4">NZD ${total}</span>
           </div>
         </form>
 
@@ -333,6 +374,9 @@ export default function CheckoutForm() {
             <p className="eyebrow mb-5">{t('orderSummaryTitle')}</p>
             {OrderSummaryList}
             {OrderTotals}
+            <div className="mt-8 pt-8 border-t border-charcoal/10">
+              <RecommendedProducts />
+            </div>
           </div>
         </aside>
       </div>

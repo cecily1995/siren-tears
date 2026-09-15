@@ -652,6 +652,13 @@
     "redirecting": "正在跳转到安全支付页面…",
     "backToBag": "返回购物袋",
     "emptyBagTitle": "你的购物袋是空的。",
-    "emptyBagCta": "继续浏览"
+    "emptyBagCta": "继续浏览",
+    "freeShippingProgress": "还差NZD {amount}即可包邮,或者",
+    "freeShippingProgressMember": "还差NZD {amount}即可包邮。",
+    "joinMembershipCta": "加入Siren Circle会员,满$400即可包邮。",
+    "recommendedTitle": "你可能也喜欢",
+    "addCta": "加入",
+    "continueToPaymentCta": "前往付款",
+    "paymentError": "付款时出了点问题,请重试。"
   }
 }

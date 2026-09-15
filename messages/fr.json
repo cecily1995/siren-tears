@@ -652,6 +652,13 @@
     "redirecting": "Redirection vers le paiement sécurisé…",
     "backToBag": "Retour au panier",
     "emptyBagTitle": "Votre panier est vide.",
-    "emptyBagCta": "Continuer mes achats"
+    "emptyBagCta": "Continuer mes achats",
+    "freeShippingProgress": "Ajoutez NZD {amount} pour la livraison gratuite, ou",
+    "freeShippingProgressMember": "Ajoutez NZD {amount} pour la livraison gratuite.",
+    "joinMembershipCta": "rejoignez le Siren Circle pour la livraison gratuite dès 400$.",
+    "recommendedTitle": "Vous aimerez aussi",
+    "addCta": "Ajouter",
+    "continueToPaymentCta": "Continuer vers le paiement",
+    "paymentError": "Un problème est survenu avec votre paiement. Veuillez réessayer."
   }
 }

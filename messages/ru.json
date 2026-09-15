@@ -652,6 +652,13 @@
     "redirecting": "Перенаправление на безопасную оплату…",
     "backToBag": "Вернуться в корзину",
     "emptyBagTitle": "Ваша корзина пуста.",
-    "emptyBagCta": "Продолжить покупки"
+    "emptyBagCta": "Продолжить покупки",
+    "freeShippingProgress": "Добавьте товаров на NZD {amount} для бесплатной доставки, или",
+    "freeShippingProgressMember": "Добавьте товаров на NZD {amount} для бесплатной доставки.",
+    "joinMembershipCta": "вступите в Siren Circle — бесплатная доставка от $400.",
+    "recommendedTitle": "Вам может понравиться",
+    "addCta": "Добавить",
+    "continueToPaymentCta": "Перейти к оплате",
+    "paymentError": "Произошла ошибка при оплате. Попробуйте снова."
   }
 }

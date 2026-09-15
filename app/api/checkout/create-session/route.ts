@@ -1,8 +1,10 @@
 import { NextResponse } from 'next/server';
+import { cookies } from 'next/headers';
 import { createClient } from 'next-sanity';
 import Stripe from 'stripe';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
 import { calculateShipping } from '@/lib/shipping';
+import { verifySessionToken, SESSION_COOKIE_NAME } from '@/lib/auth';
 
 export const runtime = 'nodejs';
 
@@ -28,10 +30,12 @@ function generateOrderNumber() {
 }
 
 // How long a "hold" on a one-of-one piece lasts while a customer is going
-// through Stripe checkout. Long enough to fill in card details without
-// rushing, short enough that an abandoned checkout doesn't lock a piece
-// away from other customers for long.
-const LOCK_MINUTES = 15;
+// through checkout. Long enough to fill in card details without rushing,
+// short enough that an abandoned checkout doesn't lock a piece away from
+// other customers for long. Purely our own DB-side TTL now (not tied to any
+// Stripe object's expiry, since Payment Intents don't expire the way
+// Checkout Sessions used to).
+const LOCK_MINUTES = 30;
 
 export async function POST(request: Request) {
   const client = getWriteClient();
@@ -79,6 +83,7 @@ export async function POST(request: Request) {
       price?: number;
       wristSize?: string;
       ringSize?: string;
+      imageUrl?: string;
     }[];
     name?: string;
     email?: string;
@@ -146,8 +151,8 @@ export async function POST(request: Request) {
 
     // ---- One-of-one inventory lock (prevents overselling) -----------------
     // Every piece is unique, so two customers must never both be able to pay
-    // for the same one. Before creating a Stripe session, put a short-lived
-    // hold on each product using optimistic concurrency: fetch the current
+    // for the same one. Before creating the payment, put a short-lived hold
+    // on each product using optimistic concurrency: fetch the current
     // revision, then patch conditioned on that exact revision. If someone
     // else grabbed the same product between our fetch and our patch, the
     // conditioned patch fails and we know to reject this checkout instead of
@@ -220,7 +225,27 @@ export async function POST(request: Request) {
     });
 
     const subtotal = items.reduce((sum, i) => sum + (i.price || 0), 0);
-    const shippingQuote = calculateShipping({ subtotal, country });
+
+    // If the customer is logged in, members get a lower free-shipping
+    // threshold ($400 vs $500) -- check their session the same way the
+    // account API does, so the price we actually charge always matches
+    // what /checkout showed them.
+    let isMember = false;
+    try {
+      const sessionToken = cookies().get(SESSION_COOKIE_NAME)?.value;
+      const session = verifySessionToken(sessionToken);
+      if (session) {
+        const member = await client.fetch<{ isMember?: boolean } | null>(
+          `*[_type == "member" && _id == $id][0]{ isMember }`,
+          { id: session.id }
+        );
+        isMember = Boolean(member?.isMember);
+      }
+    } catch {
+      // Not logged in / bad session -- just treat as a non-member.
+    }
+
+    const shippingQuote = calculateShipping({ subtotal, country, isMember });
 
     const orderNumber = generateOrderNumber();
 
@@ -248,42 +273,19 @@ export async function POST(request: Request) {
       submittedAt: new Date().toISOString()
     });
 
-    const siteUrl = new URL(request.url).origin;
-    const loc = locale || 'en';
+    const total = subtotal + shippingQuote.cost;
 
-    const lineItems: Stripe.Checkout.SessionCreateParams.LineItem[] = items.map((i) => ({
-      price_data: {
-        currency: 'nzd',
-        product_data: { name: i.productName || 'SIREN TEARS piece' },
-        unit_amount: Math.round((i.price || 0) * 100)
-      },
-      quantity: 1
-    }));
-    lineItems.push({
-      price_data: {
-        currency: 'nzd',
-        product_data: { name: shippingQuote.label },
-        unit_amount: Math.round(shippingQuote.cost * 100)
-      },
-      quantity: 1
-    });
-
-    let session: Stripe.Checkout.Session;
+    let paymentIntent: Stripe.PaymentIntent;
     try {
-      session = await stripe.checkout.sessions.create({
-        mode: 'payment',
+      paymentIntent = await stripe.paymentIntents.create({
+        amount: Math.round(total * 100),
         currency: 'nzd',
-        customer_email: email,
-        line_items: lineItems,
-        // Give up the inventory hold automatically if the customer never
-        // reaches Stripe's payment page at all -- matches our own lock TTL.
-        expires_at: Math.floor(now.getTime() / 1000) + LOCK_MINUTES * 60,
+        receipt_email: email,
+        automatic_payment_methods: { enabled: true },
         metadata: {
           purchaseRequestId: purchaseRequest._id,
           orderNumber
-        },
-        success_url: `${siteUrl}/${loc}/order-confirmation?order=${orderNumber}&session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${siteUrl}/${loc}/shop`
+        }
       });
     } catch (err) {
       // Stripe call itself failed -- release the holds we took, since no
@@ -294,15 +296,21 @@ export async function POST(request: Request) {
       throw err;
     }
 
-    if (!session.url) {
-      throw new Error('Stripe did not return a checkout URL');
+    if (!paymentIntent.client_secret) {
+      throw new Error('Stripe did not return a client secret');
     }
 
-    // Remember the session id so the webhook (and manual lookups in Studio)
-    // can tie the payment back to this exact order.
-    await client.patch(purchaseRequest._id).set({ stripeSessionId: session.id }).commit();
+    // Remember the payment intent id so the webhook (and manual lookups in
+    // Studio) can tie the payment back to this exact order.
+    await client.patch(purchaseRequest._id).set({ stripePaymentIntentId: paymentIntent.id }).commit();
 
-    return NextResponse.json({ ok: true, url: session.url });
+    return NextResponse.json({
+      ok: true,
+      clientSecret: paymentIntent.client_secret,
+      orderNumber,
+      purchaseRequestId: purchaseRequest._id,
+      total
+    });
   } catch (err) {
     console.error('Checkout session creation failed', err);
     return NextResponse.json(
@@ -311,4 +319,3 @@ export async function POST(request: Request) {
     );
   }
 }
-

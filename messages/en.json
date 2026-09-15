@@ -652,6 +652,13 @@
     "redirecting": "Redirecting to secure payment…",
     "backToBag": "Back to Bag",
     "emptyBagTitle": "Your bag is empty.",
-    "emptyBagCta": "Continue Browsing"
+    "emptyBagCta": "Continue Browsing",
+    "freeShippingProgress": "Spend NZD {amount} more for free shipping, or",
+    "freeShippingProgressMember": "Spend NZD {amount} more for free shipping.",
+    "joinMembershipCta": "join the Siren Circle for free shipping over $400.",
+    "recommendedTitle": "You May Also Like",
+    "addCta": "Add",
+    "continueToPaymentCta": "Continue to Payment",
+    "paymentError": "Something went wrong with your payment. Please try again."
   }
 }

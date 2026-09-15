@@ -652,6 +652,13 @@
     "redirecting": "Weiterleitung zur sicheren Zahlung…",
     "backToBag": "Zurück zur Tasche",
     "emptyBagTitle": "Ihre Tasche ist leer.",
-    "emptyBagCta": "Weiter stöbern"
+    "emptyBagCta": "Weiter stöbern",
+    "freeShippingProgress": "Noch NZD {amount} bis zum kostenlosen Versand, oder",
+    "freeShippingProgressMember": "Noch NZD {amount} bis zum kostenlosen Versand.",
+    "joinMembershipCta": "werden Sie Mitglied im Siren Circle für kostenlosen Versand ab $400.",
+    "recommendedTitle": "Das könnte Ihnen auch gefallen",
+    "addCta": "Hinzufügen",
+    "continueToPaymentCta": "Weiter zur Zahlung",
+    "paymentError": "Bei der Zahlung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
   }
 }
