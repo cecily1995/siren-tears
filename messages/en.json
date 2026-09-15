@@ -336,7 +336,11 @@
       "beaded": "Beaded Collections",
       "aotearoa": "Aotearoa — Gemstone"
     },
-    "searchPlaceholder": "Search pieces, stones…"
+    "searchPlaceholder": "Search pieces, stones…",
+    "descriptionTitle": "Description",
+    "descriptionFallback": "A detailed description of this piece will be added soon.",
+    "materialsCareTitle": "Materials & Care",
+    "packagingTitle": "Packaging"
   },
   "membership": {
     "eyebrow": "Membership",

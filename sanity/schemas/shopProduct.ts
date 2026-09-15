@@ -83,6 +83,27 @@ export default defineType({
     }),
     defineField({ name: 'stoneStory', title: 'The Stone', type: 'text', rows: 4 }),
     defineField({ name: 'pieceStory', title: 'The Piece', type: 'text', rows: 4 }),
+    defineField({
+      name: 'materialsCare',
+      title: 'Materials & Care',
+      type: 'text',
+      rows: 4,
+      description: 'Shown in the "Materials & Care" section on the product page.'
+    }),
+    defineField({
+      name: 'packagingDescription',
+      title: 'Packaging description',
+      type: 'text',
+      rows: 3,
+      description: 'Shown in the "Packaging" section on the product page.'
+    }),
+    defineField({
+      name: 'packagingImage',
+      title: 'Packaging image',
+      type: 'image',
+      options: { hotspot: true },
+      fields: [{ name: 'alt', type: 'string', title: 'Alt text' }]
+    }),
     defineField({ name: 'material', title: 'Material', type: 'string' }),
     defineField({ name: 'length', title: 'Length / Size', type: 'string' }),
     defineField({ name: 'craftedIn', title: 'Crafted in', type: 'string', initialValue: 'New Zealand' }),

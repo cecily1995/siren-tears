@@ -336,7 +336,11 @@
       "beaded": "비즈 컬렉션",
       "aotearoa": "Aotearoa — 젬스톤"
     },
-    "searchPlaceholder": "작품, 스톤 검색…"
+    "searchPlaceholder": "작품, 스톤 검색…",
+    "descriptionTitle": "상세 설명",
+    "descriptionFallback": "이 작품에 대한 자세한 설명이 곧 추가될 예정입니다.",
+    "materialsCareTitle": "소재 및 관리",
+    "packagingTitle": "패키지"
   },
   "membership": {
     "eyebrow": "멤버십",

@@ -336,7 +336,11 @@
       "beaded": "Perlen-Kollektionen",
       "aotearoa": "Aotearoa — Edelsteinschmuck"
     },
-    "searchPlaceholder": "Stücke, Steine suchen…"
+    "searchPlaceholder": "Stücke, Steine suchen…",
+    "descriptionTitle": "Beschreibung",
+    "descriptionFallback": "Eine ausführliche Beschreibung dieses Stücks folgt in Kürze.",
+    "materialsCareTitle": "Materialien & Pflege",
+    "packagingTitle": "Verpackung"
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",

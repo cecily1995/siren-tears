@@ -336,7 +336,11 @@
       "beaded": "Collezioni Beaded",
       "aotearoa": "Aotearoa — Gioielleria"
     },
-    "searchPlaceholder": "Cerca pezzi, pietre…"
+    "searchPlaceholder": "Cerca pezzi, pietre…",
+    "descriptionTitle": "Descrizione",
+    "descriptionFallback": "Una descrizione dettagliata di questo pezzo sarà aggiunta a breve.",
+    "materialsCareTitle": "Materiali e cura",
+    "packagingTitle": "Confezione"
   },
   "membership": {
     "eyebrow": "Membership",

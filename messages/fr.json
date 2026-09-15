@@ -336,7 +336,11 @@
       "beaded": "Collections Perlées",
       "aotearoa": "Aotearoa — Joaillerie"
     },
-    "searchPlaceholder": "Rechercher une pièce, une pierre…"
+    "searchPlaceholder": "Rechercher une pièce, une pierre…",
+    "descriptionTitle": "Description",
+    "descriptionFallback": "Une description détaillée de cette pièce sera bientôt ajoutée.",
+    "materialsCareTitle": "Matières & Entretien",
+    "packagingTitle": "Emballage"
   },
   "membership": {
     "eyebrow": "Adhésion",

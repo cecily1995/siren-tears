@@ -6,6 +6,7 @@ import { getShopProductBySlug } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import ProductGallery from '@/components/ProductGallery';
 import AddToBagButton from '@/components/AddToBagButton';
+import ProductAccordionSection from '@/components/ProductAccordionSection';
 import { translateFields } from '@/lib/translate';
 
 export const revalidate = 60;
@@ -42,7 +43,13 @@ export default async function ShopProductPage({
   // in English in Sanity; auto-translate it for non-English locales rather
   // than requiring a manually-translated copy per language.
   const translated = await translateFields(
-    { stone: product.stone, stoneStory: product.stoneStory, pieceStory: product.pieceStory },
+    {
+      stone: product.stone,
+      stoneStory: product.stoneStory,
+      pieceStory: product.pieceStory,
+      materialsCare: product.materialsCare,
+      packagingDescription: product.packagingDescription
+    },
     locale
   );
 
@@ -77,7 +84,7 @@ export default async function ShopProductPage({
             />
           </div>
 
-          <div className="md:col-span-6 reveal" style={{ transitionDelay: '120ms' }}>
+          <div className="md:col-span-6 md:sticky md:top-28 md:self-start reveal" style={{ transitionDelay: '120ms' }}>
             {product.collectionTitle && (
               <p className="eyebrow mb-4">{product.collectionTitle}</p>
             )}
@@ -119,39 +126,66 @@ export default async function ShopProductPage({
               )}
             </div>
 
-            {details.length > 0 && (
-              <div className="mt-10 pt-8 border-t border-charcoal/10">
-                <p className="eyebrow mb-5">{t('detailsTitle')}</p>
-                <dl className="space-y-2.5">
-                  {details.map((d, i) => (
-                    <div key={i} className="flex justify-between text-[0.9rem] font-light">
-                      <dt className="text-ash">{d.label}</dt>
-                      <dd className="text-charcoal">{d.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              </div>
-            )}
+            <div className="mt-8">
+              <ProductAccordionSection title={t('descriptionTitle')} defaultOpen>
+                <div className="space-y-4">
+                  {translated.stoneStory && <p>{translated.stoneStory}</p>}
+                  {translated.pieceStory && <p>{translated.pieceStory}</p>}
+                  {!translated.stoneStory && !translated.pieceStory && <p>{t('descriptionFallback')}</p>}
+                </div>
+              </ProductAccordionSection>
 
-            {translated.stoneStory && (
-              <div className="mt-10 pt-8 border-t border-charcoal/10">
-                <p className="eyebrow mb-3">{t('stoneTitle')}</p>
-                <p className="text-[0.92rem] leading-[1.9] text-ash font-light">
-                  {translated.stoneStory}
-                </p>
-              </div>
-            )}
+              {details.length > 0 && (
+                <ProductAccordionSection title={t('detailsTitle')}>
+                  <dl className="space-y-2.5">
+                    {details.map((d, i) => (
+                      <div key={i} className="flex justify-between">
+                        <dt className="text-ash/70">{d.label}</dt>
+                        <dd className="text-charcoal">{d.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </ProductAccordionSection>
+              )}
 
-            {translated.pieceStory && (
-              <div className="mt-8">
-                <p className="eyebrow mb-3">{t('pieceTitle')}</p>
-                <p className="text-[0.92rem] leading-[1.9] text-ash font-light">
-                  {translated.pieceStory}
-                </p>
-              </div>
-            )}
+              {translated.materialsCare && (
+                <ProductAccordionSection title={t('materialsCareTitle')}>
+                  <p>{translated.materialsCare}</p>
+                </ProductAccordionSection>
+              )}
+
+              {(translated.packagingDescription || product.packagingImageUrl) && (
+                <ProductAccordionSection title={t('packagingTitle')}>
+                  {translated.packagingDescription && <p className="mb-4">{translated.packagingDescription}</p>}
+                  {product.packagingImageUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={product.packagingImageUrl}
+                      alt={product.packagingImageAlt || `${product.name} packaging`}
+                      className="w-full aspect-[4/3] object-cover"
+                    />
+                  )}
+                </ProductAccordionSection>
+              )}
+            </div>
           </div>
         </div>
+
+        {/* Full image story -- every product photo shown again, stacked
+            continuously with no gaps, like an editorial spread. */}
+        {product.images && product.images.length > 1 && (
+          <div className="mt-16 md:mt-24 mx-auto max-w-[720px] space-y-1">
+            {product.images.map((img: { url: string; alt?: string }, i: number) => (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={i}
+                src={img.url}
+                alt={img.alt || product.name}
+                className={`w-full h-auto ${isSold ? 'grayscale opacity-70' : ''}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

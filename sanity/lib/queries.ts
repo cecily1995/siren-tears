@@ -49,7 +49,8 @@ export const shopProductsQuery = groq`*[_type == "shopProduct"] | order(order as
 
 export const shopProductBySlugQuery = groq`*[_type == "shopProduct" && slug.current == $slug][0]{
   _id, name, slug, category, productLine, stone, price, status,
-  material, length, craftedIn, stoneStory, pieceStory,
+  material, length, craftedIn, stoneStory, pieceStory, materialsCare, packagingDescription,
+  "packagingImageUrl": packagingImage.asset->url, "packagingImageAlt": packagingImage.alt,
   "collectionTitle": collection->title,
   "images": images[]{ "url": asset->url, alt }
 }`;

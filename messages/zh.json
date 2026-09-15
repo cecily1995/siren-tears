@@ -336,7 +336,11 @@
       "beaded": "Beaded 串珠系列",
       "aotearoa": "Aotearoa 镶嵌珠宝"
     },
-    "searchPlaceholder": "搜索作品或石材…"
+    "searchPlaceholder": "搜索作品或石材…",
+    "descriptionTitle": "产品描述",
+    "descriptionFallback": "这件作品的详细介绍即将补充。",
+    "materialsCareTitle": "材质与保养",
+    "packagingTitle": "包装"
   },
   "membership": {
     "eyebrow": "会员",

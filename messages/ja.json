@@ -336,7 +336,11 @@
       "beaded": "ビーズコレクション",
       "aotearoa": "Aotearoa — ジェムストーン"
     },
-    "searchPlaceholder": "作品や石を検索…"
+    "searchPlaceholder": "作品や石を検索…",
+    "descriptionTitle": "商品説明",
+    "descriptionFallback": "この作品の詳しい説明は近日追加予定です。",
+    "materialsCareTitle": "素材とお手入れ",
+    "packagingTitle": "パッケージ"
   },
   "membership": {
     "eyebrow": "メンバーシップ",
