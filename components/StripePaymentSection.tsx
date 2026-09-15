@@ -1,7 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
+import { useEffect, useRef, useState } from 'react';
+import { loadStripe, type StripeElementLocale } from '@stripe/stripe-js';
 import {
   Elements,
   ExpressCheckoutElement,
@@ -121,14 +121,24 @@ function PayButton({ returnUrl, onError }: { returnUrl: string; onError: (msg: s
 
 export default function StripePaymentSection({
   clientSecret,
-  returnUrl
+  returnUrl,
+  locale
 }: {
   clientSecret: string;
   returnUrl: string;
+  locale?: string;
 }) {
   const t = useTranslations('checkout');
   const [errorMsg, setErrorMsg] = useState('');
   const [expressAvailable, setExpressAvailable] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Bring the card form into view the moment it appears, rather than
+  // leaving the customer to notice it further down the page and scroll
+  // manually.
+  useEffect(() => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, []);
 
   if (!stripePromise) {
     return (
@@ -143,6 +153,7 @@ export default function StripePaymentSection({
       stripe={stripePromise}
       options={{
         clientSecret,
+        locale: (locale as StripeElementLocale) || 'auto',
         appearance: {
           theme: 'stripe',
           variables: {
@@ -168,30 +179,32 @@ export default function StripePaymentSection({
         }
       }}
     >
-      {/* Only shows a title/divider if Apple Pay / Google Pay / Link etc are
-          actually available -- never a fake row with nothing in it. */}
-      <div className={expressAvailable ? 'space-y-3' : ''}>
-        {expressAvailable && <p className="text-[10px] tracking-[0.24em] uppercase text-ash">{t('expressCheckoutTitle')}</p>}
-        <ExpressCheckout returnUrl={returnUrl} onError={setErrorMsg} onAvailability={setExpressAvailable} />
-        {expressAvailable && (
-          <div className="flex items-center gap-3 py-1">
-            <div className="flex-1 h-px bg-charcoal/10" />
-            <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60">{t('orDivider')}</span>
-            <div className="flex-1 h-px bg-charcoal/10" />
-          </div>
-        )}
-      </div>
+      <div ref={sectionRef}>
+        {/* Only shows a title/divider if Apple Pay / Google Pay / Link etc are
+            actually available -- never a fake row with nothing in it. */}
+        <div className={expressAvailable ? 'space-y-3' : ''}>
+          {expressAvailable && <p className="text-[10px] tracking-[0.24em] uppercase text-ash">{t('expressCheckoutTitle')}</p>}
+          <ExpressCheckout returnUrl={returnUrl} onError={setErrorMsg} onAvailability={setExpressAvailable} />
+          {expressAvailable && (
+            <div className="flex items-center gap-3 py-1">
+              <div className="flex-1 h-px bg-charcoal/10" />
+              <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60">{t('orDivider')}</span>
+              <div className="flex-1 h-px bg-charcoal/10" />
+            </div>
+          )}
+        </div>
 
-      <div className="mt-6">
-        <p className="eyebrow mb-1.5">{t('paymentTitle')}</p>
-        <p className="text-[0.78rem] text-ash/70 font-light mb-4">{t('paymentSubtitle')}</p>
-        <PaymentElement options={{ layout: 'tabs' }} />
-      </div>
+        <div className="mt-6">
+          <p className="eyebrow mb-1.5">{t('paymentTitle')}</p>
+          <p className="text-[0.78rem] text-ash/70 font-light mb-4">{t('paymentSubtitle')}</p>
+          <PaymentElement options={{ layout: 'tabs' }} />
+        </div>
 
-      {errorMsg && <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
+        {errorMsg && <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
 
-      <div className="mt-6">
-        <PayButton returnUrl={returnUrl} onError={setErrorMsg} />
+        <div className="mt-6">
+          <PayButton returnUrl={returnUrl} onError={setErrorMsg} />
+        </div>
       </div>
     </Elements>
   );

@@ -396,6 +396,7 @@ export default function CheckoutForm() {
             <div className="animate-slide-down">
               <StripePaymentSection
                 clientSecret={clientSecret}
+                locale={locale}
                 returnUrl={`${window.location.origin}${locale === 'en' ? '' : `/${locale}`}/order-confirmation?order=${orderNumber}`}
               />
             </div>
