@@ -8,7 +8,7 @@ import Footer from '@/components/Footer';
 import PageVeil from '@/components/PageVeil';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import AuthGateModal from '@/components/AuthGateModal';
-import ChatTab from '@/components/ChatTab';
+import TawkChat from '@/components/TawkChat';
 import { BagProvider } from '@/lib/bag-context';
 import BagDrawer from '@/components/BagDrawer';
 import { WishlistProvider } from '@/lib/wishlist-context';
@@ -96,7 +96,7 @@ export default async function LocaleLayout({
           <main>{children}</main>
           <Footer data={footerSettings} labels={footerLabels} />
           <AuthGateModal />
-          <ChatTab />
+          <TawkChat />
           <BagDrawer />
         </WishlistProvider>
       </BagProvider>
