@@ -211,6 +211,10 @@ export async function POST(request: Request) {
       _type: 'purchaseRequest',
       orderNumber,
       items: itemDocs,
+      // Whoever is actually logged in gets credit for this order in their
+      // My Siren purchase history, regardless of what name/email they
+      // typed into the delivery form (e.g. buying a gift for someone else).
+      buyerMember: { _type: 'reference', _ref: session.id },
       name,
       email,
       whatsapp: whatsapp || '',

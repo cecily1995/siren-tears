@@ -61,6 +61,16 @@ export default defineType({
       group: 'order',
       description: 'Set automatically at checkout. 0 for free shipping.'
     }),
+    defineField({
+      name: 'buyerMember',
+      title: 'My Siren account',
+      type: 'reference',
+      to: [{ type: 'member' }],
+      group: 'customer',
+      readOnly: true,
+      description:
+        'Set automatically to whichever account was logged in when this order was placed. Used to show the order in that account\'s "My Siren" purchase history, regardless of the name/email typed into the checkout form itself.'
+    }),
     defineField({ name: 'name', title: 'Name', type: 'string', group: 'customer' }),
     defineField({ name: 'email', title: 'Email', type: 'string', group: 'customer' }),
     defineField({ name: 'whatsapp', title: 'WhatsApp / Phone', type: 'string', group: 'customer' }),
