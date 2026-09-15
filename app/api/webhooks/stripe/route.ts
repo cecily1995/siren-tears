@@ -64,28 +64,12 @@ export async function POST(request: Request) {
   }
 
   if (event.type === 'payment_intent.payment_failed') {
-    // Card declined or similar -- release the one-of-one hold immediately
-    // so other customers can buy the piece, and mark the order failed.
-    // (The customer can still retry with a different card on the same
-    // page before this fires, since Stripe only sends this on a hard
-    // failure, not every keystroke.)
+    // Card declined or similar. (The customer can still retry with a
+    // different card on the same page before this fires, since Stripe only
+    // sends this on a hard failure, not every keystroke.)
     try {
-      const purchaseRequest = await client.fetch<{ productIds?: string[] } | null>(
-        `*[_id == $id][0]{ "productIds": items[].product._ref }`,
-        { id: purchaseRequestId }
-      );
-
       await client.patch(purchaseRequestId).set({ paymentStatus: 'failed' }).commit();
-
-      const productIds = (purchaseRequest?.productIds || [])
-        .filter((ref): ref is string => Boolean(ref))
-        .map((ref) => ref.replace(/^drafts\./, ''));
-
-      await Promise.all(
-        productIds.map((id) => client.patch(id).unset(['checkoutLockExpiresAt']).commit().catch(() => undefined))
-      );
-
-      return NextResponse.json({ ok: true, purchaseRequestId, releasedHoldsOn: productIds });
+      return NextResponse.json({ ok: true, purchaseRequestId, markedFailed: true });
     } catch (err) {
       console.error('Stripe webhook (payment_failed) processing failed', err);
       return NextResponse.json({ ok: false, error: 'Internal error' }, { status: 500 });
@@ -98,6 +82,68 @@ export async function POST(request: Request) {
       { id: purchaseRequestId }
     );
 
+    const productIds = (purchaseRequest?.productIds || [])
+      .filter((ref): ref is string => Boolean(ref))
+      // Defensive: never patch a draft id -- see purchase-request/create-session
+      // routes for why this matters.
+      .map((ref) => ref.replace(/^drafts\./, ''));
+
+    // ---- Final check: did someone else's payment for the same piece(s) ----
+    // ---- already land first? ------------------------------------------
+    // We deliberately don't reserve inventory while a customer is checking
+    // out (see create-session) -- this is the one moment that actually
+    // decides who gets a one-of-one piece. Try to atomically claim every
+    // product with optimistic concurrency (ifRevisionId); if any is already
+    // sold, or we lose the race on the write, this payment loses and gets
+    // refunded automatically rather than us handing out the same physical
+    // item twice.
+    const currentProducts = await client.fetch<{ _id: string; _rev: string; status?: string }[]>(
+      `*[_id in $ids]{ _id, _rev, status }`,
+      { ids: productIds }
+    );
+
+    const alreadySold = currentProducts.filter((p) => p.status === 'sold');
+    const claimFailures: string[] = [];
+
+    if (!alreadySold.length) {
+      for (const p of currentProducts) {
+        try {
+          await client.patch(p._id).ifRevisionId(p._rev).set({ status: 'sold' }).commit();
+        } catch {
+          claimFailures.push(p._id);
+        }
+      }
+    }
+
+    if (alreadySold.length || claimFailures.length) {
+      // Lost the race -- refund this payment in full and cancel the order
+      // rather than leave the customer charged for nothing.
+      let refunded = false;
+      try {
+        await stripe.refunds.create({ payment_intent: paymentIntent.id });
+        refunded = true;
+      } catch (refundErr) {
+        console.error('Auto-refund after inventory conflict failed', refundErr);
+      }
+
+      await client
+        .patch(purchaseRequestId)
+        .set({
+          paymentStatus: refunded ? 'refunded' : 'failed',
+          orderStatus: 'cancelled',
+          stripePaymentIntentId: paymentIntent.id
+        })
+        .commit();
+
+      return NextResponse.json({
+        ok: true,
+        purchaseRequestId,
+        conflict: true,
+        refunded,
+        conflictedProductIds: [...alreadySold.map((p) => p._id), ...claimFailures]
+      });
+    }
+
     await client
       .patch(purchaseRequestId)
       .set({
@@ -106,20 +152,6 @@ export async function POST(request: Request) {
         paidAt: new Date().toISOString()
       })
       .commit();
-
-    const productIds = (purchaseRequest?.productIds || [])
-      .filter((ref): ref is string => Boolean(ref))
-      // Defensive: never patch a draft id -- see purchase-request/create-session
-      // routes for why this matters.
-      .map((ref) => ref.replace(/^drafts\./, ''));
-
-    // Mark sold and release the checkout-time inventory hold (irrelevant
-    // now that it's actually sold, but tidy to clear it).
-    await Promise.all(
-      productIds.map((id) =>
-        client.patch(id).set({ status: 'sold' }).unset(['checkoutLockExpiresAt']).commit()
-      )
-    );
 
     return NextResponse.json({ ok: true, purchaseRequestId, markedSold: productIds });
   } catch (err) {

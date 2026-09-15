@@ -29,14 +29,6 @@ function generateOrderNumber() {
   return `ST-${y}${m}${d}-${suffix}`;
 }
 
-// How long a "hold" on a one-of-one piece lasts while a customer is going
-// through checkout. Long enough to fill in card details without rushing,
-// short enough that an abandoned checkout doesn't lock a piece away from
-// other customers for long. Purely our own DB-side TTL now (not tied to any
-// Stripe object's expiry, since Payment Intents don't expire the way
-// Checkout Sessions used to).
-const LOCK_MINUTES = 30;
-
 export async function POST(request: Request) {
   const client = getWriteClient();
   const stripe = getStripe();
@@ -160,68 +152,28 @@ export async function POST(request: Request) {
       );
     }
 
-    // ---- One-of-one inventory lock (prevents overselling) -----------------
-    // Every piece is unique, so two customers must never both be able to pay
-    // for the same one. Before creating the payment, put a short-lived hold
-    // on each product using optimistic concurrency: fetch the current
-    // revision, then patch conditioned on that exact revision. If someone
-    // else grabbed the same product between our fetch and our patch, the
-    // conditioned patch fails and we know to reject this checkout instead of
-    // silently racing them.
+    // ---- Soft availability check (no reservation) --------------------------
+    // Per decision: don't lock inventory just because someone started
+    // checkout -- only the webhook, at actual payment success, decides who
+    // gets the piece (see /api/webhooks/stripe). This is just a courtesy
+    // check so we don't send someone to pay for something already gone.
     const productIds = Array.from(new Set(items.map((i) => productIdBySlug.get(i.productSlug!) as string)));
-    const now = new Date();
-    const lockExpiresAt = new Date(now.getTime() + LOCK_MINUTES * 60 * 1000).toISOString();
-
-    const currentProducts = await client.fetch<
-      { _id: string; _rev: string; status?: string; checkoutLockExpiresAt?: string; name?: string }[]
-    >(`*[_id in $ids]{ _id, _rev, status, checkoutLockExpiresAt, name }`, { ids: productIds });
-    const currentById = new Map(currentProducts.map((p) => [p._id, p]));
-
-    const unavailableNames: string[] = [];
-    const claimedIds: string[] = [];
-
-    for (const productId of productIds) {
-      const current = currentById.get(productId);
-      if (!current) {
-        unavailableNames.push('an item in your bag');
-        continue;
-      }
-      const isLocked = Boolean(current.checkoutLockExpiresAt && new Date(current.checkoutLockExpiresAt) > now);
-      if (current.status !== 'available' || isLocked) {
-        unavailableNames.push(current.name || 'an item in your bag');
-        continue;
-      }
-      try {
-        await client
-          .patch(productId)
-          .ifRevisionId(current._rev)
-          .set({ checkoutLockExpiresAt: lockExpiresAt })
-          .commit();
-        claimedIds.push(productId);
-      } catch {
-        // Someone else claimed it in the split second between our read and
-        // our write -- treat exactly like "unavailable".
-        unavailableNames.push(current.name || 'an item in your bag');
-      }
-    }
-
-    if (unavailableNames.length) {
-      // Don't leave a partial hold in place if the overall checkout can't proceed.
-      await Promise.all(
-        claimedIds.map((id) =>
-          client.patch(id).unset(['checkoutLockExpiresAt']).commit().catch(() => undefined)
-        )
-      );
+    const currentProducts = await client.fetch<{ _id: string; status?: string; name?: string }[]>(
+      `*[_id in $ids]{ _id, status, name }`,
+      { ids: productIds }
+    );
+    const unavailable = currentProducts.filter((p) => p.status !== 'available');
+    if (unavailable.length) {
       return NextResponse.json(
         {
           ok: false,
-          error: `Sorry, ${unavailableNames.join(', ')} just became unavailable. Please remove it from your bag and try again.`
+          error: `Sorry, ${unavailable.map((p) => p.name || 'an item in your bag').join(', ')} is no longer available. Please remove it from your bag and try again.`
         },
         { status: 409 }
       );
     }
 
-    // ---- Everything's locked in our favour -- build the order -------------
+    // ---- Build the order ----------------------------------------------------
     const itemDocs = items.map((i) => {
       const productId = productIdBySlug.get(i.productSlug!) as string;
       return {
@@ -281,34 +233,24 @@ export async function POST(request: Request) {
 
     const total = subtotal + shippingQuote.cost;
 
-    let paymentIntent: Stripe.PaymentIntent;
-    try {
-      paymentIntent = await stripe.paymentIntents.create({
-        amount: Math.round(total * 100),
-        currency: 'nzd',
-        receipt_email: email,
-        // Explicit list rather than automatic_payment_methods: the
-        // automatic option pulls in every method enabled on the Stripe
-        // account, including "Link" (Stripe's own saved-card autofill),
-        // which injects a small floating "stripe >" badge into the page
-        // that can linger after client-side navigation. Apple Pay / Google
-        // Pay still work through ExpressCheckoutElement -- they're
-        // processed as the 'card' method under the hood, so this doesn't
-        // remove them, only Link specifically.
-        payment_method_types: ['card'],
-        metadata: {
-          purchaseRequestId: purchaseRequest._id,
-          orderNumber
-        }
-      });
-    } catch (err) {
-      // Stripe call itself failed -- release the holds we took, since no
-      // payment attempt is actually in flight for them.
-      await Promise.all(
-        productIds.map((id) => client.patch(id).unset(['checkoutLockExpiresAt']).commit().catch(() => undefined))
-      );
-      throw err;
-    }
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(total * 100),
+      currency: 'nzd',
+      receipt_email: email,
+      // Explicit list rather than automatic_payment_methods: the
+      // automatic option pulls in every method enabled on the Stripe
+      // account, including "Link" (Stripe's own saved-card autofill),
+      // which injects a small floating "stripe >" badge into the page
+      // that can linger after client-side navigation. Apple Pay / Google
+      // Pay still work through ExpressCheckoutElement -- they're
+      // processed as the 'card' method under the hood, so this doesn't
+      // remove them, only Link specifically.
+      payment_method_types: ['card'],
+      metadata: {
+        purchaseRequestId: purchaseRequest._id,
+        orderNumber
+      }
+    });
 
     if (!paymentIntent.client_secret) {
       throw new Error('Stripe did not return a client secret');
