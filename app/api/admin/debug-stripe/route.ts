@@ -27,13 +27,20 @@ export async function GET(request: Request) {
   }
 
   try {
-    const [sessions, events] = await Promise.all([
+    const [sessions, events, endpoints] = await Promise.all([
       stripe.checkout.sessions.list({ limit: 5 }),
-      stripe.events.list({ limit: 10 })
+      stripe.events.list({ limit: 10 }),
+      stripe.webhookEndpoints.list({ limit: 10 })
     ]);
 
     return NextResponse.json({
       ok: true,
+      webhookEndpointsRegisteredOnThisAccount: endpoints.data.map((e) => ({
+        id: e.id,
+        url: e.url,
+        status: e.status,
+        enabled_events: e.enabled_events
+      })),
       recentCheckoutSessions: sessions.data.map((s) => ({
         id: s.id,
         payment_status: s.payment_status,
