@@ -80,10 +80,19 @@ export async function POST(request: Request) {
     // Resolve each product by slug so we can link a real reference — this
     // is what lets a later status change ("Paid"/"Shipped") automatically
     // mark the linked Shop Products as Sold.
+    //
+    // IMPORTANT: exclude drafts here. Without this filter, if a product is
+    // being edited (has an in-progress draft) at the exact moment someone
+    // submits a purchase request for it, this query can match both the
+    // published doc AND its "drafts.<id>" counterpart, and the draft's id
+    // can win the dedupe below. That stores a reference to a draft, which
+    // later makes the draft undeletable -- so the editor can never publish
+    // further changes to that product again ("变更失败:文档 ... 无法删除,
+    // 因为 ... 对其有引用"). Always resolve to the published id only.
     const slugs = items.map((i) => i.productSlug).filter(Boolean) as string[];
     const products = slugs.length
       ? await client.fetch<{ _id: string; slug?: string }[]>(
-          `*[_type == "shopProduct" && slug.current in $slugs]{ _id, "slug": slug.current }`,
+          `*[_type == "shopProduct" && !(_id in path("drafts.**")) && slug.current in $slugs]{ _id, "slug": slug.current }`,
           { slugs }
         )
       : [];

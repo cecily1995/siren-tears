@@ -24,9 +24,13 @@ export const markProductsSoldAction: DocumentActionComponent = (
   const doc: any = published || draft;
   const status: string | undefined = doc?.status;
   const items: any[] = doc?.items || [];
+  // Defensive: normalize away any "drafts." prefix so we always patch the
+  // published document, never a draft (see the purchase-request API route
+  // for how a draft reference could end up stored here).
   const productIds: string[] = items
-    .map((item) => item?.product?._ref)
-    .filter((ref): ref is string => Boolean(ref));
+    .map((item) => item?.product?._ref as string | undefined)
+    .filter((ref): ref is string => Boolean(ref))
+    .map((ref) => ref.replace(/^drafts\./, ''));
 
   if (!productIds.length) return null;
 

@@ -64,7 +64,13 @@ export async function POST(request: Request) {
     }
 
     await Promise.all(
-      purchaseRequest.productIds.map((id) => client.patch(id).set({ status: 'sold' }).commit())
+      purchaseRequest.productIds.map((id) => {
+        // Defensive: normalize away any "drafts." prefix so we always patch
+        // the published document, never a draft (see purchase-request route
+        // for why a draft reference can sneak in).
+        const publishedProductId = id.replace(/^drafts\./, '');
+        return client.patch(publishedProductId).set({ status: 'sold' }).commit();
+      })
     );
 
     return NextResponse.json({ ok: true, markedSold: purchaseRequest.productIds });
