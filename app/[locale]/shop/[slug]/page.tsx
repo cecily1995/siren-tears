@@ -90,7 +90,7 @@ export default async function ShopProductPage({
               <p className="eyebrow mb-4">{product.collectionTitle}</p>
             )}
             <div className="flex items-start justify-between gap-4">
-              <h1 className="serif-display text-[clamp(1.9rem,4vw,2.8rem)] font-light leading-[1.1] text-charcoal">
+              <h1 className="serif-display text-[clamp(1.35rem,2.6vw,1.9rem)] font-light leading-[1.35] text-charcoal">
                 {product.name}
               </h1>
               <WishlistButton

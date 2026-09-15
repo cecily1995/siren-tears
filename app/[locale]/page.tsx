@@ -88,7 +88,9 @@ export default async function HomePage({
   };
 
   const allProducts = shopProducts?.length ? shopProducts : fallback.shopProducts;
-  const availableProducts = allProducts.filter((p: any) => p.status === 'available');
+  const availableProducts = allProducts.filter(
+    (p: any) => p.status === 'available' && (p.productLine ?? 'beaded') === 'beaded'
+  );
   const currentlyAvailableLabels = {
     eyebrow: t('currentlyAvailable.eyebrow'),
     title: t('currentlyAvailable.title'),
