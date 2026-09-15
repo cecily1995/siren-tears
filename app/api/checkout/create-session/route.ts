@@ -287,7 +287,15 @@ export async function POST(request: Request) {
         amount: Math.round(total * 100),
         currency: 'nzd',
         receipt_email: email,
-        automatic_payment_methods: { enabled: true },
+        // Explicit list rather than automatic_payment_methods: the
+        // automatic option pulls in every method enabled on the Stripe
+        // account, including "Link" (Stripe's own saved-card autofill),
+        // which injects a small floating "stripe >" badge into the page
+        // that can linger after client-side navigation. Apple Pay / Google
+        // Pay still work through ExpressCheckoutElement -- they're
+        // processed as the 'card' method under the hood, so this doesn't
+        // remove them, only Link specifically.
+        payment_method_types: ['card'],
         metadata: {
           purchaseRequestId: purchaseRequest._id,
           orderNumber

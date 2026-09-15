@@ -197,7 +197,7 @@ export default function StripePaymentSection({
         <div className="mt-6">
           <p className="eyebrow mb-1.5">{t('paymentTitle')}</p>
           <p className="text-[0.78rem] text-ash/70 font-light mb-4">{t('paymentSubtitle')}</p>
-          <PaymentElement options={{ layout: 'tabs' }} />
+          <PaymentElement options={{ layout: 'tabs', wallets: { link: 'never' } }} />
         </div>
 
         {errorMsg && <p className="mt-4 text-[0.8rem] text-red-700/80 font-light">{errorMsg}</p>}
