@@ -42,10 +42,11 @@ export async function POST(request: Request) {
     );
 
     if (!order) {
+      console.error('order-enquiry: order not found for id', orderId);
       return NextResponse.json({ ok: false, error: 'Order not found.' }, { status: 404 });
     }
 
-    await client.create({
+    const created = await client.create({
       _type: 'orderEnquiry',
       order: { _type: 'reference', _ref: order._id },
       customerName: order.name || '',
@@ -55,6 +56,7 @@ export async function POST(request: Request) {
       submittedAt: new Date().toISOString()
     });
 
+    console.log('order-enquiry created', created._id, 'for order', order._id);
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error('Order enquiry submission failed', err);
