@@ -535,5 +535,29 @@
     "braceletColWrist": "Wrist circumference",
     "braceletColSize": "Suggested size",
     "braceletNote": "Beaded pieces are generally worn slightly snugger than chain bracelets. If you prefer a looser, more relaxed drape, size up."
+  },
+  "bag": {
+    "title": "Your Bag",
+    "addToBagCta": "Add to Bag",
+    "viewBagCta": "View Bag",
+    "addedConfirmation": "Added to your bag.",
+    "empty": "Your bag is empty.",
+    "continueCta": "Continue Browsing",
+    "remove": "Remove",
+    "subtotal": "Subtotal",
+    "purchaseInfoTitle": "Purchase Information",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp / Phone",
+    "countryLabel": "Country",
+    "shippingAddressLabel": "Shipping Address",
+    "wristSizeLabel": "Wrist Size",
+    "ringSizeLabel": "Ring Size",
+    "messageLabel": "Notes (optional)",
+    "submitCta": "Request Purchase",
+    "submitting": "Sending…",
+    "successTitle": "Request received.",
+    "successBody": "We've received your request and will be in touch shortly to confirm availability and arrange payment.",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

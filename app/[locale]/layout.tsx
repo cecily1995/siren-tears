@@ -9,6 +9,8 @@ import PageVeil from '@/components/PageVeil';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import AuthGateModal from '@/components/AuthGateModal';
 import ChatTab from '@/components/ChatTab';
+import { BagProvider } from '@/lib/bag-context';
+import BagDrawer from '@/components/BagDrawer';
 import { getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 
@@ -85,13 +87,16 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <PageVeil />
-      <Navigation />
-      <RevealOnScroll />
-      <main>{children}</main>
-      <Footer data={footerSettings} labels={footerLabels} />
-      <AuthGateModal />
-      <ChatTab />
+      <BagProvider>
+        <PageVeil />
+        <Navigation />
+        <RevealOnScroll />
+        <main>{children}</main>
+        <Footer data={footerSettings} labels={footerLabels} />
+        <AuthGateModal />
+        <ChatTab />
+        <BagDrawer />
+      </BagProvider>
     </NextIntlClientProvider>
   );
 }

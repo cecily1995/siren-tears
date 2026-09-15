@@ -21,7 +21,13 @@ type Member = {
   joinedAt?: string;
 };
 
-type PurchaseItem = { productName?: string; status?: string; trackingNumber?: string; _createdAt?: string };
+type PurchaseItem = {
+  productName?: string;
+  itemCount?: number;
+  status?: string;
+  trackingNumber?: string;
+  _createdAt?: string;
+};
 type BespokeItem = { _id?: string; pieceType?: string; status?: string; _createdAt?: string };
 
 function EditProfileForm({
@@ -416,7 +422,10 @@ export default function AccountLookupForm() {
               <ul className="space-y-3">
                 {purchases.map((p, i) => (
                   <li key={i} className="border-b border-charcoal/10 pb-3 text-[0.85rem] font-light">
-                    <span className="text-charcoal">{p.productName}</span>
+                    <span className="text-charcoal">
+                      {p.productName}
+                      {p.itemCount && p.itemCount > 1 ? ` +${p.itemCount - 1}` : ''}
+                    </span>
                     <span className="text-ash/60"> · {p.status}</span>
                     <div className="text-ash/60 mt-1">
                       {t('trackingLabel')}: {p.trackingNumber || t('notShippedYet')}

@@ -535,5 +535,29 @@
     "braceletColWrist": "手围",
     "braceletColSize": "建议尺码",
     "braceletNote": "串珠款一般会戴得比链条款稍微贴合一些。如果你更喜欢宽松一点的佩戴感,建议选大一号。"
+  },
+  "bag": {
+    "title": "购物袋",
+    "addToBagCta": "加入购物袋",
+    "viewBagCta": "查看购物袋",
+    "addedConfirmation": "已加入购物袋。",
+    "empty": "购物袋是空的。",
+    "continueCta": "继续浏览",
+    "remove": "移除",
+    "subtotal": "小计",
+    "purchaseInfoTitle": "购买信息",
+    "nameLabel": "姓名",
+    "emailLabel": "邮箱",
+    "whatsappLabel": "WhatsApp / 电话",
+    "countryLabel": "国家",
+    "shippingAddressLabel": "收货地址",
+    "wristSizeLabel": "手围尺寸",
+    "ringSizeLabel": "戒指尺寸",
+    "messageLabel": "备注(选填)",
+    "submitCta": "提交购买请求",
+    "submitting": "提交中…",
+    "successTitle": "请求已收到。",
+    "successBody": "我们已经收到你的购买请求,会尽快联系你确认商品状态并安排付款。",
+    "errorGeneric": "出了点问题,请重试。"
   }
 }

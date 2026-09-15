@@ -535,5 +535,29 @@
     "braceletColWrist": "Handgelenkumfang",
     "braceletColSize": "Empfohlene Größe",
     "braceletNote": "Perlenarmbänder werden meist etwas enger getragen als Kettenarmbänder. Für einen lockereren Sitz wählen Sie eine Größe größer."
+  },
+  "bag": {
+    "title": "Ihre Tasche",
+    "addToBagCta": "In die Tasche",
+    "viewBagCta": "Tasche ansehen",
+    "addedConfirmation": "Zur Tasche hinzugefügt.",
+    "empty": "Ihre Tasche ist leer.",
+    "continueCta": "Weiter stöbern",
+    "remove": "Entfernen",
+    "subtotal": "Zwischensumme",
+    "purchaseInfoTitle": "Kaufinformationen",
+    "nameLabel": "Vollständiger Name",
+    "emailLabel": "E-Mail",
+    "whatsappLabel": "WhatsApp / Telefon",
+    "countryLabel": "Land",
+    "shippingAddressLabel": "Lieferadresse",
+    "wristSizeLabel": "Handgelenkumfang",
+    "ringSizeLabel": "Ringgröße",
+    "messageLabel": "Anmerkungen (optional)",
+    "submitCta": "Kauf anfragen",
+    "submitting": "Wird gesendet…",
+    "successTitle": "Anfrage erhalten.",
+    "successBody": "Wir haben Ihre Anfrage erhalten und melden uns in Kürze, um die Verfügbarkeit zu bestätigen und die Zahlung zu vereinbaren.",
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
   }
 }

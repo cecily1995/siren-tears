@@ -5,21 +5,41 @@ export default defineType({
   title: 'Purchase Request',
   type: 'document',
   fields: [
-    defineField({ name: 'productName', title: 'Product', type: 'string' }),
-    defineField({ name: 'productSlug', title: 'Product slug', type: 'string' }),
     defineField({
-      name: 'product',
-      title: 'Linked shop product',
-      type: 'reference',
-      to: [{ type: 'shopProduct' }],
-      description: 'Set automatically when the request is submitted. Used to auto-mark the product as Sold when this request is marked Paid or Shipped.'
+      name: 'items',
+      title: 'Items',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          name: 'purchaseRequestItem',
+          fields: [
+            defineField({ name: 'productName', title: 'Product', type: 'string' }),
+            defineField({ name: 'productSlug', title: 'Product slug', type: 'string' }),
+            defineField({
+              name: 'product',
+              title: 'Linked shop product',
+              type: 'reference',
+              to: [{ type: 'shopProduct' }],
+              description:
+                'Set automatically when the request is submitted. Used to auto-mark the product as Sold when this request is marked Paid or Shipped.'
+            }),
+            defineField({ name: 'price', title: 'Price (NZD)', type: 'number' }),
+            defineField({ name: 'wristSize', title: 'Wrist size', type: 'string' }),
+            defineField({ name: 'ringSize', title: 'Ring size', type: 'string' })
+          ],
+          preview: {
+            select: { title: 'productName', subtitle: 'price' }
+          }
+        }
+      ]
     }),
     defineField({ name: 'name', title: 'Name', type: 'string' }),
     defineField({ name: 'email', title: 'Email', type: 'string' }),
     defineField({ name: 'whatsapp', title: 'WhatsApp / Phone', type: 'string' }),
     defineField({ name: 'country', title: 'Country', type: 'string' }),
     defineField({ name: 'shippingAddress', title: 'Shipping address', type: 'text', rows: 3 }),
-    defineField({ name: 'message', title: 'Message', type: 'text', rows: 4 }),
+    defineField({ name: 'message', title: 'Customer notes', type: 'text', rows: 4 }),
     defineField({ name: 'trackingNumber', title: 'NZ Post tracking number', type: 'string' }),
     defineField({
       name: 'status',
@@ -43,6 +63,10 @@ export default defineType({
     { title: 'Newest first', name: 'submittedDesc', by: [{ field: 'submittedAt', direction: 'desc' }] }
   ],
   preview: {
-    select: { title: 'productName', subtitle: 'name' }
+    select: { title: 'name', items: 'items' },
+    prepare({ title, items }) {
+      const count = Array.isArray(items) ? items.length : 0;
+      return { title: title || 'Purchase request', subtitle: `${count} item${count === 1 ? '' : 's'}` };
+    }
   }
 });

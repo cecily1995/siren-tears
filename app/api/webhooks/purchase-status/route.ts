@@ -50,22 +50,24 @@ export async function POST(request: Request) {
   const publishedId = rawId.replace(/^drafts\./, '');
 
   try {
-    const purchaseRequest = await client.fetch<{ status?: string; productId?: string } | null>(
-      `*[_id == $id][0]{ status, "productId": product._ref }`,
+    const purchaseRequest = await client.fetch<{ status?: string; productIds?: string[] } | null>(
+      `*[_id == $id][0]{ status, "productIds": items[].product._ref }`,
       { id: publishedId }
     );
 
-    if (!purchaseRequest?.productId) {
-      return NextResponse.json({ ok: true, skipped: 'no linked product on this request' });
+    if (!purchaseRequest?.productIds?.length) {
+      return NextResponse.json({ ok: true, skipped: 'no linked products on this request' });
     }
 
     if (!purchaseRequest.status || !TERMINAL_STATUSES.includes(purchaseRequest.status)) {
       return NextResponse.json({ ok: true, skipped: `status is "${purchaseRequest.status}", no action` });
     }
 
-    await client.patch(purchaseRequest.productId).set({ status: 'sold' }).commit();
+    await Promise.all(
+      purchaseRequest.productIds.map((id) => client.patch(id).set({ status: 'sold' }).commit())
+    );
 
-    return NextResponse.json({ ok: true, markedSold: purchaseRequest.productId });
+    return NextResponse.json({ ok: true, markedSold: purchaseRequest.productIds });
   } catch (err) {
     console.error('purchase-status webhook failed', err);
     return NextResponse.json({ ok: false, error: 'Internal error' }, { status: 500 });

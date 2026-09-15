@@ -535,5 +535,29 @@
     "braceletColWrist": "Tour de poignet",
     "braceletColSize": "Taille suggérée",
     "braceletNote": "Les pièces en perles se portent généralement un peu plus ajustées que les chaînes. Pour un tombé plus lâche, prenez une taille au-dessus."
+  },
+  "bag": {
+    "title": "Votre panier",
+    "addToBagCta": "Ajouter au panier",
+    "viewBagCta": "Voir le panier",
+    "addedConfirmation": "Ajouté à votre panier.",
+    "empty": "Votre panier est vide.",
+    "continueCta": "Continuer mes achats",
+    "remove": "Retirer",
+    "subtotal": "Sous-total",
+    "purchaseInfoTitle": "Informations d'achat",
+    "nameLabel": "Nom complet",
+    "emailLabel": "E-mail",
+    "whatsappLabel": "WhatsApp / Téléphone",
+    "countryLabel": "Pays",
+    "shippingAddressLabel": "Adresse de livraison",
+    "wristSizeLabel": "Tour de poignet",
+    "ringSizeLabel": "Taille de bague",
+    "messageLabel": "Remarques (facultatif)",
+    "submitCta": "Demander l'achat",
+    "submitting": "Envoi…",
+    "successTitle": "Demande reçue.",
+    "successBody": "Nous avons bien reçu votre demande et vous contacterons prochainement pour confirmer la disponibilité et organiser le paiement.",
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
   }
 }

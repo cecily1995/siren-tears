@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
+import BagIcon from './BagIcon';
 
 const links = [
   { href: '/collections', key: 'collections' },
@@ -81,6 +82,7 @@ export default function Navigation() {
             {t('enquire')}
           </Link>
           <LanguageSwitcher light={light} />
+          <BagIcon light={light} />
         </div>
       </div>
     </header>

@@ -2,15 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { getShopProductBySlug, getSiteSettings } from '@/sanity/lib/queries';
+import { getShopProductBySlug } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
-import RequestPurchaseForm from '@/components/RequestPurchaseForm';
 import ProductGallery from '@/components/ProductGallery';
+import AddToBagButton from '@/components/AddToBagButton';
 import { translateFields } from '@/lib/translate';
 
 export const revalidate = 60;
 
-const WHATSAPP_NUMBER = '64274326262';
 
 async function resolveProduct(slug: string) {
   const fromSanity = await getShopProductBySlug(slug);
@@ -35,11 +34,7 @@ export default async function ShopProductPage({
   const { locale, slug } = params;
   setRequestLocale(locale);
 
-  const [t, product, settings] = await Promise.all([
-    getTranslations('shop'),
-    resolveProduct(slug),
-    getSiteSettings()
-  ]);
+  const [t, product] = await Promise.all([getTranslations('shop'), resolveProduct(slug)]);
 
   if (!product) notFound();
 
@@ -51,10 +46,6 @@ export default async function ShopProductPage({
     locale
   );
 
-  const email = settings?.email ?? fallback.settings.email;
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-    `Hi Siren Tears, I'm enquiring about ${product.name}.`
-  )}`;
   const isSold = product.status === 'sold';
   const isReserved = product.status === 'reserved';
   const statusLabel = isSold ? t('status.sold') : isReserved ? t('status.reserved') : null;
@@ -117,11 +108,13 @@ export default async function ShopProductPage({
                   {t('purchaseNote')}
                 </p>
               ) : (
-                <RequestPurchaseForm
-                  productName={product.name}
-                  productSlug={product.slug?.current ?? slug}
-                  whatsappUrl={whatsappUrl}
-                  email={email}
+                <AddToBagButton
+                  productId={product._id}
+                  slug={product.slug?.current ?? slug}
+                  name={product.name}
+                  price={product.price}
+                  imageUrl={product.images?.[0]?.url}
+                  category={product.category}
                 />
               )}
             </div>

@@ -535,5 +535,29 @@
     "braceletColWrist": "手首周り",
     "braceletColSize": "おすすめサイズ",
     "braceletNote": "ビーズのアイテムは一般的にチェーンブレスレットよりやや小さめに着用されます。ゆったりとした着け心地がお好みの場合は、ワンサイズ大きめをお選びください。"
+  },
+  "bag": {
+    "title": "バッグ",
+    "addToBagCta": "バッグに追加",
+    "viewBagCta": "バッグを見る",
+    "addedConfirmation": "バッグに追加しました。",
+    "empty": "バッグは空です。",
+    "continueCta": "引き続き見る",
+    "remove": "削除",
+    "subtotal": "小計",
+    "purchaseInfoTitle": "購入情報",
+    "nameLabel": "お名前",
+    "emailLabel": "メールアドレス",
+    "whatsappLabel": "WhatsApp / 電話番号",
+    "countryLabel": "国",
+    "shippingAddressLabel": "お届け先住所",
+    "wristSizeLabel": "手首周り",
+    "ringSizeLabel": "リングサイズ",
+    "messageLabel": "備考(任意)",
+    "submitCta": "購入をリクエスト",
+    "submitting": "送信中…",
+    "successTitle": "リクエストを受け付けました。",
+    "successBody": "ご依頼を受け付けました。在庫確認とお支払いのご案内のため、追ってご連絡いたします。",
+    "errorGeneric": "問題が発生しました。もう一度お試しください。"
   }
 }

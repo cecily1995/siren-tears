@@ -535,5 +535,29 @@
     "braceletColWrist": "Circonferenza polso",
     "braceletColSize": "Taglia consigliata",
     "braceletNote": "I pezzi con perline si indossano generalmente un po' più aderenti rispetto ai bracciali a catena. Se preferisci una vestibilità più morbida, scegli una taglia più grande."
+  },
+  "bag": {
+    "title": "La tua borsa",
+    "addToBagCta": "Aggiungi alla borsa",
+    "viewBagCta": "Vedi la borsa",
+    "addedConfirmation": "Aggiunto alla tua borsa.",
+    "empty": "La tua borsa è vuota.",
+    "continueCta": "Continua a sfogliare",
+    "remove": "Rimuovi",
+    "subtotal": "Totale parziale",
+    "purchaseInfoTitle": "Informazioni d'acquisto",
+    "nameLabel": "Nome completo",
+    "emailLabel": "Email",
+    "whatsappLabel": "WhatsApp / Telefono",
+    "countryLabel": "Paese",
+    "shippingAddressLabel": "Indirizzo di spedizione",
+    "wristSizeLabel": "Circonferenza polso",
+    "ringSizeLabel": "Misura dell'anello",
+    "messageLabel": "Note (facoltativo)",
+    "submitCta": "Richiedi l'acquisto",
+    "submitting": "Invio…",
+    "successTitle": "Richiesta ricevuta.",
+    "successBody": "Abbiamo ricevuto la tua richiesta e ti contatteremo a breve per confermare la disponibilità e organizzare il pagamento.",
+    "errorGeneric": "Qualcosa è andato storto. Riprova."
   }
 }

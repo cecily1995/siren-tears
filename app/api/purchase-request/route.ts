@@ -31,8 +31,7 @@ export async function POST(request: Request) {
   }
 
   const {
-    productName,
-    productSlug,
+    items,
     name,
     email,
     whatsapp,
@@ -40,8 +39,13 @@ export async function POST(request: Request) {
     shippingAddress,
     message
   }: {
-    productName?: string;
-    productSlug?: string;
+    items?: {
+      productName?: string;
+      productSlug?: string;
+      price?: number;
+      wristSize?: string;
+      ringSize?: string;
+    }[];
     name?: string;
     email?: string;
     whatsapp?: string;
@@ -56,27 +60,42 @@ export async function POST(request: Request) {
       { status: 400 }
     );
   }
+  if (!items || !items.length) {
+    return NextResponse.json(
+      { ok: false, error: 'Your bag is empty.' },
+      { status: 400 }
+    );
+  }
 
   try {
-    // Resolve the product by slug so we can link a real reference — this is
-    // what lets a later status change ("Paid"/"Shipped") automatically mark
-    // the linked Shop Product as Sold.
-    let productRef: { _type: 'reference'; _ref: string } | undefined;
-    if (productSlug) {
-      const product = await client.fetch<{ _id: string } | null>(
-        `*[_type == "shopProduct" && slug.current == $slug][0]{ _id }`,
-        { slug: productSlug }
-      );
-      if (product?._id) {
-        productRef = { _type: 'reference', _ref: product._id };
-      }
-    }
+    // Resolve each product by slug so we can link a real reference — this
+    // is what lets a later status change ("Paid"/"Shipped") automatically
+    // mark the linked Shop Products as Sold.
+    const slugs = items.map((i) => i.productSlug).filter(Boolean) as string[];
+    const products = slugs.length
+      ? await client.fetch<{ _id: string; slug?: string }[]>(
+          `*[_type == "shopProduct" && slug.current in $slugs]{ _id, "slug": slug.current }`,
+          { slugs }
+        )
+      : [];
+    const productIdBySlug = new Map(products.map((p) => [p.slug, p._id]));
+
+    const itemDocs = items.map((i) => {
+      const productId = i.productSlug ? productIdBySlug.get(i.productSlug) : undefined;
+      return {
+        _key: Math.random().toString(36).slice(2),
+        productName: i.productName || '',
+        productSlug: i.productSlug || '',
+        ...(productId ? { product: { _type: 'reference', _ref: productId } } : {}),
+        price: typeof i.price === 'number' ? i.price : undefined,
+        wristSize: i.wristSize || '',
+        ringSize: i.ringSize || ''
+      };
+    });
 
     await client.create({
       _type: 'purchaseRequest',
-      productName: productName || '',
-      productSlug: productSlug || '',
-      ...(productRef ? { product: productRef } : {}),
+      items: itemDocs,
       name,
       email,
       whatsapp: whatsapp || '',
