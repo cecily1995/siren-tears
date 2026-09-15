@@ -563,11 +563,12 @@
     "wristSizeLabel": "手围尺寸",
     "ringSizeLabel": "戒指尺寸",
     "messageLabel": "备注(选填)",
-    "submitCta": "前往付款",
+    "submitCta": "立即付款",
     "submitting": "提交中…",
     "successTitle": "请求已收到。",
     "successBody": "我们已经收到你的购买请求,会尽快联系你确认商品状态并安排付款。",
-    "errorGeneric": "出了点问题,请重试。"
+    "errorGeneric": "出了点问题,请重试。",
+    "checkoutCta": "结账"
   },
   "wishlist": {
     "eyebrow": "已收藏",
@@ -620,5 +621,37 @@
     "body": "已收到你的付款,我们的工作室会准备发货,并会把物流单号发给你。",
     "orderLabel": "订单号",
     "backToShopCta": "继续浏览"
+  },
+  "checkout": {
+    "orderSummaryTitle": "订单摘要",
+    "expressCheckoutTitle": "快捷结账",
+    "orDivider": "或",
+    "contactTitle": "联系方式",
+    "signInCta": "登录",
+    "emailLabel": "邮箱",
+    "deliveryTitle": "配送信息",
+    "firstNameLabel": "名",
+    "lastNameLabel": "姓",
+    "companyLabel": "公司(选填)",
+    "addressLabel": "地址",
+    "cityLabel": "城市",
+    "regionLabel": "省/州",
+    "postalCodeLabel": "邮编",
+    "phoneLabel": "电话",
+    "countryLabel": "国家/地区",
+    "shippingMethodTitle": "配送方式",
+    "shippingMethodEnterAddress": "填写收货地址后即可查看可选配送方式。",
+    "paymentTitle": "付款",
+    "paymentSubtitle": "所有交易均经过安全加密处理。",
+    "paymentNote": "下一步将跳转到Stripe安全支付页面填写卡片信息。",
+    "totalLabel": "总计",
+    "subtotalLabel": "小计",
+    "shippingLabel": "运费",
+    "freeLabel": "免费",
+    "payNowCta": "立即付款",
+    "redirecting": "正在跳转到安全支付页面…",
+    "backToBag": "返回购物袋",
+    "emptyBagTitle": "你的购物袋是空的。",
+    "emptyBagCta": "继续浏览"
   }
 }

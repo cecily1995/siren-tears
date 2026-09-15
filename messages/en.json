@@ -563,11 +563,12 @@
     "wristSizeLabel": "Wrist Size",
     "ringSizeLabel": "Ring Size",
     "messageLabel": "Notes (optional)",
-    "submitCta": "Continue to Payment",
+    "submitCta": "Pay Now",
     "submitting": "Sending…",
     "successTitle": "Request received.",
     "successBody": "We've received your request and will be in touch shortly to confirm availability and arrange payment.",
-    "errorGeneric": "Something went wrong. Please try again."
+    "errorGeneric": "Something went wrong. Please try again.",
+    "checkoutCta": "Checkout"
   },
   "wishlist": {
     "eyebrow": "Saved",
@@ -620,5 +621,37 @@
     "body": "Your payment has been received. Our Atelier will prepare your piece for shipping and will be in touch with tracking details.",
     "orderLabel": "Order number",
     "backToShopCta": "Continue Browsing"
+  },
+  "checkout": {
+    "orderSummaryTitle": "Order Summary",
+    "expressCheckoutTitle": "Express Checkout",
+    "orDivider": "OR",
+    "contactTitle": "Contact",
+    "signInCta": "Sign In",
+    "emailLabel": "Email",
+    "deliveryTitle": "Delivery",
+    "firstNameLabel": "First Name",
+    "lastNameLabel": "Last Name",
+    "companyLabel": "Company (optional)",
+    "addressLabel": "Address",
+    "cityLabel": "City",
+    "regionLabel": "Region",
+    "postalCodeLabel": "Postal Code",
+    "phoneLabel": "Phone",
+    "countryLabel": "Country",
+    "shippingMethodTitle": "Shipping Method",
+    "shippingMethodEnterAddress": "Enter your delivery address to see shipping options.",
+    "paymentTitle": "Payment",
+    "paymentSubtitle": "All transactions are secure and encrypted.",
+    "paymentNote": "You'll enter your card details securely on the next screen, hosted by Stripe.",
+    "totalLabel": "Total",
+    "subtotalLabel": "Subtotal",
+    "shippingLabel": "Shipping",
+    "freeLabel": "Free",
+    "payNowCta": "Pay Now",
+    "redirecting": "Redirecting to secure payment…",
+    "backToBag": "Back to Bag",
+    "emptyBagTitle": "Your bag is empty.",
+    "emptyBagCta": "Continue Browsing"
   }
 }

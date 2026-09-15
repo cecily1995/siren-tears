@@ -3,7 +3,7 @@ import { useClient } from 'sanity';
 import { CheckmarkCircleIcon } from '@sanity/icons';
 import type { DocumentActionComponent, DocumentActionProps } from 'sanity';
 
-const TERMINAL_STATUSES = ['paid', 'shipped'];
+const TERMINAL_SHIPPING_STATUSES = ['shipped', 'delivered'];
 
 // Manual fallback for the "auto-mark Shop Product as Sold" automation.
 // The automatic version relies on a Sanity webhook calling our website,
@@ -22,7 +22,8 @@ export const markProductsSoldAction: DocumentActionComponent = (
   if (type !== 'purchaseRequest') return null;
 
   const doc: any = published || draft;
-  const status: string | undefined = doc?.status;
+  const paymentStatus: string | undefined = doc?.paymentStatus;
+  const shippingStatus: string | undefined = doc?.shippingStatus;
   const items: any[] = doc?.items || [];
   // Defensive: normalize away any "drafts." prefix so we always patch the
   // published document, never a draft (see the purchase-request API route
@@ -34,7 +35,8 @@ export const markProductsSoldAction: DocumentActionComponent = (
 
   if (!productIds.length) return null;
 
-  const isTerminal = Boolean(status && TERMINAL_STATUSES.includes(status));
+  const isTerminal =
+    paymentStatus === 'paid' || (shippingStatus && TERMINAL_SHIPPING_STATUSES.includes(shippingStatus));
 
   return {
     label: isSyncing ? '正在标记...' : '标记关联商品为已售出',
@@ -42,7 +44,7 @@ export const markProductsSoldAction: DocumentActionComponent = (
     disabled: !isTerminal || isSyncing,
     title: isTerminal
       ? '把这份购买申请里关联的商品都标记为 Sold(已售出)'
-      : '先把 Status 改成 Paid 或 Shipped 并发布,才能标记商品为已售出',
+      : '先把 Payment status 改成 Paid,或 Shipping status 改成 Shipped 并发布,才能标记商品为已售出',
     onHandle: async () => {
       setIsSyncing(true);
       try {

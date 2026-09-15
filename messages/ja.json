@@ -563,11 +563,12 @@
     "wristSizeLabel": "手首周り",
     "ringSizeLabel": "リングサイズ",
     "messageLabel": "備考(任意)",
-    "submitCta": "支払いへ進む",
+    "submitCta": "今すぐ支払う",
     "submitting": "送信中…",
     "successTitle": "リクエストを受け付けました。",
     "successBody": "ご依頼を受け付けました。在庫確認とお支払いのご案内のため、追ってご連絡いたします。",
-    "errorGeneric": "問題が発生しました。もう一度お試しください。"
+    "errorGeneric": "問題が発生しました。もう一度お試しください。",
+    "checkoutCta": "チェックアウト"
   },
   "wishlist": {
     "eyebrow": "保存済み",
@@ -620,5 +621,37 @@
     "body": "お支払いを確認いたしました。アトリエにて発送準備を行い、追跡番号をお送りいたします。",
     "orderLabel": "注文番号",
     "backToShopCta": "引き続き見る"
+  },
+  "checkout": {
+    "orderSummaryTitle": "ご注文内容",
+    "expressCheckoutTitle": "エクスプレスチェックアウト",
+    "orDivider": "または",
+    "contactTitle": "連絡先",
+    "signInCta": "サインイン",
+    "emailLabel": "メールアドレス",
+    "deliveryTitle": "配送先",
+    "firstNameLabel": "名",
+    "lastNameLabel": "姓",
+    "companyLabel": "会社名(任意)",
+    "addressLabel": "住所",
+    "cityLabel": "市区町村",
+    "regionLabel": "都道府県",
+    "postalCodeLabel": "郵便番号",
+    "phoneLabel": "電話番号",
+    "countryLabel": "国",
+    "shippingMethodTitle": "配送方法",
+    "shippingMethodEnterAddress": "配送先住所を入力すると配送方法が表示されます。",
+    "paymentTitle": "お支払い",
+    "paymentSubtitle": "すべての取引は安全に暗号化されています。",
+    "paymentNote": "次の画面でStripeの安全な決済ページにてカード情報をご入力いただきます。",
+    "totalLabel": "合計",
+    "subtotalLabel": "小計",
+    "shippingLabel": "送料",
+    "freeLabel": "無料",
+    "payNowCta": "今すぐ支払う",
+    "redirecting": "安全な決済ページへ移動しています…",
+    "backToBag": "バッグに戻る",
+    "emptyBagTitle": "バッグは空です。",
+    "emptyBagCta": "引き続き見る"
   }
 }

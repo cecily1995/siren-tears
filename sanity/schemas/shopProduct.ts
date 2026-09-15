@@ -176,6 +176,15 @@ export default defineType({
       group: 'specs'
     }),
     defineField({
+      name: 'checkoutLockExpiresAt',
+      title: 'Checkout hold expires at',
+      type: 'datetime',
+      readOnly: true,
+      description:
+        'Set automatically for a few minutes while a customer is paying for this piece, so a second customer can\'t buy it out from under them. Clears itself once expired or once payment completes. Never edit manually.',
+      group: 'specs'
+    }),
+    defineField({
       name: 'order',
       title: 'Display order',
       type: 'number',

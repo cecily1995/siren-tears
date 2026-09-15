@@ -10,7 +10,7 @@ function getWriteClient() {
   return createClient({ apiVersion, dataset, projectId, useCdn: false, token });
 }
 
-const TERMINAL_STATUSES = ['paid', 'shipped'];
+const TERMINAL_SHIPPING_STATUSES = ['shipped', 'delivered'];
 
 export async function POST(request: Request) {
   // Simple shared-secret check so random internet traffic can't trigger
@@ -50,8 +50,10 @@ export async function POST(request: Request) {
   const publishedId = rawId.replace(/^drafts\./, '');
 
   try {
-    const purchaseRequest = await client.fetch<{ status?: string; productIds?: string[] } | null>(
-      `*[_id == $id][0]{ status, "productIds": items[].product._ref }`,
+    const purchaseRequest = await client.fetch<
+      { paymentStatus?: string; shippingStatus?: string; productIds?: string[] } | null
+    >(
+      `*[_id == $id][0]{ paymentStatus, shippingStatus, "productIds": items[].product._ref }`,
       { id: publishedId }
     );
 
@@ -59,8 +61,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true, skipped: 'no linked products on this request' });
     }
 
-    if (!purchaseRequest.status || !TERMINAL_STATUSES.includes(purchaseRequest.status)) {
-      return NextResponse.json({ ok: true, skipped: `status is "${purchaseRequest.status}", no action` });
+    const isTerminal =
+      purchaseRequest.paymentStatus === 'paid' ||
+      (purchaseRequest.shippingStatus && TERMINAL_SHIPPING_STATUSES.includes(purchaseRequest.shippingStatus));
+
+    if (!isTerminal) {
+      return NextResponse.json({
+        ok: true,
+        skipped: `paymentStatus is "${purchaseRequest.paymentStatus}", shippingStatus is "${purchaseRequest.shippingStatus}", no action`
+      });
     }
 
     await Promise.all(

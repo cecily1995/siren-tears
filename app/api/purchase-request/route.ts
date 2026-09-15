@@ -121,7 +121,9 @@ export async function POST(request: Request) {
       country: country || '',
       shippingAddress: shippingAddress || '',
       message: message || '',
-      status: 'new',
+      paymentStatus: 'pending',
+      orderStatus: 'new',
+      shippingStatus: 'not_shipped',
       submittedAt: new Date().toISOString()
     });
 

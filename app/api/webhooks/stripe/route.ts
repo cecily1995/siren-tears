@@ -44,9 +44,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: false, error: 'Invalid signature' }, { status: 400 });
   }
 
-  if (event.type !== 'checkout.session.completed') {
-    // We only care about completed payments -- acknowledge everything else
-    // so Stripe doesn't keep retrying events we're not handling.
+  if (event.type !== 'checkout.session.completed' && event.type !== 'checkout.session.expired') {
+    // We only care about completed/expired sessions -- acknowledge
+    // everything else so Stripe doesn't keep retrying events we don't handle.
     return NextResponse.json({ ok: true, skipped: event.type });
   }
 
@@ -55,6 +55,36 @@ export async function POST(request: Request) {
 
   if (!purchaseRequestId) {
     return NextResponse.json({ ok: true, skipped: 'no purchaseRequestId in session metadata' });
+  }
+
+  if (event.type === 'checkout.session.expired') {
+    // Customer never completed payment -- release the one-of-one hold
+    // immediately instead of waiting for its TTL, so other customers can
+    // buy the piece right away, and mark the order as failed/cancelled.
+    try {
+      const purchaseRequest = await client.fetch<{ productIds?: string[] } | null>(
+        `*[_id == $id][0]{ "productIds": items[].product._ref }`,
+        { id: purchaseRequestId }
+      );
+
+      await client
+        .patch(purchaseRequestId)
+        .set({ paymentStatus: 'failed', orderStatus: 'cancelled' })
+        .commit();
+
+      const productIds = (purchaseRequest?.productIds || [])
+        .filter((ref): ref is string => Boolean(ref))
+        .map((ref) => ref.replace(/^drafts\./, ''));
+
+      await Promise.all(
+        productIds.map((id) => client.patch(id).unset(['checkoutLockExpiresAt']).commit().catch(() => undefined))
+      );
+
+      return NextResponse.json({ ok: true, purchaseRequestId, releasedHoldsOn: productIds });
+    } catch (err) {
+      console.error('Stripe webhook (expired) processing failed', err);
+      return NextResponse.json({ ok: false, error: 'Internal error' }, { status: 500 });
+    }
   }
 
   try {
@@ -66,7 +96,7 @@ export async function POST(request: Request) {
     await client
       .patch(purchaseRequestId)
       .set({
-        status: 'paid',
+        paymentStatus: 'paid',
         stripeSessionId: session.id,
         stripePaymentIntentId:
           typeof session.payment_intent === 'string' ? session.payment_intent : session.payment_intent?.id,
@@ -80,7 +110,13 @@ export async function POST(request: Request) {
       // routes for why this matters.
       .map((ref) => ref.replace(/^drafts\./, ''));
 
-    await Promise.all(productIds.map((id) => client.patch(id).set({ status: 'sold' }).commit()));
+    // Mark sold and release the checkout-time inventory hold (irrelevant
+    // now that it's actually sold, but tidy to clear it).
+    await Promise.all(
+      productIds.map((id) =>
+        client.patch(id).set({ status: 'sold' }).unset(['checkoutLockExpiresAt']).commit()
+      )
+    );
 
     return NextResponse.json({ ok: true, purchaseRequestId, markedSold: productIds });
   } catch (err) {

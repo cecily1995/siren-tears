@@ -35,9 +35,16 @@ export async function GET(request: Request) {
     return NextResponse.json({ ok: false, error: 'STRIPE_SECRET_KEY not configured on the server' }, { status: 503 });
   }
 
+  const REQUIRED_EVENTS: Stripe.WebhookEndpointCreateParams.EnabledEvent[] = [
+    'checkout.session.completed',
+    'checkout.session.expired'
+  ];
+
   const shouldCreateWebhook = url.searchParams.get('createWebhook') === '1';
+  const shouldSyncEvents = url.searchParams.get('syncEvents') === '1';
   let createdWebhook: { id: string; url: string; secret: string } | null = null;
   let createWebhookError: string | null = null;
+  let syncedEvents: { id: string; enabled_events: string[] } | null = null;
 
   if (shouldCreateWebhook) {
     const webhookUrl = `${getSiteUrl(request)}/api/webhooks/stripe`;
@@ -49,12 +56,32 @@ export async function GET(request: Request) {
       } else {
         const created = await stripe.webhookEndpoints.create({
           url: webhookUrl,
-          enabled_events: ['checkout.session.completed']
+          enabled_events: REQUIRED_EVENTS
         });
         createdWebhook = { id: created.id, url: created.url, secret: created.secret || '' };
       }
     } catch (err: any) {
       createWebhookError = err?.message || 'Failed to create webhook endpoint';
+    }
+  }
+
+  // Add &syncEvents=1 to make sure an already-existing endpoint is listening
+  // for every event type our code currently handles (useful after adding
+  // checkout.session.expired without recreating the whole endpoint).
+  if (shouldSyncEvents) {
+    const webhookUrl = `${getSiteUrl(request)}/api/webhooks/stripe`;
+    try {
+      const existing = await stripe.webhookEndpoints.list({ limit: 100 });
+      const found = existing.data.find((e) => e.url === webhookUrl);
+      if (found) {
+        const merged = Array.from(new Set([...(found.enabled_events || []), ...REQUIRED_EVENTS]));
+        const updated = await stripe.webhookEndpoints.update(found.id, { enabled_events: merged as any });
+        syncedEvents = { id: updated.id, enabled_events: updated.enabled_events };
+      } else {
+        createWebhookError = `No endpoint found for ${webhookUrl} to sync events on.`;
+      }
+    } catch (err: any) {
+      createWebhookError = err?.message || 'Failed to sync webhook events';
     }
   }
 
@@ -69,6 +96,7 @@ export async function GET(request: Request) {
       ok: true,
       createdWebhook,
       createWebhookError,
+      syncedEvents,
       webhookEndpointsRegisteredOnThisAccount: endpoints.data.map((e) => ({
         id: e.id,
         url: e.url,

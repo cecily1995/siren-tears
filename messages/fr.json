@@ -563,11 +563,12 @@
     "wristSizeLabel": "Tour de poignet",
     "ringSizeLabel": "Taille de bague",
     "messageLabel": "Remarques (facultatif)",
-    "submitCta": "Continuer vers le paiement",
+    "submitCta": "Payer maintenant",
     "submitting": "Envoi…",
     "successTitle": "Demande reçue.",
     "successBody": "Nous avons bien reçu votre demande et vous contacterons prochainement pour confirmer la disponibilité et organiser le paiement.",
-    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
+    "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
+    "checkoutCta": "Commander"
   },
   "wishlist": {
     "eyebrow": "Enregistrés",
@@ -620,5 +621,37 @@
     "body": "Votre paiement a bien été reçu. Notre atelier va préparer votre pièce pour l'expédition et vous communiquera le numéro de suivi.",
     "orderLabel": "Numéro de commande",
     "backToShopCta": "Continuer mes achats"
+  },
+  "checkout": {
+    "orderSummaryTitle": "Récapitulatif de commande",
+    "expressCheckoutTitle": "Paiement Express",
+    "orDivider": "OU",
+    "contactTitle": "Contact",
+    "signInCta": "Se connecter",
+    "emailLabel": "Email",
+    "deliveryTitle": "Livraison",
+    "firstNameLabel": "Prénom",
+    "lastNameLabel": "Nom",
+    "companyLabel": "Entreprise (facultatif)",
+    "addressLabel": "Adresse",
+    "cityLabel": "Ville",
+    "regionLabel": "Région",
+    "postalCodeLabel": "Code postal",
+    "phoneLabel": "Téléphone",
+    "countryLabel": "Pays",
+    "shippingMethodTitle": "Mode de livraison",
+    "shippingMethodEnterAddress": "Renseignez votre adresse pour voir les options de livraison.",
+    "paymentTitle": "Paiement",
+    "paymentSubtitle": "Toutes les transactions sont sécurisées et cryptées.",
+    "paymentNote": "Vous saisirez vos coordonnées bancaires en toute sécurité sur l'écran suivant, hébergé par Stripe.",
+    "totalLabel": "Total",
+    "subtotalLabel": "Sous-total",
+    "shippingLabel": "Livraison",
+    "freeLabel": "Gratuit",
+    "payNowCta": "Payer maintenant",
+    "redirecting": "Redirection vers le paiement sécurisé…",
+    "backToBag": "Retour au panier",
+    "emptyBagTitle": "Votre panier est vide.",
+    "emptyBagCta": "Continuer mes achats"
   }
 }

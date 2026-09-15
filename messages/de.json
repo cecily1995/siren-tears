@@ -563,11 +563,12 @@
     "wristSizeLabel": "Handgelenkumfang",
     "ringSizeLabel": "Ringgröße",
     "messageLabel": "Anmerkungen (optional)",
-    "submitCta": "Weiter zur Zahlung",
+    "submitCta": "Jetzt bezahlen",
     "submitting": "Wird gesendet…",
     "successTitle": "Anfrage erhalten.",
     "successBody": "Wir haben Ihre Anfrage erhalten und melden uns in Kürze, um die Verfügbarkeit zu bestätigen und die Zahlung zu vereinbaren.",
-    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+    "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
+    "checkoutCta": "Zur Kasse"
   },
   "wishlist": {
     "eyebrow": "Gemerkt",
@@ -620,5 +621,37 @@
     "body": "Ihre Zahlung ist eingegangen. Unser Atelier bereitet Ihr Stück für den Versand vor und sendet Ihnen die Sendungsverfolgung zu.",
     "orderLabel": "Bestellnummer",
     "backToShopCta": "Weiter stöbern"
+  },
+  "checkout": {
+    "orderSummaryTitle": "Bestellübersicht",
+    "expressCheckoutTitle": "Express-Checkout",
+    "orDivider": "ODER",
+    "contactTitle": "Kontakt",
+    "signInCta": "Anmelden",
+    "emailLabel": "E-Mail",
+    "deliveryTitle": "Lieferung",
+    "firstNameLabel": "Vorname",
+    "lastNameLabel": "Nachname",
+    "companyLabel": "Firma (optional)",
+    "addressLabel": "Adresse",
+    "cityLabel": "Stadt",
+    "regionLabel": "Region",
+    "postalCodeLabel": "Postleitzahl",
+    "phoneLabel": "Telefon",
+    "countryLabel": "Land",
+    "shippingMethodTitle": "Versandart",
+    "shippingMethodEnterAddress": "Geben Sie Ihre Lieferadresse ein, um Versandoptionen zu sehen.",
+    "paymentTitle": "Zahlung",
+    "paymentSubtitle": "Alle Transaktionen sind sicher und verschlüsselt.",
+    "paymentNote": "Sie geben Ihre Kartendaten sicher auf dem nächsten, von Stripe gehosteten Bildschirm ein.",
+    "totalLabel": "Gesamt",
+    "subtotalLabel": "Zwischensumme",
+    "shippingLabel": "Versand",
+    "freeLabel": "Kostenlos",
+    "payNowCta": "Jetzt bezahlen",
+    "redirecting": "Weiterleitung zur sicheren Zahlung…",
+    "backToBag": "Zurück zur Tasche",
+    "emptyBagTitle": "Ihre Tasche ist leer.",
+    "emptyBagCta": "Weiter stöbern"
   }
 }

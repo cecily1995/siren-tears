@@ -44,7 +44,7 @@ export async function GET() {
           _id, orderNumber,
           "productName": items[0].productName,
           "itemCount": count(items),
-          status, trackingNumber, _createdAt
+          paymentStatus, orderStatus, shippingStatus, trackingNumber, _createdAt
         }`,
         { email: member.email }
       ),

@@ -563,11 +563,12 @@
     "wristSizeLabel": "Обхват запястья",
     "ringSizeLabel": "Размер кольца",
     "messageLabel": "Примечания (необязательно)",
-    "submitCta": "Перейти к оплате",
+    "submitCta": "Оплатить сейчас",
     "submitting": "Отправка…",
     "successTitle": "Запрос получен.",
     "successBody": "Мы получили ваш запрос и скоро свяжемся с вами, чтобы подтвердить наличие и организовать оплату.",
-    "errorGeneric": "Что-то пошло не так. Попробуйте ещё раз."
+    "errorGeneric": "Что-то пошло не так. Попробуйте ещё раз.",
+    "checkoutCta": "Оформить заказ"
   },
   "wishlist": {
     "eyebrow": "Сохранённое",
@@ -620,5 +621,37 @@
     "body": "Оплата получена. Наша мастерская подготовит изделие к отправке и пришлёт номер для отслеживания.",
     "orderLabel": "Номер заказа",
     "backToShopCta": "Продолжить покупки"
+  },
+  "checkout": {
+    "orderSummaryTitle": "Сводка заказа",
+    "expressCheckoutTitle": "Быстрая оплата",
+    "orDivider": "ИЛИ",
+    "contactTitle": "Контакты",
+    "signInCta": "Войти",
+    "emailLabel": "Эл. почта",
+    "deliveryTitle": "Доставка",
+    "firstNameLabel": "Имя",
+    "lastNameLabel": "Фамилия",
+    "companyLabel": "Компания (необязательно)",
+    "addressLabel": "Адрес",
+    "cityLabel": "Город",
+    "regionLabel": "Регион",
+    "postalCodeLabel": "Почтовый индекс",
+    "phoneLabel": "Телефон",
+    "countryLabel": "Страна",
+    "shippingMethodTitle": "Способ доставки",
+    "shippingMethodEnterAddress": "Укажите адрес доставки, чтобы увидеть варианты доставки.",
+    "paymentTitle": "Оплата",
+    "paymentSubtitle": "Все транзакции защищены и зашифрованы.",
+    "paymentNote": "На следующем экране вы безопасно введёте данные карты через Stripe.",
+    "totalLabel": "Итого",
+    "subtotalLabel": "Промежуточный итог",
+    "shippingLabel": "Доставка",
+    "freeLabel": "Бесплатно",
+    "payNowCta": "Оплатить сейчас",
+    "redirecting": "Перенаправление на безопасную оплату…",
+    "backToBag": "Вернуться в корзину",
+    "emptyBagTitle": "Ваша корзина пуста.",
+    "emptyBagCta": "Продолжить покупки"
   }
 }

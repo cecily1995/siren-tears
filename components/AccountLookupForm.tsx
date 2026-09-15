@@ -24,7 +24,9 @@ type Member = {
 type PurchaseItem = {
   productName?: string;
   itemCount?: number;
-  status?: string;
+  paymentStatus?: string;
+  orderStatus?: string;
+  shippingStatus?: string;
   trackingNumber?: string;
   _createdAt?: string;
 };
@@ -426,7 +428,15 @@ export default function AccountLookupForm() {
                       {p.productName}
                       {p.itemCount && p.itemCount > 1 ? ` +${p.itemCount - 1}` : ''}
                     </span>
-                    <span className="text-ash/60"> · {p.status}</span>
+                    <span className="text-ash/60">
+                      {' '}
+                      ·{' '}
+                      {p.shippingStatus && p.shippingStatus !== 'not_shipped'
+                        ? p.shippingStatus
+                        : p.paymentStatus === 'paid'
+                          ? p.orderStatus || 'processing'
+                          : p.paymentStatus || 'pending'}
+                    </span>
                     <div className="text-ash/60 mt-1">
                       {t('trackingLabel')}: {p.trackingNumber || t('notShippedYet')}
                       {p.trackingNumber && (

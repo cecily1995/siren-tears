@@ -563,11 +563,12 @@
     "wristSizeLabel": "손목 둘레",
     "ringSizeLabel": "반지 사이즈",
     "messageLabel": "메모 (선택)",
-    "submitCta": "결제로 이동",
+    "submitCta": "지금 결제",
     "submitting": "전송 중…",
     "successTitle": "요청이 접수되었습니다.",
     "successBody": "요청을 받았습니다. 재고 확인 및 결제 안내를 위해 곧 연락드리겠습니다.",
-    "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요."
+    "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요.",
+    "checkoutCta": "체크아웃"
   },
   "wishlist": {
     "eyebrow": "저장됨",
@@ -620,5 +621,37 @@
     "body": "결제가 확인되었습니다. 아틀리에에서 작품을 배송 준비하고 추적 정보를 보내드리겠습니다.",
     "orderLabel": "주문 번호",
     "backToShopCta": "계속 둘러보기"
+  },
+  "checkout": {
+    "orderSummaryTitle": "주문 요약",
+    "expressCheckoutTitle": "빠른 결제",
+    "orDivider": "또는",
+    "contactTitle": "연락처",
+    "signInCta": "로그인",
+    "emailLabel": "이메일",
+    "deliveryTitle": "배송지",
+    "firstNameLabel": "이름",
+    "lastNameLabel": "성",
+    "companyLabel": "회사(선택 사항)",
+    "addressLabel": "주소",
+    "cityLabel": "도시",
+    "regionLabel": "지역",
+    "postalCodeLabel": "우편번호",
+    "phoneLabel": "전화번호",
+    "countryLabel": "국가",
+    "shippingMethodTitle": "배송 방법",
+    "shippingMethodEnterAddress": "배송 주소를 입력하면 배송 옵션을 확인할 수 있습니다.",
+    "paymentTitle": "결제",
+    "paymentSubtitle": "모든 거래는 안전하게 암호화됩니다.",
+    "paymentNote": "다음 화면에서 Stripe의 안전한 결제 페이지에 카드 정보를 입력하게 됩니다.",
+    "totalLabel": "총액",
+    "subtotalLabel": "소계",
+    "shippingLabel": "배송비",
+    "freeLabel": "무료",
+    "payNowCta": "지금 결제",
+    "redirecting": "안전한 결제 페이지로 이동 중…",
+    "backToBag": "가방으로 돌아가기",
+    "emptyBagTitle": "가방이 비어 있습니다.",
+    "emptyBagCta": "계속 둘러보기"
   }
 }

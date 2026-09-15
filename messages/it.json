@@ -563,11 +563,12 @@
     "wristSizeLabel": "Circonferenza polso",
     "ringSizeLabel": "Misura dell'anello",
     "messageLabel": "Note (facoltativo)",
-    "submitCta": "Procedi al pagamento",
+    "submitCta": "Paga ora",
     "submitting": "Invio…",
     "successTitle": "Richiesta ricevuta.",
     "successBody": "Abbiamo ricevuto la tua richiesta e ti contatteremo a breve per confermare la disponibilità e organizzare il pagamento.",
-    "errorGeneric": "Qualcosa è andato storto. Riprova."
+    "errorGeneric": "Qualcosa è andato storto. Riprova.",
+    "checkoutCta": "Checkout"
   },
   "wishlist": {
     "eyebrow": "Salvati",
@@ -620,5 +621,37 @@
     "body": "Il pagamento è stato ricevuto. Il nostro atelier preparerà il tuo pezzo per la spedizione e ti invierà i dettagli del tracciamento.",
     "orderLabel": "Numero d'ordine",
     "backToShopCta": "Continua a navigare"
+  },
+  "checkout": {
+    "orderSummaryTitle": "Riepilogo dell'ordine",
+    "expressCheckoutTitle": "Checkout Express",
+    "orDivider": "OPPURE",
+    "contactTitle": "Contatto",
+    "signInCta": "Accedi",
+    "emailLabel": "Email",
+    "deliveryTitle": "Consegna",
+    "firstNameLabel": "Nome",
+    "lastNameLabel": "Cognome",
+    "companyLabel": "Azienda (facoltativo)",
+    "addressLabel": "Indirizzo",
+    "cityLabel": "Città",
+    "regionLabel": "Regione",
+    "postalCodeLabel": "CAP",
+    "phoneLabel": "Telefono",
+    "countryLabel": "Paese",
+    "shippingMethodTitle": "Metodo di spedizione",
+    "shippingMethodEnterAddress": "Inserisci il tuo indirizzo per vedere le opzioni di spedizione.",
+    "paymentTitle": "Pagamento",
+    "paymentSubtitle": "Tutte le transazioni sono sicure e crittografate.",
+    "paymentNote": "Inserirai i dati della carta in modo sicuro nella schermata successiva, gestita da Stripe.",
+    "totalLabel": "Totale",
+    "subtotalLabel": "Subtotale",
+    "shippingLabel": "Spedizione",
+    "freeLabel": "Gratis",
+    "payNowCta": "Paga ora",
+    "redirecting": "Reindirizzamento al pagamento sicuro…",
+    "backToBag": "Torna alla borsa",
+    "emptyBagTitle": "La tua borsa è vuota.",
+    "emptyBagCta": "Continua a navigare"
   }
 }
