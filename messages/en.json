@@ -563,5 +563,16 @@
     "successTitle": "Request received.",
     "successBody": "We've received your request and will be in touch shortly to confirm availability and arrange payment.",
     "errorGeneric": "Something went wrong. Please try again."
+  },
+  "wishlist": {
+    "eyebrow": "Saved",
+    "title": "Your Wishlist",
+    "intro": "Pieces you have saved to come back to.",
+    "empty": "You haven't saved any pieces yet.",
+    "discoverCta": "Discover the Collection",
+    "remove": "Remove",
+    "sold": "Sold",
+    "reserved": "Reserved",
+    "discoverAnother": "Discover Another Piece"
   }
 }

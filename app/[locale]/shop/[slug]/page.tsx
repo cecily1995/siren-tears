@@ -7,6 +7,7 @@ import { fallback } from '@/components/fallback';
 import ProductGallery from '@/components/ProductGallery';
 import AddToBagButton from '@/components/AddToBagButton';
 import ProductAccordionSection from '@/components/ProductAccordionSection';
+import WishlistButton from '@/components/WishlistButton';
 import { translateFields } from '@/lib/translate';
 
 export const revalidate = 60;
@@ -88,9 +89,19 @@ export default async function ShopProductPage({
             {product.collectionTitle && (
               <p className="eyebrow mb-4">{product.collectionTitle}</p>
             )}
-            <h1 className="serif-display text-[clamp(1.9rem,4vw,2.8rem)] font-light leading-[1.1] text-charcoal">
-              {product.name}
-            </h1>
+            <div className="flex items-start justify-between gap-4">
+              <h1 className="serif-display text-[clamp(1.9rem,4vw,2.8rem)] font-light leading-[1.1] text-charcoal">
+                {product.name}
+              </h1>
+              <WishlistButton
+                productId={product._id}
+                slug={product.slug?.current ?? slug}
+                name={product.name}
+                price={product.price}
+                imageUrl={product.images?.[0]?.url}
+                className="shrink-0 mt-2 w-9 h-9 flex items-center justify-center border border-charcoal/15 hover:border-charcoal/40 transition-colors"
+              />
+            </div>
             {translated.stone && (
               <p className="mt-3 text-[1rem] text-ash font-light">{translated.stone}</p>
             )}

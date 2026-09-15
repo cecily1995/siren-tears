@@ -563,5 +563,16 @@
     "successTitle": "リクエストを受け付けました。",
     "successBody": "ご依頼を受け付けました。在庫確認とお支払いのご案内のため、追ってご連絡いたします。",
     "errorGeneric": "問題が発生しました。もう一度お試しください。"
+  },
+  "wishlist": {
+    "eyebrow": "保存済み",
+    "title": "ウィッシュリスト",
+    "intro": "保存したアイテムです。",
+    "empty": "まだ保存したアイテムがありません。",
+    "discoverCta": "コレクションを見る",
+    "remove": "削除",
+    "sold": "売約済み",
+    "reserved": "予約済み",
+    "discoverAnother": "他の作品を見る"
   }
 }

@@ -563,5 +563,16 @@
     "successTitle": "Richiesta ricevuta.",
     "successBody": "Abbiamo ricevuto la tua richiesta e ti contatteremo a breve per confermare la disponibilità e organizzare il pagamento.",
     "errorGeneric": "Qualcosa è andato storto. Riprova."
+  },
+  "wishlist": {
+    "eyebrow": "Salvati",
+    "title": "La tua lista dei desideri",
+    "intro": "I pezzi che hai salvato.",
+    "empty": "Non hai ancora salvato nessun pezzo.",
+    "discoverCta": "Scopri la collezione",
+    "remove": "Rimuovi",
+    "sold": "Venduto",
+    "reserved": "Riservato",
+    "discoverAnother": "Scopri un altro pezzo"
   }
 }

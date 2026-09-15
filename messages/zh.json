@@ -563,5 +563,16 @@
     "successTitle": "请求已收到。",
     "successBody": "我们已经收到你的购买请求,会尽快联系你确认商品状态并安排付款。",
     "errorGeneric": "出了点问题,请重试。"
+  },
+  "wishlist": {
+    "eyebrow": "已收藏",
+    "title": "我的心愿单",
+    "intro": "你收藏的作品都在这里。",
+    "empty": "你还没有收藏任何作品。",
+    "discoverCta": "去逛逛系列",
+    "remove": "移除",
+    "sold": "已售出",
+    "reserved": "已预留",
+    "discoverAnother": "看看其他作品"
   }
 }

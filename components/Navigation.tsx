@@ -6,6 +6,7 @@ import { Link, usePathname } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import BagIcon from './BagIcon';
+import WishlistIcon from './WishlistIcon';
 
 const links = [
   { href: '/collections', key: 'collections' },
@@ -93,6 +94,7 @@ export default function Navigation() {
             {t('enquire')}
           </Link>
           <LanguageSwitcher light={light} />
+          <WishlistIcon light={light} />
           <BagIcon light={light} />
         </div>
       </div>

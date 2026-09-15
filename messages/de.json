@@ -563,5 +563,16 @@
     "successTitle": "Anfrage erhalten.",
     "successBody": "Wir haben Ihre Anfrage erhalten und melden uns in Kürze, um die Verfügbarkeit zu bestätigen und die Zahlung zu vereinbaren.",
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut."
+  },
+  "wishlist": {
+    "eyebrow": "Gemerkt",
+    "title": "Ihre Wunschliste",
+    "intro": "Stücke, die Sie sich gemerkt haben.",
+    "empty": "Sie haben noch keine Stücke gemerkt.",
+    "discoverCta": "Kollektion entdecken",
+    "remove": "Entfernen",
+    "sold": "Verkauft",
+    "reserved": "Reserviert",
+    "discoverAnother": "Ein anderes Stück entdecken"
   }
 }

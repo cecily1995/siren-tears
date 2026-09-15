@@ -563,5 +563,16 @@
     "successTitle": "요청이 접수되었습니다.",
     "successBody": "요청을 받았습니다. 재고 확인 및 결제 안내를 위해 곧 연락드리겠습니다.",
     "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요."
+  },
+  "wishlist": {
+    "eyebrow": "저장됨",
+    "title": "나의 위시리스트",
+    "intro": "저장해 둔 작품들입니다.",
+    "empty": "아직 저장한 작품이 없습니다.",
+    "discoverCta": "컬렉션 둘러보기",
+    "remove": "삭제",
+    "sold": "판매 완료",
+    "reserved": "예약됨",
+    "discoverAnother": "다른 작품 보기"
   }
 }

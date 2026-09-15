@@ -563,5 +563,16 @@
     "successTitle": "Demande reçue.",
     "successBody": "Nous avons bien reçu votre demande et vous contacterons prochainement pour confirmer la disponibilité et organiser le paiement.",
     "errorGeneric": "Une erreur s'est produite. Veuillez réessayer."
+  },
+  "wishlist": {
+    "eyebrow": "Enregistrés",
+    "title": "Votre liste de souhaits",
+    "intro": "Les pièces que vous avez enregistrées.",
+    "empty": "Vous n'avez encore enregistré aucune pièce.",
+    "discoverCta": "Découvrir la collection",
+    "remove": "Retirer",
+    "sold": "Vendu",
+    "reserved": "Réservé",
+    "discoverAnother": "Découvrir une autre pièce"
   }
 }

@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from 'react';
 import { Link } from '@/i18n/routing';
+import WishlistButton from './WishlistButton';
 
 type ShopProduct = {
   _id: string;
@@ -222,6 +223,13 @@ export default function ShopGrid({
                     {isSold ? labels.status.sold : labels.status.reserved}
                   </span>
                 )}
+                <WishlistButton
+                  productId={p._id}
+                  slug={p.slug?.current ?? ''}
+                  name={p.name ?? ''}
+                  price={p.price}
+                  imageUrl={img?.url}
+                />
                 <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-ivory/90 to-transparent">
                   <span className="text-[9px] tracking-[0.24em] uppercase text-charcoal font-light">
                     {labels.viewPiece}
