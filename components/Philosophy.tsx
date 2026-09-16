@@ -1,6 +1,7 @@
 type PhilosophyData = {
   sectionLabel?: string;
   sectionTitle?: string;
+  videoUrl?: string;
   pillars?: { title?: string; body?: string }[];
 };
 
@@ -14,11 +15,29 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(255,255,255,0) 100%)'
         }}
       />
-      {/* Faint water texture so the section carries some atmosphere rather than flat colour. */}
-      <div
-        className="absolute inset-0 bg-center bg-cover opacity-[0.1] pointer-events-none"
-        style={{ backgroundImage: "url('/textures/water-close.jpg')" }}
-      />
+      {data.videoUrl ? (
+        <>
+          {/* Background video, muted/looping/no controls -- purely
+              atmospheric texture, not something the visitor interacts with. */}
+          <video
+            className="absolute inset-0 w-full h-full object-cover opacity-[0.16] pointer-events-none"
+            src={data.videoUrl}
+            autoPlay
+            muted
+            loop
+            playsInline
+          />
+          {/* Keep the pearl wash on top so the video reads as a faint
+              texture, same visual weight as the static image it replaces. */}
+          <div className="absolute inset-0 bg-pearl/70 pointer-events-none" />
+        </>
+      ) : (
+        // Faint water texture so the section carries some atmosphere rather than flat colour.
+        <div
+          className="absolute inset-0 bg-center bg-cover opacity-[0.1] pointer-events-none"
+          style={{ backgroundImage: "url('/textures/water-close.jpg')" }}
+        />
+      )}
       <div className="relative mx-auto max-w-[1280px]">
         <div className="text-center max-w-2xl mx-auto reveal">
           {data.sectionLabel && <p className="eyebrow mb-6">{data.sectionLabel}</p>}

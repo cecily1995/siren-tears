@@ -7,7 +7,7 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
 
 export const homepageQuery = groq`*[_type == "homepage"][0]{
   hero{ eyebrow, title, body, ctaLabel, "bgUrl": background.asset->url, "bgAlt": background.alt },
-  philosophy{ sectionLabel, sectionTitle, pillars[]{ title, body } },
+  philosophy{ sectionLabel, sectionTitle, "videoUrl": backgroundVideo.asset->url, pillars[]{ title, body } },
   featured->{
     title, subtitle, body,
     "imageUrl": image.asset->url, "imageAlt": image.alt,

@@ -31,6 +31,14 @@ export default defineType({
         { name: 'sectionLabel', type: 'string', title: 'Section label', initialValue: 'Philosophy' },
         { name: 'sectionTitle', type: 'string', title: 'Section title' },
         {
+          name: 'backgroundVideo',
+          type: 'file',
+          title: 'Background video (optional)',
+          description:
+            'Plays silently on loop behind this section. Keep it short (a few seconds, looping) and under ~15MB so it loads quickly -- this is a background texture, not a video the visitor presses play on. Falls back to the plain water-texture background if left empty.',
+          options: { accept: 'video/*' }
+        },
+        {
           name: 'pillars',
           type: 'array',
           title: 'Pillars (3 recommended)',
