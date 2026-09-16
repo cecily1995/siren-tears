@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ivory: '#F5EFE5',
-        pearl: '#FAF6EE',
+        ivory: '#FFFFFF',
+        pearl: '#FFFFFF',
         sand: '#D9C9AE',
         sandLight: '#E8DDC7',
         ocean: '#7E94A0',

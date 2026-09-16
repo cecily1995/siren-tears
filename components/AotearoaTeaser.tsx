@@ -54,20 +54,6 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
                 imageUrl={p.images?.[0]?.url}
               />
             </div>
-            <div className="mt-3">
-              {/* No "One of One" here -- per the brief, that label is only
-                  for the Beaded Collections line, not Aotearoa gemstone
-                  pieces. Stone line is also dropped here (matches the shop
-                  grid) -- it only needs to appear on the product's own page. */}
-              <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2">
-                {p.name}
-              </h3>
-              <div className="mt-2">
-                <span className="text-[0.88rem] text-charcoal font-light">
-                  {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
-                </span>
-              </div>
-            </div>
           </Link>
         ))}
       </div>

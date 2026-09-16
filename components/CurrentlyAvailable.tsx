@@ -26,10 +26,12 @@ export default function CurrentlyAvailable({
     <section className="bg-pearl py-14 md:py-20 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="text-left md:text-center mb-8 md:mb-12 reveal">
-          <p className="eyebrow mb-5">{labels.eyebrow}</p>
           <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15]">
-            {labels.title}
+            {labels.eyebrow}
           </h2>
+          <p className="mt-4 text-[9px] tracking-[0.22em] uppercase text-gold font-light">
+            {labels.oneOfOne}
+          </p>
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
@@ -57,21 +59,6 @@ export default function CurrentlyAvailable({
                   price={p.price}
                   imageUrl={p.images?.[0]?.url}
                 />
-              </div>
-              <div className="mt-3">
-                {/* Collection name dropped here -- only the product's own
-                    page shows which collection it belongs to. */}
-                <p className="text-[9px] tracking-[0.22em] uppercase text-gold font-light mb-1.5">
-                  {labels.oneOfOne}
-                </p>
-                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2">
-                  {p.name}
-                </h3>
-                <div className="mt-2">
-                  <span className="text-[0.88rem] text-charcoal font-light">
-                    {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
-                  </span>
-                </div>
               </div>
             </Link>
           ))}
