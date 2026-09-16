@@ -88,7 +88,7 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
   }
 
   return (
-    <section className="bg-pearl py-14 md:py-20 overflow-hidden">
+    <section className="bg-pearl pt-6 pb-14 md:pt-8 md:pb-20 overflow-hidden">
       {/* Full-bleed banner: photo with title/intro/CTA overlaid. The photo,
           the AOTEAROA wordmark, and "View All" are all separate links to
           the same destination -- three ways in, one place they go. */}

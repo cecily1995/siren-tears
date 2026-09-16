@@ -34,7 +34,7 @@ export default function Collections({
   labels: Labels;
 }) {
   return (
-    <section id="collections" className="bg-pearl py-16 md:py-24 px-6 md:px-12">
+    <section id="collections" className="bg-pearl pt-16 pb-8 md:pt-24 md:pb-10 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8 md:mb-12 reveal">
           <div className="max-w-xl">
