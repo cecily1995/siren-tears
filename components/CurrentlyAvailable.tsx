@@ -35,12 +35,14 @@ export default function CurrentlyAvailable({
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
-          {items.slice(0, 6).map((p, i) => (
+          {items.slice(0, 12).map((p, i) => (
             <Link
               key={p._id}
               href={`/shop/${p.slug?.current ?? ''}`}
-              className="group reveal"
-              style={{ transitionDelay: `${i * 100}ms` }}
+              // Mobile shows only the first 6 (2 cols x 3 rows); from lg
+              // up, all 12 show (6 cols x 2 rows).
+              className={`group reveal ${i >= 6 ? 'hidden lg:block' : ''}`}
+              style={{ transitionDelay: `${(i % 6) * 100}ms` }}
             >
               <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/5 frame-zoom">
                 {p.images?.[0]?.url && (

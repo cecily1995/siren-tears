@@ -105,14 +105,20 @@ a, button {
   transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
 }
 
-/* Every page's entrance (see app/[locale]/template.tsx) -- a brief fade +
-   slight upward settle on every navigation, not just the very first load. */
+/* Every page's entrance (see app/[locale]/template.tsx) -- a brief fade on
+   every navigation, not just the very first load. Opacity only, no
+   transform: a transform on this wrapper (even a completed translateY(0))
+   creates a CSS "containing block" for any position:fixed descendant --
+   e.g. a lightbox modal further down the page tree would stop being fixed
+   to the viewport and instead sit wherever this wrapper ends up, which is
+   exactly the "modal appears at the very bottom of the page" bug this
+   caused. */
 .animate-page-in {
-  animation: pageIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: pageIn 0.5s ease-out both;
 }
 @keyframes pageIn {
-  0% { opacity: 0; transform: translateY(10px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
 @media (prefers-reduced-motion: reduce) {
   .animate-page-in { animation: none; }
