@@ -26,7 +26,6 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const [mounted, setMounted] = useState(false);
-  const touchStartX = useRef<number | null>(null);
   const searchParams = useSearchParams();
 
   useEffect(() => {
@@ -75,17 +74,40 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   function goPrev() {
     setPhotoIndex((i) => (i - 1 + photos.length) % photos.length);
   }
-  function onTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
+
+  // Same follow-the-pointer drag + slow ease-out snap as ProductGallery --
+  // see there for the fuller explanation of the approach.
+  const [dragPx, setDragPx] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartX = useRef(0);
+  const dragContainerWidth = useRef(0);
+  const dragActive = useRef(false);
+
+  function beginDrag(clientX: number, el: HTMLElement) {
+    if (photos.length <= 1) return;
+    dragActive.current = true;
+    setIsDragging(true);
+    dragStartX.current = clientX;
+    dragContainerWidth.current = el.getBoundingClientRect().width || 1;
+    setDragPx(0);
   }
-  function onTouchEnd(e: React.TouchEvent) {
-    if (touchStartX.current === null || photos.length <= 1) return;
-    const delta = e.changedTouches[0].clientX - touchStartX.current;
-    if (Math.abs(delta) > 40) {
-      if (delta < 0) goNext();
-      else goPrev();
+  function moveDrag(clientX: number) {
+    if (!dragActive.current) return;
+    let delta = clientX - dragStartX.current;
+    if ((photoIndex === 0 && delta > 0) || (photoIndex === photos.length - 1 && delta < 0)) {
+      delta *= 0.35;
     }
-    touchStartX.current = null;
+    setDragPx(delta);
+  }
+  function endDrag() {
+    if (!dragActive.current) return;
+    dragActive.current = false;
+    const width = dragContainerWidth.current || 1;
+    const threshold = width * 0.18;
+    if (dragPx <= -threshold) goNext();
+    else if (dragPx >= threshold) goPrev();
+    setDragPx(0);
+    setIsDragging(false);
   }
 
   return (
@@ -147,26 +169,58 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
 
           <div className="relative z-[1] w-full max-w-[900px] max-h-[88dvh] overflow-y-auto bg-ivory">
             <div
-              className="relative bg-charcoal/5 touch-pan-y select-none"
-              onTouchStart={onTouchStart}
-              onTouchEnd={onTouchEnd}
+              className="relative bg-charcoal/5 select-none h-[60dvh] overflow-hidden"
+              onTouchStart={(e) => beginDrag(e.touches[0].clientX, e.currentTarget)}
+              onTouchMove={(e) => moveDrag(e.touches[0].clientX)}
+              onTouchEnd={endDrag}
+              onMouseDown={(e) => {
+                e.preventDefault();
+                beginDrag(e.clientX, e.currentTarget);
+              }}
+              onMouseMove={(e) => {
+                if (dragActive.current) moveDrag(e.clientX);
+              }}
+              onMouseUp={endDrag}
+              onMouseLeave={() => {
+                if (dragActive.current) endDrag();
+              }}
             >
-              {photos[photoIndex] &&
-                (photos[photoIndex].type === 'video' ? (
-                  <video
-                    key={photos[photoIndex].url}
-                    src={photos[photoIndex].url}
-                    controls
-                    className="w-full h-auto max-h-[60dvh] mx-auto block"
-                  />
-                ) : (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={photos[photoIndex].url}
-                    alt={photos[photoIndex].alt || active?.caption || ''}
-                    className="w-full h-auto max-h-[60dvh] object-contain mx-auto block"
-                  />
+              {photos.length > 0 && (
+                <div
+                  className="flex h-full"
+                  style={{
+                    width: `${photos.length * 100}%`,
+                    transform: `translateX(${
+                      (-(photoIndex * 100) + (dragContainerWidth.current ? (dragPx / dragContainerWidth.current) * 100 : 0)) /
+                      photos.length
+                    }%)`,
+                    transition: isDragging ? 'none' : 'transform 420ms cubic-bezier(0.22, 0.61, 0.36, 1)',
+                    cursor: isDragging ? 'grabbing' : photos.length > 1 ? 'grab' : undefined
+                  }}
+                >
+                  {photos.map((m, i) => (
+                  <div key={m.url + i} className="shrink-0 h-full flex items-center justify-center" style={{ width: `${100 / photos.length}%` }}>
+                    {m.type === 'video' ? (
+                      <video
+                        src={m.url}
+                        controls
+                        className="max-w-full max-h-full pointer-events-auto"
+                        style={{ pointerEvents: isDragging ? 'none' : 'auto' }}
+                      />
+                    ) : (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={m.url}
+                        alt={m.alt || active?.caption || ''}
+                        draggable={false}
+                        loading={Math.abs(i - photoIndex) <= 1 ? 'eager' : 'lazy'}
+                        className="max-w-full max-h-full object-contain pointer-events-none"
+                      />
+                    )}
+                  </div>
                 ))}
+                </div>
+              )}
               {photos.length > 1 && (
                 <div className="absolute inset-x-0 bottom-0 flex items-center justify-center gap-2 pb-3">
                   {photos.map((_, i) => (
