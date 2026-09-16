@@ -56,6 +56,10 @@ export default async function HomePage({
   const philosophyData = {
     sectionLabel: t('philosophy.label'),
     sectionTitle: t('philosophy.title'),
+    // Title/pillar copy stays translation-driven (see below), but the
+    // background video is only ever set through Sanity Studio (Home >
+    // Brand Philosophy), so it has to come from the fetched document.
+    videoUrl: home?.philosophy?.videoUrl,
     pillars: [
       { title: t('philosophy.pillars.natural.title'), body: t('philosophy.pillars.natural.body') },
       { title: t('philosophy.pillars.timeless.title'), body: t('philosophy.pillars.timeless.body') },
