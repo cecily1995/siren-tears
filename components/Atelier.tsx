@@ -11,9 +11,11 @@ type Data = {
 export default function Atelier({ data }: { data: Data }) {
   return (
     <section id="about" className="bg-pearl text-charcoal">
-      {/* Mobile: full-bleed portrait image first, story text below. */}
-      <div className="md:hidden px-6 py-10">
-        <div className="relative w-full aspect-[9/16] overflow-hidden bg-charcoal/5 mb-8">
+      {/* Mobile: full-bleed portrait image first (edge-to-edge, no inset --
+          matches the 3:4 photography used everywhere else), story text
+          below with its own padding. */}
+      <div className="md:hidden">
+        <div className="relative w-full aspect-[3/4] overflow-hidden bg-charcoal/5">
           {data.imageUrl && (
             <div
               className="absolute inset-0 bg-center bg-cover"
@@ -23,7 +25,9 @@ export default function Atelier({ data }: { data: Data }) {
             />
           )}
         </div>
-        <AtelierText data={data} align="left" />
+        <div className="px-6 py-10">
+          <AtelierText data={data} align="left" />
+        </div>
       </div>
 
       {/* Desktop: original side-by-side layout, image left / text right, text vertically centred against the image so there's no dead space below it. */}

@@ -46,6 +46,16 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
                   className="bg-img w-full h-full object-cover"
                 />
               )}
+              {p.images?.[1]?.url && (
+                // Desktop only: on hover, cross-fade to a second angle/shot.
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={p.images[1].url}
+                  alt={p.images[1].alt || p.name || ''}
+                  loading="lazy"
+                  className="hidden md:block absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                />
+              )}
               <WishlistButton
                 productId={p._id}
                 slug={p.slug?.current ?? ''}

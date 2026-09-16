@@ -200,6 +200,7 @@ export default function ShopGrid({
           const isReserved = p.status === 'reserved';
           const isBeaded = (p.productLine ?? 'beaded') === 'beaded';
           const img = p.images?.[0];
+          const hoverImg = p.images?.[1];
           return (
             <Link
               key={p._id}
@@ -215,6 +216,19 @@ export default function ShopGrid({
                     alt={img.alt || p.name || ''}
                     loading="lazy"
                     className={`bg-img w-full h-full object-cover transition-all duration-700 ${
+                      isSold ? 'grayscale opacity-70' : ''
+                    }`}
+                  />
+                )}
+                {hoverImg?.url && (
+                  // Desktop only: on hover, cross-fade to a second angle/shot
+                  // of the piece -- a quick preview without clicking in.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={hoverImg.url}
+                    alt={hoverImg.alt || p.name || ''}
+                    loading="lazy"
+                    className={`hidden md:block absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
                       isSold ? 'grayscale opacity-70' : ''
                     }`}
                   />

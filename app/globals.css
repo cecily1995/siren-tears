@@ -130,12 +130,33 @@ a, button {
   background: var(--color-ivory);
   z-index: 60;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   animation: veilOut 1.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.page-veil-mark {
+  font-size: clamp(1.05rem, 3vw, 1.4rem);
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--color-charcoal);
+  opacity: 0;
+  letter-spacing: 0.7em;
+  animation: veilMarkIn 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation-delay: 0.1s;
+}
+@keyframes veilMarkIn {
+  0% { opacity: 0; letter-spacing: 0.7em; }
+  100% { opacity: 1; letter-spacing: 0.32em; }
 }
 @keyframes veilOut {
   0%   { opacity: 1; }
   60%  { opacity: 1; }
   100% { opacity: 0; visibility: hidden; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-veil { animation-duration: 0.4s; }
+  .page-veil-mark { animation: none; opacity: 1; letter-spacing: 0.32em; }
 }
 
 /* Hover frame zoom */
