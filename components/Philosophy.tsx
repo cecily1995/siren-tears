@@ -1,3 +1,7 @@
+'use client';
+
+import { useState } from 'react';
+
 type PhilosophyData = {
   sectionLabel?: string;
   sectionTitle?: string;
@@ -6,6 +10,13 @@ type PhilosophyData = {
 };
 
 export default function Philosophy({ data }: { data: PhilosophyData }) {
+  // Not every browser can play every video container/codec (e.g. Chrome
+  // generally can't play .mov files the way Safari can) -- if the video
+  // fails to load or decode, fall back to the plain texture rather than
+  // showing nothing.
+  const [videoFailed, setVideoFailed] = useState(false);
+  const showVideo = Boolean(data.videoUrl) && !videoFailed;
+
   return (
     <section className="relative bg-pearl text-charcoal py-32 md:py-44 px-6 md:px-12 overflow-hidden">
       {/* Soft continuity from the ocean hero above: a dark-to-pearl bridge, not a hard cut. */}
@@ -15,7 +26,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(255,255,255,0) 100%)'
         }}
       />
-      {data.videoUrl ? (
+      {showVideo ? (
         <>
           {/* Background video, muted/looping/no controls -- purely
               atmospheric texture, not something the visitor interacts with. */}
@@ -26,6 +37,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
             muted
             loop
             playsInline
+            onError={() => setVideoFailed(true)}
           />
           {/* Keep the pearl wash on top so the video reads as a faint
               texture, same visual weight as the static image it replaces. */}
