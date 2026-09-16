@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { createClient } from 'next-sanity';
 import Stripe from 'stripe';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
+import { sendEmail } from '@/lib/email';
+import { orderConfirmationEmail } from '@/lib/orderEmail';
 
 export const runtime = 'nodejs';
 
@@ -152,6 +154,44 @@ export async function POST(request: Request) {
         paidAt: new Date().toISOString()
       })
       .commit();
+
+    // Order confirmation email. Never let an email failure affect the
+    // webhook's own success response -- the order is already correctly
+    // marked paid regardless of whether the email sends.
+    try {
+      const fullOrder = await client.fetch<{
+        orderNumber?: string;
+        name?: string;
+        email?: string;
+        items?: { productName?: string; price?: number }[];
+        shippingMethod?: string;
+        shippingCost?: number;
+        deliveryFirstName?: string;
+        deliveryLastName?: string;
+        deliveryAddress?: string;
+        deliveryCity?: string;
+        deliveryRegion?: string;
+        deliveryPostalCode?: string;
+        country?: string;
+      } | null>(
+        `*[_id == $id][0]{
+          orderNumber, name, email,
+          items[]{ productName, price },
+          shippingMethod, shippingCost,
+          deliveryFirstName, deliveryLastName, deliveryAddress, deliveryCity, deliveryRegion, deliveryPostalCode, country
+        }`,
+        { id: purchaseRequestId }
+      );
+      if (fullOrder?.email) {
+        const { subject, html } = orderConfirmationEmail(fullOrder);
+        const result = await sendEmail({ to: fullOrder.email, subject, html });
+        if (!result.ok) {
+          console.error('Order confirmation email failed to send', purchaseRequestId, result.error);
+        }
+      }
+    } catch (emailErr) {
+      console.error('Order confirmation email step failed', purchaseRequestId, emailErr);
+    }
 
     return NextResponse.json({ ok: true, purchaseRequestId, markedSold: productIds });
   } catch (err) {
