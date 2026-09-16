@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
 
@@ -12,69 +15,170 @@ type Product = {
 
 type Labels = { eyebrow: string; title: string; intro?: string; oneOfOne: string; cta: string };
 
+const AUTO_ADVANCE_MS = 2600;
+
 export default function AotearoaTeaser({ items, labels }: { items: Product[]; labels: Labels }) {
-  if (!items.length) return null;
+  const slides = items.slice(0, 8);
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    if (slides.length < 2 || paused) return;
+    timerRef.current = setInterval(() => {
+      setActive((i) => (i + 1) % slides.length);
+    }, AUTO_ADVANCE_MS);
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
+  }, [slides.length, paused]);
+
+  if (!slides.length) return null;
+
+  // Shortest circular distance from the active slide, so the carousel
+  // always wraps the "short way round" rather than spinning through
+  // every item to get back to the start.
+  function offsetOf(i: number) {
+    const n = slides.length;
+    let raw = i - active;
+    if (raw > n / 2) raw -= n;
+    if (raw < -n / 2) raw += n;
+    return raw;
+  }
 
   return (
     <section className="bg-pearl py-14 md:py-20 overflow-hidden">
-      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-left md:text-center mb-8 md:mb-12 reveal">
-        <p className="eyebrow mb-5">{labels.eyebrow}</p>
-        <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
-          {labels.title}
-        </h2>
-        {labels.intro && (
-          <p className="mt-5 max-w-md mx-auto text-[0.95rem] text-ash font-light">{labels.intro}</p>
-        )}
-      </div>
-
-      {/* Mobile: horizontal swipe. Desktop: normal grid. */}
-      <div className="flex md:grid md:grid-cols-4 gap-5 md:gap-8 overflow-x-auto md:overflow-visible px-6 md:px-12 pb-2 snap-x snap-mandatory no-scrollbar">
-        {items.slice(0, 8).map((p, i) => (
-          <Link
-            key={p._id}
-            href={`/shop/${p.slug?.current ?? ''}`}
-            className="reveal group shrink-0 w-[58vw] sm:w-[36vw] md:w-auto snap-start"
-            style={{ transitionDelay: `${(i % 4) * 100}ms` }}
-          >
-            <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/5 frame-zoom">
-              {p.images?.[0]?.url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={p.images[0].url}
-                  alt={p.images[0].alt || p.name || ''}
-                  loading="lazy"
-                  className="bg-img w-full h-full object-cover"
-                />
-              )}
-              {p.images?.[1]?.url && (
-                // Desktop only: on hover, cross-fade to a second angle/shot.
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={p.images[1].url}
-                  alt={p.images[1].alt || p.name || ''}
-                  loading="lazy"
-                  className="hidden md:block absolute inset-0 w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                />
-              )}
-              <WishlistButton
-                productId={p._id}
-                slug={p.slug?.current ?? ''}
-                name={p.name ?? ''}
-                price={p.price}
-                imageUrl={p.images?.[0]?.url}
-              />
-            </div>
-          </Link>
-        ))}
-      </div>
-
-      <div className="mt-8 md:mt-12 text-center reveal">
+      {/* Full-bleed banner: photo with title/intro/CTA overlaid. The photo,
+          the AOTEAROA wordmark, and "View All" are all separate links to
+          the same destination -- three ways in, one place they go. */}
+      <div className="relative mx-auto max-w-[1480px] px-6 md:px-12 mb-10 md:mb-16 reveal">
         <Link
           href="/shop?line=aotearoa"
-          className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
+          className="relative block aspect-[3/4] sm:aspect-[4/3] md:aspect-[16/10] overflow-hidden bg-charcoal/5 group"
         >
-          {labels.cta}
+          <img
+            src="/images/aotearoa-banner.jpg"
+            alt="Aotearoa gemstone jewellery, worn by the sea"
+            className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
+          />
+          <div
+            className="absolute inset-0"
+            style={{ background: 'linear-gradient(180deg, rgba(20,24,26,0.32) 0%, rgba(20,24,26,0.05) 45%, rgba(20,24,26,0.1) 100%)' }}
+          />
+          <div
+            className="absolute inset-0 flex flex-col justify-start px-6 py-8 md:px-14 md:py-14 text-ivory"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+          >
+            <span className="serif-display font-light uppercase tracking-[0.06em] text-[1.8rem] md:text-[clamp(2.4rem,4.2vw,4rem)] leading-none mb-3 md:mb-5">
+              {labels.eyebrow}
+            </span>
+            <span className="text-[0.95rem] md:text-[1.2rem] font-light leading-[1.5] max-w-[420px]">
+              {labels.title}
+            </span>
+            {labels.intro && (
+              <span className="mt-1 text-[0.95rem] md:text-[1.2rem] font-light leading-[1.5] max-w-[420px]">
+                {labels.intro}
+              </span>
+            )}
+          </div>
+          <span
+            className="absolute bottom-6 left-6 md:bottom-10 md:left-14 text-[11px] tracking-[0.32em] uppercase text-ivory link-underline"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+          >
+            {labels.cta}
+          </span>
         </Link>
+      </div>
+
+      {/* 3D coverflow carousel -- the active piece sits centered and large;
+          neighbours recede into perspective on either side. Advances
+          automatically, slowly, on a loop; paused while a visitor is
+          actually interacting with it. */}
+      <div
+        className="relative mx-auto max-w-[1480px] px-6"
+        style={{ perspective: '1400px' }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={() => setPaused(true)}
+      >
+        <div className="relative h-[62vw] max-h-[560px] sm:h-[46vw] md:h-[380px] lg:h-[420px]">
+          {slides.map((p, i) => {
+            const offset = offsetOf(i);
+            const abs = Math.abs(offset);
+            if (abs > 2) return null;
+
+            const translateX = offset * 46;
+            const scale = abs === 0 ? 1 : abs === 1 ? 0.74 : 0.54;
+            const rotateY = abs === 0 ? 0 : offset > 0 ? -32 : 32;
+            const opacity = abs === 0 ? 1 : abs === 1 ? 0.55 : 0.22;
+            const zIndex = 10 - abs;
+
+            return (
+              <button
+                key={p._id}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={p.name || 'Product'}
+                className="absolute top-0 left-1/2 w-[52%] sm:w-[38%] md:w-[30%] h-full transition-all duration-[1100ms]"
+                style={{
+                  transform: `translateX(-50%) translateX(${translateX}%) scale(${scale}) rotateY(${rotateY}deg)`,
+                  opacity,
+                  zIndex,
+                  transitionTimingFunction: 'cubic-bezier(0.22, 1, 0.36, 1)'
+                }}
+              >
+                {abs === 0 ? (
+                  <Link
+                    href={`/shop/${p.slug?.current ?? ''}`}
+                    className="relative block w-full h-full overflow-hidden bg-charcoal/5 shadow-[0_20px_50px_rgba(0,0,0,0.18)]"
+                  >
+                    {p.images?.[0]?.url && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={p.images[0].url}
+                        alt={p.images[0].alt || p.name || ''}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                    <WishlistButton
+                      productId={p._id}
+                      slug={p.slug?.current ?? ''}
+                      name={p.name ?? ''}
+                      price={p.price}
+                      imageUrl={p.images?.[0]?.url}
+                    />
+                  </Link>
+                ) : (
+                  <div className="relative w-full h-full overflow-hidden bg-charcoal/5">
+                    {p.images?.[0]?.url && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={p.images[0].url}
+                        alt={p.images[0].alt || p.name || ''}
+                        className="w-full h-full object-cover"
+                      />
+                    )}
+                  </div>
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Quiet position dots -- editorial, not a loud slider UI. */}
+        <div className="mt-6 md:mt-8 flex items-center justify-center gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setActive(i)}
+              className={`h-[3px] rounded-full transition-all duration-500 ${
+                i === active ? 'w-6 bg-charcoal' : 'w-[3px] bg-charcoal/25'
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
