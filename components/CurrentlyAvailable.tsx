@@ -50,11 +50,6 @@ export default function CurrentlyAvailable({
                     className="bg-img w-full h-full object-cover"
                   />
                 )}
-                {/* Fixed to the image (not the flowing text below) so its
-                    position never shifts with product name length. */}
-                <span className="absolute top-3 left-3 bg-ivory/90 text-gold text-[9px] tracking-[0.22em] uppercase px-2.5 py-1 font-light">
-                  {labels.oneOfOne}
-                </span>
                 <WishlistButton
                   productId={p._id}
                   slug={p.slug?.current ?? ''}
@@ -63,11 +58,18 @@ export default function CurrentlyAvailable({
                   imageUrl={p.images?.[0]?.url}
                 />
               </div>
-              <div className="mt-4">
-                <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light min-h-[1.1em]">
-                  {p.collectionTitle || ''}
+              <div className="mt-3">
+                {/* Plain text, no chip/border, below the image -- own row so
+                    its position never depends on product name length. */}
+                <p className="text-[9px] tracking-[0.22em] uppercase text-gold font-light mb-1.5">
+                  {labels.oneOfOne}
                 </p>
-                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2 min-h-[2.5rem]">
+                {p.collectionTitle && (
+                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
+                    {p.collectionTitle}
+                  </p>
+                )}
+                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight h-[2.5rem] overflow-hidden">
                   {p.name}
                 </h3>
                 <div className="mt-2">

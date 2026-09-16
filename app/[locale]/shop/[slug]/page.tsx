@@ -102,6 +102,7 @@ export default async function ShopProductPage({
                 price={product.price}
                 imageUrl={product.images?.[0]?.url}
                 className="shrink-0 mt-2 w-9 h-9 flex items-center justify-center border border-charcoal/15 hover:border-charcoal/40 transition-colors"
+                iconClassName="text-charcoal/70"
               />
             </div>
             {translated.stone && (

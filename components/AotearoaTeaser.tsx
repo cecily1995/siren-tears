@@ -46,11 +46,6 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
                   className="bg-img w-full h-full object-cover"
                 />
               )}
-              {/* Fixed to the image (not the flowing text below) so its
-                  position never shifts with product name/stone length. */}
-              <span className="absolute top-3 left-3 bg-ivory/90 text-gold text-[9px] tracking-[0.22em] uppercase px-2.5 py-1 font-light">
-                {labels.oneOfOne}
-              </span>
               <WishlistButton
                 productId={p._id}
                 slug={p.slug?.current ?? ''}
@@ -59,11 +54,14 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
                 imageUrl={p.images?.[0]?.url}
               />
             </div>
-            <div className="mt-4">
-              <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2 min-h-[2.5rem]">
+            <div className="mt-3">
+              {/* No "One of One" here -- per the brief, that label is only
+                  for the Beaded Collections line, not Aotearoa gemstone
+                  pieces. Stone line is also dropped here (matches the shop
+                  grid) -- it only needs to appear on the product's own page. */}
+              <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight h-[2.5rem] overflow-hidden">
                 {p.name}
               </h3>
-              <p className="text-[0.8rem] text-ash font-light mt-1 min-h-[1.2em]">{p.stone || ''}</p>
               <div className="mt-2">
                 <span className="text-[0.88rem] text-charcoal font-light">
                   {typeof p.price === 'number' ? `NZD $${p.price}` : ''}

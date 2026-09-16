@@ -198,6 +198,7 @@ export default function ShopGrid({
         {filtered.map((p, i) => {
           const isSold = p.status === 'sold';
           const isReserved = p.status === 'reserved';
+          const isBeaded = (p.productLine ?? 'beaded') === 'beaded';
           const img = p.images?.[0];
           return (
             <Link
@@ -218,18 +219,6 @@ export default function ShopGrid({
                     }`}
                   />
                 )}
-                {/* One badge slot, top-left of the image -- status label if
-                    sold/reserved, otherwise "One of One". Never both, so
-                    they can safely share the same fixed position instead of
-                    living in the flowing text below (where it used to shift
-                    depending on product name length). */}
-                <span className="absolute top-3 left-3 bg-ivory/95 text-[10px] tracking-[0.24em] uppercase px-3 py-1.5 font-light">
-                  {isSold || isReserved ? (
-                    <span className="text-charcoal">{isSold ? labels.status.sold : labels.status.reserved}</span>
-                  ) : (
-                    <span className="text-gold">{labels.oneOfOne}</span>
-                  )}
-                </span>
                 <WishlistButton
                   productId={p._id}
                   slug={p.slug?.current ?? ''}
@@ -243,14 +232,27 @@ export default function ShopGrid({
                   </span>
                 </div>
               </div>
-              <div className="mt-4">
-                <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light min-h-[1.1em]">
-                  {p.collectionTitle || ''}
+              <div className="mt-3">
+                {/* Plain text, no chip/border -- and now below the image
+                    (not overlapping it), in its own row so its position
+                    never depends on product name length. "One of One" is
+                    Beaded Collections only, per the brief -- Aotearoa
+                    gemstone pieces never show it. */}
+                <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5 h-[1.3em]">
+                  {isSold || isReserved ? (
+                    <span className="text-ash/70">{isSold ? labels.status.sold : labels.status.reserved}</span>
+                  ) : isBeaded ? (
+                    <span className="text-gold">{labels.oneOfOne}</span>
+                  ) : null}
                 </p>
-                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2 min-h-[2.6rem]">
+                {p.collectionTitle && (
+                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
+                    {p.collectionTitle}
+                  </p>
+                )}
+                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight h-[2.6rem] overflow-hidden">
                   {p.name}
                 </h3>
-                <p className="text-[0.82rem] text-ash font-light mt-1 min-h-[1.2em]">{p.stone || ''}</p>
                 <div className="mt-2">
                   <span className="text-[0.9rem] text-charcoal font-light">
                     {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
