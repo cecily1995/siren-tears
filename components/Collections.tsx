@@ -20,10 +20,10 @@ type Labels = {
 };
 
 const cellClass = (scale: string | undefined, i: number) => {
-  // Mobile: every tile is a plain full-bleed square-ish frame, stacked with
-  // no gap so images touch edge-to-edge. Desktop keeps the editorial
-  // "one wide + two narrow per row" rhythm.
-  return `aspect-square ${i % 3 === 0 ? 'md:col-span-6 md:aspect-[16/11]' : 'md:col-span-3 md:aspect-[3/4]'}`;
+  // Portrait 3:4 on mobile (was a full-bleed square) to match the rest of
+  // the site's product photography aspect ratio. Desktop keeps the
+  // editorial "one wide + two narrow per row" rhythm.
+  return `aspect-[3/4] ${i % 3 === 0 ? 'md:col-span-6 md:aspect-[16/11]' : 'md:col-span-3 md:aspect-[3/4]'}`;
 };
 
 export default function Collections({

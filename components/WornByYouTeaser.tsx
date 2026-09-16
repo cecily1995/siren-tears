@@ -18,15 +18,14 @@ export default function WornByYouTeaser({ items, labels }: { items: Item[]; labe
   const covers = items.filter((i) => i.images?.[0]?.url).slice(0, 8);
 
   return (
-    <section className="bg-pearl pt-14 pb-20 md:pt-20 md:pb-16 overflow-hidden">
-      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-center mb-10 md:mb-12 reveal">
-        <p className="eyebrow mb-5">{labels.eyebrow}</p>
+    <section className="bg-pearl pt-8 pb-20 md:pt-12 md:pb-16 overflow-hidden">
+      <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-center mb-8 md:mb-10 reveal">
         <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
           {labels.title}
         </h2>
-        <p className="mt-5 text-[0.95rem] text-ash font-light">{labels.subtitle}</p>
+        <p className="mt-4 text-[0.95rem] text-ash font-light">{labels.subtitle}</p>
 
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-8">
+        <div className="mt-6 flex items-center justify-between">
           <Link
             href="/worn-by-you"
             className="text-[11px] tracking-[0.32em] uppercase text-charcoal link-underline"
