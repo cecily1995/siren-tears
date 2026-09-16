@@ -317,7 +317,7 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
-                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-snug line-clamp-2 min-h-[2.9rem]">
+                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-snug h-[2.95rem] overflow-hidden">
                   {p.name}
                 </h3>
                 <div className="mt-2 flex items-baseline justify-between">
