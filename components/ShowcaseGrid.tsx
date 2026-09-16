@@ -84,7 +84,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
 
   return (
     <>
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-5 md:gap-6 [column-fill:_balance]">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 md:gap-6">
         {items.map((p, i) => {
           const cover = p.images?.[0];
           return (
@@ -92,17 +92,19 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
               key={p._id ?? i}
               type="button"
               onClick={() => open(i)}
-              className="reveal mb-5 md:mb-6 break-inside-avoid overflow-hidden bg-charcoal/5 frame-zoom relative block w-full text-left"
+              className="reveal overflow-hidden bg-charcoal/5 frame-zoom relative block w-full text-left"
               style={{ transitionDelay: `${(i % 8) * 90}ms` }}
             >
-              {cover?.url && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={cover.url}
-                  alt={cover.alt || p.caption || 'Siren Tears, as worn'}
-                  className="bg-img w-full h-auto block min-h-[120px]"
-                />
-              )}
+              <div className="relative aspect-[3/4] overflow-hidden bg-charcoal/5">
+                {cover?.url && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={cover.url}
+                    alt={cover.alt || p.caption || 'Siren Tears, as worn'}
+                    className="bg-img absolute inset-0 w-full h-full object-cover"
+                  />
+                )}
+              </div>
               {p.customerHandle && (
                 <p className="px-4 py-3 text-[0.8rem] tracking-[0.08em] text-gold font-light">
                   {p.customerHandle}
@@ -128,7 +130,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute top-5 right-5 md:top-8 md:right-8 w-9 h-9 flex items-center justify-center text-ivory z-10"
+            className="absolute top-5 right-5 md:top-8 md:right-8 w-9 h-9 flex items-center justify-center text-ivory bg-charcoal/70 rounded-full z-20"
           >
             <svg width="20" height="20" viewBox="0 0 18 18" fill="none" aria-hidden="true">
               <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
