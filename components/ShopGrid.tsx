@@ -259,18 +259,18 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
-                {isBeaded && !isSold && !isReserved && (
-                  <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5 text-gold">
-                    {labels.oneOfOne}
-                  </p>
-                )}
                 <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2">
                   {p.name}
                 </h3>
-                <div className="mt-2">
+                <div className="mt-2 flex items-baseline justify-between">
                   <span className="text-[0.9rem] text-charcoal font-light">
                     {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
                   </span>
+                  {isBeaded && !isSold && !isReserved && (
+                    <span className="text-[7px] tracking-[0.18em] uppercase font-light text-gold shrink-0 ml-2">
+                      {labels.oneOfOne}
+                    </span>
+                  )}
                 </div>
               </div>
             </Link>
