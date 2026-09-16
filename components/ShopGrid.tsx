@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
 
@@ -34,6 +34,8 @@ type Labels = {
   status: { sold: string; reserved: string; bespoke: string };
   oneOfOne: string;
   viewPiece: string;
+  lineFilterLabel: string;
+  categoryFilterLabel: string;
 };
 
 type Line = 'all' | 'beaded' | 'aotearoa';
@@ -57,6 +59,80 @@ const AOTEAROA_CATEGORY_FILTERS = [
   { key: 'bangles', category: 'bangle' },
   { key: 'earrings', category: 'earring' }
 ] as const;
+
+// Fixed-label dropdown: the button always shows the same short word ("Line",
+// "Category"), never the selected value -- so it can never be pushed wide or
+// truncated by a long collection name. Opening it reveals every option in
+// full, with the current pick marked in gold.
+function FilterDropdown({
+  label,
+  value,
+  options,
+  onChange
+}: {
+  label: string;
+  value: string;
+  options: { key: string; label: string }[];
+  onChange: (key: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className="w-full flex items-center justify-between border border-charcoal/20 bg-ivory px-4 py-3 text-[11px] tracking-[0.16em] uppercase text-charcoal"
+      >
+        <span>{label}</span>
+        <svg
+          width="9"
+          height="9"
+          viewBox="0 0 12 12"
+          className={`shrink-0 ml-2 transition-transform duration-300 ${open ? 'rotate-180' : ''}`}
+        >
+          <path
+            d="M2 4L6 8L10 4"
+            stroke="currentColor"
+            strokeWidth="1"
+            fill="none"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </button>
+      {open && (
+        <div className="absolute z-20 top-full left-0 right-0 mt-1 bg-ivory border border-charcoal/20 max-h-64 overflow-y-auto shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+          {options.map((opt) => (
+            <button
+              key={opt.key}
+              type="button"
+              onClick={() => {
+                onChange(opt.key);
+                setOpen(false);
+              }}
+              className={`block w-full text-left px-4 py-2.5 text-[11px] tracking-[0.1em] uppercase transition-colors hover:bg-pearl ${
+                opt.key === value ? 'text-gold' : 'text-charcoal/80 font-light'
+              }`}
+            >
+              {opt.label}
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function ShopGrid({
   products,
@@ -158,40 +234,22 @@ export default function ShopGrid({
         </div>
       </div>
 
-      {/* Mobile: tap-to-open dropdown menus, one for line, one for sub-filter */}
+      {/* Mobile: tap-to-open dropdown menus, one for line, one for sub-filter.
+          Button label is always fixed text, never the selected value, so a
+          long collection name can never truncate or widen it. */}
       <div className="md:hidden mb-10 reveal grid grid-cols-2 gap-3">
-        <div className="relative">
-          <select
-            value={line}
-            onChange={(e) => changeLine(e.target.value as Line)}
-            className="w-full appearance-none border border-charcoal/20 bg-ivory px-4 py-3 text-[11px] tracking-[0.16em] uppercase text-charcoal"
-          >
-            {LINES.map((l) => (
-              <option key={l} value={l}>
-                {labels.lineFilters[l]}
-              </option>
-            ))}
-          </select>
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ash text-[10px]">
-            ▾
-          </span>
-        </div>
-        <div className="relative">
-          <select
-            value={subFilter}
-            onChange={(e) => setSubFilter(e.target.value)}
-            className="w-full appearance-none border border-charcoal/20 bg-ivory px-4 py-3 text-[11px] tracking-[0.16em] uppercase text-charcoal"
-          >
-            {subOptions.map((opt) => (
-              <option key={opt.key} value={opt.key}>
-                {opt.label}
-              </option>
-            ))}
-          </select>
-          <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-ash text-[10px]">
-            ▾
-          </span>
-        </div>
+        <FilterDropdown
+          label={labels.lineFilterLabel}
+          value={line}
+          options={LINES.map((l) => ({ key: l, label: labels.lineFilters[l] }))}
+          onChange={(key) => changeLine(key as Line)}
+        />
+        <FilterDropdown
+          label={labels.categoryFilterLabel}
+          value={subFilter}
+          options={subOptions}
+          onChange={setSubFilter}
+        />
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">

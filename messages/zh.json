@@ -346,7 +346,9 @@
     "materialsCareTitle": "材质与保养",
     "packagingTitle": "包装",
     "soldNote": "这件作品已经找到新主人,不会再复刻。欢迎去商店看看其他在售的作品。",
-    "reservedNote": "这件作品目前已被其他客人预订。可以联系我们,如果它重新可售会第一时间通知你。"
+    "reservedNote": "这件作品目前已被其他客人预订。可以联系我们,如果它重新可售会第一时间通知你。",
+    "lineFilterLabel": "系列",
+    "categoryFilterLabel": "分类"
   },
   "membership": {
     "eyebrow": "会员",

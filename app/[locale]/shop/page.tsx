@@ -68,7 +68,9 @@ export default async function ShopPage({
       bespoke: t('status.bespoke')
     },
     oneOfOne: t('oneOfOne'),
-    viewPiece: t('viewPiece')
+    viewPiece: t('viewPiece'),
+    lineFilterLabel: t('lineFilterLabel'),
+    categoryFilterLabel: t('categoryFilterLabel')
   };
 
   return (

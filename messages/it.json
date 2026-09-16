@@ -346,7 +346,9 @@
     "materialsCareTitle": "Materiali e cura",
     "packagingTitle": "Confezione",
     "soldNote": "Questo pezzo ha trovato casa e non verrà ricreato. Scopri altri pezzi disponibili nel Negozio.",
-    "reservedNote": "Questo pezzo è attualmente riservato per un altro cliente. Contattaci per essere avvisato se torna disponibile."
+    "reservedNote": "Questo pezzo è attualmente riservato per un altro cliente. Contattaci per essere avvisato se torna disponibile.",
+    "lineFilterLabel": "Linea",
+    "categoryFilterLabel": "Categoria"
   },
   "membership": {
     "eyebrow": "Membership",

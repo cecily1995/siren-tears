@@ -346,7 +346,9 @@
     "materialsCareTitle": "Matières & Entretien",
     "packagingTitle": "Emballage",
     "soldNote": "Cette pièce a trouvé son foyer et ne sera pas recréée. Découvrez d'autres pièces disponibles dans la Boutique.",
-    "reservedNote": "Cette pièce est actuellement réservée pour un autre client. Contactez-nous pour être averti si elle redevient disponible."
+    "reservedNote": "Cette pièce est actuellement réservée pour un autre client. Contactez-nous pour être averti si elle redevient disponible.",
+    "lineFilterLabel": "Ligne",
+    "categoryFilterLabel": "Catégorie"
   },
   "membership": {
     "eyebrow": "Adhésion",
