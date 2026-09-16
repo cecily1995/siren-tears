@@ -98,6 +98,7 @@ export default async function HomePage({
   const currentlyAvailableLabels = {
     eyebrow: t('currentlyAvailable.eyebrow'),
     title: t('currentlyAvailable.title'),
+    subtitle: t('currentlyAvailable.subtitle'),
     oneOfOne: t('shop.oneOfOne'),
     cta: t('currentlyAvailable.cta')
   };

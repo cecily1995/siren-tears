@@ -11,7 +11,7 @@ type Product = {
   images?: { url?: string; alt?: string }[];
 };
 
-type Labels = { eyebrow: string; title: string; oneOfOne: string; cta: string };
+type Labels = { eyebrow: string; title: string; subtitle?: string; oneOfOne: string; cta: string };
 
 export default function CurrentlyAvailable({
   items,
@@ -25,13 +25,18 @@ export default function CurrentlyAvailable({
   return (
     <section className="bg-pearl py-14 md:py-20 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
+        {/* Exactly two lines: the series name, then one short line of copy.
+            Nothing else stacked above/below -- no separate eyebrow or
+            "One of One" tag, since that's folded into the second line. */}
         <div className="text-left md:text-center mb-8 md:mb-12 reveal">
-          <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15]">
+          <h2 className="serif-display uppercase tracking-[0.04em] text-[clamp(1.6rem,4vw,2.8rem)] font-light leading-[1.15] text-charcoal">
             {labels.eyebrow}
           </h2>
-          <p className="mt-4 text-[9px] tracking-[0.22em] uppercase text-gold font-light">
-            {labels.oneOfOne}
-          </p>
+          {labels.subtitle && (
+            <p className="mt-3 md:mt-4 text-[0.85rem] md:text-[1rem] text-ash font-light">
+              {labels.subtitle}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5 md:gap-8">
