@@ -438,9 +438,9 @@
     "tierPrivate": "Private Client",
     "joinedLabel": "Участник с",
     "myBespokeTitle": "Мои запросы на индивидуальный заказ",
-    "myPurchasesTitle": "Мои запросы на покупку",
+    "myPurchasesTitle": "Мои заказы",
     "noBespoke": "Вы ещё не отправляли запрос на индивидуальный заказ.",
-    "noPurchases": "Вы ещё не отправляли запрос на покупку.",
+    "noPurchases": "Вы еще не сделали заказ.",
     "trackingLabel": "Номер отслеживания",
     "notShippedYet": "Ещё не отправлено",
     "forgotLink": "Забыли код участника?",
@@ -506,7 +506,11 @@
     "resetCodeLabel": "Код сброса",
     "viewRequest": "Посмотреть заявку",
     "shippingMethodLabel": "Доставка",
-    "freeShippingLabel": "Бесплатно"
+    "freeShippingLabel": "Бесплатно",
+    "recipientLabel": "Получатель",
+    "phoneLabel": "Телефон",
+    "addressLabel": "Адрес доставки",
+    "itemCountLabel": "Товары"
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",
@@ -672,5 +676,16 @@
     "membershipPromoTitle": "Вступить в Siren Circle",
     "membershipPromoBody": "Участники получают бесплатную доставку при заказе от $400, а при вступлении сегодня — подарочный мешочек к заказу.",
     "continueWithoutMembershipCta": "Продолжить без вступления"
+  },
+  "contactPage": {
+    "eyebrow": "Связаться с нами",
+    "title": "Связаться с нами",
+    "intro": "Нажмите Chat в углу, чтобы поговорить с нами напрямую, или свяжитесь с нами любым из способов ниже.",
+    "email": "Эл. почта",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "xiaohongshu": "Xiaohongshu",
+    "douyin": "Douyin"
   }
 }

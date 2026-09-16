@@ -48,7 +48,7 @@ export default function WornByYouTeaser({ items, labels }: { items: Item[]; labe
           {covers.map((item, i) => (
             <Link
               key={item._id ?? i}
-              href="/worn-by-you"
+              href={`/worn-by-you?open=${encodeURIComponent(item._id)}`}
               className="reveal group shrink-0 w-[62vw] sm:w-[38vw] md:w-[24vw] lg:w-[18vw] snap-start"
               style={{ transitionDelay: `${(i % 6) * 90}ms` }}
             >

@@ -240,17 +240,16 @@ export default function ShopGrid({
                   price={p.price}
                   imageUrl={img?.url}
                 />
-                {/* Status/one-of-one label lives on the image itself now --
-                    plain text with a soft shadow for legibility, no
-                    background chip or border -- so it never affects the
-                    text block below, and price always lines up regardless
-                    of whether a product has a label here or not. */}
-                {(isSold || isReserved || isBeaded) && (
+                {/* Only SOLD/RESERVED lives on the image -- plain text with
+                    a soft shadow, no chip/border. "One of One" stays below
+                    the image, in the text block (per the brief, this one
+                    specifically should NOT move onto the photo). */}
+                {(isSold || isReserved) && (
                   <span
                     className="absolute bottom-3 right-3 z-10 text-[9px] tracking-[0.22em] uppercase font-light text-ivory"
                     style={{ textShadow: '0 1px 4px rgba(0,0,0,0.55)' }}
                   >
-                    {isSold ? labels.status.sold : isReserved ? labels.status.reserved : labels.oneOfOne}
+                    {isSold ? labels.status.sold : labels.status.reserved}
                   </span>
                 )}
                 <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-ivory/90 to-transparent">
@@ -260,6 +259,11 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
+                {isBeaded && !isSold && !isReserved && (
+                  <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5 text-gold">
+                    {labels.oneOfOne}
+                  </p>
+                )}
                 <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2">
                   {p.name}
                 </h3>

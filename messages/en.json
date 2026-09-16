@@ -438,9 +438,9 @@
     "tierPrivate": "Private Client",
     "joinedLabel": "Member since",
     "myBespokeTitle": "My Bespoke Requests",
-    "myPurchasesTitle": "My Purchase Requests",
+    "myPurchasesTitle": "My Orders",
     "noBespoke": "You haven't submitted a bespoke request yet.",
-    "noPurchases": "You haven't submitted a purchase request yet.",
+    "noPurchases": "You haven't placed an order yet.",
     "trackingLabel": "Tracking number",
     "notShippedYet": "Not yet shipped",
     "forgotLink": "Forgot your member code?",
@@ -506,7 +506,11 @@
     "resetCodeLabel": "Reset code",
     "viewRequest": "View request",
     "shippingMethodLabel": "Shipping",
-    "freeShippingLabel": "Free"
+    "freeShippingLabel": "Free",
+    "recipientLabel": "Recipient",
+    "phoneLabel": "Phone",
+    "addressLabel": "Delivery address",
+    "itemCountLabel": "Items"
   },
   "wornByYouTeaser": {
     "eyebrow": "Worn By You",
@@ -672,5 +676,16 @@
     "membershipPromoTitle": "Join the Siren Circle",
     "membershipPromoBody": "Members enjoy free shipping on orders over $400, and every order comes with a complimentary pouch when you join today.",
     "continueWithoutMembershipCta": "Continue without joining"
+  },
+  "contactPage": {
+    "eyebrow": "Enquire",
+    "title": "Get in touch",
+    "intro": "Click Chat in the corner to talk with us directly, or reach us through any of the ways below.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "xiaohongshu": "Xiaohongshu",
+    "douyin": "Douyin"
   }
 }

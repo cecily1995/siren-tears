@@ -438,9 +438,9 @@
     "tierPrivate": "Private Client",
     "joinedLabel": "加入时间",
     "myBespokeTitle": "我的定制申请",
-    "myPurchasesTitle": "我的购买申请",
+    "myPurchasesTitle": "我的订单",
     "noBespoke": "你还没有提交过定制申请。",
-    "noPurchases": "你还没有提交过购买申请。",
+    "noPurchases": "你还没有下过订单。",
     "trackingLabel": "物流单号",
     "notShippedYet": "尚未发货",
     "forgotLink": "忘记会员码了?",
@@ -506,7 +506,11 @@
     "resetCodeLabel": "验证码",
     "viewRequest": "查看申请详情",
     "shippingMethodLabel": "配送方式",
-    "freeShippingLabel": "免费"
+    "freeShippingLabel": "免费",
+    "recipientLabel": "收件人",
+    "phoneLabel": "电话",
+    "addressLabel": "收货地址",
+    "itemCountLabel": "商品数量"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",
@@ -672,5 +676,16 @@
     "membershipPromoTitle": "加入 Siren Circle 会员",
     "membershipPromoBody": "会员满$400即可享受包邮,今天加入还能获得一个赠送的收纳包。",
     "continueWithoutMembershipCta": "暂不加入,继续付款"
+  },
+  "contactPage": {
+    "eyebrow": "咨询",
+    "title": "联系我们",
+    "intro": "可以点击左下角的Chat图标直接与我们对话,也可以通过以下任意方式联系我们。",
+    "email": "邮箱",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "xiaohongshu": "小红书",
+    "douyin": "抖音"
   }
 }

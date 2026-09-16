@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Suspense } from 'react';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBuyerShowcase, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
@@ -37,6 +38,7 @@ export default async function GalleryPage({
       <PageHeader
         eyebrow={t('eyebrow')}
         title={t('title')}
+        titleClassName="serif-display text-[1.15rem] md:text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12] text-charcoal"
         imageUrl="https://images.unsplash.com/photo-1767131636996-ae27286d36fb?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Calm ocean water meeting a quiet rocky coastline"
       >
@@ -61,7 +63,9 @@ export default async function GalleryPage({
       <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
-            <ShowcaseGrid items={items} />
+            <Suspense fallback={null}>
+              <ShowcaseGrid items={items} />
+            </Suspense>
           ) : (
             <div className="max-w-lg mx-auto text-center py-16 reveal">
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">

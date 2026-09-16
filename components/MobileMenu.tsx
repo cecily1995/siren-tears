@@ -65,11 +65,15 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
   }, []);
 
   useEffect(() => {
+    // Re-check every time the menu opens (not just once on first mount) --
+    // otherwise logging in or completing a purchase in the same session
+    // wouldn't be reflected here until a full page reload.
+    if (!open) return;
     fetch('/api/auth/me')
       .then((r) => r.json())
       .then((data) => setMember(data?.member ?? null))
       .catch(() => setMember(null));
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -231,7 +235,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
 
         <div className="mt-8 flex flex-col gap-4">
           <Link
-            href="/#contact"
+            href="/contact"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"
           >

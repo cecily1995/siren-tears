@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 type ShowcaseItem = {
   _id: string;
@@ -24,8 +25,23 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
+  const searchParams = useSearchParams();
 
   const active = activeIndex !== null ? items[activeIndex] : null;
+
+  // Deep-link support: the homepage teaser links here with ?open=<id> so
+  // clicking a photo there opens straight to that submission's own detail,
+  // rather than just landing on the top of the full gallery.
+  useEffect(() => {
+    const openId = searchParams.get('open');
+    if (!openId) return;
+    const i = items.findIndex((item) => item._id === openId);
+    if (i >= 0) {
+      setActiveIndex(i);
+      setPhotoIndex(0);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   useEffect(() => {
     if (active === null) return;
@@ -84,8 +100,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
                 <img
                   src={cover.url}
                   alt={cover.alt || p.caption || 'Siren Tears, as worn'}
-                  className="bg-img w-full h-auto block"
-                  loading="lazy"
+                  className="bg-img w-full h-auto block min-h-[120px]"
                 />
               )}
               {p.customerHandle && (
@@ -120,7 +135,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
             </svg>
           </button>
 
-          <div className="relative z-[1] w-full max-w-[900px] max-h-[88vh] overflow-y-auto bg-ivory">
+          <div className="relative z-[1] w-full max-w-[900px] max-h-[88dvh] overflow-y-auto bg-ivory">
             <div
               className="relative bg-charcoal/5 touch-pan-y select-none"
               onTouchStart={onTouchStart}
@@ -132,14 +147,14 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
                     key={photos[photoIndex].url}
                     src={photos[photoIndex].url}
                     controls
-                    className="w-full h-auto max-h-[60vh] mx-auto block"
+                    className="w-full h-auto max-h-[60dvh] mx-auto block"
                   />
                 ) : (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
                     src={photos[photoIndex].url}
                     alt={photos[photoIndex].alt || active?.caption || ''}
-                    className="w-full h-auto max-h-[60vh] object-contain mx-auto block"
+                    className="w-full h-auto max-h-[60dvh] object-contain mx-auto block"
                   />
                 ))}
               {photos.length > 1 && (

@@ -5,6 +5,7 @@ type Props = {
   imageUrl?: string;
   imageAlt?: string;
   children?: React.ReactNode;
+  titleClassName?: string;
 };
 
 const DEFAULT_IMAGE =
@@ -17,7 +18,7 @@ const DEFAULT_IMAGE =
  * (rather than a flat solid colour) so inner pages keep some atmosphere and
  * brand mood instead of reading as empty white space.
  */
-export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, children }: Props) {
+export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, children, titleClassName }: Props) {
   return (
     <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-32 pb-14 md:pt-36 md:pb-16 overflow-hidden">
       <div
@@ -42,7 +43,12 @@ export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, 
       />
       <div className="relative mx-auto max-w-[820px] text-center reveal">
         {eyebrow && <p className="eyebrow mb-6">{eyebrow}</p>}
-        <h1 className="serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12] text-charcoal">
+        <h1
+          className={
+            titleClassName ||
+            'serif-display text-[clamp(2.2rem,4.8vw,3.8rem)] font-light leading-[1.12] text-charcoal'
+          }
+        >
           {title}
         </h1>
         {intro && (

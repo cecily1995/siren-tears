@@ -42,6 +42,8 @@ export async function GET() {
       client.fetch(
         `*[_type == "purchaseRequest" && paymentStatus == "paid" && (buyerMember._ref == $memberId || lower(email) == lower($email))] | order(_createdAt desc){
           _id, orderNumber,
+          name, whatsapp, email,
+          deliveryFirstName, deliveryLastName, deliveryAddress, deliveryCity, deliveryRegion, deliveryPostalCode, country,
           "productName": items[0].productName,
           "itemCount": count(items),
           "items": items[]{

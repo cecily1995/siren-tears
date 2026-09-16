@@ -30,6 +30,18 @@ type PurchaseLineItem = {
 };
 
 type PurchaseItem = {
+  _id?: string;
+  orderNumber?: string;
+  name?: string;
+  whatsapp?: string;
+  email?: string;
+  deliveryFirstName?: string;
+  deliveryLastName?: string;
+  deliveryAddress?: string;
+  deliveryCity?: string;
+  deliveryRegion?: string;
+  deliveryPostalCode?: string;
+  country?: string;
   productName?: string;
   itemCount?: number;
   items?: PurchaseLineItem[];
@@ -164,6 +176,7 @@ export default function AccountLookupForm() {
   const [errorMsg, setErrorMsg] = useState('');
   const [member, setMember] = useState<Member | null>(null);
   const [purchases, setPurchases] = useState<PurchaseItem[]>([]);
+  const [expandedOrder, setExpandedOrder] = useState<string | null>(null);
   const [bespokeRequests, setBespokeRequests] = useState<BespokeItem[]>([]);
   const [mode, setMode] = useState<'login' | 'register' | 'forgot'>('login');
   const [editing, setEditing] = useState(false);
@@ -433,20 +446,35 @@ export default function AccountLookupForm() {
               <p className="text-[0.85rem] text-ash/70 font-light">{t('noPurchases')}</p>
             ) : (
               <ul className="space-y-6">
-                {purchases.map((p, i) => (
-                  <li key={i} className="border-b border-charcoal/10 pb-5 text-[0.85rem] font-light">
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[0.78rem] text-ash/60 font-light">
-                        {p._createdAt ? new Date(p._createdAt).toLocaleDateString() : ''}
+                {purchases.map((p, i) => {
+                  const key = p._id || String(i);
+                  const isOpen = expandedOrder === key;
+                  return (
+                  <li key={key} className="border-b border-charcoal/10 pb-5 text-[0.85rem] font-light">
+                    <button
+                      type="button"
+                      onClick={() => setExpandedOrder(isOpen ? null : key)}
+                      className="w-full flex items-center justify-between mb-3 text-left"
+                    >
+                      <span className="flex flex-col">
+                        {p.orderNumber && (
+                          <span className="text-[0.8rem] text-charcoal font-light">{p.orderNumber}</span>
+                        )}
+                        <span className="text-[0.78rem] text-ash/60 font-light">
+                          {p._createdAt ? new Date(p._createdAt).toLocaleDateString() : ''}
+                        </span>
                       </span>
-                      <span className="text-[10px] tracking-[0.16em] uppercase text-ash/70">
-                        {p.shippingStatus && p.shippingStatus !== 'not_shipped'
-                          ? p.shippingStatus
-                          : p.paymentStatus === 'paid'
-                            ? p.orderStatus || 'processing'
-                            : p.paymentStatus || 'pending'}
+                      <span className="flex items-center gap-2">
+                        <span className="text-[10px] tracking-[0.16em] uppercase text-ash/70">
+                          {p.shippingStatus && p.shippingStatus !== 'not_shipped'
+                            ? p.shippingStatus
+                            : p.paymentStatus === 'paid'
+                              ? p.orderStatus || 'processing'
+                              : p.paymentStatus || 'pending'}
+                        </span>
+                        <span className="text-ash/50 text-[10px]">{isOpen ? '▲' : '▼'}</span>
                       </span>
-                    </div>
+                    </button>
 
                     <ul className="space-y-2.5 mb-3">
                       {(p.items && p.items.length ? p.items : [{ productName: p.productName }]).map((item, j) => (
@@ -466,6 +494,39 @@ export default function AccountLookupForm() {
                         </li>
                       ))}
                     </ul>
+
+                    {isOpen && (
+                      <div className="mb-3 p-3 bg-pearl/60 space-y-1.5 text-ash/70">
+                        <div>
+                          <span className="text-ash/50">{t('recipientLabel')}: </span>
+                          <span className="text-charcoal">
+                            {[p.deliveryFirstName, p.deliveryLastName].filter(Boolean).join(' ') || p.name || '—'}
+                          </span>
+                        </div>
+                        {p.whatsapp && (
+                          <div>
+                            <span className="text-ash/50">{t('phoneLabel')}: </span>
+                            <span className="text-charcoal">{p.whatsapp}</span>
+                          </div>
+                        )}
+                        {(p.deliveryAddress || p.deliveryCity) && (
+                          <div>
+                            <span className="text-ash/50">{t('addressLabel')}: </span>
+                            <span className="text-charcoal">
+                              {[p.deliveryAddress, p.deliveryCity, p.deliveryRegion, p.deliveryPostalCode, p.country]
+                                .filter(Boolean)
+                                .join(', ')}
+                            </span>
+                          </div>
+                        )}
+                        {typeof p.itemCount === 'number' && (
+                          <div>
+                            <span className="text-ash/50">{t('itemCountLabel')}: </span>
+                            <span className="text-charcoal">{p.itemCount}</span>
+                          </div>
+                        )}
+                      </div>
+                    )}
 
                     <div className="text-ash/60 space-y-1">
                       <div>
@@ -491,7 +552,8 @@ export default function AccountLookupForm() {
                       </div>
                     </div>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             )}
           </div>

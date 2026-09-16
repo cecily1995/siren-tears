@@ -40,16 +40,21 @@ export default async function ShopProductPage({
 
   if (!product) notFound();
 
-  // Product copy (stone type, stone story, piece story) is authored once
-  // in English in Sanity; auto-translate it for non-English locales rather
-  // than requiring a manually-translated copy per language.
+  // Product copy (name, stone type, stone story, piece story, details) is
+  // authored once in English in Sanity; auto-translate it for non-English
+  // locales rather than requiring a manually-translated copy per language.
   const translated = await translateFields(
     {
+      name: product.name,
+      collectionTitle: product.collectionTitle,
       stone: product.stone,
       stoneStory: product.stoneStory,
       pieceStory: product.pieceStory,
       materialsCare: product.materialsCare,
-      packagingDescription: product.packagingDescription
+      packagingDescription: product.packagingDescription,
+      material: product.material,
+      length: product.length,
+      craftedIn: product.craftedIn
     },
     locale
   );
@@ -62,9 +67,9 @@ export default async function ShopProductPage({
   // subtitle right under the product title, so repeating it in this list
   // was pure duplication.
   const details = [
-    product.material && { label: t('materialLabel'), value: product.material },
-    product.length && { label: t('lengthLabel'), value: product.length },
-    product.craftedIn && { label: t('craftedInLabel'), value: product.craftedIn }
+    product.material && { label: t('materialLabel'), value: translated.material },
+    product.length && { label: t('lengthLabel'), value: translated.length },
+    product.craftedIn && { label: t('craftedInLabel'), value: translated.craftedIn }
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (

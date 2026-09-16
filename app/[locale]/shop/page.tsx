@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getShopProducts, getCollections } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import { translateText } from '@/lib/translate';
 import ShopGrid from '@/components/ShopGrid';
 import PageHeader from '@/components/PageHeader';
 
@@ -31,7 +32,14 @@ export default async function ShopPage({
     getShopProducts(),
     getCollections()
   ]);
-  const items = products?.length ? products : fallback.shopProducts;
+  const rawItems = products?.length ? products : fallback.shopProducts;
+  // Product names are authored once in English in Sanity -- auto-translate
+  // for display so the shop grid isn't the one place still showing raw
+  // English on a non-English locale. Cached 30 days per (text, locale) in
+  // translateText, so this only costs real translation calls once.
+  const items = await Promise.all(
+    rawItems.map(async (p: any) => ({ ...p, name: await translateText(p.name, locale) }))
+  );
   const collectionNames = (collections?.length ? collections : fallback.collections).map(
     (c: any) => c.title
   );

@@ -438,9 +438,9 @@
     "tierPrivate": "Private Client",
     "joinedLabel": "Membro dal",
     "myBespokeTitle": "Le mie richieste su misura",
-    "myPurchasesTitle": "Le mie richieste di acquisto",
+    "myPurchasesTitle": "I miei ordini",
     "noBespoke": "Non hai ancora inviato una richiesta su misura.",
-    "noPurchases": "Non hai ancora inviato una richiesta di acquisto.",
+    "noPurchases": "Non hai ancora effettuato un ordine.",
     "trackingLabel": "Numero di tracciamento",
     "notShippedYet": "Non ancora spedito",
     "forgotLink": "Hai dimenticato il codice membro?",
@@ -506,7 +506,11 @@
     "resetCodeLabel": "Codice di reimpostazione",
     "viewRequest": "Visualizza richiesta",
     "shippingMethodLabel": "Spedizione",
-    "freeShippingLabel": "Gratis"
+    "freeShippingLabel": "Gratis",
+    "recipientLabel": "Destinatario",
+    "phoneLabel": "Telefono",
+    "addressLabel": "Indirizzo di consegna",
+    "itemCountLabel": "Articoli"
   },
   "wornByYouTeaser": {
     "eyebrow": "Indossato da voi",
@@ -672,5 +676,16 @@
     "membershipPromoTitle": "Unisciti al Siren Circle",
     "membershipPromoBody": "I membri godono di spedizione gratuita per ordini oltre i $400, e ogni ordine include una pochette omaggio se ti unisci oggi.",
     "continueWithoutMembershipCta": "Continua senza iscriverti"
+  },
+  "contactPage": {
+    "eyebrow": "Contattaci",
+    "title": "Mettiti in contatto",
+    "intro": "Clicca su Chat nell’angolo per parlare direttamente con noi, oppure contattaci in uno dei modi indicati di seguito.",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "xiaohongshu": "Xiaohongshu",
+    "douyin": "Douyin"
   }
 }

@@ -48,7 +48,7 @@ export default function Collections({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-0 md:gap-8 -mx-6 md:mx-0">
           {items.map((c, i) => (
             <Link
               key={c._id ?? i}

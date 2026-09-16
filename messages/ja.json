@@ -438,9 +438,9 @@
     "tierPrivate": "Private Client",
     "joinedLabel": "登録日",
     "myBespokeTitle": "マイオーダーメイド申請",
-    "myPurchasesTitle": "マイ購入リクエスト",
+    "myPurchasesTitle": "ご注文履歴",
     "noBespoke": "まだオーダーメイドのご相談を送信されていません。",
-    "noPurchases": "まだ購入リクエストを送信されていません。",
+    "noPurchases": "まだご注文がありません。",
     "trackingLabel": "追跡番号",
     "notShippedYet": "まだ発送されていません",
     "forgotLink": "会員コードをお忘れですか?",
@@ -506,7 +506,11 @@
     "resetCodeLabel": "リセットコード",
     "viewRequest": "リクエストを見る",
     "shippingMethodLabel": "配送方法",
-    "freeShippingLabel": "無料"
+    "freeShippingLabel": "無料",
+    "recipientLabel": "受取人",
+    "phoneLabel": "電話番号",
+    "addressLabel": "お届け先住所",
+    "itemCountLabel": "点数"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",
@@ -672,5 +676,16 @@
     "membershipPromoTitle": "Siren Circleに入会する",
     "membershipPromoBody": "会員は$400以上のご注文で送料無料。本日ご入会いただくと、ポーチを1つプレゼントいたします。",
     "continueWithoutMembershipCta": "入会せずに続ける"
+  },
+  "contactPage": {
+    "eyebrow": "お問い合わせ",
+    "title": "お問い合わせ",
+    "intro": "右下のChatをクリックすると直接お話しできます。以下の方法でもご連絡いただけます。",
+    "email": "メール",
+    "whatsapp": "WhatsApp",
+    "instagram": "Instagram",
+    "tiktok": "TikTok",
+    "xiaohongshu": "小紅書",
+    "douyin": "Douyin"
   }
 }
