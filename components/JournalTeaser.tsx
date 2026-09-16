@@ -19,7 +19,7 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
     <section className="bg-pearl py-14 md:py-20">
       <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-left md:text-center mb-8 md:mb-12 reveal">
         <p className="eyebrow mb-5">{labels.eyebrow}</p>
-        <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
+        <h2 className="serif-display text-[0.95rem] md:text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
           {labels.title}
         </h2>
       </div>

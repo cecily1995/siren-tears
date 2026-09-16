@@ -39,7 +39,7 @@ export default function Collections({
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8 md:mb-12 reveal">
           <div className="max-w-xl">
             <p className="eyebrow mb-5">{labels.eyebrow}</p>
-            <h2 className="serif-display text-[clamp(2.2rem,4.5vw,3.8rem)] font-light leading-[1.1]">
+            <h2 className="serif-display text-[1.2rem] md:text-[clamp(2.2rem,4.5vw,3.8rem)] font-light leading-[1.1]">
               {labels.title}
             </h2>
           </div>
