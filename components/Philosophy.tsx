@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 type PhilosophyData = {
   sectionLabel?: string;
@@ -10,12 +10,40 @@ type PhilosophyData = {
 };
 
 export default function Philosophy({ data }: { data: PhilosophyData }) {
-  // Not every browser can play every video container/codec (e.g. Chrome
-  // generally can't play .mov files the way Safari can) -- if the video
-  // fails to load or decode, fall back to the plain texture rather than
-  // showing nothing.
-  const [videoFailed, setVideoFailed] = useState(false);
-  const showVideo = Boolean(data.videoUrl) && !videoFailed;
+  // Not every browser/webview can actually play a background video --
+  // some (WeChat's in-app browser especially) just silently never start
+  // playing rather than firing an error, so relying on onError alone
+  // isn't enough. Track whether it's genuinely confirmed playing, and
+  // give up on it (falling back to the plain texture) if it hasn't
+  // started within a few seconds.
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoWorking, setVideoWorking] = useState(false);
+  const [videoGaveUp, setVideoGaveUp] = useState(false);
+  const showVideo = Boolean(data.videoUrl) && videoWorking && !videoGaveUp;
+
+  useEffect(() => {
+    if (!data.videoUrl) return;
+    const timer = setTimeout(() => {
+      setVideoGaveUp((already) => (videoWorking ? already : true));
+    }, 4000);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data.videoUrl]);
+
+  useEffect(() => {
+    // Mobile browsers commonly pause a background video when the tab/app
+    // goes into the background to save power, and don't resume it on
+    // their own -- nudge it to continue once the page is visible again.
+    const el = videoRef.current;
+    if (!el) return;
+    const onVisible = () => {
+      if (document.visibilityState === 'visible' && el.paused) {
+        el.play().catch(() => undefined);
+      }
+    };
+    document.addEventListener('visibilitychange', onVisible);
+    return () => document.removeEventListener('visibilitychange', onVisible);
+  }, [showVideo]);
 
   return (
     <section className="relative bg-pearl text-charcoal py-32 md:py-44 px-6 md:px-12 overflow-hidden">
@@ -26,17 +54,22 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(255,255,255,0) 100%)'
         }}
       />
-      {showVideo ? (
+      {data.videoUrl && !videoGaveUp && (
         <video
-          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          ref={videoRef}
+          className={`absolute inset-0 w-full h-full object-cover pointer-events-none ${
+            showVideo ? '' : 'opacity-0'
+          }`}
           src={data.videoUrl}
           autoPlay
           muted
           loop
           playsInline
-          onError={() => setVideoFailed(true)}
+          onPlaying={() => setVideoWorking(true)}
+          onError={() => setVideoGaveUp(true)}
         />
-      ) : (
+      )}
+      {!showVideo && (
         // Faint water texture so the section carries some atmosphere rather than flat colour.
         <div
           className="absolute inset-0 bg-center bg-cover opacity-[0.1] pointer-events-none"
