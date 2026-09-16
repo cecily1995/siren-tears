@@ -59,17 +59,12 @@ export default function CurrentlyAvailable({
                 />
               </div>
               <div className="mt-3">
-                {/* Plain text, no chip/border, below the image -- own row so
-                    its position never depends on product name length. */}
+                {/* Collection name dropped here -- only the product's own
+                    page shows which collection it belongs to. */}
                 <p className="text-[9px] tracking-[0.22em] uppercase text-gold font-light mb-1.5">
                   {labels.oneOfOne}
                 </p>
-                {p.collectionTitle && (
-                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
-                    {p.collectionTitle}
-                  </p>
-                )}
-                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight h-[2.5rem] overflow-hidden">
+                <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2">
                   {p.name}
                 </h3>
                 <div className="mt-2">

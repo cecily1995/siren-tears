@@ -233,24 +233,22 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
-                {/* Plain text, no chip/border -- and now below the image
-                    (not overlapping it), in its own row so its position
-                    never depends on product name length. "One of One" is
-                    Beaded Collections only, per the brief -- Aotearoa
-                    gemstone pieces never show it. */}
-                <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5 h-[1.3em]">
-                  {isSold || isReserved ? (
-                    <span className="text-ash/70">{isSold ? labels.status.sold : labels.status.reserved}</span>
-                  ) : isBeaded ? (
-                    <span className="text-gold">{labels.oneOfOne}</span>
-                  ) : null}
-                </p>
-                {p.collectionTitle && (
-                  <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-1.5 font-light">
-                    {p.collectionTitle}
+                {/* Plain text, no chip/border, below the image, in its own
+                    row so its position never depends on product name
+                    length. "One of One" is Beaded Collections only, per the
+                    brief -- Aotearoa gemstone pieces never show it. Collection
+                    name is dropped here entirely -- only the product's own
+                    page shows which collection it belongs to. */}
+                {(isSold || isReserved || isBeaded) && (
+                  <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5">
+                    {isSold || isReserved ? (
+                      <span className="text-ash/70">{isSold ? labels.status.sold : labels.status.reserved}</span>
+                    ) : (
+                      <span className="text-gold">{labels.oneOfOne}</span>
+                    )}
                   </p>
                 )}
-                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight h-[2.6rem] overflow-hidden">
+                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2">
                   {p.name}
                 </h3>
                 <div className="mt-2">

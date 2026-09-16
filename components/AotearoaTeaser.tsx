@@ -59,7 +59,7 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
                   for the Beaded Collections line, not Aotearoa gemstone
                   pieces. Stone line is also dropped here (matches the shop
                   grid) -- it only needs to appear on the product's own page. */}
-              <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight h-[2.5rem] overflow-hidden">
+              <h3 className="serif-display text-[1rem] font-light text-charcoal leading-tight line-clamp-2">
                 {p.name}
               </h3>
               <div className="mt-2">

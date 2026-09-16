@@ -43,7 +43,7 @@ export default function WishlistButton({
         fill={saved ? 'currentColor' : 'none'}
         stroke="currentColor"
         strokeWidth="1.5"
-        className={iconClassName || (saved ? 'text-gold' : 'text-ivory')}
+        className={iconClassName || (saved ? 'text-gold' : 'text-charcoal')}
       >
         <path
           d="M12 20.5c-.3 0-.6-.1-.8-.3C7.4 17 3 13.1 3 8.9 3 6 5.2 3.8 8 3.8c1.6 0 3.1.8 4 2.1.9-1.3 2.4-2.1 4-2.1 2.8 0 5 2.2 5 5.1 0 4.2-4.4 8.1-8.2 11.3-.2.2-.5.3-.8.3Z"

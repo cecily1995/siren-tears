@@ -40,7 +40,7 @@ export async function GET() {
 
     const [purchases, bespokeRequests] = await Promise.all([
       client.fetch(
-        `*[_type == "purchaseRequest" && (buyerMember._ref == $memberId || lower(email) == lower($email))] | order(_createdAt desc){
+        `*[_type == "purchaseRequest" && paymentStatus == "paid" && (buyerMember._ref == $memberId || lower(email) == lower($email))] | order(_createdAt desc){
           _id, orderNumber,
           "productName": items[0].productName,
           "itemCount": count(items),
