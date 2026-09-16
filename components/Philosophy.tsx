@@ -27,22 +27,15 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
         }}
       />
       {showVideo ? (
-        <>
-          {/* Background video, muted/looping/no controls -- purely
-              atmospheric texture, not something the visitor interacts with. */}
-          <video
-            className="absolute inset-0 w-full h-full object-cover opacity-[0.16] pointer-events-none"
-            src={data.videoUrl}
-            autoPlay
-            muted
-            loop
-            playsInline
-            onError={() => setVideoFailed(true)}
-          />
-          {/* Keep the pearl wash on top so the video reads as a faint
-              texture, same visual weight as the static image it replaces. */}
-          <div className="absolute inset-0 bg-pearl/70 pointer-events-none" />
-        </>
+        <video
+          className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+          src={data.videoUrl}
+          autoPlay
+          muted
+          loop
+          playsInline
+          onError={() => setVideoFailed(true)}
+        />
       ) : (
         // Faint water texture so the section carries some atmosphere rather than flat colour.
         <div
