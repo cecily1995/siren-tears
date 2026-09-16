@@ -43,15 +43,24 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           style={{ backgroundImage: "url('/textures/water-close.jpg')" }}
         />
       )}
-      <div className="relative mx-auto max-w-[1280px]">
+      <div
+        className={`relative mx-auto max-w-[1280px] ${showVideo ? 'text-ivory' : ''}`}
+        style={showVideo ? { textShadow: '0 2px 10px rgba(0,0,0,0.55)' } : undefined}
+      >
         <div className="text-center max-w-2xl mx-auto reveal">
-          {data.sectionLabel && <p className="eyebrow mb-6">{data.sectionLabel}</p>}
+          {data.sectionLabel && (
+            <p className={`eyebrow mb-6 ${showVideo ? '!text-ivory' : ''}`}>{data.sectionLabel}</p>
+          )}
           {data.sectionTitle && (
-            <h2 className="serif-display text-[1rem] md:text-[clamp(2rem,4vw,3.4rem)] font-light leading-[1.15]">
+            <h2
+              className={`serif-display text-[1rem] md:text-[clamp(2rem,4vw,3.4rem)] font-light leading-[1.15] ${
+                showVideo ? 'text-ivory' : 'text-charcoal'
+              }`}
+            >
               {data.sectionTitle}
             </h2>
           )}
-          <div className="mt-10 mx-auto h-px w-16 bg-gold/60" />
+          <div className={`mt-10 mx-auto h-px w-16 ${showVideo ? 'bg-ivory/70' : 'bg-gold/60'}`} />
         </div>
 
         <div className="mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20">
@@ -61,13 +70,25 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
               className="reveal text-center"
               style={{ transitionDelay: `${i * 140}ms` }}
             >
-              <div className="text-[9px] md:text-[11px] tracking-[0.3em] md:tracking-[0.4em] uppercase text-gold mb-2 md:mb-6 font-light">
+              <div
+                className={`text-[9px] md:text-[11px] tracking-[0.3em] md:tracking-[0.4em] uppercase mb-2 md:mb-6 font-light ${
+                  showVideo ? 'text-ivory/80' : 'text-gold'
+                }`}
+              >
                 {String(i + 1).padStart(2, '0')}
               </div>
-              <h3 className="serif-display text-[1.15rem] md:text-[2.1rem] font-light leading-tight mb-2 md:mb-6 text-charcoal">
+              <h3
+                className={`serif-display text-[1.15rem] md:text-[2.1rem] font-light leading-tight mb-2 md:mb-6 ${
+                  showVideo ? 'text-ivory' : 'text-charcoal'
+                }`}
+              >
                 {p.title}
               </h3>
-              <p className="text-[0.72rem] md:text-[0.95rem] leading-[1.5] md:leading-[1.9] text-ash font-light">
+              <p
+                className={`text-[0.72rem] md:text-[0.95rem] leading-[1.5] md:leading-[1.9] font-light ${
+                  showVideo ? 'text-ivory/90' : 'text-ash'
+                }`}
+              >
                 {p.body}
               </p>
             </article>
