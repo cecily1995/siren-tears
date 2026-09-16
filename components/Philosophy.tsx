@@ -11,7 +11,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
       <div
         className="absolute inset-x-0 top-0 h-40 md:h-56 pointer-events-none"
         style={{
-          background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(250,246,238,0) 100%)'
+          background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(255,255,255,0) 100%)'
         }}
       />
       {/* Faint water texture so the section carries some atmosphere rather than flat colour. */}

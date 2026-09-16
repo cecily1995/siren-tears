@@ -26,7 +26,7 @@ export default function FeaturedProduct({ data }: { data: FeaturedData }) {
       className="relative overflow-hidden py-32 md:py-44 px-6 md:px-12"
       style={{
         background:
-          'linear-gradient(180deg, #F5EFE5 0%, #EFE6D5 60%, #E8DCC4 100%)'
+          'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 60%, #FFFFFF 100%)'
       }}
     >
       <div className="mx-auto max-w-[1380px]">

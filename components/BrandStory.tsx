@@ -14,7 +14,7 @@ export default function BrandStory({ data }: { data: BrandStoryData }) {
       className="relative overflow-hidden py-32 md:py-48 px-6 md:px-12 text-charcoal"
       style={{
         background:
-          'linear-gradient(180deg, #E8DCC4 0%, #F5EFE5 100%)'
+          'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%)'
       }}
     >
       <div className="mx-auto max-w-[1380px]">

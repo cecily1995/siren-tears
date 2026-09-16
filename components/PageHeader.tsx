@@ -30,7 +30,7 @@ export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, 
         className="absolute inset-0"
         style={{
           background:
-            'linear-gradient(180deg, rgba(250,246,238,0.35) 0%, rgba(250,246,238,0.82) 55%, rgba(250,246,238,0.97) 100%)'
+            'linear-gradient(180deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0.82) 55%, rgba(255,255,255,0.97) 100%)'
         }}
       />
       <div

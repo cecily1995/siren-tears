@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --color-ivory: #F5EFE5;
-  --color-pearl: #FAF6EE;
+  --color-ivory: #FFFFFF;
+  --color-pearl: #FFFFFF;
   --color-sand: #D9C9AE;
   --color-ocean: #7E94A0;
   --color-gold: #A78656;

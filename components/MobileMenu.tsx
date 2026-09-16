@@ -91,7 +91,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
       className={`fixed inset-0 z-[999] transition-transform duration-[400ms] ease-editorial flex flex-col ${
         open ? 'translate-x-0 pointer-events-auto' : 'translate-x-full pointer-events-none'
       }`}
-      style={{ backgroundColor: '#faf6ee' }}
+      style={{ backgroundColor: '#ffffff' }}
       aria-hidden={!open}
     >
       <div className="flex items-center justify-between px-6 py-6 shrink-0 border-b border-charcoal/10">
