@@ -19,15 +19,19 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [videoWorking, setVideoWorking] = useState(false);
   const [videoGaveUp, setVideoGaveUp] = useState(false);
+  const videoWorkingRef = useRef(false);
   const showVideo = Boolean(data.videoUrl) && videoWorking && !videoGaveUp;
 
   useEffect(() => {
     if (!data.videoUrl) return;
     const timer = setTimeout(() => {
-      setVideoGaveUp((already) => (videoWorking ? already : true));
+      // Read from the ref, not the videoWorking state captured when this
+      // effect first ran -- that closed-over value would always be false
+      // here regardless of what actually happened since, which was
+      // unconditionally forcing the video to give up after 4s every time.
+      if (!videoWorkingRef.current) setVideoGaveUp(true);
     }, 4000);
     return () => clearTimeout(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.videoUrl]);
 
   useEffect(() => {
@@ -65,7 +69,10 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           muted
           loop
           playsInline
-          onPlaying={() => setVideoWorking(true)}
+          onPlaying={() => {
+            videoWorkingRef.current = true;
+            setVideoWorking(true);
+          }}
           onError={() => setVideoGaveUp(true)}
         />
       )}

@@ -110,7 +110,8 @@ export default async function HomePage({
     title: t('aotearoaTeaser.title'),
     intro: t('aotearoaTeaser.intro'),
     oneOfOne: t('shop.oneOfOne'),
-    cta: t('aotearoaTeaser.cta')
+    cta: t('aotearoaTeaser.cta'),
+    viewAll: t('aotearoaTeaser.viewAllCta')
   };
 
   const wornByYouLabels = {

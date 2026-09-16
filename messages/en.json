@@ -523,7 +523,8 @@
     "eyebrow": "Aotearoa",
     "title": "Gemstone Jewellery",
     "intro": "Hand-set gemstones, in a finer line of their own.",
-    "cta": "View All"
+    "cta": "View All",
+    "viewAllCta": "View All Aotearoa"
   },
   "common": {
     "chatCta": "Chat"

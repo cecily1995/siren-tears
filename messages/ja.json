@@ -523,7 +523,8 @@
     "eyebrow": "Aotearoa",
     "title": "ジェムストーンジュエリー",
     "intro": "手作業でセッティングされた宝石による、より洗練された独自のライン。",
-    "cta": "すべて見る"
+    "cta": "すべて見る",
+    "viewAllCta": "Aotearoaをすべて見る"
   },
   "common": {
     "chatCta": "チャット"

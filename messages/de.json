@@ -523,7 +523,8 @@
     "eyebrow": "Aotearoa",
     "title": "Edelsteinschmuck",
     "intro": "Von Hand gefasste Edelsteine, in einer eigenen, feineren Linie.",
-    "cta": "Alle ansehen"
+    "cta": "Alle ansehen",
+    "viewAllCta": "Alle Aotearoa ansehen"
   },
   "common": {
     "chatCta": "Chat"
