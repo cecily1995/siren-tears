@@ -16,7 +16,7 @@ type RecommendedProduct = {
 
 // "You may also like" -- shown in the Bag drawer and on the Checkout page.
 // Deliberately small (a handful of items, no big banner) per the brief.
-export default function RecommendedProducts() {
+export default function RecommendedProducts({ limit = 4 }: { limit?: number }) {
   const { items, addItem } = useBag();
   const t = useTranslations('checkout');
   const [products, setProducts] = useState<RecommendedProduct[]>([]);
@@ -25,7 +25,7 @@ export default function RecommendedProducts() {
 
   useEffect(() => {
     let cancelled = false;
-    const params = new URLSearchParams({ limit: '4' });
+    const params = new URLSearchParams({ limit: String(limit) });
     if (excludeSlugs) params.set('exclude', excludeSlugs);
     fetch(`/api/shop/recommended?${params.toString()}`)
       .then((r) => r.json())

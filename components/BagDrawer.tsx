@@ -19,10 +19,10 @@ export default function BagDrawer() {
     <div className="fixed inset-0 z-[70] flex justify-end" onClick={close}>
       <div className="absolute inset-0 bg-charcoal/40" />
       <div
-        className="relative w-full sm:max-w-[440px] h-full bg-ivory overflow-y-auto flex flex-col animate-slide-in-right"
+        className="relative w-full sm:max-w-[440px] h-full bg-ivory flex flex-col animate-slide-in-right"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-ivory z-10 px-6 pt-5 pb-4 border-b border-charcoal/10">
+        <div className="sticky top-0 bg-ivory z-10 px-6 pt-5 pb-4 border-b border-charcoal/10 shrink-0">
           <div className="flex items-center justify-between mb-4">
             <Link href="/" onClick={close}>
               <Image
@@ -45,8 +45,8 @@ export default function BagDrawer() {
           <p className="eyebrow">{t('title')}</p>
         </div>
 
-        <div className="px-6 py-6 flex-1 flex flex-col">
-          {items.length === 0 ? (
+        {items.length === 0 ? (
+          <div className="px-6 py-6 flex-1 flex flex-col">
             <div className="text-center py-16">
               <p className="text-[0.9rem] text-ash font-light">{t('empty')}</p>
               <button
@@ -57,8 +57,14 @@ export default function BagDrawer() {
                 {t('continueCta')}
               </button>
             </div>
-          ) : (
-            <>
+          </div>
+        ) : (
+          <>
+            {/* Scrollable: items, shipping note, recommended products. The
+                subtotal/checkout footer below is deliberately NOT part of
+                this scroll region, so it's always visible regardless of how
+                much is above it. */}
+            <div className="flex-1 overflow-y-auto px-6 py-6">
               <ul className="space-y-5 mb-6">
                 {items.map((item) => (
                   <li key={item.productId} className="flex gap-4">
@@ -89,27 +95,27 @@ export default function BagDrawer() {
                 <ShippingNote />
               </div>
 
-              <div className="mb-8 pb-8 border-b border-charcoal/10">
-                <RecommendedProducts />
+              <div>
+                <RecommendedProducts limit={2} />
+              </div>
+            </div>
+
+            <div className="shrink-0 px-6 pb-6 pt-4 border-t border-charcoal/10 bg-ivory">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[11px] tracking-[0.2em] uppercase text-ash">{t('subtotal')}</span>
+                <span className="text-[1.05rem] text-charcoal font-light">NZD ${subtotal}</span>
               </div>
 
-              <div className="mt-auto">
-                <div className="flex items-center justify-between py-4 border-t border-b border-charcoal/10 mb-6">
-                  <span className="text-[11px] tracking-[0.2em] uppercase text-ash">{t('subtotal')}</span>
-                  <span className="text-[1.05rem] text-charcoal font-light">NZD ${subtotal}</span>
-                </div>
-
-                <Link
-                  href="/checkout"
-                  onClick={close}
-                  className="block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors"
-                >
-                  {t('checkoutCta')}
-                </Link>
-              </div>
-            </>
-          )}
-        </div>
+              <Link
+                href="/checkout"
+                onClick={close}
+                className="block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors"
+              >
+                {t('checkoutCta')}
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

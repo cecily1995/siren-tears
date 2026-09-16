@@ -156,21 +156,19 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
   }
 
   const inputClass =
-    'w-full bg-transparent border-b border-charcoal/20 focus:border-gold outline-none py-3 text-[0.95rem] font-light text-charcoal placeholder:text-ash/50 transition-colors';
-  const labelClass = 'block text-[11px] tracking-[0.28em] uppercase text-ash mb-2 font-light';
+    'w-full bg-white border border-charcoal/20 focus:border-charcoal outline-none px-3.5 py-2.5 text-[0.8rem] font-light text-charcoal placeholder:text-ash/60 placeholder:uppercase placeholder:tracking-[0.08em] placeholder:text-[0.7rem] transition-colors';
+  const labelClass = 'block text-[9px] tracking-[0.2em] uppercase text-ash/70 mb-1.5 font-light';
   const chipBase =
     'text-[11px] tracking-[0.16em] uppercase font-light px-4 py-2 border transition-colors';
 
   return (
     <form onSubmit={handleSubmit} className="reveal">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-x-5 gap-y-4">
         <div>
-          <label className={labelClass}>{t('nameLabel')} *</label>
-          <input name="name" type="text" required className={inputClass} />
+          <input name="name" type="text" required placeholder={`${t('nameLabel')} *`} className={inputClass} />
         </div>
         <div>
-          <label className={labelClass}>{t('emailLabel')} *</label>
-          <input name="email" type="email" required className={inputClass} />
+          <input name="email" type="email" required placeholder={`${t('emailLabel')} *`} className={inputClass} />
         </div>
         <div>
           <label className={labelClass}>{t('genderLabel')}</label>
@@ -191,7 +189,7 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
           />
         </div>
         {zodiac && (
-          <div className="md:col-span-2 -mt-4">
+          <div className="md:col-span-2 -mt-2">
             <p className="text-[0.82rem] text-gold font-light">
               {t('zodiacLabel')}: {zodiac}
             </p>
@@ -220,15 +218,13 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
 
         {pieceType === 'bracelet' && (
           <div>
-            <label className={labelClass}>{t('wristSizeLabel')}</label>
-            <input name="wristSize" type="text" inputMode="decimal" className={inputClass} />
+            <input name="wristSize" type="text" inputMode="decimal" placeholder={t('wristSizeLabel')} className={inputClass} />
             <SizeGuideTrigger type="bracelet" />
           </div>
         )}
         {pieceType === 'ring' && (
           <div>
-            <label className={labelClass}>{t('ringSizeLabel')}</label>
-            <input name="ringSize" type="text" className={inputClass} />
+            <input name="ringSize" type="text" placeholder={t('ringSizeLabel')} className={inputClass} />
             <SizeGuideTrigger type="ring" />
           </div>
         )}
@@ -274,8 +270,7 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
         </div>
 
         <div className="md:col-span-2">
-          <label className={labelClass}>{t('noteLabel')}</label>
-          <textarea name="note" rows={3} className={`${inputClass} resize-none`} />
+          <textarea name="note" rows={3} placeholder={t('noteLabel')} className={`${inputClass} resize-none`} />
         </div>
       </div>
 

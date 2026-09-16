@@ -54,9 +54,21 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
   const [expanded, setExpanded] = useState<'collections' | 'shop' | null>(null);
   const [query, setQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
+  const [member, setMember] = useState<{
+    firstName?: string;
+    isMember?: boolean;
+    memberCode?: string;
+  } | null>(null);
 
   useEffect(() => {
     setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    fetch('/api/auth/me')
+      .then((r) => r.json())
+      .then((data) => setMember(data?.member ?? null))
+      .catch(() => setMember(null));
   }, []);
 
   useEffect(() => {
@@ -82,7 +94,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
   }
 
   const itemClass =
-    'flex items-center justify-between w-full py-3.5 text-left serif-display text-[1.25rem] font-light text-charcoal';
+    'flex items-center justify-between w-full py-3.5 text-left serif-display text-[1.05rem] font-light text-charcoal';
   const subItemClass =
     'block py-2.5 text-[0.85rem] tracking-[0.05em] uppercase text-ash font-light';
 
@@ -225,13 +237,28 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
           >
             {t('enquire')}
           </Link>
-          <Link
-            href="/account"
-            onClick={closeAll}
-            className="text-[11px] tracking-[0.32em] uppercase text-ash"
-          >
-            {t('account')}
-          </Link>
+          {member === null ? (
+            <Link
+              href="/account"
+              onClick={closeAll}
+              className="text-[11px] tracking-[0.32em] uppercase text-ash"
+            >
+              {t('signIn')}
+            </Link>
+          ) : member.isMember ? (
+            <Link href="/account" onClick={closeAll} className="text-[11px] tracking-[0.32em] uppercase">
+              <span className="text-charcoal">{member.firstName || t('account')}</span>
+              {member.memberCode && <span className="text-gold"> · {member.memberCode}</span>}
+            </Link>
+          ) : (
+            <Link
+              href="/account"
+              onClick={closeAll}
+              className="text-[11px] tracking-[0.32em] uppercase text-charcoal"
+            >
+              {member.firstName || t('account')}
+            </Link>
+          )}
         </div>
       </div>
     </div>

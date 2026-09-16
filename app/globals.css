@@ -105,6 +105,19 @@ a, button {
   transition: color 0.4s ease, opacity 0.4s ease, background 0.4s ease, border-color 0.4s ease;
 }
 
+/* Every page's entrance (see app/[locale]/template.tsx) -- a brief fade +
+   slight upward settle on every navigation, not just the very first load. */
+.animate-page-in {
+  animation: pageIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes pageIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-in { animation: none; }
+}
+
 /* Bag drawer slides in from the right instead of just appearing */
 .animate-slide-in-right {
   animation: slideInRight 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
