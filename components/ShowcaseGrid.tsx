@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
 
 type ShowcaseItem = {
@@ -24,8 +25,13 @@ function mediaFor(item: ShowcaseItem): Media[] {
 export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [mounted, setMounted] = useState(false);
   const touchStartX = useRef<number | null>(null);
   const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const active = activeIndex !== null ? items[activeIndex] : null;
 
@@ -115,12 +121,14 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
         })}
       </div>
 
-      {active && (
-        <div
-          className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-10"
-          role="dialog"
-          aria-modal="true"
-        >
+      {active &&
+        mounted &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[999] flex items-center justify-center p-4 md:p-10"
+            role="dialog"
+            aria-modal="true"
+          >
           <div
             className="absolute inset-0 bg-charcoal/90"
             onClick={close}
@@ -238,8 +246,9 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
               </div>
             )}
           </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 }
