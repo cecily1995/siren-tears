@@ -237,7 +237,7 @@ export default function ShopGrid({
       {/* Mobile: tap-to-open dropdown menus, one for line, one for sub-filter.
           Button label is always fixed text, never the selected value, so a
           long collection name can never truncate or widen it. */}
-      <div className="md:hidden mb-10 reveal grid grid-cols-2 gap-3">
+      <div className="md:hidden mb-10 grid grid-cols-2 gap-3">
         <FilterDropdown
           label={labels.lineFilterLabel}
           value={line}
@@ -317,7 +317,10 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
-                <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-snug h-[2.95rem] overflow-hidden">
+                <h3
+                  className="serif-display text-[1.05rem] font-light text-charcoal overflow-hidden"
+                  style={{ lineHeight: 1.375, height: '2.9rem' }}
+                >
                   {p.name}
                 </h3>
                 <div className="mt-2 flex items-baseline justify-between">
