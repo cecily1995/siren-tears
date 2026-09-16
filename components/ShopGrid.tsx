@@ -240,6 +240,19 @@ export default function ShopGrid({
                   price={p.price}
                   imageUrl={img?.url}
                 />
+                {/* Status/one-of-one label lives on the image itself now --
+                    plain text with a soft shadow for legibility, no
+                    background chip or border -- so it never affects the
+                    text block below, and price always lines up regardless
+                    of whether a product has a label here or not. */}
+                {(isSold || isReserved || isBeaded) && (
+                  <span
+                    className="absolute bottom-3 right-3 z-10 text-[9px] tracking-[0.22em] uppercase font-light text-ivory"
+                    style={{ textShadow: '0 1px 4px rgba(0,0,0,0.55)' }}
+                  >
+                    {isSold ? labels.status.sold : isReserved ? labels.status.reserved : labels.oneOfOne}
+                  </span>
+                )}
                 <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-ivory/90 to-transparent">
                   <span className="text-[9px] tracking-[0.24em] uppercase text-charcoal font-light">
                     {labels.viewPiece}
@@ -247,21 +260,6 @@ export default function ShopGrid({
                 </div>
               </div>
               <div className="mt-3">
-                {/* Plain text, no chip/border, below the image, in its own
-                    row so its position never depends on product name
-                    length. "One of One" is Beaded Collections only, per the
-                    brief -- Aotearoa gemstone pieces never show it. Collection
-                    name is dropped here entirely -- only the product's own
-                    page shows which collection it belongs to. */}
-                {(isSold || isReserved || isBeaded) && (
-                  <p className="text-[9px] tracking-[0.22em] uppercase font-light mb-1.5">
-                    {isSold || isReserved ? (
-                      <span className="text-ash/70">{isSold ? labels.status.sold : labels.status.reserved}</span>
-                    ) : (
-                      <span className="text-gold">{labels.oneOfOne}</span>
-                    )}
-                  </p>
-                )}
                 <h3 className="serif-display text-[1.05rem] font-light text-charcoal leading-tight line-clamp-2">
                   {p.name}
                 </h3>
