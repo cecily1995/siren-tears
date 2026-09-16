@@ -570,7 +570,10 @@
     "successTitle": "リクエストを受け付けました。",
     "successBody": "ご依頼を受け付けました。在庫確認とお支払いのご案内のため、追ってご連絡いたします。",
     "errorGeneric": "問題が発生しました。もう一度お試しください。",
-    "checkoutCta": "チェックアウト"
+    "checkoutCta": "チェックアウト",
+    "shippingNote": "ニュージーランド国内は送料無料。NZD $500以上の国際注文は送料無料——Siren Circle会員はNZD $400から送料無料でご利用いただけます。",
+    "joinCircleCta": "Siren Circleに入会する",
+    "carrierNote": "すべてのご注文はNZ Postにて発送されます。国際便のお荷物は配送先の国によって輸入関税・税金が発生する場合があり、お受け取り時にお支払いいただく場合があります。"
   },
   "wishlist": {
     "eyebrow": "保存済み",

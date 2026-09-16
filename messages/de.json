@@ -570,7 +570,10 @@
     "successTitle": "Anfrage erhalten.",
     "successBody": "Wir haben Ihre Anfrage erhalten und melden uns in Kürze, um die Verfügbarkeit zu bestätigen und die Zahlung zu vereinbaren.",
     "errorGeneric": "Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut.",
-    "checkoutCta": "Zur Kasse"
+    "checkoutCta": "Zur Kasse",
+    "shippingNote": "Kostenloser Versand innerhalb Neuseelands. Internationale Bestellungen über NZD $500 werden kostenlos versandt — Siren Circle-Mitglieder erhalten kostenlosen Versand bereits ab NZD $400.",
+    "joinCircleCta": "Dem Siren Circle beitreten",
+    "carrierNote": "Alle Bestellungen werden per NZ Post versandt. Für internationale Pakete können je nach Zielland Einfuhrzölle und Steuern anfallen, die bei Lieferung von Ihnen zu zahlen sein können."
   },
   "wishlist": {
     "eyebrow": "Gemerkt",

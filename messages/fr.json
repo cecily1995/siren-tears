@@ -570,7 +570,10 @@
     "successTitle": "Demande reçue.",
     "successBody": "Nous avons bien reçu votre demande et vous contacterons prochainement pour confirmer la disponibilité et organiser le paiement.",
     "errorGeneric": "Une erreur s'est produite. Veuillez réessayer.",
-    "checkoutCta": "Commander"
+    "checkoutCta": "Commander",
+    "shippingNote": "Livraison gratuite en Nouvelle-Zélande. Les commandes internationales de plus de 500 $ NZD sont livrées gratuitement — les membres du Siren Circle profitent de la livraison gratuite dès 400 $ NZD.",
+    "joinCircleCta": "Rejoindre le Siren Circle",
+    "carrierNote": "Toutes les commandes sont expédiées via NZ Post. Les colis internationaux peuvent être soumis à des droits de douane et taxes selon votre pays de destination, que vous devrez peut-être régler à la livraison."
   },
   "wishlist": {
     "eyebrow": "Enregistrés",

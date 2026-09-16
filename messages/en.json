@@ -570,7 +570,10 @@
     "successTitle": "Request received.",
     "successBody": "We've received your request and will be in touch shortly to confirm availability and arrange payment.",
     "errorGeneric": "Something went wrong. Please try again.",
-    "checkoutCta": "Checkout"
+    "checkoutCta": "Checkout",
+    "shippingNote": "Free shipping within New Zealand. International orders over NZD $500 ship free — Siren Circle members enjoy free shipping from just NZD $400.",
+    "joinCircleCta": "Join the Siren Circle",
+    "carrierNote": "All orders are sent via NZ Post. International parcels may be subject to import duties and taxes depending on your destination country, so you may need to pay these upon delivery."
   },
   "wishlist": {
     "eyebrow": "Saved",

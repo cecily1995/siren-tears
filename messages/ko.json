@@ -570,7 +570,10 @@
     "successTitle": "요청이 접수되었습니다.",
     "successBody": "요청을 받았습니다. 재고 확인 및 결제 안내를 위해 곧 연락드리겠습니다.",
     "errorGeneric": "문제가 발생했습니다. 다시 시도해 주세요.",
-    "checkoutCta": "체크아웃"
+    "checkoutCta": "체크아웃",
+    "shippingNote": "뉴질랜드 국내는 무료 배송입니다. NZD $500 이상 해외 주문은 무료 배송되며, Siren Circle 회원은 NZD $400부터 무료 배송 혜택을 받습니다.",
+    "joinCircleCta": "Siren Circle 가입하기",
+    "carrierNote": "모든 주문은 NZ Post를 통해 발송됩니다. 해외 소포는 배송지 국가에 따라 수입 관세 및 세금이 부과될 수 있으며, 수령 시 직접 납부해야 할 수 있습니다."
   },
   "wishlist": {
     "eyebrow": "저장됨",

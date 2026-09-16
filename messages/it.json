@@ -570,7 +570,10 @@
     "successTitle": "Richiesta ricevuta.",
     "successBody": "Abbiamo ricevuto la tua richiesta e ti contatteremo a breve per confermare la disponibilità e organizzare il pagamento.",
     "errorGeneric": "Qualcosa è andato storto. Riprova.",
-    "checkoutCta": "Checkout"
+    "checkoutCta": "Checkout",
+    "shippingNote": "Spedizione gratuita in Nuova Zelanda. Gli ordini internazionali oltre i 500 $ NZD sono spediti gratuitamente — i membri del Siren Circle godono della spedizione gratuita già da 400 $ NZD.",
+    "joinCircleCta": "Unisciti al Siren Circle",
+    "carrierNote": "Tutti gli ordini vengono spediti tramite NZ Post. I pacchi internazionali potrebbero essere soggetti a dazi doganali e tasse a seconda del paese di destinazione, che potrebbero essere a tuo carico alla consegna."
   },
   "wishlist": {
     "eyebrow": "Salvati",

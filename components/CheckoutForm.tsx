@@ -9,6 +9,7 @@ import SizeGuideTrigger from './SizeGuideTrigger';
 import CheckoutHeader from './CheckoutHeader';
 import PhoneInput from './PhoneInput';
 import RecommendedProducts from './RecommendedProducts';
+import ShippingNote from './ShippingNote';
 import StripePaymentSection from './StripePaymentSection';
 
 const BRACELET_CATEGORIES = ['braceletBead', 'braceletChain'];
@@ -206,6 +207,9 @@ export default function CheckoutForm() {
       <div className="flex justify-between text-charcoal text-[1rem] pt-2 border-t border-charcoal/10">
         <span>{t('totalLabel')}</span>
         <span>NZD ${total}</span>
+      </div>
+      <div className="pt-3">
+        <ShippingNote />
       </div>
     </div>
   );

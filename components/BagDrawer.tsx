@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
 import RecommendedProducts from './RecommendedProducts';
+import ShippingNote from './ShippingNote';
 
 export default function BagDrawer() {
   const { items, removeItem, isOpen, close } = useBag();
@@ -83,6 +84,10 @@ export default function BagDrawer() {
                   </li>
                 ))}
               </ul>
+
+              <div className="mb-6">
+                <ShippingNote />
+              </div>
 
               <div className="mb-8 pb-8 border-b border-charcoal/10">
                 <RecommendedProducts />

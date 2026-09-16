@@ -570,7 +570,10 @@
     "successTitle": "请求已收到。",
     "successBody": "我们已经收到你的购买请求,会尽快联系你确认商品状态并安排付款。",
     "errorGeneric": "出了点问题,请重试。",
-    "checkoutCta": "结账"
+    "checkoutCta": "结账",
+    "shippingNote": "新西兰境内免费配送。国际订单满NZD $500即可免运费——加入Siren Circle会员,满$400即可免运费。",
+    "joinCircleCta": "加入 Siren Circle 会员",
+    "carrierNote": "所有订单通过NZ Post邮寄。国际包裹是否需要缴纳进口关税和税费,取决于您的目的地国家,因此到货时您可能需要自行支付这部分费用。"
   },
   "wishlist": {
     "eyebrow": "已收藏",
