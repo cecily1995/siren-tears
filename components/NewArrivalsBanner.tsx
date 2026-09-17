@@ -31,10 +31,10 @@ export default function NewArrivalsBanner({ data }: { data: Data }) {
   if (!images.length) return null;
 
   return (
-    <section className="px-4 md:px-8 py-6 md:py-10">
+    <section className="px-4 md:px-8 py-3 md:py-10">
       <Link
         href="/new-arrivals"
-        className="relative block aspect-[4/5] sm:aspect-[16/9] md:aspect-[21/9] max-w-[1480px] mx-auto overflow-hidden bg-charcoal/5"
+        className="relative block aspect-[16/9] md:aspect-[21/9] max-w-[1480px] mx-auto overflow-hidden bg-charcoal/5"
       >
         {images.map((url, i) => (
           // eslint-disable-next-line @next/next/no-img-element
