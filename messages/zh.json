@@ -698,7 +698,10 @@
     "foundersHeading": "关于创始人",
     "para1": "一切始于对天然石材独特个性的欣赏,渐渐演变成对色彩、纹理、形状与天然内含物如何通过设计融为一体的深入探索。他们不把石头当作可以互相替代的材料,而是把每一颗石头,当作一件作品的起点——让它天然的个性,决定最终成品的样子。",
     "para2": "通过 SIREN TEARS,他们想做出的珠宝,少一分\"批量制造\"的感觉,多一分\"个人化\"的温度:每一件都有自己的性格,数量稀少,是等待被发现的作品,而不是简单地被生产出来。",
-    "para3": "如今,他们依然共同参与每一件作品的选石、设计方向与最终打磨,继续用一个简单的信念构建 SIREN TEARS:天然之美,不需要被磨平棱角、变得统一,才叫美。"
+    "para3": "如今,他们依然共同参与每一件作品的选石、设计方向与最终打磨,继续用一个简单的信念构建 SIREN TEARS:天然之美,不需要被磨平棱角、变得统一,才叫美。",
+    "finalBannerEyebrow": "Crafted With Intention",
+    "finalBannerTagline": "天然材料,用心设计,以更从容的方式制作。",
+    "finalBannerCta": "了解更多"
   },
   "newArrivals": {
     "eyebrow": "JUST IN, FROM THE ATELIER",
@@ -710,5 +713,10 @@
     "title": "最新上架",
     "intro": "全新独一无二的作品,刚从工作室完成。",
     "empty": "新品正在路上,敬请期待。"
+  },
+  "responsibleCraftsmanshipPage": {
+    "eyebrow": "Responsible Craftsmanship",
+    "title": "用心制作",
+    "intro": "这个页面正在筹备中,敬请期待。"
   }
 }

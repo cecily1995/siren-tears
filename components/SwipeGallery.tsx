@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useHorizontalSwipeLock } from '@/lib/useHorizontalSwipeLock';
 
 type SlideImage = { url?: string; alt?: string; placeholderLabel?: string };
 
@@ -13,22 +14,34 @@ const EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
 
 export default function SwipeGallery({
   images,
-  aspectClassName = 'aspect-[4/5]'
+  aspectClassName = 'aspect-[4/5]',
+  autoAdvanceMs
 }: {
   images: SlideImage[];
   aspectClassName?: string;
+  // Pass e.g. 3000 to auto-advance one slide every 3s (pauses for a few
+  // seconds after any manual interaction, same as the other carousels).
+  autoAdvanceMs?: number;
 }) {
   const [active, setActive] = useState(0);
   const [dragPx, setDragPx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
+  const [paused, setPaused] = useState(false);
   const startX = useRef(0);
   const containerWidth = useRef(0);
   const pointerActive = useRef(false);
-
-  if (!images.length) return null;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   function goTo(i: number) {
     setActive(Math.max(0, Math.min(images.length - 1, i)));
+  }
+
+  function pauseThenResume() {
+    if (!autoAdvanceMs) return;
+    setPaused(true);
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => setPaused(false), 3500);
   }
 
   function beginDrag(clientX: number, el: HTMLElement) {
@@ -38,6 +51,7 @@ export default function SwipeGallery({
     startX.current = clientX;
     containerWidth.current = el.getBoundingClientRect().width || 1;
     setDragPx(0);
+    pauseThenResume();
   }
   function moveDrag(clientX: number) {
     if (!pointerActive.current) return;
@@ -58,15 +72,33 @@ export default function SwipeGallery({
     setIsDragging(false);
   }
 
+  useHorizontalSwipeLock(containerRef, moveDrag);
+
+  useEffect(() => {
+    if (!autoAdvanceMs || images.length < 2 || paused) return;
+    const timer = setInterval(() => {
+      setActive((i) => (i + 1) % images.length);
+    }, autoAdvanceMs);
+    return () => clearInterval(timer);
+  }, [autoAdvanceMs, images.length, paused]);
+
+  useEffect(() => {
+    return () => {
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, []);
+
+  if (!images.length) return null;
+
   const offsetPercent = -(active * 100);
   const dragPercent = containerWidth.current ? (dragPx / containerWidth.current) * 100 : 0;
 
   return (
     <div>
       <div
+        ref={containerRef}
         className={`relative ${aspectClassName} overflow-hidden bg-charcoal/5 select-none`}
         onTouchStart={(e) => beginDrag(e.touches[0].clientX, e.currentTarget)}
-        onTouchMove={(e) => moveDrag(e.touches[0].clientX)}
         onTouchEnd={endDrag}
         onMouseDown={(e) => {
           e.preventDefault();
@@ -119,7 +151,10 @@ export default function SwipeGallery({
               key={i}
               type="button"
               aria-label={`Image ${i + 1}`}
-              onClick={() => goTo(i)}
+              onClick={() => {
+                goTo(i);
+                pauseThenResume();
+              }}
               className={`h-1.5 rounded-full transition-all duration-300 ${
                 i === active ? 'w-4 bg-charcoal' : 'w-1.5 bg-charcoal/25'
               }`}

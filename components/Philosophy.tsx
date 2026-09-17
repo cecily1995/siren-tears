@@ -37,16 +37,33 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
   useEffect(() => {
     // Mobile browsers commonly pause a background video when the tab/app
     // goes into the background to save power, and don't resume it on
-    // their own -- nudge it to continue once the page is visible again.
+    // their own. A plain .play() often isn't enough on its own -- after a
+    // longer time in the background, the browser can fully release the
+    // decoded video buffer (not just pause it), leaving it stuck/frozen
+    // rather than actually resuming. Detect that by checking a moment
+    // after .play() whether it's actually progressing, and reload the
+    // source if not.
     const el = videoRef.current;
     if (!el) return;
     const onVisible = () => {
-      if (document.visibilityState === 'visible' && el.paused) {
-        el.play().catch(() => undefined);
-      }
+      if (document.visibilityState !== 'visible' || !el.paused) return;
+      const timeBefore = el.currentTime;
+      el.play().catch(() => undefined);
+      setTimeout(() => {
+        if (el.paused || el.currentTime === timeBefore) {
+          el.load();
+          el.play().catch(() => undefined);
+        }
+      }, 600);
     };
     document.addEventListener('visibilitychange', onVisible);
-    return () => document.removeEventListener('visibilitychange', onVisible);
+    window.addEventListener('focus', onVisible);
+    window.addEventListener('pageshow', onVisible);
+    return () => {
+      document.removeEventListener('visibilitychange', onVisible);
+      window.removeEventListener('focus', onVisible);
+      window.removeEventListener('pageshow', onVisible);
+    };
   }, [showVideo]);
 
   return (

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import { useHorizontalSwipeLock } from '@/lib/useHorizontalSwipeLock';
 
 type GalleryImage = { url: string; alt?: string };
 
@@ -28,13 +29,10 @@ export default function ProductGallery({
   const [dragPx, setDragPx] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const startX = useRef(0);
   const containerWidth = useRef(0);
   const pointerActive = useRef(false);
-
-  if (!images.length) {
-    return <div className="aspect-[4/5] bg-charcoal/5" />;
-  }
 
   function goTo(i: number) {
     setActive(Math.max(0, Math.min(images.length - 1, i)));
@@ -70,6 +68,12 @@ export default function ProductGallery({
     setIsDragging(false);
   }
 
+  useHorizontalSwipeLock(containerRef, moveDrag);
+
+  if (!images.length) {
+    return <div className="aspect-[4/5] bg-charcoal/5" />;
+  }
+
   const offsetPercent = -(active * 100);
   const dragPercent = containerWidth.current ? (dragPx / containerWidth.current) * 100 : 0;
 
@@ -77,9 +81,9 @@ export default function ProductGallery({
     <div>
       {/* Main image strip */}
       <div
+        ref={containerRef}
         className="relative aspect-[4/5] overflow-hidden bg-charcoal/5 select-none"
         onTouchStart={(e) => beginDrag(e.touches[0].clientX, e.currentTarget)}
-        onTouchMove={(e) => moveDrag(e.touches[0].clientX)}
         onTouchEnd={endDrag}
         onMouseDown={(e) => {
           e.preventDefault();

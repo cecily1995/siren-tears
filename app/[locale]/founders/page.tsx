@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/routing';
 import SwipeGallery from '@/components/SwipeGallery';
+import SquareImageStrip from '@/components/SquareImageStrip';
+import FoundersVideo from '@/components/FoundersVideo';
 
 export async function generateMetadata({
   params
@@ -11,6 +14,10 @@ export async function generateMetadata({
   return { title: `${t('pageTitle')} — SIREN TEARS` };
 }
 
+// Consistent gap between every section on this page, per the brief --
+// deliberately the same value everywhere rather than varying per-section.
+const SECTION_GAP = 'py-8 md:py-10';
+
 export default async function FoundersPage({ params }: { params: { locale: string } }) {
   const { locale } = params;
   setRequestLocale(locale);
@@ -19,54 +26,88 @@ export default async function FoundersPage({ params }: { params: { locale: strin
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 py-16 md:py-24 max-w-[720px] mx-auto text-center">
-        <h1 className="serif-display text-[clamp(1.7rem,4vw,2.6rem)] font-light leading-[1.2] text-charcoal uppercase tracking-[0.02em]">
+      <div className="px-6 md:px-12 pt-10 md:pt-14 max-w-[900px] mx-auto">
+        <h1 className="serif-display text-[clamp(1.4rem,3vw,2rem)] font-light leading-[1.2] text-charcoal uppercase tracking-[0.02em] text-left">
           {t('pageTitle')}
         </h1>
-
-        {/* Part one: opening line, a photo, then the quote and signature --
-            mirrors the reference page's intro + pull-quote structure. */}
-        <p className="mt-8 text-[0.98rem] md:text-[1.05rem] leading-[1.9] text-ash font-light">
+        <p className="mt-6 max-w-xl mx-auto text-[0.98rem] leading-[1.9] text-ash font-light text-center">
           {t('heroIntro')}
         </p>
       </div>
 
-      <div className="px-6 md:px-12 max-w-[520px] mx-auto mb-12 md:mb-16">
-        <SwipeGallery
-          images={[{ placeholderLabel: 'Founder image 01' }]}
-          aspectClassName="aspect-[4/5]"
-        />
+      <div className={`px-6 md:px-12 max-w-[420px] mx-auto ${SECTION_GAP}`}>
+        <SwipeGallery images={[{ placeholderLabel: 'Founder photo — 3:4' }]} aspectClassName="aspect-[3/4]" />
       </div>
 
-      <div className="px-6 md:px-12 max-w-[720px] mx-auto text-center mb-20 md:mb-28">
-        <p className="serif-display italic text-[1.3rem] md:text-[1.7rem] font-light leading-[1.5] text-charcoal">
-          &ldquo;{t('quote')}&rdquo;
-        </p>
-        <p className="mt-5 text-[11px] tracking-[0.28em] uppercase text-gold font-light">
-          {t('quoteSignature')}
-        </p>
+      <div className={`px-6 md:px-12 ${SECTION_GAP}`}>
+        <FoundersVideo quote={t('quote')} signature={t('quoteSignature')} />
       </div>
 
-      {/* Part two: Our Founders -- the fuller story, then a swipeable set
-          of founder photos (starts with placeholders; real photography to
-          be added later without needing any layout change). */}
-      <div className="px-6 md:px-12 max-w-[720px] mx-auto text-center mb-10 md:mb-14">
-        <p className="eyebrow mb-5">{t('foundersHeading')}</p>
-        <div className="space-y-6 text-left">
-          <p className="text-[0.95rem] md:text-[1rem] leading-[1.9] text-ash font-light">{t('para1')}</p>
-          <p className="text-[0.95rem] md:text-[1rem] leading-[1.9] text-ash font-light">{t('para2')}</p>
-          <p className="text-[0.95rem] md:text-[1rem] leading-[1.9] text-ash font-light">{t('para3')}</p>
+      {/* Our Founders: mobile stacks text above the group photo; desktop
+          runs them side by side (text left, photo right). */}
+      <div className={`px-6 md:px-12 max-w-[1000px] mx-auto ${SECTION_GAP}`}>
+        <div className="md:hidden">
+          <p className="eyebrow mb-5 text-left">{t('foundersHeading')}</p>
+          <div className="space-y-6 text-left">
+            <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('para1')}</p>
+            <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('para2')}</p>
+            <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('para3')}</p>
+          </div>
+          <div className="mt-8 max-w-[420px] mx-auto">
+            <SwipeGallery
+              images={[{ placeholderLabel: 'Founders group photo — 3:4' }]}
+              aspectClassName="aspect-[3/4]"
+            />
+          </div>
+        </div>
+
+        <div className="hidden md:flex gap-16 items-center">
+          <div className="flex-1">
+            <p className="eyebrow mb-5 text-left">{t('foundersHeading')}</p>
+            <div className="space-y-6 text-left">
+              <p className="text-[0.98rem] leading-[1.9] text-ash font-light">{t('para1')}</p>
+              <p className="text-[0.98rem] leading-[1.9] text-ash font-light">{t('para2')}</p>
+              <p className="text-[0.98rem] leading-[1.9] text-ash font-light">{t('para3')}</p>
+            </div>
+          </div>
+          <div className="flex-1">
+            <SwipeGallery
+              images={[{ placeholderLabel: 'Founders group photo — 3:4' }]}
+              aspectClassName="aspect-[3/4]"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="px-6 md:px-12 max-w-[720px] mx-auto pb-20 md:pb-28">
-        <SwipeGallery
+      <div className={`px-6 md:px-12 max-w-[1000px] mx-auto ${SECTION_GAP}`}>
+        <SquareImageStrip
           images={[
-            { placeholderLabel: 'Founder image 01' },
-            { placeholderLabel: 'Founder image 02' }
+            { placeholderLabel: 'Square 1' },
+            { placeholderLabel: 'Square 2' },
+            { placeholderLabel: 'Square 3' }
           ]}
-          aspectClassName="aspect-[4/5]"
         />
+      </div>
+
+      {/* Full-bleed, edge to edge -- no page padding here on purpose.
+          Mobile portrait, desktop landscape. */}
+      <div className={SECTION_GAP}>
+        <Link href="/responsible-craftsmanship" className="group relative block aspect-[4/5] md:aspect-[16/9] overflow-hidden bg-charcoal/5">
+          <div className="absolute inset-0 flex items-center justify-center border border-dashed border-charcoal/20">
+            <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60 font-light">
+              Final banner photo — mobile 4:5 / desktop 16:9
+            </span>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal/55 via-charcoal/5 to-transparent" />
+          <div
+            className="absolute top-0 left-0 p-6 md:p-10 max-w-[360px] text-ivory"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.55)' }}
+          >
+            <p className="text-[12px] tracking-[0.26em] uppercase font-light mb-3">{t('finalBannerEyebrow')}</p>
+            <p className="text-[0.9rem] leading-[1.6] font-light mb-5">{t('finalBannerTagline')}</p>
+            <span className="text-[11px] tracking-[0.24em] uppercase link-underline">{t('finalBannerCta')}</span>
+          </div>
+        </Link>
       </div>
     </div>
   );

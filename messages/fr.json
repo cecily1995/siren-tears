@@ -698,7 +698,10 @@
     "foundersHeading": "Nos fondateurs",
     "para1": "Ce qui a commencé comme une appréciation personnelle de l'individualité des pierres naturelles est devenu peu à peu un intérêt plus profond pour la manière dont la couleur, la texture, la forme et les inclusions naturelles peuvent se rencontrer à travers le design. Plutôt que de traiter les pierres comme des matériaux interchangeables, les fondateurs abordent chacune d'elles comme le point de départ d'une composition — laissant son caractère naturel influencer la pièce finale.",
     "para2": "À travers SIREN TEARS, ils ont voulu créer une joaillerie qui se sente moins manufacturée et plus personnelle : des pièces au caractère propre, créées en petites quantités et conçues pour être découvertes plutôt que simplement produites.",
-    "para3": "Aujourd'hui, ils travaillent encore ensemble sur la sélection des pierres, la direction artistique et la finition de chaque pièce, continuant à bâtir SIREN TEARS autour d'une conviction simple : la beauté naturelle n'a pas besoin d'être uniformisée pour être belle."
+    "para3": "Aujourd'hui, ils travaillent encore ensemble sur la sélection des pierres, la direction artistique et la finition de chaque pièce, continuant à bâtir SIREN TEARS autour d'une conviction simple : la beauté naturelle n'a pas besoin d'être uniformisée pour être belle.",
+    "finalBannerEyebrow": "Crafted With Intention",
+    "finalBannerTagline": "Des matériaux naturels, un design réfléchi, et une approche plus lente de la fabrication.",
+    "finalBannerCta": "En savoir plus"
   },
   "newArrivals": {
     "eyebrow": "Just In, From The Atelier",
@@ -710,5 +713,10 @@
     "title": "Just In",
     "intro": "Nouvelles pièces uniques, tout juste sorties de l'Atelier.",
     "empty": "De nouvelles pièces arrivent bientôt."
+  },
+  "responsibleCraftsmanshipPage": {
+    "eyebrow": "Responsible Craftsmanship",
+    "title": "Fait avec soin",
+    "intro": "Cette page est en cours de rédaction — bientôt disponible."
   }
 }

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
+import { useHorizontalSwipeLock } from '@/lib/useHorizontalSwipeLock';
 
 type Product = {
   _id: string;
@@ -41,6 +42,7 @@ export default function AotearoaTeaser({
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const dragging = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (slides.length < 2 || paused) return;
@@ -95,6 +97,8 @@ export default function AotearoaTeaser({
     dragStartX.current = null;
   }
 
+  useHorizontalSwipeLock(containerRef, () => undefined);
+
   return (
     <section className="bg-pearl pt-6 pb-14 md:pt-8 md:pb-20 overflow-hidden">
       {/* Full-bleed banner: photo with title/intro/CTA overlaid. The photo,
@@ -146,6 +150,7 @@ export default function AotearoaTeaser({
           forever the moment someone touches it. Drag/swipe left-right to
           move through it manually. */}
       <div
+        ref={containerRef}
         className="relative mx-auto max-w-[1480px] px-6 select-none"
         style={{ perspective: '1400px' }}
         onMouseDown={(e) => handleDragStart(e.clientX)}

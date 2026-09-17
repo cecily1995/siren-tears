@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useSearchParams } from 'next/navigation';
+import { useHorizontalSwipeLock } from '@/lib/useHorizontalSwipeLock';
 
 type ShowcaseItem = {
   _id: string;
@@ -82,6 +83,7 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
   const dragStartX = useRef(0);
   const dragContainerWidth = useRef(0);
   const dragActive = useRef(false);
+  const dragContainerRef = useRef<HTMLDivElement>(null);
 
   function beginDrag(clientX: number, el: HTMLElement) {
     if (photos.length <= 1) return;
@@ -109,6 +111,8 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
     setDragPx(0);
     setIsDragging(false);
   }
+
+  useHorizontalSwipeLock(dragContainerRef, moveDrag);
 
   return (
     <>
@@ -169,9 +173,9 @@ export default function ShowcaseGrid({ items }: { items: ShowcaseItem[] }) {
 
           <div className="relative z-[1] w-full max-w-[900px] max-h-[88dvh] overflow-y-auto bg-ivory">
             <div
+              ref={dragContainerRef}
               className="relative bg-charcoal/5 select-none h-[60dvh] overflow-hidden"
               onTouchStart={(e) => beginDrag(e.touches[0].clientX, e.currentTarget)}
-              onTouchMove={(e) => moveDrag(e.touches[0].clientX)}
               onTouchEnd={endDrag}
               onMouseDown={(e) => {
                 e.preventDefault();

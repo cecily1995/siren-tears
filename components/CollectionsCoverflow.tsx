@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
+import { useHorizontalSwipeLock } from '@/lib/useHorizontalSwipeLock';
 
 type CoverItem = {
   key: string;
@@ -26,6 +27,7 @@ export default function CollectionsCoverflow({ items }: { items: CoverItem[] }) 
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const dragStartX = useRef<number | null>(null);
   const dragging = useRef(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (items.length < 2 || paused) return;
@@ -76,8 +78,11 @@ export default function CollectionsCoverflow({ items }: { items: CoverItem[] }) 
     dragStartX.current = null;
   }
 
+  useHorizontalSwipeLock(containerRef, () => undefined);
+
   return (
     <div
+      ref={containerRef}
       className="relative select-none"
       style={{ perspective: '1400px' }}
       onMouseDown={(e) => handleDragStart(e.clientX)}
