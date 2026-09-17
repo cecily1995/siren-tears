@@ -53,12 +53,12 @@ export default function SquareImageStrip({ images }: { images: SquareImage[] }) 
       ref={scrollRef}
       onScroll={pauseThenResume}
       onTouchStart={pauseThenResume}
-      className="flex gap-3 md:gap-5 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+      className="flex justify-center gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
     >
       {images.map((img, i) => (
         <div
           key={i}
-          className="shrink-0 w-[31%] md:w-[23%] aspect-square snap-center overflow-hidden bg-charcoal/5"
+          className="shrink-0 w-[62%] sm:w-[46%] md:w-[300px] lg:w-[340px] aspect-square snap-center overflow-hidden bg-charcoal/5"
         >
           {img.url ? (
             // eslint-disable-next-line @next/next/no-img-element
