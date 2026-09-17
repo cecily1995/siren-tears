@@ -156,7 +156,7 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
   }
 
   const inputClass =
-    'w-full bg-white border border-charcoal/20 focus:border-charcoal outline-none px-3.5 py-2.5 text-[0.8rem] font-light text-charcoal placeholder:text-ash/60 placeholder:uppercase placeholder:tracking-[0.08em] placeholder:text-[0.7rem] transition-colors';
+    'w-full bg-white border border-charcoal/20 focus:border-charcoal outline-none px-3.5 py-2.5 text-[16px] font-light text-charcoal placeholder:text-ash/60 placeholder:uppercase placeholder:tracking-[0.08em] placeholder:text-[0.7rem] transition-colors';
   const labelClass = 'block text-[9px] tracking-[0.2em] uppercase text-ash/70 mb-1.5 font-light';
   const chipBase =
     'text-[11px] tracking-[0.16em] uppercase font-light px-4 py-2 border transition-colors';
