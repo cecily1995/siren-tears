@@ -13,7 +13,8 @@
     "membership": "Adhésion",
     "bespoke": "Sur mesure",
     "account": "Mon compte",
-    "signIn": "Se connecter"
+    "signIn": "Se connecter",
+    "founders": "Les Personnes Derrière Siren Tears"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -97,7 +98,8 @@
     "support": "Assistance",
     "brandStoryLabel": "Notre histoire",
     "sizeGuide": "Guide des tailles",
-    "shipping": "Livraison"
+    "shipping": "Livraison",
+    "foundersLabel": "Les Personnes Derrière Siren Tears"
   },
   "languageSwitcher": {
     "label": "Langue",
@@ -691,5 +693,15 @@
     "tiktok": "TikTok",
     "xiaohongshu": "Xiaohongshu",
     "douyin": "Douyin"
+  },
+  "foundersPage": {
+    "pageTitle": "Les personnes derrière Siren Tears",
+    "heroIntro": "SIREN TEARS a été fondée par deux personnes unies par une même fascination pour les pierres naturelles, la joaillerie et la beauté silencieuse de l'océan.",
+    "quote": "Nous ne concevons pas pour la perfection. Nous concevons pour ce que la nature nous offre.",
+    "quoteSignature": "Cecily & Louie",
+    "foundersHeading": "Nos fondateurs",
+    "para1": "Ce qui a commencé comme une appréciation personnelle de l'individualité des pierres naturelles est devenu peu à peu un intérêt plus profond pour la manière dont la couleur, la texture, la forme et les inclusions naturelles peuvent se rencontrer à travers le design. Plutôt que de traiter les pierres comme des matériaux interchangeables, les fondateurs abordent chacune d'elles comme le point de départ d'une composition — laissant son caractère naturel influencer la pièce finale.",
+    "para2": "À travers SIREN TEARS, ils ont voulu créer une joaillerie qui se sente moins manufacturée et plus personnelle : des pièces au caractère propre, créées en petites quantités et conçues pour être découvertes plutôt que simplement produites.",
+    "para3": "Aujourd'hui, ils travaillent encore ensemble sur la sélection des pierres, la direction artistique et la finition de chaque pièce, continuant à bâtir SIREN TEARS autour d'une conviction simple : la beauté naturelle n'a pas besoin d'être uniformisée pour être belle."
   }
 }

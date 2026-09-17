@@ -13,7 +13,8 @@
     "membership": "Mitgliedschaft",
     "bespoke": "Maßanfertigung",
     "account": "Mein Konto",
-    "signIn": "Anmelden"
+    "signIn": "Anmelden",
+    "founders": "Die Menschen hinter Siren Tears"
   },
   "hero": {
     "eyebrow": "Ein Atelier in Neuseeland",
@@ -97,7 +98,8 @@
     "support": "Support",
     "brandStoryLabel": "Markengeschichte",
     "sizeGuide": "Größentabelle",
-    "shipping": "Versand & Lieferung"
+    "shipping": "Versand & Lieferung",
+    "foundersLabel": "Die Menschen hinter Siren Tears"
   },
   "languageSwitcher": {
     "label": "Sprache",
@@ -691,5 +693,15 @@
     "tiktok": "TikTok",
     "xiaohongshu": "Xiaohongshu",
     "douyin": "Douyin"
+  },
+  "foundersPage": {
+    "pageTitle": "Die Menschen hinter Siren Tears",
+    "heroIntro": "SIREN TEARS wurde von zwei Menschen gegründet, die eine gemeinsame Faszination für natürliche Steine, Schmuck und die stille Schönheit des Meeres verbindet.",
+    "quote": "Wir gestalten nicht für Perfektion. Wir gestalten für das, was die Natur uns schenkt.",
+    "quoteSignature": "Cecily & Louie",
+    "foundersHeading": "Unsere Gründer",
+    "para1": "Was als persönliche Wertschätzung für die Einzigartigkeit natürlicher Steine begann, wurde nach und nach zu einem tieferen Interesse daran, wie Farbe, Textur, Form und natürliche Einschlüsse durch Design zusammengeführt werden können. Anstatt Steine als austauschbare Materialien zu behandeln, betrachten die Gründer jeden einzelnen als Ausgangspunkt einer Komposition — und lassen seinen natürlichen Charakter das fertige Stück mitgestalten.",
+    "para2": "Mit SIREN TEARS wollten sie Schmuck schaffen, der sich weniger fabrikmäßig und persönlicher anfühlt: Stücke mit eigenem Charakter, in kleinen Mengen gefertigt und dafür gemacht, entdeckt statt einfach nur produziert zu werden.",
+    "para3": "Heute arbeiten sie weiterhin eng zusammen — bei der Auswahl der Steine, der Designrichtung und der Fertigstellung jedes Stücks — und bauen SIREN TEARS beständig um eine einfache Überzeugung herum: Natürliche Schönheit muss nicht vereinheitlicht werden, um schön zu sein."
   }
 }

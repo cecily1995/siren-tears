@@ -13,7 +13,8 @@
     "membership": "멤버십",
     "bespoke": "커스텀 주문",
     "account": "마이 계정",
-    "signIn": "로그인"
+    "signIn": "로그인",
+    "founders": "Siren Tears를 만든 사람들"
   },
   "hero": {
     "eyebrow": "뉴질랜드의 아틀리에",
@@ -97,7 +98,8 @@
     "support": "고객 지원",
     "brandStoryLabel": "브랜드 스토리",
     "sizeGuide": "사이즈 가이드",
-    "shipping": "배송 안내"
+    "shipping": "배송 안내",
+    "foundersLabel": "Siren Tears를 만든 사람들"
   },
   "languageSwitcher": {
     "label": "언어",
@@ -691,5 +693,15 @@
     "tiktok": "TikTok",
     "xiaohongshu": "샤오홍슈",
     "douyin": "Douyin"
+  },
+  "foundersPage": {
+    "pageTitle": "Siren Tears를 만든 사람들",
+    "heroIntro": "SIREN TEARS는 천연석과 주얼리, 그리고 고요한 바다의 아름다움에 대한 공통된 애정으로 하나가 된 두 사람이 만들었습니다.",
+    "quote": "우리는 완벽함을 위해 디자인하지 않습니다. 자연이 우리에게 준 것을 위해 디자인합니다.",
+    "quoteSignature": "Cecily & Louie",
+    "foundersHeading": "창업자 이야기",
+    "para1": "천연석 하나하나가 지닌 개성에 대한 개인적인 애정에서 시작해, 점차 색감과 질감, 형태, 천연 내포물이 디자인을 통해 어떻게 어우러질 수 있는지에 대한 깊은 관심으로 이어졌습니다. 돌을 서로 대체 가능한 재료로 다루는 대신, 창업자들은 각각의 돌을 하나의 작품을 시작하는 출발점으로 여기며, 그 돌만의 자연스러운 개성이 완성작에 영향을 주도록 합니다.",
+    "para2": "SIREN TEARS를 통해 두 사람이 만들고 싶었던 것은 대량생산된 느낌이 아닌, 좀 더 개인적인 느낌을 주는 주얼리였습니다. 저마다의 개성을 지닌, 소량으로만 제작되는, 그저 생산되기보다 발견되도록 디자인된 작품입니다.",
+    "para3": "오늘도 두 사람은 원석 선정부터 디자인 방향, 마무리 작업까지 함께 긴밀히 협력하고 있습니다. 자연스러운 아름다움은 획일화되지 않아도 아름답다는 단순한 믿음을 바탕으로, SIREN TEARS를 계속 만들어가고 있습니다."
   }
 }

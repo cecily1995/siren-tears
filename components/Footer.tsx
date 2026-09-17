@@ -36,6 +36,7 @@ type Labels = {
   privacy: string;
   terms: string;
   aboutLabel: string;
+  foundersLabel: string;
   account: string;
 };
 
@@ -122,6 +123,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               <li>
                 <Link href="/brand-story" className="link-underline text-charcoal/85 hover:text-charcoal">
                   {labels.aboutLabel}
+                </Link>
+              </li>
+              <li>
+                <Link href="/founders" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.foundersLabel}
                 </Link>
               </li>
               <li>
@@ -285,6 +291,11 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
               <li>
                 <Link href="/brand-story" className="link-underline text-charcoal/85">
                   {labels.aboutLabel}
+                </Link>
+              </li>
+              <li>
+                <Link href="/founders" className="link-underline text-charcoal/85">
+                  {labels.foundersLabel}
                 </Link>
               </li>
               <li>

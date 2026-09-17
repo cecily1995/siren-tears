@@ -235,6 +235,13 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
 
         <div className="mt-8 flex flex-col gap-4">
           <Link
+            href="/founders"
+            onClick={closeAll}
+            className="text-[11px] tracking-[0.32em] uppercase text-ash"
+          >
+            {t('founders')}
+          </Link>
+          <Link
             href="/contact"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"

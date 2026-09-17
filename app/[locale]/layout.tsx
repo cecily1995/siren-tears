@@ -83,6 +83,7 @@ export default async function LocaleLayout({
     privacy: t('footer.privacy'),
     terms: t('footer.terms'),
     aboutLabel: t('footer.brandStoryLabel'),
+    foundersLabel: t('footer.foundersLabel'),
     account: t('nav.account')
   };
 

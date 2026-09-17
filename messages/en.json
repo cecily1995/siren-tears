@@ -13,7 +13,8 @@
     "membership": "Membership",
     "bespoke": "Bespoke",
     "account": "My Siren",
-    "signIn": "Sign In"
+    "signIn": "Sign In",
+    "founders": "The People Behind Siren Tears"
   },
   "hero": {
     "eyebrow": "A New Zealand Atelier",
@@ -97,7 +98,8 @@
     "support": "Support",
     "brandStoryLabel": "Brand Story",
     "sizeGuide": "Size Guide",
-    "shipping": "Shipping & Delivery"
+    "shipping": "Shipping & Delivery",
+    "foundersLabel": "The People Behind Siren Tears"
   },
   "languageSwitcher": {
     "label": "Language",
@@ -691,5 +693,15 @@
     "tiktok": "TikTok",
     "xiaohongshu": "Xiaohongshu",
     "douyin": "Douyin"
+  },
+  "foundersPage": {
+    "pageTitle": "The People Behind Siren Tears",
+    "heroIntro": "SIREN TEARS was founded by two people united by a shared fascination with natural stones, jewellery and the quiet beauty of the ocean.",
+    "quote": "We don't design around perfection. We design around what nature gives us.",
+    "quoteSignature": "Cecily & Louie",
+    "foundersHeading": "Our Founders",
+    "para1": "What began with a personal appreciation for the individuality of natural stones gradually became a deeper interest in how colour, texture, shape and natural inclusions could be brought together through design. Rather than treating stones as interchangeable materials, the founders approach each one as the starting point of a composition — allowing its natural character to influence the final piece.",
+    "para2": "Through SIREN TEARS, they wanted to create jewellery that feels less manufactured and more personal: pieces with their own character, created in small quantities and designed to be discovered rather than simply produced.",
+    "para3": "Today, they work closely together across the selection of stones, design direction and finishing of each piece, continuing to build SIREN TEARS around a simple belief: natural beauty does not need to be made uniform to be beautiful."
   }
 }

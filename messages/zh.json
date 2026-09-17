@@ -13,7 +13,8 @@
     "membership": "会员",
     "bespoke": "定制",
     "account": "我的账户",
-    "signIn": "登录"
+    "signIn": "登录",
+    "founders": "幕后的人"
   },
   "hero": {
     "eyebrow": "来自新西兰的工作室",
@@ -97,7 +98,8 @@
     "support": "支持",
     "brandStoryLabel": "品牌故事",
     "sizeGuide": "尺寸指南",
-    "shipping": "配送与运输"
+    "shipping": "配送与运输",
+    "foundersLabel": "幕后的人"
   },
   "languageSwitcher": {
     "label": "语言",
@@ -691,5 +693,15 @@
     "tiktok": "TikTok",
     "xiaohongshu": "小红书",
     "douyin": "抖音"
+  },
+  "foundersPage": {
+    "pageTitle": "幕后的人",
+    "heroIntro": "SIREN TEARS 由两个人共同创立,他们对天然石材、珠宝以及大海的静谧之美,有着共同的迷恋。",
+    "quote": "我们不为完美而设计,我们为大自然所给予的一切而设计。",
+    "quoteSignature": "Cecily & Louie",
+    "foundersHeading": "关于创始人",
+    "para1": "一切始于对天然石材独特个性的欣赏,渐渐演变成对色彩、纹理、形状与天然内含物如何通过设计融为一体的深入探索。他们不把石头当作可以互相替代的材料,而是把每一颗石头,当作一件作品的起点——让它天然的个性,决定最终成品的样子。",
+    "para2": "通过 SIREN TEARS,他们想做出的珠宝,少一分\"批量制造\"的感觉,多一分\"个人化\"的温度:每一件都有自己的性格,数量稀少,是等待被发现的作品,而不是简单地被生产出来。",
+    "para3": "如今,他们依然共同参与每一件作品的选石、设计方向与最终打磨,继续用一个简单的信念构建 SIREN TEARS:天然之美,不需要被磨平棱角、变得统一,才叫美。"
   }
 }
