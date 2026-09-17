@@ -13,6 +13,7 @@ import { BagProvider } from '@/lib/bag-context';
 import BagDrawer from '@/components/BagDrawer';
 import { WishlistProvider } from '@/lib/wishlist-context';
 import { getSiteSettings } from '@/sanity/lib/queries';
+import { translateText } from '@/lib/translate';
 import { fallback } from '@/components/fallback';
 
 export const metadata: Metadata = {
@@ -57,6 +58,11 @@ export default async function LocaleLayout({
   const [t, settings] = await Promise.all([getTranslations(), getSiteSettings()]);
 
   const footerSettings = settings ?? fallback.settings;
+  // siteSettings.tagline is raw CMS text (Studio: Site Settings), authored
+  // once in English -- translate it so the footer doesn't ignore the
+  // visitor's locale the way it was before.
+  const translatedTagline = await translateText(footerSettings.tagline, locale);
+  const localizedFooterSettings = { ...footerSettings, tagline: translatedTagline || footerSettings.tagline };
   const footerLabels = {
     contact: t('footer.contact'),
     studio: t('footer.studio'),
@@ -96,7 +102,7 @@ export default async function LocaleLayout({
           <Navigation />
           <RevealOnScroll />
           <main>{children}</main>
-          <Footer data={footerSettings} labels={footerLabels} />
+          <Footer data={localizedFooterSettings} labels={footerLabels} />
           <AuthGateModal />
           <TawkChat />
           <BagDrawer />

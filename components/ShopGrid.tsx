@@ -219,7 +219,16 @@ export default function ShopGrid({
     if (subFilter === 'all') return true;
     if (subFilter === 'archive') return p.status === 'sold';
     if (subFilter === 'bespokeShowcase') return p.status === 'bespoke';
-    if (line === 'beaded') return p.collectionTitle === subFilter;
+    // Trimmed + case-insensitive on purpose: a stray leading/trailing
+    // space or a capitalisation difference between a collection's title
+    // in Sanity and what a product's own collection reference resolves
+    // to is an easy typo to make and very hard to spot by eye, and would
+    // otherwise silently produce zero matches even though the collection
+    // clearly has pieces in it.
+    if (line === 'beaded') {
+      const target = subFilter.trim().toLowerCase();
+      return (p.collectionTitle ?? '').trim().toLowerCase() === target;
+    }
     return p.category === subFilter;
   });
 
