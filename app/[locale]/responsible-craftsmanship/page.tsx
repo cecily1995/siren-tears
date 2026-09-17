@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getResponsibleCraftsmanshipSettings } from '@/sanity/lib/queries';
 import SquareImageStrip from '@/components/SquareImageStrip';
+import TextOverlayCarousel from '@/components/TextOverlayCarousel';
 
 export async function generateMetadata({
   params
@@ -73,34 +74,47 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       </div>
 
       {/* Image B: same 3:4 ratio, much narrower side margins -- reads as
-          noticeably larger. "Natural Materials" is overlaid text, fixed
-          regardless of which photo is used. */}
+          noticeably larger. Multiple photos cross-fade + are swipeable;
+          "Natural Materials" is overlaid text, fixed regardless of which
+          photo is showing. */}
       <div className="px-3 md:px-8 mb-14 md:mb-20">
-        <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
-          {media?.naturalMaterialsImageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={media.naturalMaterialsImageUrl}
-              alt={naturalMaterials.title}
-              className="absolute inset-0 w-full h-full object-cover"
-            />
-          ) : (
-            <ImagePlaceholder label={`${naturalMaterials.title} — photo`} />
-          )}
-          <div className="absolute inset-0 bg-charcoal/25" />
-          <div
-            className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory"
-            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+        {media?.naturalMaterialsImageUrls?.length ? (
+          <TextOverlayCarousel
+            images={media.naturalMaterialsImageUrls}
+            className="aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal"
           >
-            <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
-              {naturalMaterials.title}
-            </p>
-            <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
-              {naturalMaterials.tagline}
-            </p>
-            <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{naturalMaterials.body}</p>
+            <div className="absolute inset-0 bg-charcoal/25 pointer-events-none" />
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory pointer-events-none"
+              style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+            >
+              <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
+                {naturalMaterials.title}
+              </p>
+              <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
+                {naturalMaterials.tagline}
+              </p>
+              <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{naturalMaterials.body}</p>
+            </div>
+          </TextOverlayCarousel>
+        ) : (
+          <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
+            <ImagePlaceholder label={`${naturalMaterials.title} — photo`} />
+            <div className="absolute inset-0 bg-charcoal/25" />
+            <div
+              className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory"
+              style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+            >
+              <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
+                {naturalMaterials.title}
+              </p>
+              <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
+                {naturalMaterials.tagline}
+              </p>
+              <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{naturalMaterials.body}</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Made By Hand + Made To Order: two plain text blocks, stacked,
@@ -141,14 +155,23 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
         </div>
       </div>
 
-      {/* Image C: full-bleed, no side margin at all. */}
-      <div className="mb-14 md:mb-20">
-        <div className="relative aspect-[3/4] md:aspect-[16/9] w-full overflow-hidden bg-charcoal/5">
-          {media?.oneOfOneImageUrl ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={media.oneOfOneImageUrl} alt={oneOfOne.title} className="absolute inset-0 w-full h-full object-cover" />
+      {/* One Of One: video now, not a photo -- always 16:9 (was 3:4 on
+          mobile), full-bleed with no side margin. Shorter vertical margin
+          than before since a 16:9 video is much flatter than a 3:4 photo,
+          so it doesn't need as much breathing room around it. */}
+      <div className="mb-8 md:mb-10">
+        <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal/5">
+          {media?.oneOfOneVideoUrl ? (
+            <video
+              src={media.oneOfOneVideoUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            />
           ) : (
-            <ImagePlaceholder label={`${oneOfOne.title} — photo`} />
+            <ImagePlaceholder label={`${oneOfOne.title} — video`} />
           )}
         </div>
       </div>

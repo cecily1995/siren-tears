@@ -13,10 +13,11 @@ export default defineType({
       options: { hotspot: true }
     }),
     defineField({
-      name: 'naturalMaterialsImage',
-      title: 'Natural Materials photo (3:4, wider -- "Natural Materials" text is overlaid on this by the site)',
-      type: 'image',
-      options: { hotspot: true }
+      name: 'naturalMaterialsImages',
+      title: 'Natural Materials photos (3:4, wider -- "Natural Materials" text is overlaid by the site)',
+      type: 'array',
+      of: [{ type: 'image', options: { hotspot: true } }],
+      description: 'Add as many as you like -- they cross-fade on a loop, and can also be swiped through manually.'
     }),
     defineField({
       name: 'squareImages',
@@ -26,10 +27,10 @@ export default defineType({
       description: 'Shown in an auto-scrolling, swipeable row between "Made To Order" and "One Of One".'
     }),
     defineField({
-      name: 'oneOfOneImage',
-      title: 'One Of One photo (3:4, full-bleed, no side margin)',
-      type: 'image',
-      options: { hotspot: true }
+      name: 'oneOfOneVideo',
+      title: 'One Of One video (16:9, full-bleed, no side margin)',
+      type: 'file',
+      options: { accept: 'video/*' }
     }),
     defineField({
       name: 'signaturePackagingImage',
