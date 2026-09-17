@@ -352,7 +352,8 @@
     "reservedNote": "This piece is currently reserved for another customer. Get in touch to be notified if it becomes available again.",
     "lineFilterLabel": "Line",
     "categoryFilterLabel": "Category",
-    "aotearoaTitle": "Gemstone Jewellery"
+    "aotearoaTitle": "Gemstone Jewellery",
+    "aotearoaIntro": "A finer line, set by hand — rings, necklaces, bracelets and bangles built around a single hand-selected gemstone."
   },
   "membership": {
     "eyebrow": "Membership",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "Gemstone Jewellery",
     "aotearoaIntro": "A finer line, set by hand — rings, necklaces, bracelets and bangles built around a single hand-selected gemstone.",
-    "shopLine": "Shop the Line"
+    "shopLine": "Shop the Line",
+    "aotearoaExtended": "Jewels shaped by the light of Aotearoa.\n\nInspired by the landscapes and shifting light of Aotearoa, this collection brings together natural gemstones and considered forms in a quieter expression of fine jewellery.\n\nEach piece is individually crafted by hand, allowing the character of every stone to remain part of the design. From rings and necklaces to bracelets and bangles, Aotearoa is created for those drawn to jewellery with presence — refined, enduring, and never quite the same twice."
   },
   "account": {
     "eyebrow": "My Siren",

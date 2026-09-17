@@ -1,4 +1,4 @@
-import { useEffect, type RefObject } from 'react';
+import { useEffect, useRef, type RefObject } from 'react';
 
 // React's synthetic onTouchMove is attached as a passive listener under the
 // hood, so calling e.preventDefault() inside it does nothing on many
@@ -11,10 +11,21 @@ import { useEffect, type RefObject } from 'react';
 // declared itself horizontal (moved further sideways than up/down) -- a
 // visitor scrolling the page vertically over a gallery should still be able
 // to, uninterrupted.
+//
+// The listener itself is attached exactly once (empty effect dependency
+// list) and reads the latest onMove via a ref -- attaching it fresh on
+// every call to onMove (which changes identity on every render, since
+// dragging updates state continuously) would tear down and recreate the
+// listener mid-gesture, wiping out the in-progress start-position/axis
+// tracking and making the drag feel like it stops responding partway
+// through.
 export function useHorizontalSwipeLock(
   ref: RefObject<HTMLElement>,
   onMove: (clientX: number) => void
 ) {
+  const onMoveRef = useRef(onMove);
+  onMoveRef.current = onMove;
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
@@ -39,7 +50,7 @@ export function useHorizontalSwipeLock(
       }
       if (axis === 'x') {
         e.preventDefault();
-        onMove(touch.clientX);
+        onMoveRef.current(touch.clientX);
       }
     }
 
@@ -49,5 +60,6 @@ export function useHorizontalSwipeLock(
       el.removeEventListener('touchstart', onTouchStart);
       el.removeEventListener('touchmove', onTouchMove);
     };
-  }, [ref, onMove]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ref]);
 }

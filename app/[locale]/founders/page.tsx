@@ -35,7 +35,7 @@ export default async function FoundersPage({ params }: { params: { locale: strin
         </p>
       </div>
 
-      <div className={`px-6 md:px-12 max-w-[420px] mx-auto ${SECTION_GAP}`}>
+      <div className={`px-6 md:px-12 max-w-[420px] md:max-w-[640px] mx-auto ${SECTION_GAP}`}>
         <SwipeGallery images={[{ placeholderLabel: 'Founder photo — 3:4' }]} aspectClassName="aspect-[3/4]" />
       </div>
 
@@ -53,7 +53,7 @@ export default async function FoundersPage({ params }: { params: { locale: strin
             <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('para2')}</p>
             <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('para3')}</p>
           </div>
-          <div className="mt-8 max-w-[420px] mx-auto">
+          <div className="mt-8 max-w-[420px] md:max-w-[640px] mx-auto">
             <SwipeGallery
               images={[{ placeholderLabel: 'Founders group photo — 3:4' }]}
               aspectClassName="aspect-[3/4]"

@@ -352,7 +352,8 @@
     "reservedNote": "这件作品目前已被其他客人预订。可以联系我们,如果它重新可售会第一时间通知你。",
     "lineFilterLabel": "系列",
     "categoryFilterLabel": "分类",
-    "aotearoaTitle": "Gemstone Jewellery"
+    "aotearoaTitle": "Gemstone Jewellery",
+    "aotearoaIntro": "A finer line, set by hand — rings, necklaces, bracelets and bangles built around a single hand-selected gemstone."
   },
   "membership": {
     "eyebrow": "会员",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "镶嵌宝石珠宝",
     "aotearoaIntro": "更精致的一条产品线,手工镶嵌——戒指、项链、手链与手镯,每一件都围绕一颗手选宝石而设计。",
-    "shopLine": "浏览此系列"
+    "shopLine": "浏览此系列",
+    "aotearoaExtended": "光影塑造的珠宝——Aotearoa。\n\n灵感源自Aotearoa的风景与变幻的光线,这个系列将天然宝石与经过深思熟虑的造型结合在一起,呈现一种更为安静内敛的精致珠宝表达。\n\n每一件作品都由手工个别打造,让每颗石头本身的个性始终留存在设计之中。从戒指、项链到手链与手镯,Aotearoa是为那些被有存在感的珠宝所吸引的人而生——精致、耐久,且永远不会完全相同。"
   },
   "account": {
     "eyebrow": "我的账户",

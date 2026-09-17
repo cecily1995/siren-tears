@@ -352,7 +352,8 @@
     "reservedNote": "Dieses Stück ist derzeit für eine andere Kundin reserviert. Kontaktieren Sie uns, wenn Sie benachrichtigt werden möchten, falls es wieder verfügbar wird.",
     "lineFilterLabel": "Linie",
     "categoryFilterLabel": "Kategorie",
-    "aotearoaTitle": "Edelstein-Schmuck"
+    "aotearoaTitle": "Edelstein-Schmuck",
+    "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Halsketten, Armbänder und Bangles, die sich um einen einzelnen, handverlesenen Edelstein gruppieren."
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "Edelsteinschmuck",
     "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Ketten, Armbänder und Armreifen, gestaltet um einen handverlesenen Edelstein.",
-    "shopLine": "Linie entdecken"
+    "shopLine": "Linie entdecken",
+    "aotearoaExtended": "Schmuck, geformt vom Licht Aotearoas.\n\nInspiriert von den Landschaften und dem wechselnden Licht Aotearoas, vereint diese Kollektion natürliche Edelsteine und durchdachte Formen zu einem ruhigeren Ausdruck feinen Schmucks.\n\nJedes Stück wird einzeln von Hand gefertigt, sodass der Charakter jedes Steins Teil des Designs bleibt. Von Ringen und Halsketten bis zu Armbändern und Bangles — Aotearoa ist für jene gemacht, die sich zu Schmuck mit Präsenz hingezogen fühlen: raffiniert, langlebig und nie ganz gleich."
   },
   "account": {
     "eyebrow": "Mein Konto",

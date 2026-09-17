@@ -352,7 +352,8 @@
     "reservedNote": "Questo pezzo è attualmente riservato per un altro cliente. Contattaci per essere avvisato se torna disponibile.",
     "lineFilterLabel": "Linea",
     "categoryFilterLabel": "Categoria",
-    "aotearoaTitle": "Gioielli con pietre preziose"
+    "aotearoaTitle": "Gioielli con pietre preziose",
+    "aotearoaIntro": "Una linea più raffinata, montata a mano — anelli, collane, bracciali e bangle costruiti attorno a una singola pietra preziosa selezionata a mano."
   },
   "membership": {
     "eyebrow": "Membership",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "Gioielleria in pietre preziose",
     "aotearoaIntro": "Una linea più raffinata, incastonata a mano — anelli, collane, bracciali e bracciali rigidi, costruiti attorno a una pietra preziosa selezionata a mano.",
-    "shopLine": "Scopri la linea"
+    "shopLine": "Scopri la linea",
+    "aotearoaExtended": "Gioielli plasmati dalla luce di Aotearoa.\n\nIspirata ai paesaggi e alla luce mutevole di Aotearoa, questa collezione unisce pietre preziose naturali e forme ponderate in un'espressione più discreta della gioielleria fine.\n\nOgni pezzo è realizzato singolarmente a mano, permettendo al carattere di ogni pietra di restare parte del design. Da anelli e collane a bracciali e bangle, Aotearoa è creata per chi è attratto da gioielli con presenza — raffinati, duraturi, e mai del tutto uguali."
   },
   "account": {
     "eyebrow": "Il mio account",

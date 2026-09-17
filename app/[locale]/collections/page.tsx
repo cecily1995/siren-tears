@@ -63,36 +63,75 @@ export default async function CollectionsPage({
         </div>
       </section>
 
-      {/* Aotearoa -- Gemstone Jewellery: one tall banner, not a category
-          grid. Locked to line=aotearoa so the Shop page's own category
-          filter (used once you land there) only ever narrows within this
-          line, never pulling in Beaded pieces. */}
+      {/* Aotearoa -- Gemstone Jewellery. Mobile: original heading block
+          above the image, extended paragraph below it. Desktop: original
+          heading + extended paragraph together in a left column, image
+          moved to the right. Locked to line=aotearoa so the Shop page's
+          own category filter (used once you land there) only ever
+          narrows within this line, never pulling in Beaded pieces. */}
       <section className="bg-pearl px-6 md:px-12 pt-8 pb-14 md:pt-10 md:pb-20">
         <div className="mx-auto max-w-[1480px]">
-          <div className="max-w-2xl mb-8 md:mb-10 reveal">
-            <p className="eyebrow mb-3">{t('aotearoaEyebrow')}</p>
-            <h2 className="serif-display text-[clamp(1.6rem,3.2vw,2.4rem)] font-light leading-[1.2] mb-4 text-charcoal">
-              {t('aotearoaTitle')}
-            </h2>
-            <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaIntro')}</p>
+          {/* Mobile */}
+          <div className="md:hidden">
+            <div className="max-w-2xl mb-8 reveal">
+              <p className="eyebrow mb-3">{t('aotearoaEyebrow')}</p>
+              <h2 className="serif-display text-[clamp(1.6rem,3.2vw,2.4rem)] font-light leading-[1.2] mb-4 text-charcoal">
+                {t('aotearoaTitle')}
+              </h2>
+              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaIntro')}</p>
+            </div>
+
+            <Link
+              href="/shop?line=aotearoa"
+              className="group reveal relative block mx-auto max-w-[420px] aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom"
+            >
+              <img
+                src={pageSettings?.aotearoaBannerUrl || '/images/aotearoa-banner.jpg'}
+                alt="Aotearoa gemstone jewellery"
+                className="bg-img absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
+              <div className="absolute inset-x-0 bottom-0 p-6 text-left">
+                <span className="text-[11px] tracking-[0.28em] uppercase text-ivory font-light link-underline">
+                  {t('shopLine')}
+                </span>
+              </div>
+            </Link>
+
+            <div className="mt-8 max-w-2xl text-left reveal">
+              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaExtended')}</p>
+            </div>
           </div>
 
-          <Link
-            href="/shop?line=aotearoa"
-            className="group reveal relative block mx-auto max-w-[420px] aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom"
-          >
-            <img
-              src={pageSettings?.aotearoaBannerUrl || '/images/aotearoa-banner.jpg'}
-              alt="Aotearoa gemstone jewellery"
-              className="bg-img absolute inset-0 w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
-            <div className="absolute inset-x-0 bottom-0 p-6 text-left">
-              <span className="text-[11px] tracking-[0.28em] uppercase text-ivory font-light link-underline">
-                {t('shopLine')}
-              </span>
+          {/* Desktop */}
+          <div className="hidden md:flex gap-16 items-center">
+            <div className="flex-1 text-left reveal">
+              <p className="eyebrow mb-3">{t('aotearoaEyebrow')}</p>
+              <h2 className="serif-display text-[clamp(1.6rem,3.2vw,2.4rem)] font-light leading-[1.2] mb-4 text-charcoal">
+                {t('aotearoaTitle')}
+              </h2>
+              <p className="text-[0.95rem] leading-[1.8] text-ash font-light mb-6">{t('aotearoaIntro')}</p>
+              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaExtended')}</p>
             </div>
-          </Link>
+            <div className="flex-1">
+              <Link
+                href="/shop?line=aotearoa"
+                className="group reveal relative block mx-auto max-w-[420px] aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom"
+              >
+                <img
+                  src={pageSettings?.aotearoaBannerUrl || '/images/aotearoa-banner.jpg'}
+                  alt="Aotearoa gemstone jewellery"
+                  className="bg-img absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-100" />
+                <div className="absolute inset-x-0 bottom-0 p-6 text-left">
+                  <span className="text-[11px] tracking-[0.28em] uppercase text-ivory font-light link-underline">
+                    {t('shopLine')}
+                  </span>
+                </div>
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
     </>

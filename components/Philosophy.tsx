@@ -46,7 +46,12 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
     const el = videoRef.current;
     if (!el) return;
     const onVisible = () => {
-      if (document.visibilityState !== 'visible' || !el.paused) return;
+      if (document.visibilityState !== 'visible') return;
+      // Don't gate on el.paused -- on iOS in particular, a video the
+      // browser has suspended in the background can still report
+      // paused === false even though it's visually frozen on a static
+      // frame, so checking that first was skipping the recovery
+      // entirely. Just check whether time is actually progressing.
       const timeBefore = el.currentTime;
       el.play().catch(() => undefined);
       setTimeout(() => {

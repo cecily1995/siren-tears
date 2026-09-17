@@ -352,7 +352,8 @@
     "reservedNote": "Cette pièce est actuellement réservée pour un autre client. Contactez-nous pour être averti si elle redevient disponible.",
     "lineFilterLabel": "Ligne",
     "categoryFilterLabel": "Catégorie",
-    "aotearoaTitle": "Bijoux en pierres fines"
+    "aotearoaTitle": "Bijoux en pierres fines",
+    "aotearoaIntro": "Une ligne plus fine, sertie à la main — bagues, colliers, bracelets et bangles construits autour d'une pierre précieuse unique, sélectionnée à la main."
   },
   "membership": {
     "eyebrow": "Adhésion",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "Joaillerie en pierres précieuses",
     "aotearoaIntro": "Une ligne plus raffinée, sertie à la main — bagues, colliers, bracelets et joncs conçus autour d'une pierre précieuse sélectionnée à la main.",
-    "shopLine": "Découvrir la ligne"
+    "shopLine": "Découvrir la ligne",
+    "aotearoaExtended": "Des bijoux façonnés par la lumière d'Aotearoa.\n\nInspirée par les paysages et la lumière changeante d'Aotearoa, cette collection réunit des pierres naturelles et des formes réfléchies dans une expression plus discrète de la joaillerie fine.\n\nChaque pièce est fabriquée à la main individuellement, permettant au caractère de chaque pierre de rester présent dans le design. Des bagues et colliers aux bracelets et bangles, Aotearoa est créée pour celles et ceux attirés par des bijoux dotés d'une présence — raffinés, durables, et jamais tout à fait les mêmes."
   },
   "account": {
     "eyebrow": "Mon compte",

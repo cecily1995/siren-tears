@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter, usePathname } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
 
@@ -157,10 +158,36 @@ export default function ShopGrid({
   const [subFilter, setSubFilter] = useState<string>(initialCollection ?? initialFilter ?? 'all');
   const [query] = useState(initialQuery ?? '');
 
+  const router = useRouter();
+  const pathname = usePathname();
+  const isFirstRender = useRef(true);
+
   function changeLine(next: Line) {
     setLine(next);
     setSubFilter('all');
   }
+
+  // Keep the URL in sync with the filter state -- without this, switching
+  // lines/categories via these tabs was pure client state with no URL
+  // change, so the page's own server-rendered header (which reads the
+  // line/collection from the URL) stayed stuck showing whatever it was
+  // when the page first loaded, e.g. still "Aotearoa" after switching to
+  // Beaded via the on-page tabs.
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    const params = new URLSearchParams();
+    if (line !== 'all') params.set('line', line);
+    if (subFilter !== 'all') {
+      if (line === 'beaded') params.set('collection', subFilter);
+      else params.set('category', subFilter);
+    }
+    const qs = params.toString();
+    router.replace(`${pathname}${qs ? `?${qs}` : ''}`, { scroll: false });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [line, subFilter]);
 
   const subOptions: { key: string; label: string }[] = useMemo(() => {
     if (line === 'beaded') {

@@ -352,7 +352,8 @@
     "reservedNote": "이 작품은 현재 다른 고객을 위해 예약되어 있습니다. 다시 구매 가능해지면 알림을 받고 싶으시면 문의해 주세요.",
     "lineFilterLabel": "라인",
     "categoryFilterLabel": "카테고리",
-    "aotearoaTitle": "젬스톤 주얼리"
+    "aotearoaTitle": "젬스톤 주얼리",
+    "aotearoaIntro": "한 알의 보석을 중심으로 손으로 세팅한 더 섬세한 라인 — 반지, 목걸이, 팔찌, 뱅글."
   },
   "membership": {
     "eyebrow": "멤버십",
@@ -423,7 +424,8 @@
     "aotearoaEyebrow": "Aotearoa",
     "aotearoaTitle": "젬스톤 주얼리",
     "aotearoaIntro": "더욱 정교한 라인으로, 손으로 세팅합니다 — 반지, 목걸이, 팔찌, 뱅글까지, 하나하나 엄선된 젬스톤을 중심으로 디자인됩니다.",
-    "shopLine": "라인 보기"
+    "shopLine": "라인 보기",
+    "aotearoaExtended": "Aotearoa의 빛이 빚어낸 주얼리.\n\nAotearoa의 풍경과 변화하는 빛에서 영감을 받은 이 컬렉션은 천연 보석과 신중하게 고민한 형태를 결합해 한층 차분한 파인 주얼리를 선보입니다.\n\n모든 피스는 개별적으로 수작업 제작되어, 각 원석이 지닌 개성이 디자인 안에 그대로 남아 있습니다. 반지와 목걸이부터 팔찌와 뱅글까지, Aotearoa는 존재감 있는 주얼리에 끌리는 이들을 위해 만들어졌습니다 — 세련되고, 오래가며, 결코 완전히 같지 않은."
   },
   "account": {
     "eyebrow": "마이 계정",
