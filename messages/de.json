@@ -717,8 +717,50 @@
     "empty": "Neue Stücke sind bald da."
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "Mit Sorgfalt gefertigt",
-    "intro": "Diese Seite wird gerade erstellt — bald verfügbar."
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "Langsam gefertigt. Sorgfältig ausgewählt. Von Hand vollendet.",
+        "body": "Schmuck sollte mit Absicht beginnen — vom ausgewählten Stein bis zum letzten Detail, das ein Stück vollendet. Wir arbeiten in überlegten Mengen und geben jedem Stück die Zeit und Handwerkskunst, die es verdient."
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "Lass den Stein für sich selbst sprechen.",
+        "body": "Wir wählen natürliche Steine wegen ihrer Farbe, Textur und Einzigartigkeit. Kein Stein gleicht vollständig einem anderen — und genau das macht jedes Stück zu etwas Eigenem. Wir vereinheitlichen die Natur nicht. Wir gestalten um sie herum."
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "Vom Stein zum fertigen Stück.",
+        "body": "Jeder Stein wird wegen seines Charakters ausgewählt, dann von Hand zusammengesetzt, gefasst und vollendet — mit Aufmerksamkeit für Proportion, Balance und Detail."
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "Für dich gemacht, nicht für das Lager.",
+        "body": "Wo möglich, fertigen wir auf Bestellung, statt im Voraus zu produzieren — wir arbeiten bewusster mit Materialien und machen jedes Stück zu einem Teil deiner eigenen Reise mit SIREN TEARS."
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "Kein Stein erzählt dieselbe Geschichte zweimal.",
+        "body": "Bei ausgewählten Stücken bestimmt der Stein selbst das Design. Sobald ein Edelstein seinen Platz gefunden hat, wird diese Komposition nie wiederholt. Ein Stein. Eine Komposition. Ein Stück."
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "Durchdachte Materialien. Durchdachte Herstellung.",
+        "body": "Verantwortung beginnt damit, weniger Dinge herzustellen — mit mehr Absicht: Materialien sorgfältig auswählen, Massenproduktion vermeiden, Schmuck schaffen, der aufbewahrt werden soll."
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "Das Stück ist erst der Anfang.",
+        "body": "Jedes Stück wird sorgfältig vorbereitet, bevor es unser Atelier verlässt — von der Box bis zur Verpackung spiegelt jedes Detail den ruhigen, durchdachten Charakter von SIREN TEARS wider. Die Box selbst ist zum Aufbewahren gedacht."
+      }
+    ]
   }
 }

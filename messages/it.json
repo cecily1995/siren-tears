@@ -717,8 +717,50 @@
     "empty": "Nuovi pezzi in arrivo a breve."
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "Realizzato con cura",
-    "intro": "Questa pagina è in preparazione — a presto."
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "Realizzato lentamente. Scelto con cura. Rifinito a mano.",
+        "body": "I gioielli dovrebbero nascere da un'intenzione — dalla pietra scelta fino al dettaglio finale che completa un pezzo. Lavoriamo in quantità misurate, dedicando a ogni pezzo il tempo e la maestria che merita."
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "Lascia che sia la pietra a parlare.",
+        "body": "Scegliamo pietre naturali per il loro colore, la texture e l'unicità. Nessuna è del tutto uguale a un'altra — ed è proprio questo che rende ogni pezzo unico. Non rendiamo la natura uniforme. Progettiamo intorno ad essa."
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "Dalla pietra al pezzo finito.",
+        "body": "Ogni pietra è scelta per il suo carattere, poi assemblata, montata e rifinita a mano — con attenzione a proporzioni, equilibrio e dettaglio."
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "Fatto per te, non per il magazzino.",
+        "body": "Quando possibile, creiamo su ordinazione anziché produrre in anticipo — lavorando i materiali in modo più intenzionale, e rendendo ogni pezzo parte del tuo percorso con SIREN TEARS."
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "Nessuna pietra racconta la stessa storia due volte.",
+        "body": "Per alcuni pezzi, è la pietra stessa a determinare il design. Una volta che una gemma trova il suo posto, quella composizione non viene mai ripetuta. Una pietra. Una composizione. Un pezzo."
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "Materiali ponderati. Realizzazione ponderata.",
+        "body": "La responsabilità inizia col fare meno cose, con maggiore intenzione — scegliendo i materiali con cura, evitando la produzione di massa, creando gioielli pensati per essere conservati."
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "Il pezzo è solo l'inizio.",
+        "body": "Ogni pezzo viene preparato con cura prima di lasciare il nostro atelier — dalla scatola all'incarto, ogni dettaglio riflette il carattere discreto e ponderato di SIREN TEARS. La scatola stessa è pensata per essere conservata."
+      }
+    ]
   }
 }

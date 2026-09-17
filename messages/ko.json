@@ -717,8 +717,50 @@
     "empty": "신상품이 곧 공개됩니다."
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "정성을 담아",
-    "intro": "이 페이지는 준비 중입니다. 곧 공개됩니다."
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "천천히 만들고, 신중히 고르고, 손으로 마무리합니다.",
+        "body": "주얼리는 의도에서 시작되어야 한다고 믿습니다 — 선택된 원석에서부터 하나의 작품을 완성하는 마지막 디테일까지. 저희는 절제된 수량으로 작업하며, 모든 피스에 마땅한 시간과 정성을 들입니다."
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "원석이 스스로 말하게 합니다.",
+        "body": "저희는 색상과 질감, 개성을 지닌 천연석을 선택합니다. 완전히 같은 돌은 없습니다 — 그것이 각 피스를 특별하게 만드는 이유입니다. 자연을 획일화하지 않고, 자연에 맞춰 디자인합니다."
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "원석에서 완성품까지.",
+        "body": "각 원석은 그 개성에 따라 선택된 후, 손으로 조립되고 세팅되어 마무리됩니다 — 비율과 균형, 디테일까지 세심하게 신경 쓰면서."
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "재고가 아닌, 당신을 위해 만듭니다.",
+        "body": "가능한 한 저희는 미리 대량 생산하기보다 주문에 따라 제작합니다 — 소재를 더 신중히 다루고, 각 피스가 SIREN TEARS와 함께하는 당신의 여정의 일부가 되도록 합니다."
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "같은 이야기를 두 번 하는 돌은 없습니다.",
+        "body": "일부 피스는 원석 자체가 디자인을 결정합니다. 하나의 보석이 제자리를 찾으면, 그 조합은 다시 반복되지 않습니다. 하나의 돌. 하나의 구성. 하나의 피스."
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "신중한 소재. 신중한 제작.",
+        "body": "책임은 더 적게, 더 의도적으로 만드는 것에서 시작됩니다 — 소재를 신중히 선택하고, 대량생산을 피하며, 오래 간직될 주얼리를 만드는 것입니다."
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "작품은 이제 시작일 뿐입니다.",
+        "body": "모든 피스는 스튜디오를 떠나기 전 정성껏 준비됩니다 — 박스부터 포장까지 모든 디테일이 SIREN TEARS의 차분하고 신중한 개성을 담고 있습니다. 박스 자체도 오래 간직할 수 있도록 디자인되었습니다."
+      }
+    ]
   }
 }

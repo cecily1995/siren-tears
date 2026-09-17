@@ -717,8 +717,50 @@
     "empty": "De nouvelles pièces arrivent bientôt."
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "Fait avec soin",
-    "intro": "Cette page est en cours de rédaction — bientôt disponible."
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "Fabriqué lentement. Choisi avec soin. Fini à la main.",
+        "body": "La joaillerie devrait naître d'une intention — depuis la pierre choisie jusqu'au moindre détail qui achève une pièce. Nous travaillons en quantités réfléchies, offrant à chaque pièce le temps et le savoir-faire qu'elle mérite."
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "Laissez la pierre parler d'elle-même.",
+        "body": "Nous choisissons des pierres naturelles pour leur couleur, leur texture et leur singularité. Aucune n'est tout à fait semblable à une autre — c'est ce qui rend chaque pièce unique. Nous n'uniformisons pas la nature. Nous créons autour d'elle."
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "D'une pierre à une pièce achevée.",
+        "body": "Chaque pierre est choisie pour son caractère, puis assemblée, sertie et finie à la main — avec une attention portée aux proportions, à l'équilibre et au détail."
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "Fait pour vous, pas pour le stock.",
+        "body": "Dans la mesure du possible, nous créons en réponse à une commande plutôt que de produire par anticipation — travaillant les matériaux plus intentionnellement, et faisant de chaque pièce une partie de votre propre parcours avec SIREN TEARS."
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "Aucune pierre ne raconte deux fois la même histoire.",
+        "body": "Pour certaines pièces, c'est la pierre elle-même qui détermine le design. Une fois qu'une pierre a trouvé sa place, cette composition n'est jamais reproduite. Une pierre. Une composition. Une pièce."
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "Matériaux réfléchis. Fabrication réfléchie.",
+        "body": "La responsabilité commence par faire moins de choses, avec plus d'intention — en choisissant les matériaux avec soin, en évitant la production de masse, en créant des bijoux conçus pour être conservés."
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "La pièce n'est que le commencement.",
+        "body": "Chaque pièce est soigneusement préparée avant de quitter notre atelier — du coffret à l'emballage, chaque détail reflète le caractère discret et réfléchi de SIREN TEARS. Le coffret lui-même est conçu pour être conservé."
+      }
+    ]
   }
 }

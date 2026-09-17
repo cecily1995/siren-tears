@@ -101,6 +101,16 @@ export const foundersPageSettingsQuery = groq`*[_type == "foundersPageSettings"]
   "finalBannerImageUrl": finalBannerImage.asset->url
 }`;
 export const getFoundersPageSettings = () => safeFetch<any>(foundersPageSettingsQuery);
+export const responsibleCraftsmanshipSettingsQuery = groq`*[_type == "responsibleCraftsmanshipSettings"][0]{
+  "craftedWithIntentionImageUrl": craftedWithIntentionImage.asset->url,
+  "naturalMaterialsImageUrl": naturalMaterialsImage.asset->url,
+  "madeByHandImageUrl": madeByHandImage.asset->url,
+  "madeToOrderImageUrl": madeToOrderImage.asset->url,
+  "oneOfOneImageUrl": oneOfOneImage.asset->url,
+  "responsibleByDesignImageUrl": responsibleByDesignImage.asset->url,
+  "signaturePackagingImageUrl": signaturePackagingImage.asset->url
+}`;
+export const getResponsibleCraftsmanshipSettings = () => safeFetch<any>(responsibleCraftsmanshipSettingsQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);

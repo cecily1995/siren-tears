@@ -717,8 +717,50 @@
     "empty": "新品正在路上,敬请期待。"
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "用心制作",
-    "intro": "这个页面正在筹备中,敬请期待。"
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "慢慢制作。用心挑选。手工完成。",
+        "body": "珠宝应该从\"用心\"开始——从挑选一颗石头,到成就一件作品的每一个细节。我们以有节制的数量制作,让每一件作品都得到应有的时间与工艺。"
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "让石头自己说话。",
+        "body": "我们选择天然石材,珍视它们的色彩、纹理与独特个性。没有两颗石头完全相同——这正是每件作品独一无二的原因。我们不会把自然磨平变得统一,而是围绕它去设计。"
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "从一颗石头,到一件成品。",
+        "body": "每颗石头都因其个性被选中,随后经由手工组装、镶嵌与打磨完成——每一步都关注比例、平衡与细节。"
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "为你而做,而非为库存而做。",
+        "body": "只要条件允许,我们更倾向于按订单制作,而不是提前大量生产——这让我们能更用心地对待材料,也让每一件作品成为你与SIREN TEARS这段旅程的一部分。"
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "没有一颗石头会讲述同样的故事两次。",
+        "body": "对于部分作品而言,是石头本身决定了设计。一旦某颗宝石找到了属于它的位置,这个组合便不会被重复。一颗石头,一种构成,一件作品。"
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "用心选材。用心制作。",
+        "body": "\"负责任\"始于少做一些、但做得更用心——谨慎选材,避免批量生产,做值得被长久保存的珠宝。"
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "作品本身,只是一个开始。",
+        "body": "每一件作品在离开工作室前都经过用心准备——从首饰盒到包装的每一处细节,都体现着SIREN TEARS安静、克制的气质。这个盒子本身,也值得被留存下来。"
+      }
+    ]
   }
 }

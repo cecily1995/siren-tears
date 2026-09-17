@@ -38,6 +38,13 @@ export default defineConfig({
               .title('Founders Page — Media')
               .child(S.document().schemaType('foundersPageSettings').documentId('foundersPageSettings')),
             S.listItem()
+              .title('Responsible Craftsmanship — Media')
+              .child(
+                S.document()
+                  .schemaType('responsibleCraftsmanshipSettings')
+                  .documentId('responsibleCraftsmanshipSettings')
+              ),
+            S.listItem()
               .title('Brand Story')
               .child(S.document().schemaType('brandStory').documentId('brandStory')),
             S.divider(),

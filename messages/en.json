@@ -717,8 +717,50 @@
     "empty": "New pieces are on their way — check back soon."
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "Made With Care",
-    "intro": "This page is being written -- more soon."
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "Made slowly. Chosen carefully. Finished by hand.",
+        "body": "Jewellery should begin with intention — from the stone that is chosen to the final detail that brings a piece together. We work in considered quantities, giving each piece the time and craftsmanship it deserves."
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "Let the stone speak for itself.",
+        "body": "We choose natural stones for their colour, texture and individuality. No two are completely alike — and that's part of what makes each piece its own. We don't make nature uniform. We design around it."
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "From stone to finished piece.",
+        "body": "Each stone is selected for its character, then assembled, set and finished by hand — with attention to proportion, balance and detail."
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "Made for you, not for stock.",
+        "body": "Where possible, we create in response to an order rather than producing ahead of demand — working more intentionally with materials, and making each piece part of your own journey with SIREN TEARS."
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "No stone tells the same story twice.",
+        "body": "For selected pieces, the stone determines the design. Once a gemstone finds its place, that composition is never repeated. One stone. One composition. One piece."
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "Considered materials. Considered making.",
+        "body": "Responsibility begins with making fewer things, with greater intention — choosing materials carefully, avoiding mass production, creating jewellery designed to be kept."
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "The piece is only the beginning.",
+        "body": "Every piece is carefully prepared before it leaves our studio — from box to wrapping, each detail reflects SIREN TEARS' quiet, considered character. The box itself is designed to be kept."
+      }
+    ]
   }
 }

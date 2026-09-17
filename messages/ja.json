@@ -717,8 +717,50 @@
     "empty": "新作は近日公開予定です。"
   },
   "responsibleCraftsmanshipPage": {
-    "eyebrow": "Responsible Craftsmanship",
-    "title": "心を込めて",
-    "intro": "このページは準備中です。近日公開予定です。"
+    "pageTitle": "Responsible Craftsmanship",
+    "sections": [
+      {
+        "key": "craftedWithIntention",
+        "title": "Crafted With Intention",
+        "tagline": "ゆっくりと作る。丁寧に選ぶ。手で仕上げる。",
+        "body": "ジュエリーは、意図を持って選ばれた石から、作品を完成させる最後のディテールまで——すべてが「意図」から始まるべきだと考えています。私たちは数量を絞って制作し、一つひとつの作品に相応の時間と技術をかけています。"
+      },
+      {
+        "key": "naturalMaterials",
+        "title": "Natural Materials",
+        "tagline": "石自身に語らせる。",
+        "body": "私たちは、色、質感、そして個性を大切に天然石を選びます。まったく同じ石は二つとありません——それこそが、それぞれの作品を唯一無二にする理由です。自然を均一にするのではなく、自然に寄り添ってデザインしています。"
+      },
+      {
+        "key": "madeByHand",
+        "title": "Made By Hand",
+        "tagline": "石から、完成した作品へ。",
+        "body": "それぞれの石は、その個性によって選ばれ、その後、手作業で組み立てられ、留められ、仕上げられます——プロポーションやバランス、細部にまで気を配りながら。"
+      },
+      {
+        "key": "madeToOrder",
+        "title": "Made To Order",
+        "tagline": "在庫のためではなく、あなたのために。",
+        "body": "可能な限り、私たちは事前の大量生産ではなく、注文に応じて制作しています。素材とより丁寧に向き合い、一つひとつの作品を、あなたとSIREN TEARSとの歩みの一部にするために。"
+      },
+      {
+        "key": "oneOfOne",
+        "title": "One Of One",
+        "tagline": "同じ物語を語る石は、二つとない。",
+        "body": "一部の作品では、石そのものがデザインを決定づけます。一つの宝石がその場所を見つけたとき、その組み合わせが繰り返されることはありません。一つの石。一つの構成。一つの作品。"
+      },
+      {
+        "key": "responsibleByDesign",
+        "title": "Responsible By Design",
+        "tagline": "考え抜かれた素材。考え抜かれたものづくり。",
+        "body": "責任とは、より少なく、より意図を持って作ることから始まります——素材を丁寧に選び、大量生産を避け、長く大切にされるジュエリーを作ること。"
+      },
+      {
+        "key": "signaturePackaging",
+        "title": "Signature Packaging",
+        "tagline": "作品は、ここから始まる。",
+        "body": "すべての作品は、工房を出る前に丁寧に準備されます——ボックスから包装の細部に至るまで、SIREN TEARSの静かで思慮深い個性が表れています。ボックス自体も、大切に取っておいていただけるようデザインされています。"
+      }
+    ]
   }
 }
