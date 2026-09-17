@@ -8,16 +8,28 @@ const AUTO_SCROLL_MS = 3000;
 const RESUME_AFTER_MS = 4000;
 
 // Uses the browser's own native horizontal scrolling (overflow-x-auto) for
-// the manual-swipe part rather than our custom drag machinery -- native
-// scroll already handles touch correctly with no risk of fighting the
-// page's own vertical scroll, so there's nothing to "fix" here the way the
-// transform-based carousels needed. Auto-advance just calls scrollBy() on
-// an interval, and pauses for a few seconds after the visitor scrolls it
-// themselves.
+// the manual-swipe part rather than our custom drag machinery.
+//
+// Two real bugs from the previous version, fixed here:
+// 1. `justify-center` on a scrollable flex row with overflowing content is
+//    a known browser inconsistency -- it can leave the strip's initial
+//    scroll position already near/at the end instead of at the start.
+//    Removed; centering is left to the page's own wrapper instead.
+// 2. Pausing was wired to the generic `scroll` event, which also fires for
+//    scrolling *we* trigger programmatically (scrollBy/scrollTo) -- so
+//    every auto-advance immediately re-paused itself, which is why it
+//    never visibly auto-scrolled at all. Pausing now only happens on an
+//    actual user-initiated gesture (touch/mouse/wheel), never on the
+//    scroll event itself.
 export default function SquareImageStrip({ images }: { images: SquareImage[] }) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [paused, setPaused] = useState(false);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) el.scrollLeft = 0;
+  }, []);
 
   useEffect(() => {
     if (images.length < 2 || paused) return;
@@ -51,14 +63,15 @@ export default function SquareImageStrip({ images }: { images: SquareImage[] }) 
   return (
     <div
       ref={scrollRef}
-      onScroll={pauseThenResume}
       onTouchStart={pauseThenResume}
-      className="flex justify-center gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
+      onMouseDown={pauseThenResume}
+      onWheel={pauseThenResume}
+      className="flex gap-4 md:gap-6 overflow-x-auto snap-x snap-mandatory no-scrollbar"
     >
       {images.map((img, i) => (
         <div
           key={i}
-          className="shrink-0 w-[62%] sm:w-[46%] md:w-[300px] lg:w-[340px] aspect-square snap-center overflow-hidden bg-charcoal/5"
+          className="shrink-0 w-[62%] sm:w-[46%] md:w-[340px] lg:w-[400px] aspect-square snap-center overflow-hidden bg-charcoal/5"
         >
           {img.url ? (
             // eslint-disable-next-line @next/next/no-img-element

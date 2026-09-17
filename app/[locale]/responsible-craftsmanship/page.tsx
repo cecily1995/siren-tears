@@ -1,16 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getResponsibleCraftsmanshipSettings } from '@/sanity/lib/queries';
-
-const SECTION_IMAGE_KEYS: Record<string, string> = {
-  craftedWithIntention: 'craftedWithIntentionImageUrl',
-  naturalMaterials: 'naturalMaterialsImageUrl',
-  madeByHand: 'madeByHandImageUrl',
-  madeToOrder: 'madeToOrderImageUrl',
-  oneOfOne: 'oneOfOneImageUrl',
-  responsibleByDesign: 'responsibleByDesignImageUrl',
-  signaturePackaging: 'signaturePackagingImageUrl'
-};
+import SquareImageStrip from '@/components/SquareImageStrip';
 
 export async function generateMetadata({
   params
@@ -19,6 +10,14 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const t = await getTranslations({ locale: params.locale, namespace: 'responsibleCraftsmanshipPage' });
   return { title: `${t('pageTitle')} — SIREN TEARS` };
+}
+
+function ImagePlaceholder({ label }: { label: string }) {
+  return (
+    <div className="absolute inset-0 flex items-center justify-center border border-dashed border-charcoal/20">
+      <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60 font-light text-center px-4">{label}</span>
+    </div>
+  );
 }
 
 export default async function ResponsibleCraftsmanshipPage({ params }: { params: { locale: string } }) {
@@ -31,49 +30,170 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
   ]);
 
   const sections = t.raw('sections') as { key: string; title: string; tagline: string; body: string }[];
+  const [craftedWithIntention, naturalMaterials, madeByHand, madeToOrder, oneOfOne, responsibleByDesign, signaturePackaging] =
+    sections;
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-10 md:pb-14">
+      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-3 md:pb-4">
         <h1 className="serif-display text-[clamp(1.5rem,3.2vw,2.1rem)] font-light leading-[1.2] text-charcoal uppercase tracking-[0.02em] text-left">
           {t('pageTitle')}
         </h1>
       </div>
 
-      {sections.map((section, i) => {
-        const imageUrl = media?.[SECTION_IMAGE_KEYS[section.key]] as string | undefined;
-        const imageOnRight = i % 2 === 0;
+      {/* Crafted With Intention -- tiny, left-aligned, sharing the same
+          horizontal inset as Image A below it. */}
+      <div className="px-6 md:px-12 max-w-[380px] mx-auto text-left reveal">
+        <p className="eyebrow mb-1.5 text-[9px]">{craftedWithIntention.title}</p>
+        <p className="text-[0.72rem] font-light text-charcoal mb-1">{craftedWithIntention.tagline}</p>
+        <p className="text-[0.68rem] leading-[1.6] text-ash font-light">{craftedWithIntention.body}</p>
+      </div>
 
-        return (
-          <section key={section.key} className="px-6 md:px-12 py-10 md:py-14">
-            <div className="mx-auto max-w-[1100px]">
-              <div className={`flex flex-col ${imageOnRight ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 md:gap-16 items-center`}>
-                <div className="flex-1 text-left reveal">
-                  <p className="eyebrow mb-3">{section.title}</p>
-                  <h2 className="serif-display text-[clamp(1.3rem,2.6vw,1.8rem)] font-light leading-[1.3] mb-4 text-charcoal">
-                    {section.tagline}
-                  </h2>
-                  <p className="text-[0.9rem] leading-[1.85] text-ash font-light max-w-md">{section.body}</p>
-                </div>
-                <div className="flex-1 w-full">
-                  <div className="relative aspect-[4/5] max-w-[420px] mx-auto overflow-hidden bg-charcoal/5">
-                    {imageUrl ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={imageUrl} alt={section.title} className="absolute inset-0 w-full h-full object-cover" />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center border border-dashed border-charcoal/20">
-                        <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60 font-light text-center px-4">
-                          {section.title} — photo
-                        </span>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+      {/* Image A: generous side margins -- visually the smallest photo on
+          the page. */}
+      <div className="px-6 md:px-12 mt-6 mb-10 md:mb-14">
+        <div className="relative aspect-[3/4] max-w-[380px] mx-auto overflow-hidden bg-charcoal/5">
+          {media?.craftedWithIntentionImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={media.craftedWithIntentionImageUrl}
+              alt={craftedWithIntention.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <ImagePlaceholder label={`${craftedWithIntention.title} — photo`} />
+          )}
+        </div>
+      </div>
+
+      {/* Image B: same 3:4 ratio, much narrower side margins -- reads as
+          noticeably larger. "Natural Materials" is overlaid text, fixed
+          regardless of which photo is used. */}
+      <div className="px-3 md:px-8 mb-14 md:mb-20">
+        <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
+          {media?.naturalMaterialsImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={media.naturalMaterialsImageUrl}
+              alt={naturalMaterials.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <ImagePlaceholder label={`${naturalMaterials.title} — photo`} />
+          )}
+          <div className="absolute inset-0 bg-charcoal/25" />
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+          >
+            <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
+              {naturalMaterials.title}
+            </p>
+            <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
+              {naturalMaterials.tagline}
+            </p>
+            <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{naturalMaterials.body}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Made By Hand + Made To Order: two plain text blocks, stacked,
+          nothing else between them. */}
+      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-10 md:mb-14">
+        <p className="eyebrow mb-2">{madeByHand.title}</p>
+        <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeByHand.tagline}</p>
+        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeByHand.body}</p>
+      </div>
+      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-14 md:mb-20">
+        <p className="eyebrow mb-2">{madeToOrder.title}</p>
+        <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeToOrder.tagline}</p>
+        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeToOrder.body}</p>
+      </div>
+
+      {/* Square image strip */}
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto mb-14 md:mb-20">
+        <SquareImageStrip
+          images={
+            media?.squareImageUrls?.length
+              ? media.squareImageUrls.map((url: string) => ({ url }))
+              : [{ placeholderLabel: 'Square 1' }, { placeholderLabel: 'Square 2' }, { placeholderLabel: 'Square 3' }]
+          }
+        />
+      </div>
+
+      {/* One Of One text */}
+      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-6 md:mb-8">
+        <p className="eyebrow mb-2">{oneOfOne.title}</p>
+        <p className="text-[0.95rem] font-light text-charcoal mb-2">{oneOfOne.tagline}</p>
+        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{oneOfOne.body}</p>
+      </div>
+
+      {/* Image C: full-bleed, no side margin at all. */}
+      <div className="mb-14 md:mb-20">
+        <div className="relative aspect-[3/4] md:aspect-[16/9] w-full overflow-hidden bg-charcoal/5">
+          {media?.oneOfOneImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={media.oneOfOneImageUrl} alt={oneOfOne.title} className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <ImagePlaceholder label={`${oneOfOne.title} — photo`} />
+          )}
+        </div>
+      </div>
+
+      {/* Signature Packaging: image left, text right (right-aligned). */}
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto mb-14 md:mb-20">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-16 items-center">
+          <div className="flex-1 w-full">
+            <div className="relative aspect-[3/4] max-w-[420px] mx-auto overflow-hidden bg-charcoal/5">
+              {media?.signaturePackagingImageUrl ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={media.signaturePackagingImageUrl}
+                  alt={signaturePackaging.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <ImagePlaceholder label={`${signaturePackaging.title} — photo`} />
+              )}
             </div>
-          </section>
-        );
-      })}
+          </div>
+          <div className="flex-1 text-right reveal">
+            <p className="eyebrow mb-2">{signaturePackaging.title}</p>
+            <p className="text-[0.95rem] font-light text-charcoal mb-2">{signaturePackaging.tagline}</p>
+            <p className="text-[0.85rem] leading-[1.8] text-ash font-light ml-auto max-w-md">{signaturePackaging.body}</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Image D: narrow side margins, "Responsible By Design" overlaid,
+          fixed regardless of which photo is used. */}
+      <div className="px-3 md:px-8 pb-16 md:pb-24">
+        <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
+          {media?.responsibleByDesignImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={media.responsibleByDesignImageUrl}
+              alt={responsibleByDesign.title}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+          ) : (
+            <ImagePlaceholder label={`${responsibleByDesign.title} — photo`} />
+          )}
+          <div className="absolute inset-0 bg-charcoal/25" />
+          <div
+            className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory"
+            style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
+          >
+            <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
+              {responsibleByDesign.title}
+            </p>
+            <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
+              {responsibleByDesign.tagline}
+            </p>
+            <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{responsibleByDesign.body}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

@@ -104,11 +104,10 @@ export const getFoundersPageSettings = () => safeFetch<any>(foundersPageSettings
 export const responsibleCraftsmanshipSettingsQuery = groq`*[_type == "responsibleCraftsmanshipSettings"][0]{
   "craftedWithIntentionImageUrl": craftedWithIntentionImage.asset->url,
   "naturalMaterialsImageUrl": naturalMaterialsImage.asset->url,
-  "madeByHandImageUrl": madeByHandImage.asset->url,
-  "madeToOrderImageUrl": madeToOrderImage.asset->url,
+  "squareImageUrls": squareImages[].asset->url,
   "oneOfOneImageUrl": oneOfOneImage.asset->url,
-  "responsibleByDesignImageUrl": responsibleByDesignImage.asset->url,
-  "signaturePackagingImageUrl": signaturePackagingImage.asset->url
+  "signaturePackagingImageUrl": signaturePackagingImage.asset->url,
+  "responsibleByDesignImageUrl": responsibleByDesignImage.asset->url
 }`;
 export const getResponsibleCraftsmanshipSettings = () => safeFetch<any>(responsibleCraftsmanshipSettingsQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
