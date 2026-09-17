@@ -42,17 +42,23 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       </div>
 
       {/* Crafted With Intention -- tiny, left-aligned, sharing the same
-          horizontal inset as Image A below it. */}
-      <div className="px-6 md:px-12 max-w-[380px] mx-auto text-left reveal">
-        <p className="eyebrow mb-1.5 text-[9px]">{craftedWithIntention.title}</p>
-        <p className="text-[0.72rem] font-light text-charcoal mb-1">{craftedWithIntention.tagline}</p>
-        <p className="text-[0.68rem] leading-[1.6] text-ash font-light">{craftedWithIntention.body}</p>
+          horizontal inset as Image A below it. Wrapped in the same
+          max-w-[1100px] centered column every section on this page uses,
+          so it lines up with everything else rather than hugging the raw
+          page edge on wide screens. */}
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal">
+        <div className="max-w-[380px] text-left">
+          <p className="eyebrow mb-1.5 text-[9px]">{craftedWithIntention.title}</p>
+          <p className="text-[0.72rem] font-light text-charcoal mb-1">{craftedWithIntention.tagline}</p>
+          <p className="text-[0.68rem] leading-[1.6] text-ash font-light">{craftedWithIntention.body}</p>
+        </div>
       </div>
 
       {/* Image A: generous side margins -- visually the smallest photo on
-          the page. */}
-      <div className="px-6 md:px-12 mt-6 mb-10 md:mb-14">
-        <div className="relative aspect-[3/4] max-w-[380px] mx-auto overflow-hidden bg-charcoal/5">
+          the page. Left-aligned within the same 1100px column as the text
+          above it, so the two actually line up. */}
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto mt-6 mb-10 md:mb-14">
+        <div className="relative aspect-[3/4] max-w-[380px] overflow-hidden bg-charcoal/5">
           {media?.craftedWithIntentionImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -98,16 +104,21 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       </div>
 
       {/* Made By Hand + Made To Order: two plain text blocks, stacked,
-          nothing else between them. */}
-      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-10 md:mb-14">
-        <p className="eyebrow mb-2">{madeByHand.title}</p>
-        <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeByHand.tagline}</p>
-        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeByHand.body}</p>
+          nothing else between them. Same shared 1100px column as the rest
+          of the page. */}
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal mb-10 md:mb-14">
+        <div className="max-w-[560px] text-left">
+          <p className="eyebrow mb-2">{madeByHand.title}</p>
+          <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeByHand.tagline}</p>
+          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeByHand.body}</p>
+        </div>
       </div>
-      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-14 md:mb-20">
-        <p className="eyebrow mb-2">{madeToOrder.title}</p>
-        <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeToOrder.tagline}</p>
-        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeToOrder.body}</p>
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal mb-14 md:mb-20">
+        <div className="max-w-[560px] text-left">
+          <p className="eyebrow mb-2">{madeToOrder.title}</p>
+          <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeToOrder.tagline}</p>
+          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeToOrder.body}</p>
+        </div>
       </div>
 
       {/* Square image strip */}
@@ -122,10 +133,12 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       </div>
 
       {/* One Of One text */}
-      <div className="px-6 md:px-12 max-w-[560px] text-left reveal mb-6 md:mb-8">
-        <p className="eyebrow mb-2">{oneOfOne.title}</p>
-        <p className="text-[0.95rem] font-light text-charcoal mb-2">{oneOfOne.tagline}</p>
-        <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{oneOfOne.body}</p>
+      <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal mb-6 md:mb-8">
+        <div className="max-w-[560px] text-left">
+          <p className="eyebrow mb-2">{oneOfOne.title}</p>
+          <p className="text-[0.95rem] font-light text-charcoal mb-2">{oneOfOne.tagline}</p>
+          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{oneOfOne.body}</p>
+        </div>
       </div>
 
       {/* Image C: full-bleed, no side margin at all. */}
