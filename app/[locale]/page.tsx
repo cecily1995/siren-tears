@@ -1,4 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { translateText } from '@/lib/translate';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
 import NewArrivalsBanner from '@/components/NewArrivalsBanner';
@@ -43,28 +44,74 @@ export default async function HomePage({
   const heroBg = home?.hero?.bgUrl ?? fallback.hero.bgUrl;
   const heroBgAlt = home?.hero?.bgAlt ?? fallback.hero.bgAlt;
 
+  const [translatedHeroEyebrow, translatedHeroTitle, translatedHeroBody, translatedHeroCta] = await Promise.all([
+    translateText(home?.hero?.eyebrow, locale),
+    translateText(home?.hero?.title, locale),
+    translateText(home?.hero?.body, locale),
+    translateText(home?.hero?.ctaLabel, locale)
+  ]);
+
   const heroData = {
-    eyebrow: t('hero.eyebrow'),
-    title: 'SIREN TEARS',
-    body: t('hero.body'),
-    ctaLabel: t('hero.cta'),
+    // Same fix as Philosophy below: Studio's Hero fields (eyebrow/title/
+    // body/ctaLabel) were being fetched but never actually used -- this
+    // always showed the translation strings (and a hardcoded "SIREN
+    // TEARS" for the title) regardless of what was edited in Studio.
+    eyebrow: translatedHeroEyebrow || t('hero.eyebrow'),
+    title: translatedHeroTitle || 'SIREN TEARS',
+    body: translatedHeroBody || t('hero.body'),
+    ctaLabel: translatedHeroCta || t('hero.cta'),
     bgUrl: heroBg,
     bgAlt: heroBgAlt,
     scrollLabel: t('hero.scroll')
   };
 
+  const rawPillars = home?.philosophy?.pillars;
+  const [translatedSectionLabel, translatedSectionTitle, translatedPillars] = await Promise.all([
+    translateText(home?.philosophy?.sectionLabel, locale),
+    translateText(home?.philosophy?.sectionTitle, locale),
+    rawPillars?.length
+      ? Promise.all(
+          rawPillars.map(async (p: { title?: string; body?: string }) => ({
+            title: await translateText(p.title, locale),
+            body: await translateText(p.body, locale)
+          }))
+        )
+      : Promise.resolve([])
+  ]);
+
   const philosophyData = {
-    sectionLabel: t('philosophy.label'),
-    sectionTitle: t('philosophy.title'),
-    // Title/pillar copy stays translation-driven (see below), but the
-    // background video is only ever set through Sanity Studio (Home >
-    // Brand Philosophy), so it has to come from the fetched document.
+    // Sanity Studio (Home > Brand Philosophy) is meant to be able to
+    // override this section's label/title/pillars -- it previously wasn't
+    // actually wired up to do so (always used the translation strings
+    // regardless of what was edited in Studio), which is why edits there
+    // never appeared on the live site. Now prefers the Studio value when
+    // it's been filled in (translated via DeepL to match the current
+    // locale), falling back to the built-in translation otherwise.
+    sectionLabel: translatedSectionLabel || t('philosophy.label'),
+    sectionTitle: translatedSectionTitle || t('philosophy.title'),
     videoUrl: home?.philosophy?.videoUrl,
-    pillars: [
-      { title: t('philosophy.pillars.natural.title'), body: t('philosophy.pillars.natural.body') },
-      { title: t('philosophy.pillars.timeless.title'), body: t('philosophy.pillars.timeless.body') },
-      { title: t('philosophy.pillars.quality.title'), body: t('philosophy.pillars.quality.body') }
-    ]
+    pillars: translatedPillars.length
+      ? translatedPillars.map((p: { title?: string; body?: string }, i: number) => ({
+          title:
+            p.title ||
+            [
+              t('philosophy.pillars.natural.title'),
+              t('philosophy.pillars.timeless.title'),
+              t('philosophy.pillars.quality.title')
+            ][i],
+          body:
+            p.body ||
+            [
+              t('philosophy.pillars.natural.body'),
+              t('philosophy.pillars.timeless.body'),
+              t('philosophy.pillars.quality.body')
+            ][i]
+        }))
+      : [
+          { title: t('philosophy.pillars.natural.title'), body: t('philosophy.pillars.natural.body') },
+          { title: t('philosophy.pillars.timeless.title'), body: t('philosophy.pillars.timeless.body') },
+          { title: t('philosophy.pillars.quality.title'), body: t('philosophy.pillars.quality.body') }
+        ]
   };
 
   const newArrivalsData = {

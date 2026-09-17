@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBrandStory } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import { translateText } from '@/lib/translate';
 
 export async function generateMetadata({
   params
@@ -18,7 +19,19 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
 
   const [t, story] = await Promise.all([getTranslations('brandStory'), getBrandStory()]);
 
-  const data = story ?? fallback.brandStory;
+  const rawData = story ?? fallback.brandStory;
+  const [translatedEyebrow, translatedTitle, translatedParagraphs, translatedStats] = await Promise.all([
+    translateText(rawData.eyebrow, locale),
+    translateText(rawData.title, locale),
+    Promise.all((rawData.paragraphs ?? []).map((p: string) => translateText(p, locale))),
+    Promise.all(
+      (rawData.stats ?? []).map(async (s: { value?: string; label?: string }) => ({
+        value: s.value,
+        label: await translateText(s.label, locale)
+      }))
+    )
+  ]);
+  const data = { ...rawData, eyebrow: translatedEyebrow, title: translatedTitle, paragraphs: translatedParagraphs, stats: translatedStats };
   const bgUrl = data.imageUrl || fallback.brandStory.imageUrl;
 
   return (

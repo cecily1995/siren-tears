@@ -764,5 +764,44 @@
         "body": "Ogni pezzo viene preparato con cura prima di lasciare il nostro atelier — dalla scatola all'incarto, ogni dettaglio riflette il carattere discreto e ponderato di SIREN TEARS. La scatola stessa è pensata per essere conservata."
       }
     ]
+  },
+  "faqPage": {
+    "title": "Domande Frequenti",
+    "items": [
+      {
+        "q": "I vostri pezzi sono davvero unici?",
+        "a": "Sì. Ogni pezzo è realizzato singolarmente con una pietra naturale, e due pietre non sono mai del tutto identiche. Una volta venduto, quel pezzo esatto viene ritirato — non verrà ricreato."
+      },
+      {
+        "q": "Come posso acquistare un pezzo adesso?",
+        "a": "Aggiungi il pezzo al carrello, inserisci i tuoi dati e paga in sicurezza con carta al checkout. Preferisci parlarne prima? Puoi usare l'opzione Contattaci, Email o WhatsApp su qualsiasi pezzo."
+      },
+      {
+        "q": "Spedite a livello internazionale?",
+        "a": "Sì. Spediamo in tutto il mondo dal nostro atelier in Nuova Zelanda tramite NZ Post. Gli ordini superiori a 500 NZD hanno la spedizione internazionale gratuita; vedi la nostra pagina Spedizioni per i dettagli."
+      },
+      {
+        "q": "Dovrò pagare dazi doganali o di importazione?",
+        "a": "Possibilmente, a seconda del tuo paese. Eventuali dazi doganali, tasse o costi di importazione sono stabiliti dalle autorità locali e sono a carico del destinatario. Vedi la nostra pagina Spedizioni per maggiori informazioni."
+      },
+      {
+        "q": "Quanto tempo richiede un pezzo su misura?",
+        "a": "I bracciali e le collane in pietra naturale fatti a mano sono generalmente completati entro una settimana dalla conferma di design e pietra. Anelli con gemme incastonate a mano e gioielli fini richiedono circa due mesi. Sono entrambe stime — vedi la nostra pagina Su Misura per i dettagli."
+      },
+      {
+        "q": "Come mi prendo cura del mio pezzo?",
+        "a": "Evita l'esposizione prolungata all'acqua, applica profumo e cosmetici prima di indossare i gioielli, conserva i pezzi separatamente in un luogo asciutto e pulisci delicatamente con un panno morbido e asciutto. Vedi la nostra pagina Cura per la guida completa."
+      },
+      {
+        "q": "Cos’è il Siren Circle?",
+        "a": "Il nostro programma fedeltà, in arrivo a breve. È costruito attorno all'accesso e alla relazione piuttosto che a punti o sconti — accesso anticipato ai nuovi pezzi, un regalo di benvenuto, spedizione riservata ai membri e una linea diretta con l'Atelier. Vedi la nostra pagina Membership."
+      },
+      {
+        "q": "Ho una domanda a cui non è stata data risposta qui.",
+        "a": "Siamo felici di aiutarti personalmente — scrivici via email o WhatsApp e ti risponderemo."
+      }
+    ],
+    "shippingExtra": "I membri del Siren Circle godono di spedizione gratuita per ordini superiori a 400 NZD.",
+    "joinLink": "Unisciti al Siren Circle"
   }
 }

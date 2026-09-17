@@ -764,5 +764,44 @@
         "body": "Jedes Stück wird sorgfältig vorbereitet, bevor es unser Atelier verlässt — von der Box bis zur Verpackung spiegelt jedes Detail den ruhigen, durchdachten Charakter von SIREN TEARS wider. Die Box selbst ist zum Aufbewahren gedacht."
       }
     ]
+  },
+  "faqPage": {
+    "title": "Häufig Gestellte Fragen",
+    "items": [
+      {
+        "q": "Sind Ihre Stücke wirklich Unikate?",
+        "a": "Ja. Jedes Stück wird einzeln mit einem natürlichen Stein gefertigt, und keine zwei Steine sind jemals vollkommen gleich. Sobald ein Stück verkauft ist, wird genau dieses Stück nicht mehr hergestellt."
+      },
+      {
+        "q": "Wie kann ich jetzt ein Stück kaufen?",
+        "a": "Legen Sie das Stück in Ihre Tasche, geben Sie Ihre Daten ein und bezahlen Sie sicher per Karte an der Kasse. Möchten Sie vorher darüber sprechen? Nutzen Sie gerne die Option Anfragen, E-Mail oder WhatsApp bei jedem Stück."
+      },
+      {
+        "q": "Versenden Sie international?",
+        "a": "Ja. Wir versenden weltweit aus unserem Atelier in Neuseeland per NZ Post. Bestellungen über 500 NZD werden international kostenlos versandt; Details finden Sie auf unserer Versandseite."
+      },
+      {
+        "q": "Muss ich Zoll- oder Einfuhrgebühren zahlen?",
+        "a": "Je nach Land eventuell ja. Zollgebühren, Steuern oder Einfuhrabgaben werden von den örtlichen Behörden festgelegt und sind vom Empfänger zu tragen. Mehr dazu auf unserer Versandseite."
+      },
+      {
+        "q": "Wie lange dauert ein Maßanfertigungsstück?",
+        "a": "Handgefertigte Armbänder und Halsketten aus Natursteinen sind in der Regel innerhalb einer Woche nach Bestätigung von Design und Stein fertig. Handgefasste Edelsteinringe und feiner Schmuck benötigen etwa zwei Monate. Beides sind Schätzungen — Details auf unserer Maßanfertigungsseite."
+      },
+      {
+        "q": "Wie pflege ich mein Stück?",
+        "a": "Vermeiden Sie längeren Kontakt mit Wasser, tragen Sie Parfüm und Kosmetika vor dem Schmuck auf, bewahren Sie Stücke getrennt an einem trockenen Ort auf und reinigen Sie sie vorsichtig mit einem weichen, trockenen Tuch. Die vollständige Anleitung finden Sie auf unserer Pflegeseite."
+      },
+      {
+        "q": "Was ist der Siren Circle?",
+        "a": "Unser bald startendes Mitgliedschaftsprogramm. Es dreht sich um Zugang und Beziehung statt um Punkte oder Rabatte — früher Zugang zu neuen Stücken, ein Willkommensgeschenk, Versand für Mitglieder und eine direkte Verbindung zum Atelier. Mehr auf unserer Mitgliedschaftsseite."
+      },
+      {
+        "q": "Meine Frage wird hier nicht beantwortet.",
+        "a": "Wir helfen Ihnen gerne persönlich weiter — schreiben Sie uns per E-Mail oder WhatsApp, wir melden uns bei Ihnen."
+      }
+    ],
+    "shippingExtra": "Mitglieder des Siren Circle genießen kostenlosen Versand bei Bestellungen über 400 NZD.",
+    "joinLink": "Dem Siren Circle beitreten"
   }
 }

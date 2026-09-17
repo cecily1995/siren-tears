@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { useRouter, usePathname } from '@/i18n/routing';
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
@@ -139,9 +140,6 @@ export default function ShopGrid({
   products,
   labels,
   collectionNames,
-  initialFilter,
-  initialLine,
-  initialCollection,
   initialQuery
 }: {
   products: ShopProduct[];
@@ -152,56 +150,41 @@ export default function ShopGrid({
   initialCollection?: string;
   initialQuery?: string;
 }) {
-  const [line, setLine] = useState<Line>(
-    initialLine === 'beaded' || initialLine === 'aotearoa' ? initialLine : 'all'
-  );
-  const [subFilter, setSubFilter] = useState<string>(initialCollection ?? initialFilter ?? 'all');
-  const [query] = useState(initialQuery ?? '');
-
   const router = useRouter();
   const pathname = usePathname();
-  const isFirstRender = useRef(true);
+  const searchParams = useSearchParams();
 
-  // When navigation happens *outside* this component's own tabs (e.g. the
-  // top nav's plain "Shop" link, or the desktop dropdown's "All" item --
-  // both just navigate to a new URL), the server re-renders this page with
-  // new initialLine/initialCollection/initialFilter props, but a client
-  // component's useState only reads those on first mount, so the filter
-  // state silently stayed wherever it was and the grid never visibly
-  // changed. Keep it in sync with the incoming props whenever they change.
-  useEffect(() => {
-    const nextLine: Line = initialLine === 'beaded' || initialLine === 'aotearoa' ? initialLine : 'all';
-    setLine(nextLine);
-    setSubFilter(initialCollection ?? initialFilter ?? 'all');
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialLine, initialCollection, initialFilter]);
+  // The URL is the single source of truth for which line/collection/
+  // category is showing -- no local state to fall out of sync with it.
+  // The previous approach (useState seeded once from props, kept in sync
+  // via a couple of effects watching different things) had too many
+  // moving parts and could end up showing stale results after navigating
+  // straight to a specific collection until a tab was clicked again.
+  // Deriving directly from the URL on every render removes that whole
+  // class of bug.
+  const urlLine = searchParams.get('line');
+  const line: Line = urlLine === 'beaded' || urlLine === 'aotearoa' ? urlLine : 'all';
+  const subFilter = searchParams.get('collection') ?? searchParams.get('category') ?? 'all';
+  const [query] = useState(initialQuery ?? '');
 
-  function changeLine(next: Line) {
-    setLine(next);
-    setSubFilter('all');
-  }
-
-  // Keep the URL in sync with the filter state -- without this, switching
-  // lines/categories via these tabs was pure client state with no URL
-  // change, so the page's own server-rendered header (which reads the
-  // line/collection from the URL) stayed stuck showing whatever it was
-  // when the page first loaded, e.g. still "Aotearoa" after switching to
-  // Beaded via the on-page tabs.
-  useEffect(() => {
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
-      return;
-    }
+  function pushFilters(nextLine: Line, nextSubFilter: string) {
     const params = new URLSearchParams();
-    if (line !== 'all') params.set('line', line);
-    if (subFilter !== 'all') {
-      if (line === 'beaded') params.set('collection', subFilter);
-      else params.set('category', subFilter);
+    if (nextLine !== 'all') params.set('line', nextLine);
+    if (nextSubFilter !== 'all') {
+      if (nextLine === 'beaded') params.set('collection', nextSubFilter);
+      else params.set('category', nextSubFilter);
     }
     const qs = params.toString();
     router.replace(`${pathname}${qs ? `?${qs}` : ''}`, { scroll: false });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [line, subFilter]);
+  }
+
+  function changeLine(next: Line) {
+    pushFilters(next, 'all');
+  }
+
+  function changeSubFilter(next: string) {
+    pushFilters(line, next);
+  }
 
   const subOptions: { key: string; label: string }[] = useMemo(() => {
     if (line === 'beaded') {
@@ -262,7 +245,7 @@ export default function ShopGrid({
           {subOptions.map((opt) => (
             <button
               key={opt.key}
-              onClick={() => setSubFilter(opt.key)}
+              onClick={() => changeSubFilter(opt.key)}
               className={`text-[11px] tracking-[0.28em] uppercase font-light transition-colors pb-1 border-b ${
                 subFilter === opt.key
                   ? 'text-charcoal border-gold'
@@ -289,7 +272,7 @@ export default function ShopGrid({
           label={labels.categoryFilterLabel}
           value={subFilter}
           options={subOptions}
-          onChange={setSubFilter}
+          onChange={changeSubFilter}
         />
       </div>
 

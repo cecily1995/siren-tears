@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getBuyerShowcase, getSiteSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import { translateText } from '@/lib/translate';
 import PageHeader from '@/components/PageHeader';
 import ShowcaseGrid from '@/components/ShowcaseGrid';
 
@@ -31,7 +32,10 @@ export default async function GalleryPage({
     getSiteSettings()
   ]);
   const instagramUrl = settings?.instagramUrl ?? fallback.settings.instagramUrl;
-  const items = photos ?? [];
+  const rawItems = photos ?? [];
+  const items = await Promise.all(
+    rawItems.map(async (item: any) => ({ ...item, caption: await translateText(item.caption, locale) }))
+  );
 
   return (
     <>

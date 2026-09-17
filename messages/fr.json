@@ -764,5 +764,44 @@
         "body": "Chaque pièce est soigneusement préparée avant de quitter notre atelier — du coffret à l'emballage, chaque détail reflète le caractère discret et réfléchi de SIREN TEARS. Le coffret lui-même est conçu pour être conservé."
       }
     ]
+  },
+  "faqPage": {
+    "title": "Questions Fréquentes",
+    "items": [
+      {
+        "q": "Vos pièces sont-elles vraiment uniques ?",
+        "a": "Oui. Chaque pièce est réalisée individuellement avec une pierre naturelle, et deux pierres ne sont jamais tout à fait identiques. Une fois une pièce vendue, cette pièce exacte est retirée — elle ne sera pas recréée."
+      },
+      {
+        "q": "Comment puis-je acheter une pièce dès maintenant ?",
+        "a": "Ajoutez la pièce à votre panier, renseignez vos coordonnées, et payez en toute sécurité par carte au moment du paiement. Vous préférez en discuter d'abord ? N'hésitez pas à utiliser l'option Contact, Email ou WhatsApp sur n'importe quelle pièce."
+      },
+      {
+        "q": "Livrez-vous à l'international ?",
+        "a": "Oui. Nous livrons dans le monde entier depuis notre atelier en Nouvelle-Zélande via NZ Post. Les commandes de plus de 500 NZD bénéficient de la livraison internationale gratuite ; voir notre page Livraison pour plus de détails."
+      },
+      {
+        "q": "Devrai-je payer des droits de douane ou d’importation ?",
+        "a": "Cela dépend de votre pays. Les droits de douane, taxes ou frais d'importation sont fixés par les autorités locales et sont à la charge du destinataire. Voir notre page Livraison pour plus d'informations."
+      },
+      {
+        "q": "Combien de temps prend une pièce sur mesure ?",
+        "a": "Les bracelets et colliers en pierres naturelles faits main sont généralement terminés dans la semaine suivant la confirmation du design et de la pierre. Les bagues serties à la main et la joaillerie fine prennent environ deux mois. Ce sont des estimations — voir notre page Sur Mesure pour plus de détails."
+      },
+      {
+        "q": "Comment prendre soin de ma pièce ?",
+        "a": "Évitez une exposition prolongée à l'eau, appliquez parfum et cosmétiques avant de porter vos bijoux, rangez les pièces séparément dans un endroit sec, et nettoyez délicatement avec un chiffon doux et sec. Voir notre page Entretien pour le guide complet."
+      },
+      {
+        "q": "Qu’est-ce que le Siren Circle ?",
+        "a": "Notre programme de fidélité, bientôt lancé. Il est construit autour de l'accès et de la relation plutôt que des points ou des réductions — accès anticipé aux nouvelles pièces, cadeau de bienvenue, livraison membre, et une ligne directe avec l'Atelier. Voir notre page Adhésion."
+      },
+      {
+        "q": "J'ai une question qui n'est pas traitée ici.",
+        "a": "Nous serons ravis de vous aider personnellement — écrivez-nous par email ou WhatsApp et nous vous répondrons."
+      }
+    ],
+    "shippingExtra": "Les membres du Siren Circle bénéficient de la livraison gratuite pour les commandes de plus de 400 NZD.",
+    "joinLink": "Rejoindre le Siren Circle"
   }
 }

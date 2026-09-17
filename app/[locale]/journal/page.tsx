@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getJournal } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
+import { translateFields } from '@/lib/translate';
 import PageHeader from '@/components/PageHeader';
 import Journal from '@/components/Journal';
 
@@ -25,7 +26,13 @@ export default async function JournalPage({
   setRequestLocale(locale);
 
   const [t, journal] = await Promise.all([getTranslations('journal'), getJournal()]);
-  const items = journal?.length ? journal : fallback.journal;
+  const rawItems = journal?.length ? journal : fallback.journal;
+  const items = await Promise.all(
+    rawItems.map(async (item: any) => {
+      const translated = await translateFields({ title: item.title, excerpt: item.excerpt }, locale);
+      return { ...item, ...translated };
+    })
+  );
 
   const labels = {
     eyebrow: '',

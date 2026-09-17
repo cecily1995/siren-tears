@@ -37,12 +37,27 @@ export default function RevealOnScroll() {
             }
           });
         },
-        { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+        { threshold: 0, rootMargin: '0px 0px 0px 0px' }
       );
     }
 
     // Initial scan for this render of the page.
     Array.from(document.querySelectorAll<HTMLElement>('.reveal')).forEach(observeEl);
+
+    // Safety net: anything already sitting inside the viewport right now
+    // (typical for above-the-fold content right after a page load) should
+    // never have to wait on the observer's first callback -- images that
+    // haven't finished loading yet can throw off an element's measured
+    // position for a moment, which was leaving some on-screen content
+    // stuck invisible until a scroll event happened to trigger a re-check.
+    // Check directly and reveal immediately wherever it's already true.
+    requestAnimationFrame(() => {
+      document.querySelectorAll<HTMLElement>('.reveal:not(.is-visible)').forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (inView) revealImmediately(el);
+      });
+    });
 
     // Catch anything added after the initial scan (streaming/late content).
     mutationObs = new MutationObserver((mutations) => {
