@@ -92,6 +92,14 @@ export default defineType({
       validation: (r) => r.required()
     }),
     defineField({
+      name: 'isNewArrival',
+      title: 'New Arrival',
+      type: 'boolean',
+      group: 'basics',
+      initialValue: false,
+      description: 'Turn this on to include the piece on the New Arrivals page.'
+    }),
+    defineField({
       name: 'stone',
       title: 'Stone name (short)',
       type: 'string',

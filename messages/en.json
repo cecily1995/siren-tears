@@ -14,7 +14,8 @@
     "bespoke": "Bespoke",
     "account": "My Siren",
     "signIn": "Sign In",
-    "founders": "The People Behind Siren Tears"
+    "founders": "The People Behind Siren Tears",
+    "newArrivals": "New Arrivals"
   },
   "hero": {
     "eyebrow": "A New Zealand Atelier",
@@ -402,12 +403,6 @@
     },
     "privatePriceNote": "Provisional: a one-time NZD $999 may apply to enter Private Client directly, pending final benefits."
   },
-  "oneOfOne": {
-    "eyebrow": "One of One",
-    "title": "Every piece exists only once.",
-    "body": "Every stone carries its own colour, texture and character. No two pieces are ever exactly alike.",
-    "cta": "Discover the Collection"
-  },
   "atelier": {
     "eyebrow": "The Atelier",
     "title": "Crafted slowly, in New Zealand.",
@@ -703,5 +698,16 @@
     "para1": "What began with a personal appreciation for the individuality of natural stones gradually became a deeper interest in how colour, texture, shape and natural inclusions could be brought together through design. Rather than treating stones as interchangeable materials, the founders approach each one as the starting point of a composition — allowing its natural character to influence the final piece.",
     "para2": "Through SIREN TEARS, they wanted to create jewellery that feels less manufactured and more personal: pieces with their own character, created in small quantities and designed to be discovered rather than simply produced.",
     "para3": "Today, they work closely together across the selection of stones, design direction and finishing of each piece, continuing to build SIREN TEARS around a simple belief: natural beauty does not need to be made uniform to be beautiful."
+  },
+  "newArrivals": {
+    "eyebrow": "Just In, From The Atelier",
+    "title": "New one-of-one pieces.",
+    "cta": "Discover New Pieces"
+  },
+  "newArrivalsPage": {
+    "eyebrow": "New Arrivals",
+    "title": "Just In",
+    "intro": "New one-of-one pieces, fresh from the Atelier.",
+    "empty": "New pieces are on their way — check back soon."
   }
 }

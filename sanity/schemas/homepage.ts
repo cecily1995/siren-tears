@@ -24,6 +24,23 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'newArrivals',
+      title: 'New Arrivals banner (homepage)',
+      type: 'object',
+      description:
+        'The rotating-photo banner on the homepage that links to the New Arrivals page. Its text ("Just In, From The Atelier" / "New one-of-one pieces." / "Discover New Pieces") is fixed and not editable here -- only the background photos rotate.',
+      fields: [
+        {
+          name: 'images',
+          title: 'Rotating background images',
+          type: 'array',
+          of: [{ type: 'image', options: { hotspot: true } }],
+          description:
+            'Add as many as you like -- they cross-fade on a loop behind the fixed banner text. At least one is needed for the banner to show anything.'
+        }
+      ]
+    }),
+    defineField({
       name: 'philosophy',
       title: 'Brand Philosophy',
       type: 'object',

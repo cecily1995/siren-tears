@@ -14,7 +14,8 @@
     "bespoke": "Su misura",
     "account": "Il mio account",
     "signIn": "Accedi",
-    "founders": "Le Persone Dietro Siren Tears"
+    "founders": "Le Persone Dietro Siren Tears",
+    "newArrivals": "Novità"
   },
   "hero": {
     "eyebrow": "Un atelier neozelandese",
@@ -402,12 +403,6 @@
     },
     "privatePriceNote": "Provvisorio: potrebbe essere richiesto un contributo una tantum di NZD $999 per entrare direttamente come Private Client, in attesa dei vantaggi definitivi."
   },
-  "oneOfOne": {
-    "eyebrow": "Pezzo unico",
-    "title": "Ogni pezzo esiste una sola volta.",
-    "body": "Ogni pietra porta il proprio colore, la propria texture e il proprio carattere. Due pezzi non sono mai perfettamente identici.",
-    "cta": "Scopri la Collezione"
-  },
   "atelier": {
     "eyebrow": "L'Atelier",
     "title": "Realizzato lentamente, in Nuova Zelanda.",
@@ -703,5 +698,16 @@
     "para1": "Ciò che è iniziato come un apprezzamento personale per l'unicità delle pietre naturali è diventato gradualmente un interesse più profondo per come colore, texture, forma e inclusioni naturali potessero incontrarsi attraverso il design. Invece di trattare le pietre come materiali intercambiabili, i fondatori considerano ognuna di esse come il punto di partenza di una composizione, lasciando che il suo carattere naturale influenzi il pezzo finale.",
     "para2": "Attraverso SIREN TEARS, hanno voluto creare gioielli che si sentano meno manifatturati e più personali: pezzi con un proprio carattere, realizzati in piccole quantità e pensati per essere scoperti, non semplicemente prodotti.",
     "para3": "Oggi lavorano ancora fianco a fianco nella selezione delle pietre, nella direzione del design e nella finitura di ogni pezzo, continuando a costruire SIREN TEARS attorno a una convinzione semplice: la bellezza naturale non ha bisogno di essere uniformata per essere bella."
+  },
+  "newArrivals": {
+    "eyebrow": "Just In, From The Atelier",
+    "title": "Nuovi pezzi unici.",
+    "cta": "Scopri le novità"
+  },
+  "newArrivalsPage": {
+    "eyebrow": "Novità",
+    "title": "Just In",
+    "intro": "Nuovi pezzi unici, appena usciti dall'Atelier.",
+    "empty": "Nuovi pezzi in arrivo a breve."
   }
 }

@@ -14,7 +14,8 @@
     "bespoke": "Maßanfertigung",
     "account": "Mein Konto",
     "signIn": "Anmelden",
-    "founders": "Die Menschen hinter Siren Tears"
+    "founders": "Die Menschen hinter Siren Tears",
+    "newArrivals": "Neuheiten"
   },
   "hero": {
     "eyebrow": "Ein Atelier in Neuseeland",
@@ -402,12 +403,6 @@
     },
     "privatePriceNote": "Vorläufig: Ein einmaliger Betrag von NZD 999 kann für den direkten Einstieg als Private Client anfallen, vorbehaltlich der endgültigen Vorteile."
   },
-  "oneOfOne": {
-    "eyebrow": "Einzelstück",
-    "title": "Jedes Stück existiert nur einmal.",
-    "body": "Jeder Stein trägt seine eigene Farbe, Textur und seinen eigenen Charakter. Keine zwei Stücke sind je völlig gleich.",
-    "cta": "Kollektion Entdecken"
-  },
   "atelier": {
     "eyebrow": "Das Atelier",
     "title": "Langsam gefertigt, in Neuseeland.",
@@ -703,5 +698,16 @@
     "para1": "Was als persönliche Wertschätzung für die Einzigartigkeit natürlicher Steine begann, wurde nach und nach zu einem tieferen Interesse daran, wie Farbe, Textur, Form und natürliche Einschlüsse durch Design zusammengeführt werden können. Anstatt Steine als austauschbare Materialien zu behandeln, betrachten die Gründer jeden einzelnen als Ausgangspunkt einer Komposition — und lassen seinen natürlichen Charakter das fertige Stück mitgestalten.",
     "para2": "Mit SIREN TEARS wollten sie Schmuck schaffen, der sich weniger fabrikmäßig und persönlicher anfühlt: Stücke mit eigenem Charakter, in kleinen Mengen gefertigt und dafür gemacht, entdeckt statt einfach nur produziert zu werden.",
     "para3": "Heute arbeiten sie weiterhin eng zusammen — bei der Auswahl der Steine, der Designrichtung und der Fertigstellung jedes Stücks — und bauen SIREN TEARS beständig um eine einfache Überzeugung herum: Natürliche Schönheit muss nicht vereinheitlicht werden, um schön zu sein."
+  },
+  "newArrivals": {
+    "eyebrow": "Just In, From The Atelier",
+    "title": "Neue Unikate.",
+    "cta": "Neuheiten entdecken"
+  },
+  "newArrivalsPage": {
+    "eyebrow": "Neuheiten",
+    "title": "Just In",
+    "intro": "Neue Unikate, frisch aus dem Atelier.",
+    "empty": "Neue Stücke sind bald da."
   }
 }

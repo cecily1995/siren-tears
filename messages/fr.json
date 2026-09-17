@@ -14,7 +14,8 @@
     "bespoke": "Sur mesure",
     "account": "Mon compte",
     "signIn": "Se connecter",
-    "founders": "Les Personnes Derrière Siren Tears"
+    "founders": "Les Personnes Derrière Siren Tears",
+    "newArrivals": "Nouveautés"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -402,12 +403,6 @@
     },
     "privatePriceNote": "Provisoire : des frais uniques de 999 NZD peuvent s'appliquer pour accéder directement au statut Private Client, en attendant les avantages définitifs."
   },
-  "oneOfOne": {
-    "eyebrow": "Pièce unique",
-    "title": "Chaque pièce n'existe qu'une seule fois.",
-    "body": "Chaque pierre porte sa propre couleur, texture et caractère. Deux pièces ne sont jamais tout à fait identiques.",
-    "cta": "Découvrir la Collection"
-  },
   "atelier": {
     "eyebrow": "L'Atelier",
     "title": "Façonnée lentement, en Nouvelle-Zélande.",
@@ -703,5 +698,16 @@
     "para1": "Ce qui a commencé comme une appréciation personnelle de l'individualité des pierres naturelles est devenu peu à peu un intérêt plus profond pour la manière dont la couleur, la texture, la forme et les inclusions naturelles peuvent se rencontrer à travers le design. Plutôt que de traiter les pierres comme des matériaux interchangeables, les fondateurs abordent chacune d'elles comme le point de départ d'une composition — laissant son caractère naturel influencer la pièce finale.",
     "para2": "À travers SIREN TEARS, ils ont voulu créer une joaillerie qui se sente moins manufacturée et plus personnelle : des pièces au caractère propre, créées en petites quantités et conçues pour être découvertes plutôt que simplement produites.",
     "para3": "Aujourd'hui, ils travaillent encore ensemble sur la sélection des pierres, la direction artistique et la finition de chaque pièce, continuant à bâtir SIREN TEARS autour d'une conviction simple : la beauté naturelle n'a pas besoin d'être uniformisée pour être belle."
+  },
+  "newArrivals": {
+    "eyebrow": "Just In, From The Atelier",
+    "title": "Nouvelles pièces uniques.",
+    "cta": "Découvrir les nouveautés"
+  },
+  "newArrivalsPage": {
+    "eyebrow": "Nouveautés",
+    "title": "Just In",
+    "intro": "Nouvelles pièces uniques, tout juste sorties de l'Atelier.",
+    "empty": "De nouvelles pièces arrivent bientôt."
   }
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname } from '@/i18n/routing';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -8,17 +8,71 @@ import MobileMenu from './MobileMenu';
 import BagIcon from './BagIcon';
 import WishlistIcon from './WishlistIcon';
 
-const links = [
-  { href: '/collections', key: 'collections' },
-  { href: '/shop', key: 'shop' },
+const COLLECTION_NAMES = ['Mosaic', 'Last Queen', 'Golden Age', "Siren's Chain", 'Violet Hour', 'One Hue'];
+
+const SHOP_CATEGORIES = [
+  { key: 'rings', category: 'ring' },
+  { key: 'braceletChain', category: 'braceletChain' },
+  { key: 'braceletBead', category: 'braceletBead' },
+  { key: 'necklaces', category: 'necklace' },
+  { key: 'pendants', category: 'pendant' },
+  { key: 'bangles', category: 'bangle' }
+] as const;
+
+const simpleLinks = [
   { href: '/journal', key: 'journal' },
   { href: '/worn-by-you', key: 'gallery' },
   { href: '/bespoke', key: 'bespoke' },
   { href: '/membership', key: 'membership' }
 ] as const;
 
+function NavDropdown({
+  label,
+  scrolled,
+  children
+}: {
+  label: string;
+  scrolled: boolean;
+  children: React.ReactNode;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function onClickOutside(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    }
+    document.addEventListener('mousedown', onClickOutside);
+    return () => document.removeEventListener('mousedown', onClickOutside);
+  }, []);
+
+  return (
+    <div className="relative" ref={ref}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        aria-expanded={open}
+        className={`bg-transparent border-none p-0 cursor-pointer text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+          scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
+        }`}
+      >
+        {label}
+      </button>
+      {open && (
+        <div
+          className="absolute top-full left-1/2 -translate-x-1/2 mt-4 min-w-[220px] bg-ivory border border-charcoal/10 shadow-[0_16px_40px_rgba(0,0,0,0.1)] py-4 px-5 text-center"
+          onClick={() => setOpen(false)}
+        >
+          {children}
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Navigation() {
   const t = useTranslations('nav');
+  const tShop = useTranslations('shop');
   const pathname = usePathname();
   // Only the homepage opens with a full-bleed dark Hero photo behind the
   // header, which is the one place a transparent/light-text nav actually
@@ -70,7 +124,62 @@ export default function Navigation() {
         </div>
 
         <nav className="hidden lg:flex items-center gap-8">
-          {links.map((l) => (
+          <NavDropdown label={t('collections')} scrolled={scrolled}>
+            <div className="space-y-2.5">
+              {COLLECTION_NAMES.map((name) => (
+                <Link
+                  key={name}
+                  href={`/shop?line=beaded&collection=${encodeURIComponent(name)}`}
+                  className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+                >
+                  {name}
+                </Link>
+              ))}
+              <Link
+                href="/shop?line=aotearoa"
+                className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+              >
+                {tShop('lineFilters.aotearoa')}
+              </Link>
+              <Link
+                href="/collections"
+                className="block mt-3 pt-3 border-t border-charcoal/10 text-[10px] tracking-[0.2em] uppercase text-charcoal font-light link-underline"
+              >
+                {t('collections')} →
+              </Link>
+            </div>
+          </NavDropdown>
+
+          <NavDropdown label={t('shop')} scrolled={scrolled}>
+            <div className="space-y-2.5">
+              <Link href="/shop" className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap">
+                {tShop('filters.all')}
+              </Link>
+              <Link
+                href="/new-arrivals"
+                className="block text-[0.85rem] text-gold hover:text-charcoal font-light whitespace-nowrap"
+              >
+                {t('newArrivals')}
+              </Link>
+              {SHOP_CATEGORIES.map((c) => (
+                <Link
+                  key={c.key}
+                  href={`/shop?category=${c.category}`}
+                  className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+                >
+                  {tShop(`filters.${c.key}`)}
+                </Link>
+              ))}
+              <Link
+                href="/shop?category=archive"
+                className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+              >
+                {tShop('filters.archive')}
+              </Link>
+            </div>
+          </NavDropdown>
+
+          {simpleLinks.map((l) => (
             <Link
               key={l.key}
               href={l.href}

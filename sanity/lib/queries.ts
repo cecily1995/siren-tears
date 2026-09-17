@@ -7,6 +7,7 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
 
 export const homepageQuery = groq`*[_type == "homepage"][0]{
   hero{ eyebrow, title, body, ctaLabel, "bgUrl": background.asset->url, "bgAlt": background.alt },
+  newArrivals{ "images": images[].asset->url },
   philosophy{ sectionLabel, sectionTitle, "videoUrl": backgroundVideo.asset->url, pillars[]{ title, body } },
   featured->{
     title, subtitle, body,
@@ -42,6 +43,12 @@ export const buyerShowcaseQuery = groq`*[_type == "buyerShowcase"] | order(order
 }`;
 
 export const shopProductsQuery = groq`*[_type == "shopProduct"] | order(order asc, _createdAt desc){
+  _id, name, slug, category, productLine, stone, price, status,
+  "collectionTitle": collection->title,
+  "images": images[]{ "url": asset->url, alt }
+}`;
+
+export const newArrivalProductsQuery = groq`*[_type == "shopProduct" && isNewArrival == true] | order(order asc, _createdAt desc){
   _id, name, slug, category, productLine, stone, price, status,
   "collectionTitle": collection->title,
   "images": images[]{ "url": asset->url, alt }
@@ -86,6 +93,7 @@ export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);
 export const getBuyerShowcase = () => safeFetch<any[]>(buyerShowcaseQuery);
 export const getShopProducts = () => safeFetch<any[]>(shopProductsQuery);
+export const getNewArrivalProducts = () => safeFetch<any[]>(newArrivalProductsQuery);
 export const getShopProductBySlug = (slug: string) => safeFetch<any>(shopProductBySlugQuery, { slug });
 export const getBespokeRequestById = (id: string) => safeFetch<any>(bespokeRequestByIdQuery, { id });
 export const getPurchaseRequestByOrderNumber = (orderNumber: string) =>

@@ -24,6 +24,7 @@ const SHOP_CATEGORIES = [
 ] as const;
 
 const simpleLinks = [
+  { href: '/new-arrivals', key: 'newArrivals' },
   { href: '/journal', key: 'journal' },
   { href: '/worn-by-you', key: 'gallery' },
   { href: '/bespoke', key: 'bespoke' },

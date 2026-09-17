@@ -1,7 +1,7 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import Hero from '@/components/Hero';
 import Philosophy from '@/components/Philosophy';
-import OneOfOne from '@/components/OneOfOne';
+import NewArrivalsBanner from '@/components/NewArrivalsBanner';
 import CurrentlyAvailable from '@/components/CurrentlyAvailable';
 import Collections from '@/components/Collections';
 import AotearoaTeaser from '@/components/AotearoaTeaser';
@@ -67,11 +67,13 @@ export default async function HomePage({
     ]
   };
 
-  const oneOfOneData = {
-    eyebrow: t('oneOfOne.eyebrow'),
-    title: t('oneOfOne.title'),
-    body: t('oneOfOne.body'),
-    cta: t('oneOfOne.cta')
+  const newArrivalsData = {
+    images: (home?.newArrivals?.images?.length
+      ? home.newArrivals.images
+      : ['/images/one-of-one-bg.jpg', '/images/new-arrivals-bg-2.jpg']) as string[],
+    eyebrow: t('newArrivals.eyebrow'),
+    title: t('newArrivals.title'),
+    cta: t('newArrivals.cta')
   };
 
   const allCollections = collections?.length ? collections : fallback.collections;
@@ -144,7 +146,7 @@ export default async function HomePage({
       <Hero data={heroData} />
       <Philosophy data={philosophyData} />
       <CurrentlyAvailable items={availableProducts} labels={currentlyAvailableLabels} />
-      <OneOfOne data={oneOfOneData} />
+      <NewArrivalsBanner data={newArrivalsData} />
       <Collections
         items={homepageCollections.length ? homepageCollections : allCollections.slice(0, 3)}
         labels={collectionsLabels}
