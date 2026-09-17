@@ -89,7 +89,7 @@ export default function CollectionsCoverflow({ items }: { items: CoverItem[] }) 
       onTouchStart={(e) => handleDragStart(e.touches[0].clientX)}
       onTouchEnd={(e) => handleDragEnd(e.changedTouches[0].clientX)}
     >
-      <div className="relative mx-auto w-[46%] sm:w-[34%] md:w-[22%] lg:w-[19%] aspect-[3/4]">
+      <div className="relative mx-auto w-[54%] sm:w-[40%] md:w-[26%] lg:w-[22%] aspect-[3/4]">
         {items.map((item, i) => {
           const offset = offsetOf(i);
           const abs = Math.abs(offset);
@@ -97,7 +97,7 @@ export default function CollectionsCoverflow({ items }: { items: CoverItem[] }) 
 
           const translateX = offset * 62;
           const scale = abs === 0 ? 1 : abs === 1 ? 0.8 : abs === 2 ? 0.62 : 0.48;
-          const rotateY = abs === 0 ? 0 : offset > 0 ? -42 : 42;
+          const rotateY = abs === 0 ? 0 : offset > 0 ? -52 : 52;
           const opacity = abs === 0 ? 1 : abs === 1 ? 0.75 : abs === 2 ? 0.45 : 0.2;
           const zIndex = 10 - abs;
 

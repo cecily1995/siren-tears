@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { getCollections } from '@/sanity/lib/queries';
+import { getCollections, getCollectionsPageSettings } from '@/sanity/lib/queries';
 import { fallback } from '@/components/fallback';
 import PageHeader from '@/components/PageHeader';
 import CollectionsCoverflow from '@/components/CollectionsCoverflow';
@@ -25,7 +25,11 @@ export default async function CollectionsPage({
   const { locale } = params;
   setRequestLocale(locale);
 
-  const [t, collections] = await Promise.all([getTranslations('collectionsPage'), getCollections()]);
+  const [t, collections, pageSettings] = await Promise.all([
+    getTranslations('collectionsPage'),
+    getCollections(),
+    getCollectionsPageSettings()
+  ]);
   const items = collections?.length ? collections : fallback.collections;
 
   return (
@@ -78,7 +82,7 @@ export default async function CollectionsPage({
             className="group reveal relative block mx-auto max-w-[420px] aspect-[9/16] overflow-hidden bg-charcoal/5 frame-zoom"
           >
             <img
-              src="/images/aotearoa-banner.jpg"
+              src={pageSettings?.aotearoaBannerUrl || '/images/aotearoa-banner.jpg'}
               alt="Aotearoa gemstone jewellery"
               className="bg-img absolute inset-0 w-full h-full object-cover"
             />

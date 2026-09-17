@@ -8,6 +8,7 @@ export const siteSettingsQuery = groq`*[_type == "siteSettings"][0]{
 export const homepageQuery = groq`*[_type == "homepage"][0]{
   hero{ eyebrow, title, body, ctaLabel, "bgUrl": background.asset->url, "bgAlt": background.alt },
   newArrivals{ "images": images[].asset->url },
+  "aotearoaBannerUrl": aotearoaBannerImage.asset->url,
   philosophy{ sectionLabel, sectionTitle, "videoUrl": backgroundVideo.asset->url, pillars[]{ title, body } },
   featured->{
     title, subtitle, body,
@@ -88,6 +89,10 @@ async function safeFetch<T>(query: string, params: Record<string, unknown> = {})
 
 export const getSiteSettings = () => safeFetch<any>(siteSettingsQuery);
 export const getHomepage = () => safeFetch<any>(homepageQuery);
+export const collectionsPageQuery = groq`*[_type == "collectionsPage"][0]{
+  "aotearoaBannerUrl": aotearoaBannerImage.asset->url
+}`;
+export const getCollectionsPageSettings = () => safeFetch<any>(collectionsPageQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);

@@ -151,7 +151,7 @@ export default async function HomePage({
         items={homepageCollections.length ? homepageCollections : allCollections.slice(0, 3)}
         labels={collectionsLabels}
       />
-      <AotearoaTeaser items={aotearoaProducts} labels={aotearoaLabels} />
+      <AotearoaTeaser items={aotearoaProducts} labels={aotearoaLabels} bannerImageUrl={home?.aotearoaBannerUrl} />
 
       {/* Worn By You -> The Atelier: a smooth, scroll-position-driven
           "pull up" panel (see PullUpStack) rather than a hard CSS-sticky

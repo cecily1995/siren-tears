@@ -41,6 +41,14 @@ export default defineType({
       ]
     }),
     defineField({
+      name: 'aotearoaBannerImage',
+      title: 'Aotearoa banner image (homepage)',
+      type: 'image',
+      options: { hotspot: true },
+      description:
+        'Background photo for the homepage\'s Aotearoa (gemstone) banner. This is separate from the Aotearoa banner image on the Collections page -- changing one does not affect the other.'
+    }),
+    defineField({
       name: 'philosophy',
       title: 'Brand Philosophy',
       type: 'object',

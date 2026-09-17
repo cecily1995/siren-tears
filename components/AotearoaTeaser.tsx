@@ -26,7 +26,15 @@ const AUTO_ADVANCE_MS = 2600;
 const RESUME_AFTER_MS = 3500;
 const SWIPE_THRESHOLD = 40;
 
-export default function AotearoaTeaser({ items, labels }: { items: Product[]; labels: Labels }) {
+export default function AotearoaTeaser({
+  items,
+  labels,
+  bannerImageUrl
+}: {
+  items: Product[];
+  labels: Labels;
+  bannerImageUrl?: string;
+}) {
   const slides = items.slice(0, 8);
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
@@ -98,7 +106,7 @@ export default function AotearoaTeaser({ items, labels }: { items: Product[]; la
           className="relative block aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-charcoal/5 group"
         >
           <img
-            src="/images/aotearoa-banner.jpg"
+            src={bannerImageUrl || '/images/aotearoa-banner.jpg'}
             alt="Aotearoa gemstone jewellery, worn by the sea"
             className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
           />

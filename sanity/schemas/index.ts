@@ -1,5 +1,6 @@
 import siteSettings from './siteSettings';
 import homepage from './homepage';
+import collectionsPage from './collectionsPage';
 import collection from './collection';
 import product from './product';
 import journalArticle from './journalArticle';
@@ -15,6 +16,7 @@ import member from './member';
 export const schemaTypes = [
   siteSettings,
   homepage,
+  collectionsPage,
   brandStory,
   collection,
   product,

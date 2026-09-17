@@ -33,12 +33,12 @@ export default async function ContactPage({ params }: { params: { locale: string
 
   return (
     <PageHeader eyebrow={t('eyebrow')} title={t('title')}>
-      <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
+      <p className="mt-7 max-w-xl text-[0.98rem] leading-[1.95] text-ash font-light">
         {t('intro')}
       </p>
 
       {methods.length > 0 && (
-        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <div className="mt-10 flex flex-wrap items-center gap-4">
           {methods.map((m) => (
             <a
               key={m.label}
