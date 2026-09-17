@@ -243,6 +243,13 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
             {t('founders')}
           </Link>
           <Link
+            href="/responsible-craftsmanship"
+            onClick={closeAll}
+            className="text-[11px] tracking-[0.32em] uppercase text-ash"
+          >
+            {t('ourCommitment')}
+          </Link>
+          <Link
             href="/contact"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"

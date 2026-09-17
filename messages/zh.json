@@ -15,7 +15,8 @@
     "account": "我的账户",
     "signIn": "登录",
     "founders": "幕后的人",
-    "newArrivals": "New Arrivals"
+    "newArrivals": "New Arrivals",
+    "ourCommitment": "OUR COMMITMENT"
   },
   "hero": {
     "eyebrow": "来自新西兰的工作室",
@@ -100,7 +101,8 @@
     "brandStoryLabel": "品牌故事",
     "sizeGuide": "尺寸指南",
     "shipping": "配送与运输",
-    "foundersLabel": "幕后的人"
+    "foundersLabel": "幕后的人",
+    "ourCommitmentLabel": "OUR COMMITMENT"
   },
   "languageSwitcher": {
     "label": "语言",

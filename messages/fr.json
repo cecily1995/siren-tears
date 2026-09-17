@@ -15,7 +15,8 @@
     "account": "Mon compte",
     "signIn": "Se connecter",
     "founders": "Les Personnes Derrière Siren Tears",
-    "newArrivals": "Nouveautés"
+    "newArrivals": "Nouveautés",
+    "ourCommitment": "Notre Engagement"
   },
   "hero": {
     "eyebrow": "Un atelier néo-zélandais",
@@ -100,7 +101,8 @@
     "brandStoryLabel": "Notre histoire",
     "sizeGuide": "Guide des tailles",
     "shipping": "Livraison",
-    "foundersLabel": "Les Personnes Derrière Siren Tears"
+    "foundersLabel": "Les Personnes Derrière Siren Tears",
+    "ourCommitmentLabel": "Notre Engagement"
   },
   "languageSwitcher": {
     "label": "Langue",

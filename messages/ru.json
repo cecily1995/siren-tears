@@ -15,7 +15,8 @@
     "account": "Мой кабинет",
     "signIn": "Войти",
     "founders": "Люди за Siren Tears",
-    "newArrivals": "Новинки"
+    "newArrivals": "Новинки",
+    "ourCommitment": "Наши Принципы"
   },
   "hero": {
     "eyebrow": "Ателье из Новой Зеландии",
@@ -100,7 +101,8 @@
     "brandStoryLabel": "История бренда",
     "sizeGuide": "Таблица размеров",
     "shipping": "Доставка",
-    "foundersLabel": "Люди за Siren Tears"
+    "foundersLabel": "Люди за Siren Tears",
+    "ourCommitmentLabel": "Наши Принципы"
   },
   "languageSwitcher": {
     "label": "Язык",

@@ -15,7 +15,8 @@
     "account": "マイページ",
     "signIn": "サインイン",
     "founders": "Siren Tearsを支える人々",
-    "newArrivals": "New Arrivals"
+    "newArrivals": "New Arrivals",
+    "ourCommitment": "OUR COMMITMENT"
   },
   "hero": {
     "eyebrow": "ニュージーランドのアトリエ",
@@ -100,7 +101,8 @@
     "brandStoryLabel": "ブランドストーリー",
     "sizeGuide": "サイズガイド",
     "shipping": "配送について",
-    "foundersLabel": "Siren Tearsを支える人々"
+    "foundersLabel": "Siren Tearsを支える人々",
+    "ourCommitmentLabel": "OUR COMMITMENT"
   },
   "languageSwitcher": {
     "label": "言語",
