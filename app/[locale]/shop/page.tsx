@@ -109,6 +109,14 @@ export default async function ShopPage({
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
             <ShopGrid
+              // Force a full remount whenever the URL's filters change,
+              // rather than trusting React to correctly update an
+              // existing instance's internal state across a navigation --
+              // this guarantees a clean slate every time regardless of
+              // where the navigation came from (a different route like a
+              // product detail page, the mobile menu, browser back/
+              // forward, etc).
+              key={`${searchParams?.line ?? ''}|${searchParams?.collection ?? ''}|${searchParams?.category ?? ''}|${searchParams?.q ?? ''}`}
               products={items}
               labels={labels}
               collectionNames={collectionNames}
