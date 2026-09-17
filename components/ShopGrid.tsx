@@ -162,6 +162,20 @@ export default function ShopGrid({
   const pathname = usePathname();
   const isFirstRender = useRef(true);
 
+  // When navigation happens *outside* this component's own tabs (e.g. the
+  // top nav's plain "Shop" link, or the desktop dropdown's "All" item --
+  // both just navigate to a new URL), the server re-renders this page with
+  // new initialLine/initialCollection/initialFilter props, but a client
+  // component's useState only reads those on first mount, so the filter
+  // state silently stayed wherever it was and the grid never visibly
+  // changed. Keep it in sync with the incoming props whenever they change.
+  useEffect(() => {
+    const nextLine: Line = initialLine === 'beaded' || initialLine === 'aotearoa' ? initialLine : 'all';
+    setLine(nextLine);
+    setSubFilter(initialCollection ?? initialFilter ?? 'all');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [initialLine, initialCollection, initialFilter]);
+
   function changeLine(next: Line) {
     setLine(next);
     setSubFilter('all');
