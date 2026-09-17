@@ -351,7 +351,8 @@
     "soldNote": "Dieses Stück hat bereits ein Zuhause gefunden und wird nicht erneut angefertigt. Entdecken Sie andere verfügbare Stücke im Shop.",
     "reservedNote": "Dieses Stück ist derzeit für eine andere Kundin reserviert. Kontaktieren Sie uns, wenn Sie benachrichtigt werden möchten, falls es wieder verfügbar wird.",
     "lineFilterLabel": "Linie",
-    "categoryFilterLabel": "Kategorie"
+    "categoryFilterLabel": "Kategorie",
+    "aotearoaTitle": "Edelstein-Schmuck"
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",

@@ -351,7 +351,8 @@
     "soldNote": "이 작품은 이미 새 주인을 찾아 다시 제작되지 않습니다. 샵에서 다른 판매 중인 작품을 둘러보세요.",
     "reservedNote": "이 작품은 현재 다른 고객을 위해 예약되어 있습니다. 다시 구매 가능해지면 알림을 받고 싶으시면 문의해 주세요.",
     "lineFilterLabel": "라인",
-    "categoryFilterLabel": "카테고리"
+    "categoryFilterLabel": "카테고리",
+    "aotearoaTitle": "젬스톤 주얼리"
   },
   "membership": {
     "eyebrow": "멤버십",

@@ -351,7 +351,8 @@
     "soldNote": "This piece has found its home and won't be recreated. Explore other available pieces in the Shop.",
     "reservedNote": "This piece is currently reserved for another customer. Get in touch to be notified if it becomes available again.",
     "lineFilterLabel": "Line",
-    "categoryFilterLabel": "Category"
+    "categoryFilterLabel": "Category",
+    "aotearoaTitle": "Gemstone Jewellery"
   },
   "membership": {
     "eyebrow": "Membership",

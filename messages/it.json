@@ -351,7 +351,8 @@
     "soldNote": "Questo pezzo ha trovato casa e non verrà ricreato. Scopri altri pezzi disponibili nel Negozio.",
     "reservedNote": "Questo pezzo è attualmente riservato per un altro cliente. Contattaci per essere avvisato se torna disponibile.",
     "lineFilterLabel": "Linea",
-    "categoryFilterLabel": "Categoria"
+    "categoryFilterLabel": "Categoria",
+    "aotearoaTitle": "Gioielli con pietre preziose"
   },
   "membership": {
     "eyebrow": "Membership",

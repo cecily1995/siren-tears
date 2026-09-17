@@ -73,12 +73,23 @@ export default async function ShopPage({
     categoryFilterLabel: t('categoryFilterLabel')
   };
 
+  const dynamicEyebrow = searchParams?.collection
+    ? labels.lineFilters.beaded
+    : searchParams?.line === 'aotearoa'
+      ? labels.lineFilters.aotearoa
+      : t('eyebrow');
+  const dynamicTitle = searchParams?.collection
+    ? searchParams.collection
+    : searchParams?.line === 'aotearoa'
+      ? t('aotearoaTitle')
+      : t('title');
+
   return (
     <>
       <PageHeader
-        eyebrow={t('eyebrow')}
-        title={t('title')}
-        intro={t('intro')}
+        eyebrow={dynamicEyebrow}
+        title={dynamicTitle}
+        intro={searchParams?.collection || searchParams?.line === 'aotearoa' ? undefined : t('intro')}
         imageUrl="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Natural stone jewellery macro detail"
       />
