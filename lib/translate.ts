@@ -53,11 +53,23 @@ async function callDeepL(text: string, targetLang: string): Promise<string | nul
 // Cached for 30 days per (text, locale) pair -- product copy rarely
 // changes, and this avoids re-translating (and re-paying for) the same
 // text on every page view.
-const cachedTranslate = unstable_cache(
-  async (text: string, targetLang: string) => callDeepL(text, targetLang),
-  ['deepl-translate'],
-  { revalidate: 60 * 60 * 24 * 30 }
-);
+//
+// The (text, targetLang) pair is built into the keyParts array on every
+// call, rather than defining one unstable_cache wrapper up front and
+// relying on its automatic derivation of a cache key from arguments --
+// that derivation isn't reliable enough to depend on alone, and without
+// this every call was liable to collide on the same cache entry
+// regardless of what text/language was actually being asked for, which
+// is why translation looked like it worked in some places and silently
+// returned the wrong (or English) text in others with no clear pattern.
+async function cachedTranslate(text: string, targetLang: string): Promise<string | null> {
+  const fn = unstable_cache(
+    async () => callDeepL(text, targetLang),
+    ['deepl-translate', targetLang, text],
+    { revalidate: 60 * 60 * 24 * 30 }
+  );
+  return fn();
+}
 
 /**
  * Translates English CMS copy into the given site locale using DeepL.
