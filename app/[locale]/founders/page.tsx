@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
+import { getFoundersPageSettings } from '@/sanity/lib/queries';
 import SwipeGallery from '@/components/SwipeGallery';
 import SquareImageStrip from '@/components/SquareImageStrip';
 import FoundersVideo from '@/components/FoundersVideo';
@@ -22,7 +23,7 @@ export default async function FoundersPage({ params }: { params: { locale: strin
   const { locale } = params;
   setRequestLocale(locale);
 
-  const t = await getTranslations('foundersPage');
+  const [t, media] = await Promise.all([getTranslations('foundersPage'), getFoundersPageSettings()]);
 
   return (
     <div className="bg-ivory">
@@ -36,11 +37,14 @@ export default async function FoundersPage({ params }: { params: { locale: strin
       </div>
 
       <div className={`px-6 md:px-12 max-w-[420px] md:max-w-[640px] mx-auto ${SECTION_GAP}`}>
-        <SwipeGallery images={[{ placeholderLabel: 'Founder photo — 3:4' }]} aspectClassName="aspect-[3/4]" />
+        <SwipeGallery
+          images={[{ url: media?.introImageUrl, placeholderLabel: 'Founder photo — 3:4' }]}
+          aspectClassName="aspect-[3/4]"
+        />
       </div>
 
       <div className={`px-6 md:px-12 ${SECTION_GAP}`}>
-        <FoundersVideo quote={t('quote')} signature={t('quoteSignature')} />
+        <FoundersVideo videoUrl={media?.videoUrl} quote={t('quote')} signature={t('quoteSignature')} />
       </div>
 
       {/* Our Founders: mobile stacks text above the group photo; desktop
@@ -55,7 +59,7 @@ export default async function FoundersPage({ params }: { params: { locale: strin
           </div>
           <div className="mt-8 max-w-[420px] md:max-w-[640px] mx-auto">
             <SwipeGallery
-              images={[{ placeholderLabel: 'Founders group photo — 3:4' }]}
+              images={[{ url: media?.groupPhotoUrl, placeholderLabel: 'Founders group photo — 3:4' }]}
               aspectClassName="aspect-[3/4]"
             />
           </div>
@@ -72,7 +76,7 @@ export default async function FoundersPage({ params }: { params: { locale: strin
           </div>
           <div className="flex-1">
             <SwipeGallery
-              images={[{ placeholderLabel: 'Founders group photo — 3:4' }]}
+              images={[{ url: media?.groupPhotoUrl, placeholderLabel: 'Founders group photo — 3:4' }]}
               aspectClassName="aspect-[3/4]"
             />
           </div>
@@ -81,11 +85,15 @@ export default async function FoundersPage({ params }: { params: { locale: strin
 
       <div className={`px-6 md:px-12 max-w-[1000px] mx-auto ${SECTION_GAP}`}>
         <SquareImageStrip
-          images={[
-            { placeholderLabel: 'Square 1' },
-            { placeholderLabel: 'Square 2' },
-            { placeholderLabel: 'Square 3' }
-          ]}
+          images={
+            media?.squareImageUrls?.length
+              ? media.squareImageUrls.map((url: string) => ({ url }))
+              : [
+                  { placeholderLabel: 'Square 1' },
+                  { placeholderLabel: 'Square 2' },
+                  { placeholderLabel: 'Square 3' }
+                ]
+          }
         />
       </div>
 
@@ -93,11 +101,20 @@ export default async function FoundersPage({ params }: { params: { locale: strin
           Mobile portrait, desktop landscape. */}
       <div className={SECTION_GAP}>
         <Link href="/responsible-craftsmanship" className="group relative block aspect-[4/5] md:aspect-[16/9] overflow-hidden bg-charcoal/5">
-          <div className="absolute inset-0 flex items-center justify-center border border-dashed border-charcoal/20">
-            <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60 font-light">
-              Final banner photo — mobile 4:5 / desktop 16:9
-            </span>
-          </div>
+          {media?.finalBannerImageUrl ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={media.finalBannerImageUrl}
+              alt="Crafted with intention"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.03]"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center border border-dashed border-charcoal/20">
+              <span className="text-[10px] tracking-[0.2em] uppercase text-ash/60 font-light">
+                Final banner photo — mobile 4:5 / desktop 16:9
+              </span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-charcoal/55 via-charcoal/5 to-transparent" />
           <div
             className="absolute top-0 left-0 p-6 md:p-10 max-w-[360px] text-ivory"

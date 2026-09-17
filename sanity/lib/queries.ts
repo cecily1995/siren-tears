@@ -93,6 +93,14 @@ export const collectionsPageQuery = groq`*[_type == "collectionsPage"][0]{
   "aotearoaBannerUrl": aotearoaBannerImage.asset->url
 }`;
 export const getCollectionsPageSettings = () => safeFetch<any>(collectionsPageQuery);
+export const foundersPageSettingsQuery = groq`*[_type == "foundersPageSettings"][0]{
+  "introImageUrl": introImage.asset->url,
+  "videoUrl": video.asset->url,
+  "groupPhotoUrl": groupPhoto.asset->url,
+  "squareImageUrls": squareImages[].asset->url,
+  "finalBannerImageUrl": finalBannerImage.asset->url
+}`;
+export const getFoundersPageSettings = () => safeFetch<any>(foundersPageSettingsQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);

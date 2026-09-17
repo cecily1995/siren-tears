@@ -35,6 +35,9 @@ export default defineConfig({
               .title('Collections Page')
               .child(S.document().schemaType('collectionsPage').documentId('collectionsPage')),
             S.listItem()
+              .title('Founders Page — Media')
+              .child(S.document().schemaType('foundersPageSettings').documentId('foundersPageSettings')),
+            S.listItem()
               .title('Brand Story')
               .child(S.document().schemaType('brandStory').documentId('brandStory')),
             S.divider(),
