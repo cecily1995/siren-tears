@@ -57,9 +57,9 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
 
       {/* Image A: generous side margins -- visually the smallest photo on
           the page. Left-aligned within the same 1100px column as the text
-          above it, so the two actually line up. */}
+          above it on mobile; desktop only: bigger and centered. */}
       <div className="px-6 md:px-12 max-w-[1100px] mx-auto mt-6 mb-10 md:mb-14">
-        <div className="relative aspect-[3/4] max-w-[380px] overflow-hidden bg-charcoal/5">
+        <div className="relative aspect-[3/4] max-w-[380px] md:max-w-[520px] md:mx-auto overflow-hidden bg-charcoal/5">
           {media?.craftedWithIntentionImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -81,7 +81,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
         {media?.naturalMaterialsImageUrls?.length ? (
           <TextOverlayCarousel
             images={media.naturalMaterialsImageUrls}
-            className="aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal"
+            className="aspect-[3/4] max-w-[1100px] md:max-w-[650px] mx-auto overflow-hidden bg-charcoal"
           >
             <div className="absolute inset-0 bg-charcoal/25 pointer-events-none" />
             <div
@@ -98,7 +98,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
             </div>
           </TextOverlayCarousel>
         ) : (
-          <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
+          <div className="relative aspect-[3/4] max-w-[1100px] md:max-w-[650px] mx-auto overflow-hidden bg-charcoal">
             <ImagePlaceholder label={`${naturalMaterials.title} — photo`} />
             <div className="absolute inset-0 bg-charcoal/25" />
             <div
@@ -202,9 +202,11 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       </div>
 
       {/* Image D: narrow side margins, "Responsible By Design" overlaid,
-          fixed regardless of which photo is used. */}
+          fixed regardless of which photo is used. Desktop only: landscape
+          orientation and larger overlay text; mobile keeps the 3:4
+          portrait treatment. */}
       <div className="px-3 md:px-8 pb-16 md:pb-24">
-        <div className="relative aspect-[3/4] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
+        <div className="relative aspect-[3/4] md:aspect-[16/9] max-w-[1100px] mx-auto overflow-hidden bg-charcoal">
           {media?.responsibleByDesignImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
@@ -220,13 +222,15 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
             className="absolute inset-0 flex flex-col items-center justify-center text-center px-8 text-ivory"
             style={{ textShadow: '0 2px 10px rgba(0,0,0,0.6)' }}
           >
-            <p className="text-[11px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
+            <p className="text-[11px] md:text-[13px] tracking-[0.28em] uppercase font-light mb-4" style={{ color: '#e9dcc2' }}>
               {responsibleByDesign.title}
             </p>
-            <p className="serif-display text-[1.2rem] md:text-[1.5rem] font-light leading-[1.4] mb-4 max-w-lg">
+            <p className="serif-display text-[1.2rem] md:text-[2rem] font-light leading-[1.4] mb-4 max-w-lg md:max-w-2xl">
               {responsibleByDesign.tagline}
             </p>
-            <p className="text-[0.85rem] leading-[1.7] font-light max-w-md">{responsibleByDesign.body}</p>
+            <p className="text-[0.85rem] md:text-[1.05rem] leading-[1.7] font-light max-w-md md:max-w-xl">
+              {responsibleByDesign.body}
+            </p>
           </div>
         </div>
       </div>
