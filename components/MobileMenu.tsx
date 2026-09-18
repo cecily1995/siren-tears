@@ -319,7 +319,18 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
 
   return (
     <div className="lg:hidden">
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={open}
+          className="flex flex-col items-start justify-center gap-[4px] w-6 h-6 shrink-0"
+        >
+          <span className={`block h-px w-5 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+          <span className={`block h-px w-5 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+          <span className={`block h-px w-3 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+        </button>
         <button
           type="button"
           onClick={() => {
@@ -327,23 +338,12 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
             setSearchOpen(true);
           }}
           aria-label="Search"
-          className="w-8 h-8 flex items-center justify-center shrink-0"
+          className="w-6 h-6 flex items-center justify-center shrink-0"
         >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true">
             <circle cx="8" cy="8" r="6" stroke={dark ? '#26231F' : '#FFFFFF'} strokeWidth="1.2" />
             <path d="M12.5 12.5L16 16" stroke={dark ? '#26231F' : '#FFFFFF'} strokeWidth="1.2" strokeLinecap="round" />
           </svg>
-        </button>
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          aria-label="Open menu"
-          aria-expanded={open}
-          className="flex flex-col items-start justify-center gap-[5px] w-8 h-8 shrink-0"
-        >
-          <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
-          <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
-          <span className={`block h-px w-4 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
         </button>
       </div>
 

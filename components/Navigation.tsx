@@ -217,7 +217,7 @@ export default function Navigation() {
           <button
             type="button"
             aria-label={t('search')}
-            className={`transition-colors duration-500 ${
+            className={`hidden lg:inline-flex transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
             }`}
           >

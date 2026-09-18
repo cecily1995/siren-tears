@@ -37,12 +37,33 @@ export default function LanguageSwitcher({ light }: { light: boolean }) {
 
   return (
     <div className="relative" ref={ref}>
+      {/* Mobile: compact globe icon only -- the full text+border button
+          was wide enough to overlap the centered wordmark on narrow
+          screens. Desktop keeps the text button. */}
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="listbox"
-        className={`inline-flex items-center gap-2 px-3 py-1.5 border ${borderClass} ${baseTextClass} text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500`}
+        aria-label="Change language"
+        className={`lg:hidden flex items-center justify-center w-6 h-6 ${baseTextClass} transition-colors duration-500`}
+      >
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="1.2" />
+          <path d="M3 12H21" stroke="currentColor" strokeWidth="1.2" />
+          <path
+            d="M12 3C14.5 5.5 15.8 8.6 15.8 12C15.8 15.4 14.5 18.5 12 21C9.5 18.5 8.2 15.4 8.2 12C8.2 8.6 9.5 5.5 12 3Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+          />
+        </svg>
+      </button>
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-haspopup="listbox"
+        className={`hidden lg:inline-flex items-center gap-2 px-3 py-1.5 border ${borderClass} ${baseTextClass} text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500`}
       >
         <span>{localeShortNames[locale]}</span>
         <svg
