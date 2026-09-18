@@ -54,12 +54,16 @@ const ALL_CATEGORY_FILTERS = [
   { key: 'bangles', category: 'bangle' }
 ] as const;
 
-// Category sub-filters shown when line === 'aotearoa'
+// Category sub-filters shown when line === 'aotearoa'. Bangle and chain
+// bracelet are two different Sanity category values (kept separate in
+// the schema/Studio and in the general "all lines" filter), but for this
+// line specifically they're merged into one visible filter -- picking it
+// shows both.
 const AOTEAROA_CATEGORY_FILTERS = [
-  { key: 'necklaces', category: 'necklace' },
-  { key: 'rings', category: 'ring' },
-  { key: 'bangles', category: 'bangle' },
-  { key: 'earrings', category: 'earring' }
+  { key: 'necklaces', categories: ['necklace'] },
+  { key: 'rings', categories: ['ring'] },
+  { key: 'braceletChain', categories: ['bangle', 'braceletChain'] },
+  { key: 'earrings', categories: ['earring'] }
 ] as const;
 
 // Fixed-label dropdown: the button always shows the same short word ("Line",
@@ -197,7 +201,7 @@ export default function ShopGrid({
     if (line === 'aotearoa') {
       return [
         { key: 'all', label: labels.lineFilters.all },
-        ...AOTEAROA_CATEGORY_FILTERS.map((f) => ({ key: f.category, label: labels.filters[f.key] }))
+        ...AOTEAROA_CATEGORY_FILTERS.map((f) => ({ key: f.key, label: labels.filters[f.key] }))
       ];
     }
     return [
@@ -228,6 +232,10 @@ export default function ShopGrid({
     if (line === 'beaded') {
       const target = subFilter.trim().toLowerCase();
       return (p.collectionTitle ?? '').trim().toLowerCase() === target;
+    }
+    if (line === 'aotearoa') {
+      const match = AOTEAROA_CATEGORY_FILTERS.find((f) => f.key === subFilter);
+      return match ? (match.categories as readonly string[]).includes(p.category ?? '') : false;
     }
     return p.category === subFilter;
   });
