@@ -21,12 +21,8 @@ export default function BagIcon({ light }: { light?: boolean }) {
       </svg>
       {count > 0 && (
         <span
-          className={`absolute -top-1.5 -right-1.5 min-w-[15px] h-[15px] rounded-full flex items-center justify-center text-[9px] font-light leading-none ${
-            light ? 'bg-ivory text-charcoal' : 'bg-charcoal text-ivory'
-          }`}
-        >
-          {count}
-        </span>
+          className={`absolute -top-0.5 -right-0.5 w-[6px] h-[6px] rounded-full ${light ? 'bg-ivory' : 'bg-charcoal'}`}
+        />
       )}
     </button>
   );

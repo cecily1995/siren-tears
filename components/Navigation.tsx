@@ -7,6 +7,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import BagIcon from './BagIcon';
 import WishlistIcon from './WishlistIcon';
+import MobileSearchPanel from './MobileSearchPanel';
 
 const COLLECTION_NAMES = ['Mosaic', 'Last Queen', 'Golden Age', "Siren's Chain", 'Violet Hour', 'One Hue'];
 
@@ -54,7 +55,7 @@ function NavDropdown({
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className={`bg-transparent border-none p-0 cursor-pointer text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+        className={`inline-flex items-center leading-none bg-transparent border-none p-0 cursor-pointer text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
           scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
         }`}
       >
@@ -87,6 +88,7 @@ export default function Navigation({
   // on transparent over a light page reads as "the header disappeared".
   const isHome = pathname === '/';
   const [scrolled, setScrolled] = useState(!isHome);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   useEffect(() => {
     if (!isHome) {
@@ -109,6 +111,7 @@ export default function Navigation({
   }
 
   return (
+    <>
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-editorial ${
         scrolled
@@ -194,7 +197,7 @@ export default function Navigation({
 
             <Link
               href="/bespoke"
-              className={`text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+              className={`inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
                 scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
               }`}
             >
@@ -220,6 +223,7 @@ export default function Navigation({
         <div className="flex items-center gap-3 md:gap-5">
           <button
             type="button"
+            onClick={() => setSearchOpen(true)}
             aria-label={t('search')}
             className={`hidden lg:inline-flex transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
@@ -232,7 +236,7 @@ export default function Navigation({
           </button>
           <Link
             href="/contact"
-            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+            className={`hidden md:inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
             }`}
           >
@@ -240,7 +244,7 @@ export default function Navigation({
           </Link>
           <Link
             href="/account"
-            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+            className={`hidden md:inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
             }`}
           >
@@ -248,7 +252,7 @@ export default function Navigation({
           </Link>
           <Link
             href="/account"
-            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+            className={`hidden md:inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
             }`}
           >
@@ -260,5 +264,7 @@ export default function Navigation({
         </div>
       </div>
     </header>
+      <MobileSearchPanel open={searchOpen} onClose={() => setSearchOpen(false)} tiles={searchPanelTiles} />
+    </>
   );
 }

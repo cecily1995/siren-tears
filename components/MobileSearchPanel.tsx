@@ -4,7 +4,19 @@ import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRouter, Link } from '@/i18n/routing';
 
-const SUGGESTED_TERMS = ['Crystal', 'Necklace', 'Ring', 'Bracelet', 'Aotearoa', 'Beaded'];
+// Each suggested term links straight to the correct, already-filtered
+// Shop view, rather than a generic free-text search -- a plain text
+// search on "Aotearoa" or "Beaded" doesn't reliably surface the right
+// results, since those are line/category identifiers, not words that
+// appear in product names or stone descriptions.
+const SUGGESTED_TERMS = [
+  { label: 'Crystal', href: '/shop?line=beaded&category=necklace' },
+  { label: 'Necklace', href: '/shop?category=necklace' },
+  { label: 'Ring', href: '/shop?category=ring' },
+  { label: 'Bracelet', href: '/shop?category=braceletChain' },
+  { label: 'Aotearoa', href: '/shop?line=aotearoa' },
+  { label: 'Beaded', href: '/shop?line=beaded' }
+];
 
 export default function MobileSearchPanel({
   open,
@@ -19,12 +31,17 @@ export default function MobileSearchPanel({
   const router = useRouter();
   const [query, setQuery] = useState('');
 
-  function submit(term?: string) {
-    const q = (term ?? query).trim();
+  function submit() {
+    const q = query.trim();
     if (!q) return;
     router.push(`/shop?q=${encodeURIComponent(q)}`);
     onClose();
     setQuery('');
+  }
+
+  function goTo(href: string) {
+    router.push(href);
+    onClose();
   }
 
   return (
@@ -71,12 +88,12 @@ export default function MobileSearchPanel({
         <div className="flex flex-wrap gap-x-4 gap-y-2 mb-8">
           {SUGGESTED_TERMS.map((term) => (
             <button
-              key={term}
+              key={term.label}
               type="button"
-              onClick={() => submit(term)}
+              onClick={() => goTo(term.href)}
               className="text-[0.85rem] text-charcoal/75 hover:text-charcoal font-light"
             >
-              {term}
+              {term.label}
             </button>
           ))}
         </div>
