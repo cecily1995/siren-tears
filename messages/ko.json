@@ -3,7 +3,7 @@
     "collections": "컬렉션",
     "featured": "스토리",
     "journal": "저널",
-    "about": "브랜드",
+    "about": "브랜드 스토리",
     "contact": "문의",
     "enquire": "문의하기",
     "language": "언어",
@@ -101,7 +101,7 @@
     "privacy": "개인정보처리방침",
     "terms": "이용약관",
     "shopHeader": "쇼핑",
-    "support": "고객 지원",
+    "support": "About Siren Tears",
     "brandStoryLabel": "브랜드 스토리",
     "sizeGuide": "사이즈 가이드",
     "shipping": "배송 안내",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "신상품, 특별 이벤트, 매장 오픈 소식 등 다양한 소식을 받아보세요.",
     "joinListPlaceholder": "이메일 주소",
-    "joinListSuccess": "구독이 완료되었습니다."
+    "joinListSuccess": "구독이 완료되었습니다.",
+    "assistance": "Assistance",
+    "returnsRepairs": "Returns & Repairs"
   },
   "languageSwitcher": {
     "label": "언어",

@@ -3,7 +3,7 @@
     "collections": "Collezioni",
     "featured": "In primo piano",
     "journal": "Diario",
-    "about": "Chi siamo",
+    "about": "La nostra storia",
     "contact": "Contatti",
     "enquire": "Scrivici",
     "language": "Lingua",
@@ -101,7 +101,7 @@
     "privacy": "Privacy",
     "terms": "Termini",
     "shopHeader": "Shop",
-    "support": "Assistenza",
+    "support": "Chi È Siren Tears",
     "brandStoryLabel": "La nostra storia",
     "sizeGuide": "Guida alle taglie",
     "shipping": "Spedizione e consegna",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "Ricevi aggiornamenti su novità, eventi esclusivi, aperture di negozi e altro ancora.",
     "joinListPlaceholder": "Indirizzo email",
-    "joinListSuccess": "Sei iscritto/a."
+    "joinListSuccess": "Sei iscritto/a.",
+    "assistance": "Assistenza",
+    "returnsRepairs": "Resi e Riparazioni"
   },
   "languageSwitcher": {
     "label": "Lingua",

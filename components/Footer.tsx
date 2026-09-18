@@ -12,6 +12,7 @@ type FooterData = {
 
 type Labels = {
   contact: string;
+  enquire: string;
   studio: string;
   elsewhere: string;
   byAppointment: string;
@@ -22,6 +23,8 @@ type Labels = {
   crafted: string;
   explore: string;
   shopHeader: string;
+  assistance: string;
+  returnsRepairs: string;
   support: string;
   shipping: string;
   bespoke: string;
@@ -97,25 +100,9 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                   {labels.collections}
                 </Link>
               </li>
-            </ul>
-          </div>
-
-          <div className="reveal" style={{ transitionDelay: '110ms' }}>
-            <p className="eyebrow text-charcoal/50 mb-6">{labels.explore}</p>
-            <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/journal" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.journal}
-                </Link>
-              </li>
-              <li>
-                <Link href="/worn-by-you" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.gallery}
-                </Link>
-              </li>
-              <li>
-                <Link href="/account" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.account}
+                <Link href="/membership" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.membership}
                 </Link>
               </li>
               <li>
@@ -123,9 +110,35 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                   {labels.bespoke}
                 </Link>
               </li>
+            </ul>
+          </div>
+
+          <div className="reveal" style={{ transitionDelay: '110ms' }}>
+            <p className="eyebrow text-charcoal/50 mb-6">{labels.assistance}</p>
+            <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/membership" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.membership}
+                <Link href="/shipping" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.shipping}
+                </Link>
+              </li>
+              <li>
+                <Link href="/care" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.care}
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.faq}
+                </Link>
+              </li>
+              <li>
+                <Link href="/size-guide" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.sizeGuide}
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns-repairs" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.returnsRepairs}
                 </Link>
               </li>
             </ul>
@@ -150,23 +163,8 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                 </Link>
               </li>
               <li>
-                <Link href="/shipping" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.shipping}
-                </Link>
-              </li>
-              <li>
-                <Link href="/care" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.care}
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.faq}
-                </Link>
-              </li>
-              <li>
-                <Link href="/size-guide" className="link-underline text-charcoal/85 hover:text-charcoal">
-                  {labels.sizeGuide}
+                <Link href="/contact" className="link-underline text-charcoal/85 hover:text-charcoal">
+                  {labels.enquire}
                 </Link>
               </li>
             </ul>
@@ -272,24 +270,9 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                   {labels.collections}
                 </Link>
               </li>
-            </ul>
-          </FooterAccordionSection>
-
-          <FooterAccordionSection title={labels.explore}>
-            <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/journal" className="link-underline text-charcoal/85">
-                  {labels.journal}
-                </Link>
-              </li>
-              <li>
-                <Link href="/worn-by-you" className="link-underline text-charcoal/85">
-                  {labels.gallery}
-                </Link>
-              </li>
-              <li>
-                <Link href="/account" className="link-underline text-charcoal/85">
-                  {labels.account}
+                <Link href="/membership" className="link-underline text-charcoal/85">
+                  {labels.membership}
                 </Link>
               </li>
               <li>
@@ -297,9 +280,34 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                   {labels.bespoke}
                 </Link>
               </li>
+            </ul>
+          </FooterAccordionSection>
+
+          <FooterAccordionSection title={labels.assistance}>
+            <ul className="space-y-3 text-[0.95rem] font-light">
               <li>
-                <Link href="/membership" className="link-underline text-charcoal/85">
-                  {labels.membership}
+                <Link href="/shipping" className="link-underline text-charcoal/85">
+                  {labels.shipping}
+                </Link>
+              </li>
+              <li>
+                <Link href="/care" className="link-underline text-charcoal/85">
+                  {labels.care}
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="link-underline text-charcoal/85">
+                  {labels.faq}
+                </Link>
+              </li>
+              <li>
+                <Link href="/size-guide" className="link-underline text-charcoal/85">
+                  {labels.sizeGuide}
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns-repairs" className="link-underline text-charcoal/85">
+                  {labels.returnsRepairs}
                 </Link>
               </li>
             </ul>
@@ -323,23 +331,8 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
                 </Link>
               </li>
               <li>
-                <Link href="/shipping" className="link-underline text-charcoal/85">
-                  {labels.shipping}
-                </Link>
-              </li>
-              <li>
-                <Link href="/care" className="link-underline text-charcoal/85">
-                  {labels.care}
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="link-underline text-charcoal/85">
-                  {labels.faq}
-                </Link>
-              </li>
-              <li>
-                <Link href="/size-guide" className="link-underline text-charcoal/85">
-                  {labels.sizeGuide}
+                <Link href="/contact" className="link-underline text-charcoal/85">
+                  {labels.enquire}
                 </Link>
               </li>
             </ul>

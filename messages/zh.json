@@ -3,7 +3,7 @@
     "collections": "系列",
     "featured": "精选",
     "journal": "石之手记",
-    "about": "关于",
+    "about": "品牌故事",
     "contact": "联系",
     "enquire": "咨询",
     "language": "语言",
@@ -101,7 +101,7 @@
     "privacy": "隐私政策",
     "terms": "条款",
     "shopHeader": "购买",
-    "support": "支持",
+    "support": "About Siren Tears",
     "brandStoryLabel": "品牌故事",
     "sizeGuide": "尺寸指南",
     "shipping": "配送与运输",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "订阅获取新品上架、专属活动、门店开业与更多资讯的最新消息。",
     "joinListPlaceholder": "电子邮箱",
-    "joinListSuccess": "订阅成功。"
+    "joinListSuccess": "订阅成功。",
+    "assistance": "Assistance",
+    "returnsRepairs": "Returns & Repairs"
   },
   "languageSwitcher": {
     "label": "语言",

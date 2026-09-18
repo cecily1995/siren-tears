@@ -3,7 +3,7 @@
     "collections": "コレクション",
     "featured": "特集",
     "journal": "ジャーナル",
-    "about": "ブランド",
+    "about": "ブランドストーリー",
     "contact": "お問い合わせ",
     "enquire": "ご相談",
     "language": "言語",
@@ -101,7 +101,7 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "shopHeader": "ショップ",
-    "support": "サポート",
+    "support": "About Siren Tears",
     "brandStoryLabel": "ブランドストーリー",
     "sizeGuide": "サイズガイド",
     "shipping": "配送について",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "新作情報、限定イベント、店舗オープン情報などをお届けします。",
     "joinListPlaceholder": "メールアドレス",
-    "joinListSuccess": "登録が完了しました。"
+    "joinListSuccess": "登録が完了しました。",
+    "assistance": "Assistance",
+    "returnsRepairs": "Returns & Repairs"
   },
   "languageSwitcher": {
     "label": "言語",

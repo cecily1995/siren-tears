@@ -65,6 +65,7 @@ export default async function LocaleLayout({
   const localizedFooterSettings = { ...footerSettings, tagline: translatedTagline || footerSettings.tagline };
   const footerLabels = {
     contact: t('footer.contact'),
+    enquire: t('nav.enquire'),
     studio: t('footer.studio'),
     elsewhere: t('footer.elsewhere'),
     byAppointment: t('footer.byAppointment'),
@@ -75,6 +76,8 @@ export default async function LocaleLayout({
     crafted: t('footer.crafted'),
     explore: t('footer.explore'),
     shopHeader: t('footer.shopHeader'),
+    assistance: t('footer.assistance'),
+    returnsRepairs: t('footer.returnsRepairs'),
     support: t('footer.support'),
     shipping: t('nav.shipping'),
     bespoke: t('nav.bespoke'),

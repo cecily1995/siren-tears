@@ -3,7 +3,7 @@
     "collections": "Collections",
     "featured": "Featured",
     "journal": "Journal",
-    "about": "About",
+    "about": "Brand Story",
     "contact": "Contact",
     "enquire": "Enquire",
     "language": "Language",
@@ -101,7 +101,7 @@
     "privacy": "Privacy",
     "terms": "Terms",
     "shopHeader": "Shop",
-    "support": "Support",
+    "support": "About Siren Tears",
     "brandStoryLabel": "Brand Story",
     "sizeGuide": "Size Guide",
     "shipping": "Shipping & Delivery",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "Receive updates on new arrivals, exclusive events, store openings, news and more.",
     "joinListPlaceholder": "Email address",
-    "joinListSuccess": "You're on the list."
+    "joinListSuccess": "You're on the list.",
+    "assistance": "Assistance",
+    "returnsRepairs": "Returns & Repairs"
   },
   "languageSwitcher": {
     "label": "Language",

@@ -3,7 +3,7 @@
     "collections": "Коллекции",
     "featured": "Избранное",
     "journal": "Журнал",
-    "about": "О бренде",
+    "about": "История бренда",
     "contact": "Контакты",
     "enquire": "Связаться",
     "language": "Язык",
@@ -101,7 +101,7 @@
     "privacy": "Конфиденциальность",
     "terms": "Условия",
     "shopHeader": "Магазин",
-    "support": "Поддержка",
+    "support": "О Siren Tears",
     "brandStoryLabel": "История бренда",
     "sizeGuide": "Таблица размеров",
     "shipping": "Доставка",
@@ -110,7 +110,9 @@
     "joinListHeading": "Join The List",
     "joinListBody": "Получайте новости о новинках, эксклюзивных мероприятиях, открытии магазинов и многом другом.",
     "joinListPlaceholder": "Адрес электронной почты",
-    "joinListSuccess": "Вы подписаны."
+    "joinListSuccess": "Вы подписаны.",
+    "assistance": "Помощь",
+    "returnsRepairs": "Возврат и Ремонт"
   },
   "languageSwitcher": {
     "label": "Язык",
