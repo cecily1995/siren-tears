@@ -102,7 +102,11 @@
     "sizeGuide": "Size Guide",
     "shipping": "Shipping & Delivery",
     "foundersLabel": "The People Behind Siren Tears",
-    "ourCommitmentLabel": "Our Commitment"
+    "ourCommitmentLabel": "Our Commitment",
+    "joinListHeading": "Join The List",
+    "joinListBody": "Receive updates on new arrivals, exclusive events, store openings, news and more.",
+    "joinListPlaceholder": "Email address",
+    "joinListSuccess": "You're on the list."
   },
   "languageSwitcher": {
     "label": "Language",

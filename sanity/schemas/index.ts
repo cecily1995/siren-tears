@@ -3,6 +3,7 @@ import homepage from './homepage';
 import collectionsPage from './collectionsPage';
 import foundersPageSettings from './foundersPageSettings';
 import responsibleCraftsmanshipSettings from './responsibleCraftsmanshipSettings';
+import newsletterSubscriber from './newsletterSubscriber';
 import collection from './collection';
 import product from './product';
 import journalArticle from './journalArticle';
@@ -21,6 +22,7 @@ export const schemaTypes = [
   collectionsPage,
   foundersPageSettings,
   responsibleCraftsmanshipSettings,
+  newsletterSubscriber,
   brandStory,
   collection,
   product,

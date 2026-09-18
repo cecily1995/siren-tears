@@ -4,12 +4,33 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import PageHeader from '@/components/PageHeader';
+import InlineLoginForm from '@/components/InlineLoginForm';
 import { useWishlist } from '@/lib/wishlist-context';
 
 export default function WishlistPage() {
   const t = useTranslations('wishlist');
   const { items, remove } = useWishlist();
   const [statusBySlug, setStatusBySlug] = useState<Record<string, string>>({});
+  const [authChecked, setAuthChecked] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch('/api/auth/me')
+      .then((res) => res.json())
+      .then((data) => {
+        if (!cancelled) setLoggedIn(Boolean(data.member));
+      })
+      .catch(() => {
+        /* treat a failed check as logged out */
+      })
+      .finally(() => {
+        if (!cancelled) setAuthChecked(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   useEffect(() => {
     if (!items.length) return;
@@ -27,6 +48,21 @@ export default function WishlistPage() {
         /* fine -- just won't show live sold status */
       });
   }, [items]);
+
+  if (!authChecked) {
+    return <div className="min-h-[60vh]" />;
+  }
+
+  if (!loggedIn) {
+    return (
+      <>
+        <PageHeader eyebrow={t('eyebrow')} title={t('title')} />
+        <section className="bg-ivory px-6 md:px-12">
+          <InlineLoginForm onSuccess={() => setLoggedIn(true)} />
+        </section>
+      </>
+    );
+  }
 
   return (
     <>

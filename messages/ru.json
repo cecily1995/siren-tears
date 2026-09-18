@@ -102,7 +102,11 @@
     "sizeGuide": "Таблица размеров",
     "shipping": "Доставка",
     "foundersLabel": "Люди за Siren Tears",
-    "ourCommitmentLabel": "Наши Принципы"
+    "ourCommitmentLabel": "Наши Принципы",
+    "joinListHeading": "Join The List",
+    "joinListBody": "Получайте новости о новинках, эксклюзивных мероприятиях, открытии магазинов и многом другом.",
+    "joinListPlaceholder": "Адрес электронной почты",
+    "joinListSuccess": "Вы подписаны."
   },
   "languageSwitcher": {
     "label": "Язык",

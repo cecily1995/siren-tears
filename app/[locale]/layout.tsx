@@ -91,6 +91,10 @@ export default async function LocaleLayout({
     aboutLabel: t('footer.brandStoryLabel'),
     foundersLabel: t('footer.foundersLabel'),
     ourCommitmentLabel: t('footer.ourCommitmentLabel'),
+    joinListHeading: t('footer.joinListHeading'),
+    joinListBody: t('footer.joinListBody'),
+    joinListPlaceholder: t('footer.joinListPlaceholder'),
+    joinListSuccess: t('footer.joinListSuccess'),
     account: t('nav.account')
   };
 

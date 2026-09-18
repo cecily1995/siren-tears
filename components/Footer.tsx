@@ -39,11 +39,16 @@ type Labels = {
   foundersLabel: string;
   ourCommitmentLabel: string;
   account: string;
+  joinListHeading: string;
+  joinListBody: string;
+  joinListPlaceholder: string;
+  joinListSuccess: string;
 };
 
 import { Link } from '@/i18n/routing';
 import FooterAccordionSection from './FooterAccordionSection';
 import CurrencySelector from './CurrencySelector';
+import NewsletterSignup from './NewsletterSignup';
 
 export default function Footer({ data, labels }: { data: FooterData; labels: Labels }) {
   return (
@@ -59,14 +64,22 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
         }}
       />
       <div className="relative mx-auto max-w-[1480px]">
-        <div className="reveal mb-10 md:mb-0">
-          <p className="eyebrow text-gold/80 mb-6">{labels.contact}</p>
-          <h2 className="serif-display text-[clamp(2.2rem,4.4vw,3.6rem)] font-light leading-[1.05] tracking-wide">
+        <div className="reveal mb-8 md:mb-0">
+          <p className="eyebrow text-gold/80 mb-4">{labels.contact}</p>
+          <h2 className="serif-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-light leading-[1.1] tracking-wide">
             {data.brandName ?? 'SIREN TEARS'}
           </h2>
-          <p className="mt-7 max-w-md text-[0.95rem] leading-[1.95] text-charcoal/70 font-light">
+          <p className="mt-4 max-w-md text-[0.95rem] leading-[1.95] text-charcoal/70 font-light">
             {data.tagline || labels.tagline}
           </p>
+          <div className="mt-6">
+            <NewsletterSignup
+              heading={labels.joinListHeading}
+              body={labels.joinListBody}
+              placeholder={labels.joinListPlaceholder}
+              successMessage={labels.joinListSuccess}
+            />
+          </div>
         </div>
 
         {/* Desktop: full column grid, unchanged */}

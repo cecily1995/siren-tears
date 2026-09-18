@@ -102,7 +102,11 @@
     "sizeGuide": "尺寸指南",
     "shipping": "配送与运输",
     "foundersLabel": "幕后的人",
-    "ourCommitmentLabel": "OUR COMMITMENT"
+    "ourCommitmentLabel": "OUR COMMITMENT",
+    "joinListHeading": "Join The List",
+    "joinListBody": "订阅获取新品上架、专属活动、门店开业与更多资讯的最新消息。",
+    "joinListPlaceholder": "电子邮箱",
+    "joinListSuccess": "订阅成功。"
   },
   "languageSwitcher": {
     "label": "语言",
