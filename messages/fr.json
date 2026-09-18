@@ -702,7 +702,12 @@
     "instagram": "Instagram",
     "tiktok": "TikTok",
     "xiaohongshu": "Xiaohongshu",
-    "douyin": "Douyin"
+    "douyin": "Douyin",
+    "shippingLabel": "Livraison",
+    "careLabel": "Entretien",
+    "faqLabel": "FAQ",
+    "sizeGuideLabel": "Guide des Tailles",
+    "returnsLabel": "Retours, Réparations & Recyclage"
   },
   "foundersPage": {
     "pageTitle": "Les personnes derrière Siren Tears",

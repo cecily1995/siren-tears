@@ -110,6 +110,14 @@ export const responsibleCraftsmanshipSettingsQuery = groq`*[_type == "responsibl
   "responsibleByDesignImageUrl": responsibleByDesignImage.asset->url
 }`;
 export const getResponsibleCraftsmanshipSettings = () => safeFetch<any>(responsibleCraftsmanshipSettingsQuery);
+export const contactPageSettingsQuery = groq`*[_type == "contactPageSettings"][0]{
+  "shippingImageUrl": shippingImage.asset->url,
+  "careImageUrl": careImage.asset->url,
+  "faqImageUrl": faqImage.asset->url,
+  "sizeGuideImageUrl": sizeGuideImage.asset->url,
+  "returnsImageUrl": returnsImage.asset->url
+}`;
+export const getContactPageSettings = () => safeFetch<any>(contactPageSettingsQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);

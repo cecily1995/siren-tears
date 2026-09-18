@@ -702,7 +702,12 @@
     "instagram": "Instagram",
     "tiktok": "TikTok",
     "xiaohongshu": "Xiaohongshu",
-    "douyin": "Douyin"
+    "douyin": "Douyin",
+    "shippingLabel": "Доставка",
+    "careLabel": "Уход",
+    "faqLabel": "FAQ",
+    "sizeGuideLabel": "Таблица размеров",
+    "returnsLabel": "Возврат, ремонт и переработка"
   },
   "foundersPage": {
     "pageTitle": "Люди за Siren Tears",

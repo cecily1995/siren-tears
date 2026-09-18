@@ -702,7 +702,12 @@
     "instagram": "Instagram",
     "tiktok": "TikTok",
     "xiaohongshu": "小红书",
-    "douyin": "抖音"
+    "douyin": "抖音",
+    "shippingLabel": "Shipping & Delivery",
+    "careLabel": "Care",
+    "faqLabel": "FAQ",
+    "sizeGuideLabel": "Size Guide",
+    "returnsLabel": "Returns, Repairs & Recycling"
   },
   "foundersPage": {
     "pageTitle": "幕后的人",

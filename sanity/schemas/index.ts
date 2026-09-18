@@ -4,6 +4,7 @@ import collectionsPage from './collectionsPage';
 import foundersPageSettings from './foundersPageSettings';
 import responsibleCraftsmanshipSettings from './responsibleCraftsmanshipSettings';
 import newsletterSubscriber from './newsletterSubscriber';
+import contactPageSettings from './contactPageSettings';
 import collection from './collection';
 import product from './product';
 import journalArticle from './journalArticle';
@@ -23,6 +24,7 @@ export const schemaTypes = [
   foundersPageSettings,
   responsibleCraftsmanshipSettings,
   newsletterSubscriber,
+  contactPageSettings,
   brandStory,
   collection,
   product,

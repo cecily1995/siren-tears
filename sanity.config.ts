@@ -45,6 +45,9 @@ export default defineConfig({
                   .documentId('responsibleCraftsmanshipSettings')
               ),
             S.listItem()
+              .title('Contact / Enquire Page — Media')
+              .child(S.document().schemaType('contactPageSettings').documentId('contactPageSettings')),
+            S.listItem()
               .title('Brand Story')
               .child(S.document().schemaType('brandStory').documentId('brandStory')),
             S.divider(),

@@ -702,7 +702,12 @@
     "instagram": "Instagram",
     "tiktok": "TikTok",
     "xiaohongshu": "샤오홍슈",
-    "douyin": "Douyin"
+    "douyin": "Douyin",
+    "shippingLabel": "Shipping & Delivery",
+    "careLabel": "Care",
+    "faqLabel": "FAQ",
+    "sizeGuideLabel": "Size Guide",
+    "returnsLabel": "Returns, Repairs & Recycling"
   },
   "foundersPage": {
     "pageTitle": "Siren Tears를 만든 사람들",
