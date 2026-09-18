@@ -19,11 +19,13 @@ const SHOP_CATEGORIES = [
   { key: 'bangles', category: 'bangle' }
 ] as const;
 
-const simpleLinks = [
+const ourWorldLinks = [
   { href: '/journal', key: 'journal' },
+  { href: '/membership', key: 'membership' },
   { href: '/worn-by-you', key: 'gallery' },
-  { href: '/bespoke', key: 'bespoke' },
-  { href: '/membership', key: 'membership' }
+  { href: '/brand-story', key: 'about' },
+  { href: '/founders', key: 'founders' },
+  { href: '/responsible-craftsmanship', key: 'ourCommitment' }
 ] as const;
 
 function NavDropdown({
@@ -111,88 +113,103 @@ export default function Navigation() {
       }`}
     >
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
-        <div className="flex items-center gap-4 shrink-0">
+        <div className="flex items-center gap-8">
           <MobileMenu dark={scrolled} />
-          <Link
-            href="/#top"
-            className={`font-serif text-[1.05rem] md:text-[1.15rem] tracking-[0.42em] uppercase shrink-0 ${
-              scrolled ? 'text-charcoal' : 'text-ivory'
-            } transition-colors duration-700`}
-          >
-            Siren&nbsp;Tears
-          </Link>
-        </div>
 
-        <nav className="hidden lg:flex items-center gap-8">
-          <NavDropdown label={t('collections')} scrolled={scrolled}>
-            <div className="space-y-2.5">
-              {COLLECTION_NAMES.map((name) => (
+          <nav className="hidden lg:flex items-center gap-8">
+            <NavDropdown label={t('collections')} scrolled={scrolled}>
+              <div className="space-y-2.5">
+                {COLLECTION_NAMES.map((name) => (
+                  <Link
+                    key={name}
+                    href={`/shop?line=beaded&collection=${encodeURIComponent(name)}`}
+                    className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+                  >
+                    {name}
+                  </Link>
+                ))}
                 <Link
-                  key={name}
-                  href={`/shop?line=beaded&collection=${encodeURIComponent(name)}`}
+                  href="/shop?line=aotearoa"
                   className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
                 >
-                  {name}
+                  {tShop('lineFilters.aotearoa')}
                 </Link>
-              ))}
-              <Link
-                href="/shop?line=aotearoa"
-                className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
-              >
-                {tShop('lineFilters.aotearoa')}
-              </Link>
-              <Link
-                href="/collections"
-                className="block mt-3 pt-3 border-t border-charcoal/10 text-[10px] tracking-[0.2em] uppercase text-charcoal font-light link-underline"
-              >
-                {t('collections')} →
-              </Link>
-            </div>
-          </NavDropdown>
-
-          <NavDropdown label={t('shop')} scrolled={scrolled}>
-            <div className="space-y-2.5">
-              <Link href="/shop" className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap">
-                {tShop('filters.all')}
-              </Link>
-              <Link
-                href="/new-arrivals"
-                className="block text-[0.85rem] text-gold hover:text-charcoal font-light whitespace-nowrap"
-              >
-                {t('newArrivals')}
-              </Link>
-              {SHOP_CATEGORIES.map((c) => (
                 <Link
-                  key={c.key}
-                  href={`/shop?category=${c.category}`}
+                  href="/collections"
+                  className="block mt-3 pt-3 border-t border-charcoal/10 text-[10px] tracking-[0.2em] uppercase text-charcoal font-light link-underline"
+                >
+                  {t('collections')} →
+                </Link>
+              </div>
+            </NavDropdown>
+
+            <NavDropdown label={t('shop')} scrolled={scrolled}>
+              <div className="space-y-2.5">
+                <Link href="/shop" className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap">
+                  {tShop('filters.all')}
+                </Link>
+                <Link
+                  href="/new-arrivals"
+                  className="block text-[0.85rem] text-gold hover:text-charcoal font-light whitespace-nowrap"
+                >
+                  {t('newArrivals')}
+                </Link>
+                {SHOP_CATEGORIES.map((c) => (
+                  <Link
+                    key={c.key}
+                    href={`/shop?category=${c.category}`}
+                    className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+                  >
+                    {tShop(`filters.${c.key}`)}
+                  </Link>
+                ))}
+                <Link
+                  href="/shop?category=archive"
                   className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
                 >
-                  {tShop(`filters.${c.key}`)}
+                  {tShop('filters.archive')}
                 </Link>
-              ))}
-              <Link
-                href="/shop?category=archive"
-                className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
-              >
-                {tShop('filters.archive')}
-              </Link>
-            </div>
-          </NavDropdown>
+              </div>
+            </NavDropdown>
 
-          {simpleLinks.map((l) => (
             <Link
-              key={l.key}
-              href={l.href}
+              href="/bespoke"
               className={`text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
                 scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
               }`}
             >
-              {t(l.key)}
+              {t('bespoke')}
             </Link>
-          ))}
-        </nav>
+
+            <NavDropdown label={t('ourWorld')} scrolled={scrolled}>
+              <div className="space-y-2.5">
+                {ourWorldLinks.map((l) => (
+                  <Link
+                    key={l.key}
+                    href={l.href}
+                    className="block text-[0.85rem] text-charcoal/80 hover:text-charcoal font-light whitespace-nowrap"
+                  >
+                    {t(l.key)}
+                  </Link>
+                ))}
+              </div>
+            </NavDropdown>
+          </nav>
+        </div>
 
         <div className="flex items-center gap-3 md:gap-5">
+          <button
+            type="button"
+            aria-label={t('search')}
+            className={`transition-colors duration-500 ${
+              scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
+            }`}
+          >
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.3" />
+              <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+            </svg>
+          </button>
           <Link
             href="/account"
             className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
@@ -200,14 +217,6 @@ export default function Navigation() {
             }`}
           >
             {t('account')}
-          </Link>
-          <Link
-            href="/contact"
-            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
-              scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
-            }`}
-          >
-            {t('enquire')}
           </Link>
           <LanguageSwitcher light={light} />
           <WishlistIcon light={light} />
