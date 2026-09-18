@@ -44,13 +44,13 @@ export default async function ShippingPage({
         imageAlt="Soft coastal light, New Zealand shoreline"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
         <div className="mx-auto max-w-[980px]">
-          <p className="text-center text-[0.85rem] text-ash/70 font-light mb-16 reveal">
+          <p className="text-center text-[0.85rem] text-ash/70 font-light mb-8 reveal">
             {t('carrierNote')}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
             {sections.map((s, i) => (
               <article key={i} className="reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="text-[11px] tracking-[0.4em] uppercase text-gold mb-5 font-light">
@@ -64,7 +64,7 @@ export default async function ShippingPage({
             ))}
           </div>
 
-          <div className="mt-20 pt-12 border-t border-charcoal/10 text-center reveal">
+          <div className="mt-10 pt-6 border-t border-charcoal/10 text-center reveal">
             <p className="eyebrow mb-4">{t('checkTitle')}</p>
             <p className="text-[0.95rem] text-ash font-light mb-6 max-w-md mx-auto">
               {t('checkBody')}
@@ -79,7 +79,7 @@ export default async function ShippingPage({
             </a>
           </div>
 
-          <div className="mt-20 pt-12 border-t border-charcoal/10 reveal">
+          <div className="mt-10 pt-6 border-t border-charcoal/10 reveal">
             <p className="eyebrow mb-2">{t('contactPrompt')}</p>
             <p className="text-[0.85rem] text-ash/70 font-light mb-6">{t('contactSubtext')}</p>
             <OrderEnquiryForm />

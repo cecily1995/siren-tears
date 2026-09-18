@@ -40,9 +40,9 @@ export default async function CarePage({
         imageAlt="Natural stone, soft light"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
         <div className="mx-auto max-w-[980px]">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-14 gap-y-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
             {sections.map((s, i) => (
               <article key={i} className="reveal" style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="text-[11px] tracking-[0.4em] uppercase text-gold mb-5 font-light">
@@ -56,7 +56,7 @@ export default async function CarePage({
             ))}
           </div>
 
-          <div className="mt-24 pt-12 border-t border-charcoal/10 text-center reveal">
+          <div className="mt-12 pt-6 border-t border-charcoal/10 text-center reveal">
             <p className="text-[0.9rem] text-ash/80 font-light max-w-xl mx-auto leading-relaxed">
               {t('note')}
             </p>

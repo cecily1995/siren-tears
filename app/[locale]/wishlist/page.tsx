@@ -2,10 +2,39 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
-import { Link } from '@/i18n/routing';
-import PageHeader from '@/components/PageHeader';
+import { Link, useRouter } from '@/i18n/routing';
 import InlineLoginForm from '@/components/InlineLoginForm';
 import { useWishlist } from '@/lib/wishlist-context';
+
+function CloseButton() {
+  const router = useRouter();
+  return (
+    <button
+      type="button"
+      onClick={() => {
+        if (window.history.length > 1) router.back();
+        else router.push('/');
+      }}
+      aria-label="Close"
+      className="absolute top-6 right-6 md:top-8 md:right-10 z-10 w-8 h-8 flex items-center justify-center text-charcoal"
+    >
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+        <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+      </svg>
+    </button>
+  );
+}
+
+function CompactHeader({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
+  return (
+    <div className="relative px-6 md:px-12 pt-24 md:pt-28 pb-6 md:pb-8 max-w-[820px] mx-auto text-left">
+      <CloseButton />
+      <p className="eyebrow mb-3">{eyebrow}</p>
+      <h1 className="serif-display text-[1.6rem] md:text-[2rem] font-light text-charcoal">{title}</h1>
+      {intro && <p className="mt-3 text-[0.9rem] leading-[1.8] text-ash font-light max-w-lg">{intro}</p>}
+    </div>
+  );
+}
 
 export default function WishlistPage() {
   const t = useTranslations('wishlist');
@@ -56,7 +85,7 @@ export default function WishlistPage() {
   if (!loggedIn) {
     return (
       <>
-        <PageHeader eyebrow={t('eyebrow')} title={t('title')} />
+        <CompactHeader eyebrow={t('eyebrow')} title={t('title')} />
         <section className="bg-ivory px-6 md:px-12">
           <InlineLoginForm onSuccess={() => setLoggedIn(true)} />
         </section>
@@ -66,8 +95,8 @@ export default function WishlistPage() {
 
   return (
     <>
-      <PageHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
-      <section className="bg-ivory px-6 md:px-12 py-16 md:py-24">
+      <CompactHeader eyebrow={t('eyebrow')} title={t('title')} intro={t('intro')} />
+      <section className="bg-ivory px-6 md:px-12 py-10 md:py-14">
         <div className="mx-auto max-w-[1200px]">
           {items.length === 0 ? (
             <div className="text-center py-16">
