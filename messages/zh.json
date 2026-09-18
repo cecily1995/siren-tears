@@ -855,5 +855,11 @@
     "pieceBody": "为你这件独立订单提供的实拍照片与视频。",
     "closingBody": "确认作品后,我们会为你悉心准备发货。",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "SIREN TEARS 鳄鱼纹压花首饰收纳包",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "你已经是会员——每笔订单都会附赠这个收纳包。"
   }
 }

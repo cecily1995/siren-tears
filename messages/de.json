@@ -855,5 +855,11 @@
     "pieceBody": "Die genauen Fotos und das Video, die für Ihre individuelle Bestellung bereitgestellt wurden.",
     "closingBody": "Sobald Sie das Stück bestätigt haben, bereiten wir es sorgfältig für den Versand vor.",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "SIREN TEARS Schmucktasche mit Kroko-Prägung",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "Sie sind bereits Mitglied — dieses Etui erhalten Sie bei jeder Bestellung."
   }
 }

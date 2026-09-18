@@ -855,5 +855,11 @@
     "pieceBody": "Le fotografie e il video esatti forniti per il tuo ordine individuale.",
     "closingBody": "Una volta confermato il pezzo, lo prepareremo con cura per la spedizione.",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "Pochette porta gioielli SIREN TEARS goffrata effetto coccodrillo",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "Sei già membro — questa pochette è inclusa in ogni tuo ordine."
   }
 }

@@ -855,5 +855,11 @@
     "pieceBody": "Les photographies et la vidéo exactes fournies pour votre commande individuelle.",
     "closingBody": "Une fois la pièce confirmée, nous la préparerons soigneusement pour l'expédition.",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "Pochette à bijoux SIREN TEARS gaufrée façon croco",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "Vous êtes membre — cette pochette vous est déjà offerte avec chaque commande."
   }
 }

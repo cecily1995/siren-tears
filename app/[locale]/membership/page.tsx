@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import PageHeader from '@/components/PageHeader';
 import MembershipJoinForm from '@/components/MembershipJoinForm';
+import MemberGiftTeaser from '@/components/MemberGiftTeaser';
 
 export const revalidate = 60;
 
@@ -52,6 +53,9 @@ export default async function MembershipPage({
                   </li>
                 ))}
               </ul>
+              <div className="mt-8">
+                <MemberGiftTeaser />
+              </div>
             </article>
 
             <div className="mt-10 reveal">

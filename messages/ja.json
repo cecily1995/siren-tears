@@ -855,5 +855,11 @@
     "pieceBody": "ご注文の作品としてお送りする実際の写真と動画。",
     "closingBody": "ご確認をいただいた後、丁寧に梱包し発送いたします。",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "SIREN TEARS クロコ型押しジュエリーポーチ",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "あなたはすでに会員です——このポーチはすべてのご注文に付いてきます。"
   }
 }

@@ -855,5 +855,11 @@
     "pieceBody": "The exact photographs and video provided for your individual order.",
     "closingBody": "Once you have confirmed the piece, we will carefully prepare it for dispatch.",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "SIREN TEARS Croc-embossed jewellery pouch",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "You're a member — this pouch is already yours with every order."
   }
 }

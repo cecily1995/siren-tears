@@ -855,5 +855,11 @@
     "pieceBody": "Точные фотографии и видео, предоставленные для вашего индивидуального заказа.",
     "closingBody": "После подтверждения изделия мы бережно подготовим его к отправке.",
     "closingLine": "One stone. One piece. Yours."
+  },
+  "memberGift": {
+    "title": "Member Gift",
+    "body": "Футляр для украшений SIREN TEARS с тиснением под крокодила",
+    "exclusive": "Member Exclusive",
+    "alreadyMember": "Вы уже участник — этот футляр включён в каждый ваш заказ."
   }
 }

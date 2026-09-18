@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import InlineLoginForm from './InlineLoginForm';
+import MemberGiftTeaser from './MemberGiftTeaser';
 
 const DISMISS_KEY = 'sirentears_auth_gate_dismissed';
 
@@ -77,6 +78,9 @@ export default function AuthGateModal() {
                 </li>
               ))}
             </ul>
+            <div className="mb-7">
+              <MemberGiftTeaser size="sm" />
+            </div>
             <a
               href="/membership"
               className="block w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"

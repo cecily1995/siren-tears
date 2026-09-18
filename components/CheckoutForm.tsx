@@ -10,6 +10,7 @@ import CheckoutHeader from './CheckoutHeader';
 import PhoneInput from './PhoneInput';
 import RecommendedProducts from './RecommendedProducts';
 import ShippingNote from './ShippingNote';
+import MemberGiftTeaser from './MemberGiftTeaser';
 import StripePaymentSection from './StripePaymentSection';
 
 const BRACELET_CATEGORIES = ['braceletBead', 'braceletChain'];
@@ -435,7 +436,10 @@ export default function CheckoutForm() {
             onClick={(e) => e.stopPropagation()}
           >
             <p className="eyebrow mb-4">{t('membershipPromoTitle')}</p>
-            <p className="text-[0.88rem] text-ash font-light leading-relaxed mb-7">{t('membershipPromoBody')}</p>
+            <p className="text-[0.88rem] text-ash font-light leading-relaxed mb-6">{t('membershipPromoBody')}</p>
+            <div className="mb-7 text-left">
+              <MemberGiftTeaser />
+            </div>
             <Link
               href="/membership"
               className="block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 mb-3 hover:bg-charcoal/85 transition-colors"
