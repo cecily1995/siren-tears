@@ -365,7 +365,8 @@
     "lineFilterLabel": "라인",
     "categoryFilterLabel": "카테고리",
     "aotearoaTitle": "젬스톤 주얼리",
-    "aotearoaIntro": "한 알의 보석을 중심으로 손으로 세팅한 더 섬세한 라인 — 반지, 목걸이, 팔찌, 뱅글."
+    "aotearoaIntro": "한 알의 보석을 중심으로 손으로 세팅한 더 섬세한 라인 — 반지, 목걸이, 팔찌, 뱅글.",
+    "suggestedTerms": "추천 검색어"
   },
   "membership": {
     "eyebrow": "멤버십",

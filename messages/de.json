@@ -365,7 +365,8 @@
     "lineFilterLabel": "Linie",
     "categoryFilterLabel": "Kategorie",
     "aotearoaTitle": "Edelstein-Schmuck",
-    "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Halsketten, Armbänder und Bangles, die sich um einen einzelnen, handverlesenen Edelstein gruppieren."
+    "aotearoaIntro": "Eine feinere Linie, von Hand gefasst — Ringe, Halsketten, Armbänder und Bangles, die sich um einen einzelnen, handverlesenen Edelstein gruppieren.",
+    "suggestedTerms": "Vorschläge"
   },
   "membership": {
     "eyebrow": "Mitgliedschaft",

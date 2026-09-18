@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
+import MobileSearchPanel from './MobileSearchPanel';
 
 const COLLECTION_NAMES = [
   'Mosaic',
@@ -53,15 +54,20 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-export default function MobileMenu({ dark }: { dark: boolean }) {
+export default function MobileMenu({
+  dark,
+  searchPanelTiles
+}: {
+  dark: boolean;
+  searchPanelTiles?: { href?: string; imageUrl?: string; title?: string; ctaLabel?: string }[];
+}) {
   const t = useTranslations('nav');
   const tShop = useTranslations('shop');
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [expanded, setExpanded] = useState<'collections' | 'shop' | 'ourWorld' | null>(null);
-  const [query, setQuery] = useState('');
-  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchPanelOpen, setSearchPanelOpen] = useState(false);
   const [member, setMember] = useState<{
     firstName?: string;
     isMember?: boolean;
@@ -95,14 +101,6 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
   function closeAll() {
     setOpen(false);
     setExpanded(null);
-    setSearchOpen(false);
-  }
-
-  function submitSearch(e: React.FormEvent) {
-    e.preventDefault();
-    if (!query.trim()) return;
-    router.push(`/shop?q=${encodeURIComponent(query.trim())}`);
-    closeAll();
   }
 
   const itemClass =
@@ -122,43 +120,17 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
         <span className="font-serif text-[1.05rem] tracking-[0.42em] uppercase text-charcoal">
           Siren&nbsp;Tears
         </span>
-        <div className="flex items-center gap-5">
-          <button
-            type="button"
-            onClick={() => setSearchOpen((s) => !s)}
-            aria-label="Search"
-            className="w-8 h-8 flex items-center justify-center text-charcoal"
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="1.2" />
-              <path d="M12.5 12.5L16 16" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-          </button>
-          <button
-            type="button"
-            onClick={closeAll}
-            aria-label="Close menu"
-            className="w-8 h-8 flex items-center justify-center text-charcoal"
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+        <button
+          type="button"
+          onClick={closeAll}
+          aria-label="Close menu"
+          className="w-8 h-8 flex items-center justify-center text-charcoal"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+        </button>
       </div>
-
-      {searchOpen && (
-        <form onSubmit={submitSearch} className="px-6 py-4 border-b border-charcoal/10 shrink-0">
-          <input
-            autoFocus
-            type="search"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={tShop('searchPlaceholder')}
-            className="w-full bg-transparent border-b border-charcoal/25 focus:border-gold outline-none py-2 text-[0.95rem] font-light text-charcoal placeholder:text-ash/50"
-          />
-        </form>
-      )}
 
       <div className="flex-1 overflow-y-auto px-6 pt-4 pb-10">
         {/* Collections — expandable */}
@@ -333,10 +305,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
         </button>
         <button
           type="button"
-          onClick={() => {
-            setOpen(true);
-            setSearchOpen(true);
-          }}
+          onClick={() => setSearchPanelOpen(true)}
           aria-label="Search"
           className="w-6 h-6 flex items-center justify-center shrink-0"
         >
@@ -353,6 +322,15 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
           position:fixed descendants, which was clipping this panel down to
           the header's own small bounding box instead of the full viewport. */}
       {mounted && createPortal(panel, document.body)}
+      {mounted &&
+        createPortal(
+          <MobileSearchPanel
+            open={searchPanelOpen}
+            onClose={() => setSearchPanelOpen(false)}
+            tiles={searchPanelTiles}
+          />,
+          document.body
+        )}
     </div>
   );
 }

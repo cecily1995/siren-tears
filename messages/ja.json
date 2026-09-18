@@ -365,7 +365,8 @@
     "lineFilterLabel": "ライン",
     "categoryFilterLabel": "カテゴリー",
     "aotearoaTitle": "ジェムストーン ジュエリー",
-    "aotearoaIntro": "一石にこだわる、より繊細なライン——リング、ネックレス、ブレスレット、バングルはすべて、手で選び抜かれたひとつの宝石を中心に作られています。"
+    "aotearoaIntro": "一石にこだわる、より繊細なライン——リング、ネックレス、ブレスレット、バングルはすべて、手で選び抜かれたひとつの宝石を中心に作られています。",
+    "suggestedTerms": "おすすめキーワード"
   },
   "membership": {
     "eyebrow": "メンバーシップ",

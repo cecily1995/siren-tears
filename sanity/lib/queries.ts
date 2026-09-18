@@ -118,6 +118,10 @@ export const contactPageSettingsQuery = groq`*[_type == "contactPageSettings"][0
   "returnsImageUrl": returnsImage.asset->url
 }`;
 export const getContactPageSettings = () => safeFetch<any>(contactPageSettingsQuery);
+export const searchPanelSettingsQuery = groq`*[_type == "searchPanelSettings"][0]{
+  tiles[]{ title, ctaLabel, href, "imageUrl": image.asset->url }
+}`;
+export const getSearchPanelSettings = () => safeFetch<any>(searchPanelSettingsQuery);
 export const getCollections = () => safeFetch<any[]>(collectionsQuery);
 export const getJournal = () => safeFetch<any[]>(journalQuery);
 export const getBrandStory = () => safeFetch<any>(brandStoryQuery);

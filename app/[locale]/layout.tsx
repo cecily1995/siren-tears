@@ -12,7 +12,7 @@ import TawkChat from '@/components/TawkChat';
 import { BagProvider } from '@/lib/bag-context';
 import BagDrawer from '@/components/BagDrawer';
 import { WishlistProvider } from '@/lib/wishlist-context';
-import { getSiteSettings } from '@/sanity/lib/queries';
+import { getSiteSettings, getSearchPanelSettings } from '@/sanity/lib/queries';
 import { translateText } from '@/lib/translate';
 import { fallback } from '@/components/fallback';
 
@@ -55,7 +55,22 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
-  const [t, settings] = await Promise.all([getTranslations(), getSiteSettings()]);
+  const [t, settings, searchPanel] = await Promise.all([
+    getTranslations(),
+    getSiteSettings(),
+    getSearchPanelSettings()
+  ]);
+
+  const searchPanelTiles = await Promise.all(
+    (searchPanel?.tiles ?? []).map(
+      async (tile: { title?: string; ctaLabel?: string; href?: string; imageUrl?: string }) => ({
+        href: tile.href,
+        imageUrl: tile.imageUrl,
+        title: await translateText(tile.title, locale),
+        ctaLabel: await translateText(tile.ctaLabel, locale)
+      })
+    )
+  );
 
   const footerSettings = settings ?? fallback.settings;
   // siteSettings.tagline is raw CMS text (Studio: Site Settings), authored
@@ -106,7 +121,7 @@ export default async function LocaleLayout({
       <BagProvider>
         <WishlistProvider>
           <PageVeil />
-          <Navigation />
+          <Navigation searchPanelTiles={searchPanelTiles} />
           <RevealOnScroll />
           <main>{children}</main>
           <Footer data={localizedFooterSettings} labels={footerLabels} />

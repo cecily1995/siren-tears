@@ -48,6 +48,9 @@ export default defineConfig({
               .title('Contact / Enquire Page — Media')
               .child(S.document().schemaType('contactPageSettings').documentId('contactPageSettings')),
             S.listItem()
+              .title('Mobile Search Panel — Media')
+              .child(S.document().schemaType('searchPanelSettings').documentId('searchPanelSettings')),
+            S.listItem()
               .title('Brand Story')
               .child(S.document().schemaType('brandStory').documentId('brandStory')),
             S.divider(),

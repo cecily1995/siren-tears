@@ -72,7 +72,11 @@ function NavDropdown({
   );
 }
 
-export default function Navigation() {
+export default function Navigation({
+  searchPanelTiles
+}: {
+  searchPanelTiles?: { href?: string; imageUrl?: string; title?: string; ctaLabel?: string }[];
+}) {
   const t = useTranslations('nav');
   const tShop = useTranslations('shop');
   const pathname = usePathname();
@@ -130,7 +134,7 @@ export default function Navigation() {
 
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
         <div className="flex items-center gap-8">
-          <MobileMenu dark={scrolled} />
+          <MobileMenu dark={scrolled} searchPanelTiles={searchPanelTiles} />
 
           <nav className="hidden lg:flex items-center gap-8">
             <NavDropdown label={t('collections')} scrolled={scrolled}>
