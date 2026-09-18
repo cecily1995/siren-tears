@@ -18,7 +18,9 @@
     "newArrivals": "Novità",
     "ourCommitment": "Il Nostro Impegno",
     "ourWorld": "Il Nostro Mondo",
-    "search": "Cerca"
+    "search": "Cerca",
+    "myOrders": "I Miei Ordini",
+    "logOut": "Disconnetti"
   },
   "hero": {
     "eyebrow": "Un atelier neozelandese",

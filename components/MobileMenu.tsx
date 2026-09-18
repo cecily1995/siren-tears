@@ -25,10 +25,17 @@ const SHOP_CATEGORIES = [
 
 const simpleLinks = [
   { href: '/new-arrivals', key: 'newArrivals' },
-  { href: '/journal', key: 'journal' },
-  { href: '/worn-by-you', key: 'gallery' },
   { href: '/bespoke', key: 'bespoke' },
   { href: '/membership', key: 'membership' }
+] as const;
+
+const ourWorldLinks = [
+  { href: '/journal', key: 'journal' },
+  { href: '/membership', key: 'membership' },
+  { href: '/worn-by-you', key: 'gallery' },
+  { href: '/brand-story', key: 'about' },
+  { href: '/founders', key: 'founders' },
+  { href: '/responsible-craftsmanship', key: 'ourCommitment' }
 ] as const;
 
 function Chevron({ open }: { open: boolean }) {
@@ -52,7 +59,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [expanded, setExpanded] = useState<'collections' | 'shop' | null>(null);
+  const [expanded, setExpanded] = useState<'collections' | 'shop' | 'ourWorld' | null>(null);
   const [query, setQuery] = useState('');
   const [searchOpen, setSearchOpen] = useState(false);
   const [member, setMember] = useState<{
@@ -222,7 +229,7 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
           )}
         </div>
 
-        {/* Simple links */}
+        {/* Simple links: New Arrivals, Bespoke, Membership */}
         {simpleLinks.map((l) => (
           <Link
             key={l.key}
@@ -234,20 +241,48 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
           </Link>
         ))}
 
+        {/* Our World — expandable */}
+        <div className="border-b border-charcoal/10">
+          <button
+            type="button"
+            className={itemClass}
+            onClick={() => setExpanded(expanded === 'ourWorld' ? null : 'ourWorld')}
+          >
+            {t('ourWorld')}
+            <Chevron open={expanded === 'ourWorld'} />
+          </button>
+          {expanded === 'ourWorld' && (
+            <div className="pb-4 pl-1">
+              {ourWorldLinks.map((l) => (
+                <Link key={l.key} href={l.href} onClick={closeAll} className={subItemClass}>
+                  {t(l.key)}
+                </Link>
+              ))}
+            </div>
+          )}
+        </div>
+
         <div className="mt-8 flex flex-col gap-4">
           <Link
-            href="/founders"
+            href="/account"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"
           >
-            {t('founders')}
+            {member?.isMember ? (
+              <>
+                <span className="text-charcoal">{member.firstName || t('account')}</span>
+                {member.memberCode && <span className="text-gold"> · {member.memberCode}</span>}
+              </>
+            ) : (
+              t('account')
+            )}
           </Link>
           <Link
-            href="/responsible-craftsmanship"
+            href="/account"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"
           >
-            {t('ourCommitment')}
+            {t('myOrders')}
           </Link>
           <Link
             href="/contact"
@@ -264,19 +299,18 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
             >
               {t('signIn')}
             </Link>
-          ) : member.isMember ? (
-            <Link href="/account" onClick={closeAll} className="text-[11px] tracking-[0.32em] uppercase">
-              <span className="text-charcoal">{member.firstName || t('account')}</span>
-              {member.memberCode && <span className="text-gold"> · {member.memberCode}</span>}
-            </Link>
           ) : (
-            <Link
-              href="/account"
-              onClick={closeAll}
-              className="text-[11px] tracking-[0.32em] uppercase text-charcoal"
+            <button
+              type="button"
+              onClick={async () => {
+                await fetch('/api/auth/logout', { method: 'POST' }).catch(() => undefined);
+                closeAll();
+                router.refresh();
+              }}
+              className="text-left text-[11px] tracking-[0.32em] uppercase text-ash"
             >
-              {member.firstName || t('account')}
-            </Link>
+              {t('logOut')}
+            </button>
           )}
         </div>
       </div>
@@ -285,17 +319,33 @@ export default function MobileMenu({ dark }: { dark: boolean }) {
 
   return (
     <div className="lg:hidden">
-      <button
-        type="button"
-        onClick={() => setOpen(true)}
-        aria-label="Open menu"
-        aria-expanded={open}
-        className="flex flex-col items-start justify-center gap-[5px] w-8 h-8 shrink-0"
-      >
-        <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
-        <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
-        <span className={`block h-px w-4 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
-      </button>
+      <div className="flex items-center gap-3">
+        <button
+          type="button"
+          onClick={() => {
+            setOpen(true);
+            setSearchOpen(true);
+          }}
+          aria-label="Search"
+          className="w-8 h-8 flex items-center justify-center shrink-0"
+        >
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <circle cx="8" cy="8" r="6" stroke={dark ? '#26231F' : '#FFFFFF'} strokeWidth="1.2" />
+            <path d="M12.5 12.5L16 16" stroke={dark ? '#26231F' : '#FFFFFF'} strokeWidth="1.2" strokeLinecap="round" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-label="Open menu"
+          aria-expanded={open}
+          className="flex flex-col items-start justify-center gap-[5px] w-8 h-8 shrink-0"
+        >
+          <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+          <span className={`block h-px w-6 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+          <span className={`block h-px w-4 ${dark ? 'bg-charcoal' : 'bg-ivory'} transition-colors duration-500`} />
+        </button>
+      </div>
 
       {/* Rendered via portal directly under <body>, so it is never nested
           inside the fixed, backdrop-filter'd header -- an ancestor with a

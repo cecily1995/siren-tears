@@ -112,6 +112,22 @@ export default function Navigation() {
           : 'bg-transparent py-6'
       }`}
     >
+      {/* Centered wordmark -- hidden only during the homepage's very first
+          (unscrolled) view, where the hero already carries the full logo
+          mark; visible the moment you scroll on the homepage, and on
+          every other page regardless of scroll, so there's always a way
+          back to the homepage now that the corner logo is gone. */}
+      {(!isHome || scrolled) && (
+        <Link
+          href="/#top"
+          className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-[1.05rem] md:text-[1.15rem] tracking-[0.42em] uppercase whitespace-nowrap ${
+            scrolled ? 'text-charcoal' : 'text-ivory'
+          } transition-colors duration-700`}
+        >
+          Siren&nbsp;Tears
+        </Link>
+      )}
+
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
         <div className="flex items-center gap-8">
           <MobileMenu dark={scrolled} />
@@ -210,6 +226,22 @@ export default function Navigation() {
               <path d="M21 21L16.65 16.65" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
             </svg>
           </button>
+          <Link
+            href="/contact"
+            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+              scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
+            }`}
+          >
+            {t('enquire')}
+          </Link>
+          <Link
+            href="/account"
+            className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+              scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
+            }`}
+          >
+            {t('myOrders')}
+          </Link>
           <Link
             href="/account"
             className={`hidden md:inline-block text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
