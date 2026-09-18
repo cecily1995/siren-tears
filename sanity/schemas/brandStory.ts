@@ -15,7 +15,7 @@ export default defineType({
     }),
     defineField({
       name: 'image',
-      title: 'Mood image',
+      title: 'Display image (16:9, shown under the logo)',
       type: 'image',
       options: { hotspot: true },
       fields: [{ name: 'alt', type: 'string' }]
