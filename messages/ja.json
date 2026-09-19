@@ -416,7 +416,15 @@
       "cityLabel": "市区町村",
       "postcodeLabel": "郵便番号"
     },
-    "privatePriceNote": "暫定案内:Private Clientへ直接ご登録の場合、NZD 999の一括費用が発生する場合があります。最終的な特典は今後確定いたします。"
+    "privatePriceNote": "一度限りのNZD 999のお支払いでPrivate Clientへ直接加入できます。",
+    "privatePaymentTitle": "Private Clientに加入",
+    "privatePaymentBody": "My Sirenにログインし、一度限りの料金を確認して安全なカード決済を完了してください。支払い後、アカウントは自動的にアップグレードされます。",
+    "privatePaymentSignIn": "ログインして続ける",
+    "privatePaymentStart": "安全な支払いへ進む",
+    "privatePaymentCta": "支払ってPrivate Clientに加入",
+    "privatePaymentProcessing": "処理中…",
+    "privatePaymentError": "支払いを開始できません。もう一度お試しください。",
+    "privatePaymentSuccess": "お支払いを受け付けました。My SirenアカウントをPrivate Clientへ更新しています。"
   },
   "atelier": {
     "eyebrow": "アトリエ",

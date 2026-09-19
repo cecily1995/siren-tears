@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
 import InlineLoginForm from '@/components/InlineLoginForm';
 import { useWishlist } from '@/lib/wishlist-context';
+import Money from '@/components/Money';
 
 function CloseButton() {
   const router = useRouter();
@@ -143,7 +144,7 @@ export default function WishlistPage() {
                           {item.name}
                         </h3>
                         {typeof item.price === 'number' && (
-                          <p className="mt-1 text-[0.9rem] text-charcoal font-light">NZD ${item.price}</p>
+                          <p className="mt-1 text-[0.9rem] text-charcoal font-light"><Money amount={item.price} /></p>
                         )}
                       </div>
                     </Link>

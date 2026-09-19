@@ -59,6 +59,14 @@ export async function POST(request: Request) {
   }
 
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
+  if (paymentIntent.metadata?.type === 'private_client_membership') {
+    const memberId = paymentIntent.metadata.memberId;
+    if (!memberId) return NextResponse.json({ ok: true, skipped: 'no memberId' });
+    if (event.type === 'payment_intent.succeeded') {
+      await client.patch(memberId).set({ isMember: true, tier: 'private', privateClientPaidAt: new Date().toISOString(), privateClientPaymentIntentId: paymentIntent.id }).commit();
+    }
+    return NextResponse.json({ ok: true, memberId, membershipPayment: event.type });
+  }
   const purchaseRequestId = paymentIntent.metadata?.purchaseRequestId;
 
   if (!purchaseRequestId) {

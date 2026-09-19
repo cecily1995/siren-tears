@@ -416,7 +416,15 @@
       "cityLabel": "Город",
       "postcodeLabel": "Почтовый индекс"
     },
-    "privatePriceNote": "Предварительно: разовый взнос в размере 999 NZD может потребоваться для прямого вступления в Private Client, окончательные привилегии уточняются."
+    "privatePriceNote": "Единовременный платёж 999 NZD предоставляет прямой доступ к статусу Private Client.",
+    "privatePaymentTitle": "Стать Private Client",
+    "privatePaymentBody": "Войдите в My Siren, подтвердите разовый платёж и безопасно оплатите картой. После оплаты аккаунт обновится автоматически.",
+    "privatePaymentSignIn": "Войти и продолжить",
+    "privatePaymentStart": "Перейти к безопасной оплате",
+    "privatePaymentCta": "Оплатить и стать Private Client",
+    "privatePaymentProcessing": "Обработка…",
+    "privatePaymentError": "Не удалось начать оплату. Попробуйте ещё раз.",
+    "privatePaymentSuccess": "Платёж получен. Ваш аккаунт My Siren обновляется до Private Client."
   },
   "atelier": {
     "eyebrow": "Мастерская",

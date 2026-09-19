@@ -416,7 +416,15 @@
       "cityLabel": "City",
       "postcodeLabel": "Postcode"
     },
-    "privatePriceNote": "Provisional: a one-time NZD $999 may apply to enter Private Client directly, pending final benefits."
+    "privatePriceNote": "A one-time NZD $999 payment provides direct entry to Private Client.",
+    "privatePaymentTitle": "Enter Private Client",
+    "privatePaymentBody": "Sign in to My Siren, confirm the one-time payment, and complete secure card payment. Your account is upgraded automatically after payment succeeds.",
+    "privatePaymentSignIn": "Sign in to continue",
+    "privatePaymentStart": "Continue to secure payment",
+    "privatePaymentCta": "Pay and enter Private Client",
+    "privatePaymentProcessing": "Processing…",
+    "privatePaymentError": "Unable to start payment. Please try again.",
+    "privatePaymentSuccess": "Payment received. Your My Siren account is being upgraded to Private Client."
   },
   "atelier": {
     "eyebrow": "The Atelier",

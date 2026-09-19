@@ -53,7 +53,14 @@ export default defineType({
       type: 'datetime',
       hidden: true
     }),
-    defineField({ name: 'joinedAt', title: 'Joined at', type: 'datetime' })
+    defineField({ name: 'joinedAt', title: 'Joined at', type: 'datetime' }),
+    defineField({ name: 'privateClientPaidAt', title: 'Private Client payment date', type: 'datetime', readOnly: true }),
+    defineField({
+      name: 'privateClientPaymentIntentId',
+      title: 'Private Client Stripe payment ID',
+      type: 'string',
+      readOnly: true
+    })
   ],
   preview: {
     select: { title: 'firstName', subtitle: 'memberCode' },

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
+import Money from './Money';
 
 type RecommendedProduct = {
   _id: string;
@@ -60,7 +61,7 @@ export default function RecommendedProducts({ limit = 4 }: { limit?: number }) {
                   {p.name}
                 </Link>
                 {typeof p.price === 'number' && (
-                  <p className="text-[0.78rem] text-ash/70 font-light mt-0.5">NZD ${p.price}</p>
+                  <p className="text-[0.78rem] text-ash/70 font-light mt-0.5"><Money amount={p.price} /></p>
                 )}
               </div>
               <button

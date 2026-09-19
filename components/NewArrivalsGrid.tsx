@@ -2,6 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import WishlistButton from './WishlistButton';
+import Money from './Money';
 
 type Product = {
   _id: string;
@@ -103,7 +104,7 @@ export default function NewArrivalsGrid({ items, labels }: { items: Product[]; l
                 </h3>
                 <div className="mt-2 flex items-baseline justify-between">
                   <span className="text-[0.9rem] text-charcoal font-light">
-                    {typeof p.price === 'number' ? `NZD $${p.price}` : ''}
+                    {typeof p.price === 'number' ? <Money amount={p.price} /> : ''}
                   </span>
                   {isBeaded && !isSold && !isReserved && (
                     <span className="text-[7px] tracking-[0.18em] uppercase font-light text-gold shrink-0 ml-2">

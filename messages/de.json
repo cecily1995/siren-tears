@@ -416,7 +416,15 @@
       "cityLabel": "Stadt",
       "postcodeLabel": "Postleitzahl"
     },
-    "privatePriceNote": "Vorläufig: Ein einmaliger Betrag von NZD 999 kann für den direkten Einstieg als Private Client anfallen, vorbehaltlich der endgültigen Vorteile."
+    "privatePriceNote": "Eine einmalige Zahlung von 999 NZD ermöglicht den direkten Zugang als Private Client.",
+    "privatePaymentTitle": "Private Client werden",
+    "privatePaymentBody": "Melden Sie sich bei My Siren an, bestätigen Sie die einmalige Zahlung und bezahlen Sie sicher per Karte. Ihr Konto wird danach automatisch hochgestuft.",
+    "privatePaymentSignIn": "Anmelden und fortfahren",
+    "privatePaymentStart": "Weiter zur sicheren Zahlung",
+    "privatePaymentCta": "Bezahlen und Private Client werden",
+    "privatePaymentProcessing": "Wird verarbeitet…",
+    "privatePaymentError": "Die Zahlung konnte nicht gestartet werden. Bitte versuchen Sie es erneut.",
+    "privatePaymentSuccess": "Zahlung erhalten. Ihr My Siren-Konto wird zum Private Client hochgestuft."
   },
   "atelier": {
     "eyebrow": "Das Atelier",

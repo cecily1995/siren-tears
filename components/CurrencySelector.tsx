@@ -1,12 +1,12 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
-const CURRENCIES = ['NZD', 'USD', 'AUD', 'CNY', 'GBP', 'EUR'];
+import { CURRENCIES } from '@/lib/currency';
+import { useCurrency } from '@/lib/currency-context';
 
 export default function CurrencySelector() {
   const [open, setOpen] = useState(false);
-  const [currency, setCurrency] = useState('NZD');
+  const { currency, setCurrency } = useCurrency();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

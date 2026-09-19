@@ -416,7 +416,15 @@
       "cityLabel": "Città",
       "postcodeLabel": "CAP"
     },
-    "privatePriceNote": "Provvisorio: potrebbe essere richiesto un contributo una tantum di NZD $999 per entrare direttamente come Private Client, in attesa dei vantaggi definitivi."
+    "privatePriceNote": "Un pagamento una tantum di NZD $999 consente l’accesso diretto a Private Client.",
+    "privatePaymentTitle": "Diventa Private Client",
+    "privatePaymentBody": "Accedi a My Siren, conferma il pagamento una tantum e paga in sicurezza con carta. Il tuo account verrà aggiornato automaticamente.",
+    "privatePaymentSignIn": "Accedi per continuare",
+    "privatePaymentStart": "Continua al pagamento sicuro",
+    "privatePaymentCta": "Paga e diventa Private Client",
+    "privatePaymentProcessing": "Elaborazione…",
+    "privatePaymentError": "Impossibile avviare il pagamento. Riprova.",
+    "privatePaymentSuccess": "Pagamento ricevuto. Il tuo account My Siren sta passando a Private Client."
   },
   "atelier": {
     "eyebrow": "L'Atelier",

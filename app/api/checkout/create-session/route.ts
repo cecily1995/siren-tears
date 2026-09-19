@@ -5,6 +5,7 @@ import Stripe from 'stripe';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
 import { calculateShipping } from '@/lib/shipping';
 import { verifySessionToken, SESSION_COOKIE_NAME } from '@/lib/auth';
+import { convertFromNzd, isCurrency } from '@/lib/currency';
 
 export const runtime = 'nodejs';
 
@@ -67,7 +68,8 @@ export async function POST(request: Request) {
     deliveryRegion,
     deliveryPostalCode,
     message,
-    locale
+    locale,
+    currency: requestedCurrency
   }: {
     items?: {
       productName?: string;
@@ -90,6 +92,7 @@ export async function POST(request: Request) {
     deliveryPostalCode?: string;
     message?: string;
     locale?: string;
+    currency?: string;
   } = body ?? {};
 
   if (!email || !name) {
@@ -236,10 +239,12 @@ export async function POST(request: Request) {
     });
 
     const total = subtotal + shippingQuote.cost;
+    const currency = isCurrency(requestedCurrency) ? requestedCurrency : 'NZD';
+    const chargedTotal = convertFromNzd(total, currency);
 
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(total * 100),
-      currency: 'nzd',
+      amount: Math.round(chargedTotal * 100),
+      currency: currency.toLowerCase(),
       receipt_email: email,
       // Explicit list rather than automatic_payment_methods: the
       // automatic option pulls in every method enabled on the Stripe
@@ -269,7 +274,8 @@ export async function POST(request: Request) {
       clientSecret: paymentIntent.client_secret,
       orderNumber,
       purchaseRequestId: purchaseRequest._id,
-      total
+      total: chargedTotal,
+      currency
     });
   } catch (err) {
     console.error('Checkout session creation failed', err);

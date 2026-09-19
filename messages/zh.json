@@ -416,7 +416,15 @@
       "cityLabel": "城市",
       "postcodeLabel": "邮编"
     },
-    "privatePriceNote": "暂定:一次性支付 NZD $999 即可直接加入 Private Client,具体权益确定后可能调整。"
+    "privatePriceNote": "一次性支付 NZD $999，即可直接加入 Private Client。",
+    "privatePaymentTitle": "加入 Private Client",
+    "privatePaymentBody": "登录 My Siren，确认一次性费用并完成安全的银行卡支付。付款成功后，账户将自动升级为 Private Client。",
+    "privatePaymentSignIn": "登录后继续",
+    "privatePaymentStart": "继续安全支付",
+    "privatePaymentCta": "付款并加入 Private Client",
+    "privatePaymentProcessing": "处理中…",
+    "privatePaymentError": "暂时无法开始付款，请重试。",
+    "privatePaymentSuccess": "已收到付款，你的 My Siren 账户正在升级为 Private Client。"
   },
   "atelier": {
     "eyebrow": "工作室",

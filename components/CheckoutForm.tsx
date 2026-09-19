@@ -12,6 +12,7 @@ import RecommendedProducts from './RecommendedProducts';
 import ShippingNote from './ShippingNote';
 import MemberGiftTeaser from './MemberGiftTeaser';
 import StripePaymentSection from './StripePaymentSection';
+import { useCurrency } from '@/lib/currency-context';
 
 const BRACELET_CATEGORIES = ['braceletBead', 'braceletChain'];
 
@@ -33,6 +34,7 @@ export default function CheckoutForm() {
   const t = useTranslations('checkout');
   const tBag = useTranslations('bag');
   const locale = useLocale();
+  const { currency, format } = useCurrency();
 
   const [member, setMember] = useState<MemberPrefill | null>(null);
   const [authChecked, setAuthChecked] = useState(false);
@@ -141,7 +143,8 @@ export default function CheckoutForm() {
       deliveryRegion: form.get('region')?.toString() || '',
       deliveryPostalCode: form.get('postalCode')?.toString() || '',
       message: '',
-      locale
+      locale,
+      currency
     };
 
     // Non-members get a one-time promo interstitial ("join for free
@@ -188,7 +191,7 @@ export default function CheckoutForm() {
             <p className="text-[0.75rem] text-ash/70 font-light mt-1">Qty 1</p>
           </div>
           {typeof item.price === 'number' && (
-            <p className="text-[0.85rem] text-charcoal font-light shrink-0">NZD ${item.price}</p>
+            <p className="text-[0.85rem] text-charcoal font-light shrink-0">{format(item.price)}</p>
           )}
         </li>
       ))}
@@ -199,15 +202,15 @@ export default function CheckoutForm() {
     <div className="space-y-2 pt-4 mt-4 border-t border-charcoal/10 text-[0.85rem] font-light">
       <div className="flex justify-between text-ash">
         <span>{t('subtotalLabel')}</span>
-        <span>NZD ${subtotal}</span>
+        <span>{format(subtotal)}</span>
       </div>
       <div className="flex justify-between text-ash">
         <span>{t('shippingLabel')}</span>
-        <span>{shippingQuote.cost === 0 ? t('freeLabel') : `NZD $${shippingQuote.cost}`}</span>
+        <span>{shippingQuote.cost === 0 ? t('freeLabel') : format(shippingQuote.cost)}</span>
       </div>
       <div className="flex justify-between text-charcoal text-[1rem] pt-2 border-t border-charcoal/10">
         <span>{t('totalLabel')}</span>
-        <span>NZD ${total}</span>
+        <span>{format(total)}</span>
       </div>
       <div className="pt-3">
         <ShippingNote />
@@ -230,7 +233,7 @@ export default function CheckoutForm() {
             <span className="text-[11px] tracking-[0.24em] uppercase text-charcoal">
               {t('orderSummaryTitle')} {summaryOpen ? '−' : '+'}
             </span>
-            <span className="text-[0.95rem] text-charcoal font-light">NZD ${total}</span>
+            <span className="text-[0.95rem] text-charcoal font-light">{format(total)}</span>
           </button>
           {summaryOpen && (
             <div className="px-5 pb-5">
@@ -346,7 +349,7 @@ export default function CheckoutForm() {
               <>
                 <div className="border border-charcoal/15 px-4 py-3.5 flex items-center justify-between text-[0.85rem] font-light">
                   <span className="text-charcoal">{shippingQuote.label}</span>
-                  <span className="text-ash">{shippingQuote.cost === 0 ? t('freeLabel') : `NZD $${shippingQuote.cost}`}</span>
+                  <span className="text-ash">{shippingQuote.cost === 0 ? t('freeLabel') : format(shippingQuote.cost)}</span>
                 </div>
                 {amountToFreeShipping > 0 && (
                   <p className="mt-3 text-[0.8rem] text-ash/80 font-light">
@@ -409,7 +412,7 @@ export default function CheckoutForm() {
 
           <div className="flex items-center justify-between pt-2 text-charcoal border-t border-charcoal/10">
             <span className="text-[11px] tracking-[0.2em] uppercase pt-4">{t('totalLabel')}</span>
-            <span className="text-[1.2rem] font-light pt-4">NZD ${total}</span>
+            <span className="text-[1.2rem] font-light pt-4">{format(total)}</span>
           </div>
         </form>
 

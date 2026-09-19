@@ -9,6 +9,7 @@ import AddToBagButton from '@/components/AddToBagButton';
 import ProductAccordionSection from '@/components/ProductAccordionSection';
 import WishlistButton from '@/components/WishlistButton';
 import { translateFields } from '@/lib/translate';
+import Money from '@/components/Money';
 
 export const revalidate = 60;
 
@@ -115,7 +116,7 @@ export default async function ShopProductPage({
             )}
             <div className="mt-6 flex items-center gap-4">
               <span className="text-[1.3rem] text-charcoal font-light">
-                NZD ${product.price}
+                <Money amount={product.price} />
               </span>
               {!isSold && !isReserved && (
                 <span className="text-[10px] tracking-[0.24em] uppercase text-gold font-light">

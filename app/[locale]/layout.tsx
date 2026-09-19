@@ -12,6 +12,7 @@ import TawkChat from '@/components/TawkChat';
 import { BagProvider } from '@/lib/bag-context';
 import BagDrawer from '@/components/BagDrawer';
 import { WishlistProvider } from '@/lib/wishlist-context';
+import { CurrencyProvider } from '@/lib/currency-context';
 import { getCollections, getSiteSettings, getSearchPanelSettings } from '@/sanity/lib/queries';
 import { translateText } from '@/lib/translate';
 import { fallback } from '@/components/fallback';
@@ -123,8 +124,9 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <BagProvider>
-        <WishlistProvider>
+      <CurrencyProvider>
+        <BagProvider>
+          <WishlistProvider>
           <PageVeil />
           <Navigation searchPanelTiles={searchPanelTiles} collectionNames={collectionNames} />
           <RevealOnScroll />
@@ -133,8 +135,9 @@ export default async function LocaleLayout({
           <AuthGateModal />
           <TawkChat />
           <BagDrawer />
-        </WishlistProvider>
-      </BagProvider>
+          </WishlistProvider>
+        </BagProvider>
+      </CurrencyProvider>
     </NextIntlClientProvider>
   );
 }

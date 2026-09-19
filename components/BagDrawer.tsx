@@ -6,6 +6,7 @@ import { Link } from '@/i18n/routing';
 import { useBag } from '@/lib/bag-context';
 import RecommendedProducts from './RecommendedProducts';
 import ShippingNote from './ShippingNote';
+import Money from './Money';
 
 export default function BagDrawer() {
   const { items, removeItem, isOpen, close } = useBag();
@@ -77,7 +78,7 @@ export default function BagDrawer() {
                     <div className="flex-1 min-w-0">
                       <p className="text-[0.9rem] text-charcoal font-light truncate">{item.name}</p>
                       {typeof item.price === 'number' && (
-                        <p className="text-[0.82rem] text-ash font-light mt-1">NZD ${item.price}</p>
+                        <p className="text-[0.82rem] text-ash font-light mt-1"><Money amount={item.price} /></p>
                       )}
                       <button
                         type="button"
@@ -103,7 +104,7 @@ export default function BagDrawer() {
             <div className="shrink-0 px-6 pb-6 pt-4 border-t border-charcoal/10 bg-ivory">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[11px] tracking-[0.2em] uppercase text-ash">{t('subtotal')}</span>
-                <span className="text-[1.05rem] text-charcoal font-light">NZD ${subtotal}</span>
+                <span className="text-[1.05rem] text-charcoal font-light"><Money amount={subtotal} /></span>
               </div>
 
               <Link

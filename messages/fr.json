@@ -416,7 +416,15 @@
       "cityLabel": "Ville",
       "postcodeLabel": "Code postal"
     },
-    "privatePriceNote": "Provisoire : des frais uniques de 999 NZD peuvent s'appliquer pour accéder directement au statut Private Client, en attendant les avantages définitifs."
+    "privatePriceNote": "Un paiement unique de 999 NZD permet d’accéder directement au statut Private Client.",
+    "privatePaymentTitle": "Devenir Private Client",
+    "privatePaymentBody": "Connectez-vous à My Siren, confirmez le paiement unique et réglez par carte en toute sécurité. Votre compte sera automatiquement mis à niveau.",
+    "privatePaymentSignIn": "Se connecter pour continuer",
+    "privatePaymentStart": "Continuer vers le paiement sécurisé",
+    "privatePaymentCta": "Payer et devenir Private Client",
+    "privatePaymentProcessing": "Traitement…",
+    "privatePaymentError": "Impossible de démarrer le paiement. Veuillez réessayer.",
+    "privatePaymentSuccess": "Paiement reçu. Votre compte My Siren est en cours de mise à niveau."
   },
   "atelier": {
     "eyebrow": "L'Atelier",
