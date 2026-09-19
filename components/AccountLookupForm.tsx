@@ -2,8 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { useRouter } from '@/i18n/routing';
 import ProfileAddressFields from './ProfileAddressFields';
 import InlineLoginForm from './InlineLoginForm';
+import MemberGiftTeaser from './MemberGiftTeaser';
+import MembershipInvitationModal from './MembershipInvitationModal';
 
 type Member = {
   firstName?: string;
@@ -172,6 +175,7 @@ function EditProfileForm({
 
 export default function AccountLookupForm({ view = 'profile' }: { view?: 'profile' | 'orders' }) {
   const t = useTranslations('account');
+  const router = useRouter();
   const [checking, setChecking] = useState(true);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -184,6 +188,7 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
   const [forgotStatus, setForgotStatus] = useState<'idle' | 'submitting' | 'sent'>('idle');
   const [forgotStep, setForgotStep] = useState<'email' | 'code'>('email');
   const [forgotEmail, setForgotEmail] = useState('');
+  const [showMembershipInvitation, setShowMembershipInvitation] = useState(false);
 
   async function loadSession() {
     try {
@@ -261,6 +266,7 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
         setStatus('error');
         return;
       }
+      setShowMembershipInvitation(true);
       await loadSession();
     } catch {
       setErrorMsg(t('errorGeneric'));
@@ -350,6 +356,14 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
 
     return (
       <div>
+        {showMembershipInvitation && (
+          <MembershipInvitationModal
+            onContinue={() => {
+              setShowMembershipInvitation(false);
+              router.replace('/');
+            }}
+          />
+        )}
         {view === 'profile' && (
         <div className="border border-charcoal/12 bg-ivory p-8 md:p-10">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
@@ -403,6 +417,9 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
                   </li>
                 ))}
               </ul>
+              <div className="mt-5 max-w-md">
+                <MemberGiftTeaser isMember size="sm" />
+              </div>
             </div>
           ) : (
             <div className="mt-6 pt-6 border-t border-charcoal/10">
@@ -618,5 +635,12 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
     );
   }
 
-  return <InlineLoginForm onSuccess={() => loadSession()} />;
+  return (
+    <InlineLoginForm
+      onSuccess={async (authMode) => {
+        if (authMode === 'register') setShowMembershipInvitation(true);
+        await loadSession();
+      }}
+    />
+  );
 }
