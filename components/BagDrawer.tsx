@@ -68,24 +68,47 @@ export default function BagDrawer() {
             <div className="flex-1 overflow-y-auto px-6 py-6">
               <ul className="space-y-5 mb-6">
                 {items.map((item) => (
-                  <li key={item.productId} className={`flex gap-3 transition-opacity ${selectedIds.includes(item.productId) ? '' : 'opacity-45'}`}>
+                  <li
+                    key={item.productId}
+                    role="checkbox"
+                    tabIndex={0}
+                    aria-checked={selectedIds.includes(item.productId)}
+                    onClick={(event) => {
+                      if ((event.target as HTMLElement).closest('a, button')) return;
+                      toggleSelected(item.productId);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        toggleSelected(item.productId);
+                      }
+                    }}
+                    className={`flex gap-3 transition-opacity cursor-pointer ${selectedIds.includes(item.productId) ? '' : 'opacity-45'}`}
+                  >
                     <button
                       type="button"
                       onClick={() => toggleSelected(item.productId)}
                       aria-label={`${selectedIds.includes(item.productId) ? 'Deselect' : 'Select'} ${item.name}`}
                       aria-pressed={selectedIds.includes(item.productId)}
-                      className="w-4 shrink-0 flex items-start justify-center pt-7 text-[14px] text-charcoal"
+                      className="w-7 -mx-1 shrink-0 flex items-center justify-center text-[14px] text-charcoal"
                     >
                       {selectedIds.includes(item.productId) ? '•' : '○'}
                     </button>
-                    <div className="w-16 h-20 shrink-0 bg-charcoal/5 overflow-hidden">
+                    <Link
+                      href={`/shop/${item.slug}`}
+                      onClick={close}
+                      className="w-16 h-20 shrink-0 bg-charcoal/5 overflow-hidden"
+                      aria-label={`View ${item.name}`}
+                    >
                       {item.imageUrl && (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={item.imageUrl} alt={item.name} className="w-full h-full object-cover" />
                       )}
-                    </div>
+                    </Link>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[0.9rem] text-charcoal font-light truncate">{item.name}</p>
+                      <Link href={`/shop/${item.slug}`} onClick={close} className="block text-[0.9rem] text-charcoal font-light truncate hover:underline">
+                        {item.name}
+                      </Link>
                       {typeof item.price === 'number' && (
                         <p className="text-[0.82rem] text-ash font-light mt-1"><Money amount={item.price} /></p>
                       )}

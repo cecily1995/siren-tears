@@ -29,7 +29,7 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
           <Link
             key={a._id}
             href="/journal"
-            className="reveal group shrink-0 w-[74vw] sm:w-[44vw] md:w-auto snap-start"
+            className="reveal group shrink-0 w-[74vw] sm:w-[44vw] md:w-auto snap-start flex flex-col"
             style={{ transitionDelay: `${(i % 3) * 100}ms` }}
           >
             <div className="relative aspect-[4/5] overflow-hidden bg-charcoal/5 frame-zoom">
@@ -43,24 +43,22 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
                 />
               )}
             </div>
-            <div className="mt-4 px-6 md:px-0">
+            <div className="mt-4 px-6 md:px-0 flex flex-col flex-1">
               {a.category && (
-                <p className="text-[10px] tracking-[0.24em] uppercase text-gold/80 mb-2 font-light">
+                <p className="text-[10px] tracking-[0.24em] uppercase text-gold/80 mb-2 font-light line-clamp-1">
                   {a.category}
                 </p>
               )}
               <h3
-                className="serif-display text-[1.1rem] font-light text-charcoal mb-2"
+                className="serif-display text-[1.1rem] font-light text-charcoal mb-2 line-clamp-2 min-h-[3.025rem]"
                 style={{ lineHeight: 1.375 }}
               >
                 {a.title}
               </h3>
-              {a.excerpt && (
-                <p className="text-[0.85rem] text-ash font-light leading-[1.7] line-clamp-2">
-                  {a.excerpt}
-                </p>
-              )}
-              <span className="mt-3 inline-block text-[10px] tracking-[0.28em] uppercase text-charcoal/70 link-underline">
+              <p className="text-[0.85rem] text-ash font-light leading-[1.7] line-clamp-2 min-h-[2.89rem]">
+                {a.excerpt || ''}
+              </p>
+              <span className="mt-auto pt-3 self-start inline-block text-[10px] tracking-[0.28em] uppercase text-charcoal/70 link-underline">
                 {labels.readLink}
               </span>
             </div>
