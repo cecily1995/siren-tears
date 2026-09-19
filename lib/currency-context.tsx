@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
-import { type Currency, formatMoney, isCurrency } from './currency';
+import { type Currency, formatMoney, isCurrency, NZD_RATES } from './currency';
 
 const STORAGE_KEY = 'sirentears_currency';
 
@@ -13,10 +13,14 @@ const CurrencyContext = createContext<{
 
 export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   const [currency, setCurrencyState] = useState<Currency>('NZD');
+  const [rates, setRates] = useState(NZD_RATES);
 
   useEffect(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (isCurrency(saved)) setCurrencyState(saved);
+    fetch('/api/exchange-rates').then((response) => response.json()).then((data) => {
+      if (data?.rates) setRates((current) => ({ ...current, ...data.rates }));
+    }).catch(() => {});
   }, []);
 
   function setCurrency(next: Currency) {
@@ -25,8 +29,8 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   }
 
   const value = useMemo(
-    () => ({ currency, setCurrency, format: (amount: number) => formatMoney(amount, currency) }),
-    [currency]
+    () => ({ currency, setCurrency, format: (amount: number) => formatMoney(amount, currency, rates) }),
+    [currency, rates]
   );
 
   return <CurrencyContext.Provider value={value}>{children}</CurrencyContext.Provider>;

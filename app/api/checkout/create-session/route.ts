@@ -3,9 +3,9 @@ import { cookies } from 'next/headers';
 import { createClient } from 'next-sanity';
 import Stripe from 'stripe';
 import { apiVersion, dataset, projectId } from '@/sanity/env';
-import { calculateShipping } from '@/lib/shipping';
+import { getShippingQuote } from '@/lib/shipping';
 import { verifySessionToken, SESSION_COOKIE_NAME } from '@/lib/auth';
-import { convertFromNzd, isCurrency } from '@/lib/currency';
+import { convertFromNzd, getLiveNzdRates, isCurrency } from '@/lib/currency';
 
 export const runtime = 'nodejs';
 
@@ -206,7 +206,7 @@ export async function POST(request: Request) {
       // Fine -- worst case we just treat them as a non-member.
     }
 
-    const shippingQuote = calculateShipping({ subtotal, country, isMember });
+    const shippingQuote = await getShippingQuote({ subtotal, country, postcode: deliveryPostalCode, isMember });
 
     const orderNumber = generateOrderNumber();
 
@@ -240,7 +240,7 @@ export async function POST(request: Request) {
 
     const total = subtotal + shippingQuote.cost;
     const currency = isCurrency(requestedCurrency) ? requestedCurrency : 'NZD';
-    const chargedTotal = convertFromNzd(total, currency);
+    const chargedTotal = convertFromNzd(total, currency, await getLiveNzdRates());
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(chargedTotal * 100),

@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import Stripe from 'stripe';
 import { SESSION_COOKIE_NAME, verifySessionToken } from '@/lib/auth';
-import { convertFromNzd, isCurrency } from '@/lib/currency';
+import { convertFromNzd, getLiveNzdRates, isCurrency } from '@/lib/currency';
 
 export const runtime = 'nodejs';
 const PRIVATE_CLIENT_PRICE_NZD = 999;
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
   const body = await request.json().catch(() => ({}));
   const currency = isCurrency(body.currency) ? body.currency : 'NZD';
-  const convertedAmount = convertFromNzd(PRIVATE_CLIENT_PRICE_NZD, currency);
+  const convertedAmount = convertFromNzd(PRIVATE_CLIENT_PRICE_NZD, currency, await getLiveNzdRates());
   const amountMinor = Math.round(convertedAmount * 100);
 
   try {

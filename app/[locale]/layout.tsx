@@ -9,6 +9,7 @@ import PageVeil from '@/components/PageVeil';
 import RevealOnScroll from '@/components/RevealOnScroll';
 import AuthGateModal from '@/components/AuthGateModal';
 import TawkChat from '@/components/TawkChat';
+import LocationCurrencyPrompt from '@/components/LocationCurrencyPrompt';
 import { BagProvider } from '@/lib/bag-context';
 import BagDrawer from '@/components/BagDrawer';
 import { WishlistProvider } from '@/lib/wishlist-context';
@@ -18,6 +19,7 @@ import { translateText } from '@/lib/translate';
 import { fallback } from '@/components/fallback';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://siren-tears.vercel.app'),
   title: 'SIREN TEARS — Natural Crystal Jewelry',
   description:
     'Natural crystal jewelry shaped by quality and timeless aesthetics. A New Zealand atelier of coastal luxury and emotional elegance.',
@@ -34,8 +36,11 @@ export const metadata: Metadata = {
     title: 'SIREN TEARS',
     description:
       'Natural crystal jewelry shaped by quality and timeless aesthetics.',
-    type: 'website'
-  }
+    type: 'website',
+    siteName: 'SIREN TEARS',
+    images: [{ url: '/logo/icon-512.png', width: 512, height: 512, alt: 'SIREN TEARS' }]
+  },
+  twitter: { card: 'summary', title: 'SIREN TEARS', description: 'Natural crystal jewelry, made slowly by the southern sea.', images: ['/logo/icon-512.png'] }
 };
 
 export function generateStaticParams() {
@@ -124,6 +129,18 @@ export default async function LocaleLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'SIREN TEARS',
+            url: 'https://siren-tears.vercel.app',
+            logo: 'https://siren-tears.vercel.app/logo/icon-512.png'
+          })
+        }}
+      />
       <CurrencyProvider>
         <BagProvider>
           <WishlistProvider>
@@ -140,6 +157,7 @@ export default async function LocaleLayout({
           <RevealOnScroll />
           <main className="pt-7">{children}</main>
           <Footer data={localizedFooterSettings} labels={footerLabels} />
+          <LocationCurrencyPrompt />
           <AuthGateModal />
           <TawkChat />
           <BagDrawer />

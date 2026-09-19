@@ -29,16 +29,22 @@ export default function AuthGateModal() {
           // Small delay so it doesn't fight the initial page paint/hero animation.
           setTimeout(() => {
             if (!cancelled) setVisible(true);
-          }, 1200);
+          }, 900);
         }
       } catch {
         /* fail silently — never block browsing over a network hiccup */
       }
     }
-    check();
+    const locationDone = localStorage.getItem('sirentears_location_confirmed');
+    if (locationDone) {
+      window.setTimeout(check, 1800);
+    } else {
+      window.addEventListener('sirentears:location-complete', check, { once: true });
+    }
 
     return () => {
       cancelled = true;
+      window.removeEventListener('sirentears:location-complete', check);
     };
   }, []);
 

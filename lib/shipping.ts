@@ -88,3 +88,50 @@ export function calculateShipping(params: { subtotal: number; country?: string; 
 export function freeShippingThreshold(isMember?: boolean): number {
   return isMember ? FREE_SHIPPING_THRESHOLD_MEMBER_NZD : FREE_SHIPPING_THRESHOLD_STANDARD_NZD;
 }
+
+/** Uses NZ Post Rate Finder when NZPOST_RATEFINDER_API_KEY is configured. */
+export async function getShippingQuote(params: {
+  subtotal: number;
+  country?: string;
+  postcode?: string;
+  isMember?: boolean;
+}): Promise<ShippingQuote> {
+  const fallback = calculateShipping(params);
+  if (fallback.cost === 0) return fallback;
+  const apiKey = process.env.NZPOST_RATEFINDER_API_KEY;
+  if (!apiKey) return fallback;
+
+  const { COUNTRIES } = await import('./countries');
+  const countryInput = (params.country || '').trim().toLowerCase();
+  const countryCode = COUNTRIES.find((item) => item.code.toLowerCase() === countryInput || item.name.toLowerCase() === countryInput)?.code;
+  if (!countryCode) return fallback;
+
+  const length = process.env.NZPOST_PARCEL_LENGTH_MM || '250';
+  const height = process.env.NZPOST_PARCEL_HEIGHT_MM || '80';
+  const width = process.env.NZPOST_PARCEL_WIDTH_MM || '180';
+  const weightKg = process.env.NZPOST_PARCEL_WEIGHT_KG || '0.5';
+
+  try {
+    let url: URL;
+    if (countryCode === 'NZ') {
+      url = new URL('https://api.nzpost.co.nz/ratefinder/domestic/rating/v2');
+      Object.entries({ api_key: apiKey, length_in_millimetres: length, width_in_millimetres: width, height_in_millimetres: height, weight_in_grams: String(Math.round(Number(weightKg) * 1000)), source_postcode: process.env.NZPOST_SOURCE_POSTCODE || '', dest_postcode: params.postcode || '', postage_type: 'postage_only', format: 'json' }).forEach(([key, value]) => value && url.searchParams.set(key, value));
+    } else {
+      url = new URL('https://api.nzpost.co.nz/ratefinder/international.json');
+      Object.entries({ api_key: apiKey, country_code: countryCode, value: String(params.subtotal), length, height, thickness: width, weight: weightKg, format: 'json' }).forEach(([key, value]) => url.searchParams.set(key, value));
+    }
+    const response = await fetch(url, { cache: 'no-store' });
+    if (!response.ok) return fallback;
+    const data = await response.json();
+    const products = Array.isArray(data?.products) ? data.products : [];
+    const priced = products.map((product: any) => ({
+      product,
+      price: Number(product.price_including_gst ?? product.price ?? product.cost)
+    })).filter((entry: any) => Number.isFinite(entry.price) && entry.price >= 0).sort((a: any, b: any) => a.price - b.price);
+    if (!priced.length) return fallback;
+    const chosen = priced[0];
+    return { method: chosen.product.code || chosen.product.service || 'nzpost_live', label: `NZ Post — ${chosen.product.group || chosen.product.name || chosen.product.description || 'Standard'}`, cost: chosen.price };
+  } catch {
+    return fallback;
+  }
+}
