@@ -43,15 +43,15 @@ export default function LocationCurrencyPrompt() {
         <div className="flex items-start justify-between gap-5">
           <div>
             <p className="eyebrow mb-2">Siren Tears · New Zealand</p>
-            <h2 className="serif-display text-[1.35rem] font-light text-charcoal">Visiting from {countryName}?</h2>
+            <h2 className="serif-display text-[1.35rem] font-light text-charcoal">Confirm your location</h2>
           </div>
           <button onClick={() => finish(false)} aria-label="Close" className="text-xl leading-none text-charcoal/45">×</button>
         </div>
         <p className="mt-3 text-[0.8rem] leading-[1.65] text-ash font-light">
-          Confirm your location to view the store in your preferred currency. Prices remain based in NZD.
+          You are visiting SIREN TEARS from {countryName}. Please confirm your location to view prices in your preferred currency.
         </p>
         <button onClick={() => finish(true)} className="mt-5 w-full bg-charcoal text-ivory py-3 text-[10px] tracking-[0.22em] uppercase">
-          Use {currency}
+          Continue in {currency}
         </button>
         <button onClick={() => finish(false)} className="mt-2 w-full border border-charcoal/30 py-3 text-[10px] tracking-[0.22em] uppercase text-charcoal">
           Continue in NZD

@@ -77,11 +77,11 @@ export default function TawkChat() {
         type="button"
         onClick={() => window.Tawk_API?.toggle?.()}
         aria-label={t('chatCta')}
-        className={`fixed right-4 bottom-5 md:right-7 md:bottom-7 z-40 bg-ivory text-charcoal border border-charcoal/20 shadow-[0_10px_35px_rgba(38,35,31,0.14)] text-[9px] tracking-[0.22em] uppercase font-light py-3 px-4 hover:bg-charcoal hover:text-ivory transition-all duration-300 ${
-          visible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0 pointer-events-none'
+        className={`fixed right-0 top-1/2 -translate-y-1/2 z-40 bg-charcoal text-ivory text-[10px] tracking-[0.28em] uppercase font-light py-4 px-2.5 [writing-mode:vertical-rl] hover:bg-charcoal/90 transition-all duration-300 ${
+          visible ? 'translate-x-0 opacity-100' : 'translate-x-full opacity-0 pointer-events-none'
         }`}
       >
-        <span className="mr-2 text-gold">●</span>{t('chatCta')}
+        {t('chatCta')}
       </button>
     </>
   );

@@ -521,6 +521,14 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
                 {purchases.map((p, i) => {
                   const key = p._id || String(i);
                   const isOpen = expandedOrder === key;
+                  const progressStep = p.shippingStatus === 'delivered'
+                    ? 3
+                    : p.shippingStatus === 'shipped'
+                      ? 2
+                      : p.orderStatus === 'processing' || p.orderStatus === 'completed'
+                        ? 1
+                        : 0;
+                  const progressLabels = ['Payment confirmed', 'Preparing', 'Shipped', 'Delivered'];
                   return (
                   <li key={key} className="border-b border-charcoal/10 pb-5 text-[0.85rem] font-light">
                     <button
@@ -547,6 +555,20 @@ export default function AccountLookupForm({ view = 'profile' }: { view?: 'profil
                         <span className="text-ash/50 text-[10px]">{isOpen ? '▲' : '▼'}</span>
                       </span>
                     </button>
+
+                    <div className="mb-5 grid grid-cols-4" aria-label={`Order progress: ${progressLabels[progressStep]}`}>
+                      {progressLabels.map((label, step) => (
+                        <div key={label} className="relative text-center">
+                          {step > 0 && (
+                            <span className={`absolute top-[5px] right-1/2 w-full h-px ${step <= progressStep ? 'bg-gold' : 'bg-charcoal/15'}`} />
+                          )}
+                          <span className={`relative z-[1] mx-auto block w-[11px] h-[11px] rounded-full border ${step <= progressStep ? 'bg-gold border-gold' : 'bg-ivory border-charcoal/25'}`} />
+                          <span className={`mt-2 block text-[8px] md:text-[9px] tracking-[0.08em] uppercase leading-tight ${step <= progressStep ? 'text-charcoal' : 'text-ash/45'}`}>
+                            {label}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
 
                     <ul className="space-y-2.5 mb-3">
                       {(p.items && p.items.length ? p.items : [{ productName: p.productName }]).map((item, j) => (
