@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import ReliableAutoplayVideo from './ReliableAutoplayVideo';
 
 type PhilosophyData = {
   sectionLabel?: string;
@@ -16,60 +17,8 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
   // isn't enough. Track whether it's genuinely confirmed playing, and
   // give up on it (falling back to the plain texture) if it hasn't
   // started within a few seconds.
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [videoWorking, setVideoWorking] = useState(false);
-  const [videoGaveUp, setVideoGaveUp] = useState(false);
-  const videoWorkingRef = useRef(false);
-  const showVideo = Boolean(data.videoUrl) && videoWorking && !videoGaveUp;
-
-  useEffect(() => {
-    if (!data.videoUrl) return;
-    const timer = setTimeout(() => {
-      // Read from the ref, not the videoWorking state captured when this
-      // effect first ran -- that closed-over value would always be false
-      // here regardless of what actually happened since, which was
-      // unconditionally forcing the video to give up after 4s every time.
-      if (!videoWorkingRef.current) setVideoGaveUp(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [data.videoUrl]);
-
-  useEffect(() => {
-    // Mobile browsers commonly pause a background video when the tab/app
-    // goes into the background to save power, and don't resume it on
-    // their own. A plain .play() often isn't enough on its own -- after a
-    // longer time in the background, the browser can fully release the
-    // decoded video buffer (not just pause it), leaving it stuck/frozen
-    // rather than actually resuming. Detect that by checking a moment
-    // after .play() whether it's actually progressing, and reload the
-    // source if not.
-    const el = videoRef.current;
-    if (!el) return;
-    const onVisible = () => {
-      if (document.visibilityState !== 'visible') return;
-      // Don't gate on el.paused -- on iOS in particular, a video the
-      // browser has suspended in the background can still report
-      // paused === false even though it's visually frozen on a static
-      // frame, so checking that first was skipping the recovery
-      // entirely. Just check whether time is actually progressing.
-      const timeBefore = el.currentTime;
-      el.play().catch(() => undefined);
-      setTimeout(() => {
-        if (el.paused || el.currentTime === timeBefore) {
-          el.load();
-          el.play().catch(() => undefined);
-        }
-      }, 600);
-    };
-    document.addEventListener('visibilitychange', onVisible);
-    window.addEventListener('focus', onVisible);
-    window.addEventListener('pageshow', onVisible);
-    return () => {
-      document.removeEventListener('visibilitychange', onVisible);
-      window.removeEventListener('focus', onVisible);
-      window.removeEventListener('pageshow', onVisible);
-    };
-  }, [showVideo]);
+  const showVideo = Boolean(data.videoUrl) && videoWorking;
 
   return (
     <section className="relative bg-pearl text-charcoal py-20 md:py-28 px-6 md:px-12 overflow-hidden">
@@ -80,22 +29,13 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           background: 'linear-gradient(180deg, rgba(38,35,31,0.5) 0%, rgba(255,255,255,0) 100%)'
         }}
       />
-      {data.videoUrl && !videoGaveUp && (
-        <video
-          ref={videoRef}
+      {data.videoUrl && (
+        <ReliableAutoplayVideo
           className={`absolute inset-0 w-full h-full object-cover pointer-events-none ${
             showVideo ? '' : 'opacity-0'
           }`}
           src={data.videoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onPlaying={() => {
-            videoWorkingRef.current = true;
-            setVideoWorking(true);
-          }}
-          onError={() => setVideoGaveUp(true)}
+          onPlaybackStart={() => setVideoWorking(true)}
         />
       )}
       {!showVideo && (

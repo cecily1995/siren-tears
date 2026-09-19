@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import ReliableAutoplayVideo from './ReliableAutoplayVideo';
 
 export default function FoundersVideo({
   videoUrl,
@@ -11,70 +12,16 @@ export default function FoundersVideo({
   quote: string;
   signature: string;
 }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
   const [videoWorking, setVideoWorking] = useState(false);
-  const [videoGaveUp, setVideoGaveUp] = useState(false);
-  const videoWorkingRef = useRef(false);
-  const showVideo = Boolean(videoUrl) && videoWorking && !videoGaveUp;
-
-  useEffect(() => {
-    if (!videoUrl) return;
-    const timer = setTimeout(() => {
-      if (!videoWorkingRef.current) setVideoGaveUp(true);
-    }, 4000);
-    return () => clearTimeout(timer);
-  }, [videoUrl]);
-
-  useEffect(() => {
-    // Same robust resume as Philosophy's background video: a plain .play()
-    // isn't always enough after a long time backgrounded (the browser can
-    // fully release the decoded buffer, not just pause it) -- reload the
-    // source if it isn't actually progressing shortly after we ask it to
-    // resume.
-    const el = videoRef.current;
-    if (!el) return;
-    const onVisible = () => {
-      if (document.visibilityState !== 'visible') return;
-      // Don't gate on el.paused -- on iOS in particular, a video the
-      // browser has suspended in the background can still report
-      // paused === false even though it's visually frozen on a static
-      // frame, so checking that first was skipping the recovery
-      // entirely. Just check whether time is actually progressing.
-      const timeBefore = el.currentTime;
-      el.play().catch(() => undefined);
-      setTimeout(() => {
-        if (el.paused || el.currentTime === timeBefore) {
-          el.load();
-          el.play().catch(() => undefined);
-        }
-      }, 600);
-    };
-    document.addEventListener('visibilitychange', onVisible);
-    window.addEventListener('focus', onVisible);
-    window.addEventListener('pageshow', onVisible);
-    return () => {
-      document.removeEventListener('visibilitychange', onVisible);
-      window.removeEventListener('focus', onVisible);
-      window.removeEventListener('pageshow', onVisible);
-    };
-  }, [showVideo]);
+  const showVideo = Boolean(videoUrl) && videoWorking;
 
   return (
     <div className="relative aspect-[4/5] max-w-[420px] md:max-w-[640px] mx-auto overflow-hidden bg-charcoal">
-      {videoUrl && !videoGaveUp && (
-        <video
-          ref={videoRef}
+      {videoUrl && (
+        <ReliableAutoplayVideo
           className={`absolute inset-0 w-full h-full object-cover ${showVideo ? '' : 'opacity-0'}`}
           src={videoUrl}
-          autoPlay
-          muted
-          loop
-          playsInline
-          onPlaying={() => {
-            videoWorkingRef.current = true;
-            setVideoWorking(true);
-          }}
-          onError={() => setVideoGaveUp(true)}
+          onPlaybackStart={() => setVideoWorking(true)}
         />
       )}
       {!showVideo && (

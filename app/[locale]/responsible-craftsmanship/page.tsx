@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getResponsibleCraftsmanshipSettings } from '@/sanity/lib/queries';
 import SquareImageStrip from '@/components/SquareImageStrip';
 import TextOverlayCarousel from '@/components/TextOverlayCarousel';
+import ReliableAutoplayVideo from '@/components/ReliableAutoplayVideo';
 
 export async function generateMetadata({
   params
@@ -162,12 +163,8 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
       <div className="mb-8 md:mb-10">
         <div className="relative aspect-[16/9] w-full overflow-hidden bg-charcoal/5">
           {media?.oneOfOneVideoUrl ? (
-            <video
+            <ReliableAutoplayVideo
               src={media.oneOfOneVideoUrl}
-              autoPlay
-              muted
-              loop
-              playsInline
               className="absolute inset-0 w-full h-full object-cover"
             />
           ) : (
