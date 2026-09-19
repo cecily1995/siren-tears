@@ -526,7 +526,15 @@
     "recipientLabel": "수령인",
     "phoneLabel": "전화번호",
     "addressLabel": "배송 주소",
-    "itemCountLabel": "상품 수"
+    "itemCountLabel": "상품 수",
+    "howOrderWorksTitle": "주문 진행 방식",
+    "step1": "주문하기",
+    "step2": "실물 사진/영상 촬영",
+    "step3": "고객님 확인",
+    "step4": "이후 발송",
+    "seePieceTitle": "See Your Piece Before It Leaves Us",
+    "myOrdersEyebrow": "내 주문",
+    "noOrdersShopCta": "컬렉션 보러 가기"
   },
   "wornByYouTeaser": {
     "eyebrow": "고객 착용 사진",

@@ -526,7 +526,15 @@
     "recipientLabel": "Получатель",
     "phoneLabel": "Телефон",
     "addressLabel": "Адрес доставки",
-    "itemCountLabel": "Товары"
+    "itemCountLabel": "Товары",
+    "howOrderWorksTitle": "Как проходит ваш заказ",
+    "step1": "Вы оформляете заказ",
+    "step2": "Мы фотографируем и снимаем на видео сам предмет",
+    "step3": "Вы подтверждаете",
+    "step4": "Только после этого он отправляется",
+    "seePieceTitle": "See Your Piece Before It Leaves Us",
+    "myOrdersEyebrow": "Мои Заказы",
+    "noOrdersShopCta": "Смотреть Коллекцию"
   },
   "wornByYouTeaser": {
     "eyebrow": "Наши изделия в жизни",

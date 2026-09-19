@@ -243,7 +243,7 @@ export default function Navigation({
             {t('enquire')}
           </Link>
           <Link
-            href="/account"
+            href="/account/orders"
             className={`hidden md:inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
               scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
             }`}

@@ -526,7 +526,15 @@
     "recipientLabel": "收件人",
     "phoneLabel": "电话",
     "addressLabel": "收货地址",
-    "itemCountLabel": "商品数量"
+    "itemCountLabel": "商品数量",
+    "howOrderWorksTitle": "订单如何进行",
+    "step1": "你下单",
+    "step2": "我们为实物拍照/拍视频",
+    "step3": "你确认",
+    "step4": "才发货",
+    "seePieceTitle": "See Your Piece Before It Leaves Us",
+    "myOrdersEyebrow": "我的订单",
+    "noOrdersShopCta": "去选购"
   },
   "wornByYouTeaser": {
     "eyebrow": "买家秀",

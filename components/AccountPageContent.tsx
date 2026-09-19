@@ -4,26 +4,20 @@ import { useEffect, useState } from 'react';
 import PageHeader from './PageHeader';
 import AccountLookupForm from './AccountLookupForm';
 
-// Mirrors exactly how the Wishlist page handles this: a light header
-// (eyebrow + title only, no intro/background image, no extra section
-// padding) when there's a login screen to show, versus the full header
-// when the account/orders view is showing. Previously this page always
-// rendered the full header regardless of login state, which is why the
-// login screen reached from here had so much more space above it than
-// the one reached from Wishlist -- title/intro/image plus generous
-// section padding, then the login form's own heading on top of that.
+// This page (My Siren / profile) now shows only personal info, member
+// code, tier and benefits -- orders moved to their own page/component
+// (OrdersPageContent). Header padding halved from the original
+// PageHeader treatment per the request, using a compact custom header
+// (same approach as Wishlist) rather than changing PageHeader itself,
+// which is shared by many other pages.
 export default function AccountPageContent({
   eyebrow,
   title,
-  intro,
-  imageUrl,
-  imageAlt
+  intro
 }: {
   eyebrow: string;
   title: string;
   intro: string;
-  imageUrl: string;
-  imageAlt: string;
 }) {
   const [checked, setChecked] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
@@ -53,7 +47,7 @@ export default function AccountPageContent({
       <>
         <PageHeader eyebrow={eyebrow} title={title} />
         <section className="bg-ivory px-6 md:px-12">
-          <AccountLookupForm />
+          <AccountLookupForm view="profile" />
         </section>
       </>
     );
@@ -61,10 +55,14 @@ export default function AccountPageContent({
 
   return (
     <>
-      <PageHeader eyebrow={eyebrow} title={title} intro={intro} imageUrl={imageUrl} imageAlt={imageAlt} />
-      <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
+      <div className="px-6 md:px-12 pt-14 md:pt-16 pb-4 md:pb-6 max-w-[900px] mx-auto text-left">
+        <p className="eyebrow mb-3">{eyebrow}</p>
+        <h1 className="serif-display text-[1.7rem] md:text-[2rem] font-light text-charcoal">{title}</h1>
+        {intro && <p className="mt-3 text-[0.9rem] leading-[1.8] text-ash font-light max-w-lg">{intro}</p>}
+      </div>
+      <section className="bg-ivory px-6 md:px-12 py-10 md:py-14">
         <div className="mx-auto max-w-[900px]">
-          <AccountLookupForm />
+          <AccountLookupForm view="profile" />
         </div>
       </section>
     </>

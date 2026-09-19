@@ -526,7 +526,15 @@
     "recipientLabel": "Empfänger",
     "phoneLabel": "Telefon",
     "addressLabel": "Lieferadresse",
-    "itemCountLabel": "Artikel"
+    "itemCountLabel": "Artikel",
+    "howOrderWorksTitle": "So funktioniert Ihre Bestellung",
+    "step1": "Sie geben Ihre Bestellung auf",
+    "step2": "Wir fotografieren und filmen das tatsächliche Stück",
+    "step3": "Sie bestätigen es",
+    "step4": "Erst dann wird es versandt",
+    "seePieceTitle": "See Your Piece Before It Leaves Us",
+    "myOrdersEyebrow": "Meine Bestellungen",
+    "noOrdersShopCta": "Kollektion Entdecken"
   },
   "wornByYouTeaser": {
     "eyebrow": "Getragen von Ihnen",

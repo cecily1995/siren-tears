@@ -170,7 +170,7 @@ function EditProfileForm({
   );
 }
 
-export default function AccountLookupForm() {
+export default function AccountLookupForm({ view = 'profile' }: { view?: 'profile' | 'orders' }) {
   const t = useTranslations('account');
   const [checking, setChecking] = useState(true);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -350,6 +350,7 @@ export default function AccountLookupForm() {
 
     return (
       <div>
+        {view === 'profile' && (
         <div className="border border-charcoal/12 bg-ivory p-8 md:p-10">
           <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
             <div>
@@ -414,7 +415,60 @@ export default function AccountLookupForm() {
             </div>
           )}
         </div>
+        )}
 
+        {view === 'orders' && (
+          <div className="mb-10">
+            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-charcoal/10">
+              <div>
+                <p className="eyebrow mb-2">{t('myOrdersEyebrow')}</p>
+                <h2 className="serif-display text-[1.4rem] font-light text-charcoal">
+                  {member.firstName} {member.lastName}
+                </h2>
+              </div>
+              {member.isMember ? (
+                <span className="text-[0.85rem] text-ash font-light">
+                  {t('memberCodeLabel')}: <span className="text-gold">{member.memberCode}</span>
+                </span>
+              ) : (
+                <a
+                  href="/membership"
+                  className="text-[11px] tracking-[0.28em] uppercase text-ivory bg-charcoal px-6 py-3"
+                >
+                  {t('joinCircleCta')}
+                </a>
+              )}
+            </div>
+
+            <div className="mt-10">
+              <p className="eyebrow mb-6 text-center">{t('howOrderWorksTitle')}</p>
+              <div className="flex flex-col items-center gap-3 max-w-xs mx-auto text-center">
+                {[t('step1'), t('step2'), t('step3'), t('step4')].map((step, i, arr) => (
+                  <div key={i} className="w-full">
+                    <p className="text-[0.85rem] text-charcoal font-light">{step}</p>
+                    {i < arr.length - 1 && <p className="text-ash/40 mt-3 mb-0">↓</p>}
+                  </div>
+                ))}
+              </div>
+              <p className="serif-display text-[1.1rem] font-light text-charcoal text-center mt-8">
+                {t('seePieceTitle')}
+              </p>
+            </div>
+          </div>
+        )}
+
+        {view === 'orders' && purchases.length === 0 && bespokeRequests.length === 0 && (
+          <div className="text-center py-6">
+            <a
+              href="/shop"
+              className="inline-block text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+            >
+              {t('noOrdersShopCta')}
+            </a>
+          </div>
+        )}
+
+        {view === 'orders' && (purchases.length > 0 || bespokeRequests.length > 0) && (
         <div className="mt-10 grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <p className="eyebrow mb-4">{t('myBespokeTitle')}</p>
@@ -559,6 +613,7 @@ export default function AccountLookupForm() {
             )}
           </div>
         </div>
+        )}
       </div>
     );
   }

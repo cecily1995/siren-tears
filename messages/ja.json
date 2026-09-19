@@ -526,7 +526,15 @@
     "recipientLabel": "受取人",
     "phoneLabel": "電話番号",
     "addressLabel": "お届け先住所",
-    "itemCountLabel": "点数"
+    "itemCountLabel": "点数",
+    "howOrderWorksTitle": "ご注文の流れ",
+    "step1": "ご注文いただく",
+    "step2": "実物の写真・動画を撮影",
+    "step3": "ご確認いただく",
+    "step4": "その後、発送",
+    "seePieceTitle": "See Your Piece Before It Leaves Us",
+    "myOrdersEyebrow": "ご注文履歴",
+    "noOrdersShopCta": "コレクションを見る"
   },
   "wornByYouTeaser": {
     "eyebrow": "お客様の着用写真",

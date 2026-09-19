@@ -250,7 +250,7 @@ export default function MobileMenu({
             )}
           </Link>
           <Link
-            href="/account"
+            href="/account/orders"
             onClick={closeAll}
             className="text-[11px] tracking-[0.32em] uppercase text-ash"
           >
