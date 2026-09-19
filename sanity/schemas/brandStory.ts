@@ -8,8 +8,15 @@ export default defineType({
     defineField({ name: 'eyebrow', type: 'string', initialValue: 'Our Story' }),
     defineField({ name: 'title', type: 'string' }),
     defineField({
+      name: 'body',
+      title: 'Story text (supports bold)',
+      description: 'Use the toolbar to apply bold text. This replaces the legacy paragraphs below when filled in.',
+      type: 'array',
+      of: [{ type: 'block', styles: [{ title: 'Normal', value: 'normal' }], lists: [] }]
+    }),
+    defineField({
       name: 'paragraphs',
-      title: 'Paragraphs',
+      title: 'Legacy paragraphs (fallback)',
       type: 'array',
       of: [{ type: 'text', rows: 4 }]
     }),

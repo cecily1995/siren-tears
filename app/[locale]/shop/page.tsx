@@ -38,7 +38,11 @@ export default async function ShopPage({
   // English on a non-English locale. Cached 30 days per (text, locale) in
   // translateText, so this only costs real translation calls once.
   const items = await Promise.all(
-    rawItems.map(async (p: any) => ({ ...p, name: await translateText(p.name, locale) }))
+    rawItems.map(async (p: any) => ({
+      ...p,
+      name: await translateText(p.name, locale),
+      stone: await translateText(p.stone, locale)
+    }))
   );
   const collectionNames = (collections?.length ? collections : fallback.collections).map(
     (c: any) => c.title

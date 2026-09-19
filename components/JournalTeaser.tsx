@@ -24,7 +24,7 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
         </h2>
       </div>
 
-      <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 overflow-x-auto px-6 md:px-12 pb-2 snap-x snap-mandatory no-scrollbar">
+      <div className="flex md:grid md:grid-cols-3 gap-5 md:gap-8 overflow-x-auto px-0 md:px-12 pb-2 snap-x snap-mandatory no-scrollbar">
         {items.slice(0, 6).map((a, i) => (
           <Link
             key={a._id}
@@ -43,7 +43,7 @@ export default function JournalTeaser({ items, labels }: { items: Article[]; lab
                 />
               )}
             </div>
-            <div className="mt-4">
+            <div className="mt-4 px-6 md:px-0">
               {a.category && (
                 <p className="text-[10px] tracking-[0.24em] uppercase text-gold/80 mb-2 font-light">
                   {a.category}

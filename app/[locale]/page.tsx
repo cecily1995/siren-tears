@@ -123,13 +123,19 @@ export default async function HomePage({
     cta: t('newArrivals.cta')
   };
 
-  const allCollections = collections?.length ? collections : fallback.collections;
+  const rawCollections = collections?.length ? collections : fallback.collections;
+  const allCollections = await Promise.all(rawCollections.map(async (collection: any) => ({
+    ...collection,
+    originalTitle: collection.title,
+    title: await translateText(collection.title, locale),
+    subtitle: await translateText(collection.subtitle, locale)
+  })));
   const homepageCollections =
     allCollections
-      .filter((c: any) => HOMEPAGE_COLLECTION_TITLES.includes(c.title))
+      .filter((c: any) => HOMEPAGE_COLLECTION_TITLES.includes(c.originalTitle))
       .sort(
         (a: any, b: any) =>
-          HOMEPAGE_COLLECTION_TITLES.indexOf(a.title) - HOMEPAGE_COLLECTION_TITLES.indexOf(b.title)
+          HOMEPAGE_COLLECTION_TITLES.indexOf(a.originalTitle) - HOMEPAGE_COLLECTION_TITLES.indexOf(b.originalTitle)
       ) || [];
   const collectionsLabels = {
     eyebrow: t('collections.eyebrow'),
@@ -180,7 +186,13 @@ export default async function HomePage({
     imageAlt: fallback.atelier.imageAlt
   };
 
-  const journalItems = journal?.length ? journal : fallback.journal;
+  const rawJournalItems = journal?.length ? journal : fallback.journal;
+  const journalItems = await Promise.all(rawJournalItems.map(async (item: any) => ({
+    ...item,
+    title: await translateText(item.title, locale),
+    category: await translateText(item.category, locale),
+    excerpt: await translateText(item.excerpt, locale)
+  })));
   const journalLabels = {
     eyebrow: t('journal.eyebrow'),
     title: t('journal.title'),

@@ -128,7 +128,15 @@ export default async function LocaleLayout({
         <BagProvider>
           <WishlistProvider>
           <PageVeil />
-          <Navigation searchPanelTiles={searchPanelTiles} collectionNames={collectionNames} />
+          <Navigation
+            searchPanelTiles={searchPanelTiles}
+            collectionNames={collectionNames}
+            announcementItems={settings?.announcementItems?.length ? settings.announcementItems : [
+              { text: 'NEW ONE-OF-ONE ARRIVALS | SHOP NOW', href: '/new-arrivals' },
+              { text: 'FIND THE STONE OF YOUR MONTH | SHOP BIRTHSTONES', href: '/shop?q=birthstone' },
+              { text: 'AOTEAROA GEMSTONE JEWELLERY | WORN BY THE SEA', href: '/shop?line=aotearoa' }
+            ]}
+          />
           <RevealOnScroll />
           <main>{children}</main>
           <Footer data={localizedFooterSettings} labels={footerLabels} />

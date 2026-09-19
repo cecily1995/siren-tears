@@ -13,6 +13,13 @@ import Money from '@/components/Money';
 
 export const revalidate = 60;
 
+const DEFAULT_PACKAGING = `Every SIREN TEARS jewelry comes with a complete gift set:
+• Dark brown premium jewelry box
+• Brand paper gift bag
+• Champagne silk storage pouch
+• Brand greeting card
+The full gift set is ready for gifting. Please store your crystal in the silk pouch after use to prevent scratches and impacts.`;
+
 
 async function resolveProduct(slug: string) {
   const fromSanity = await getShopProductBySlug(slug);
@@ -52,7 +59,7 @@ export default async function ShopProductPage({
       stoneStory: product.stoneStory,
       pieceStory: product.pieceStory,
       materialsCare: product.materialsCare,
-      packagingDescription: product.packagingDescription,
+      packagingDescription: product.packagingDescription || DEFAULT_PACKAGING,
       material: product.material,
       length: product.length,
       craftedIn: product.craftedIn
@@ -192,7 +199,7 @@ export default async function ShopProductPage({
 
               {(translated.packagingDescription || product.packagingImageUrl) && (
                 <ProductAccordionSection title={t('packagingTitle')}>
-                  {translated.packagingDescription && <p className="mb-4">{translated.packagingDescription}</p>}
+                  {translated.packagingDescription && <p className="mb-4 whitespace-pre-line">{translated.packagingDescription}</p>}
                   {product.packagingImageUrl && (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img

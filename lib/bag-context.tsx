@@ -15,6 +15,9 @@ type BagContextValue = {
   items: BagItem[];
   addItem: (item: BagItem) => void;
   removeItem: (productId: string) => void;
+  selectedIds: string[];
+  selectedItems: BagItem[];
+  toggleSelected: (productId: string) => void;
   clear: () => void;
   isOpen: boolean;
   open: () => void;
@@ -31,12 +34,17 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [justAdded, setJustAdded] = useState<string | null>(null);
   const [hydrated, setHydrated] = useState(false);
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   // Load from localStorage once on mount.
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setItems(JSON.parse(raw));
+      if (raw) {
+        const stored: BagItem[] = JSON.parse(raw);
+        setItems(stored);
+        setSelectedIds(stored.map((item) => item.productId));
+      }
     } catch {
       /* ignore corrupt storage */
     } finally {
@@ -60,20 +68,26 @@ export function BagProvider({ children }: { children: React.ReactNode }) {
       if (prev.some((i) => i.productId === item.productId)) return prev; // one-of-one, no duplicates
       return [...prev, item];
     });
+    setSelectedIds((prev) => prev.includes(item.productId) ? prev : [...prev, item.productId]);
     setJustAdded(item.productId);
     setTimeout(() => setJustAdded((cur) => (cur === item.productId ? null : cur)), 2500);
   }, []);
 
   const removeItem = useCallback((productId: string) => {
     setItems((prev) => prev.filter((i) => i.productId !== productId));
+    setSelectedIds((prev) => prev.filter((id) => id !== productId));
   }, []);
 
-  const clear = useCallback(() => setItems([]), []);
+  const clear = useCallback(() => { setItems([]); setSelectedIds([]); }, []);
+  const toggleSelected = useCallback((productId: string) => {
+    setSelectedIds((prev) => prev.includes(productId) ? prev.filter((id) => id !== productId) : [...prev, productId]);
+  }, []);
+  const selectedItems = items.filter((item) => selectedIds.includes(item.productId));
   const open = useCallback(() => setIsOpen(true), []);
   const close = useCallback(() => setIsOpen(false), []);
 
   return (
-    <BagContext.Provider value={{ items, addItem, removeItem, clear, isOpen, open, close, justAdded }}>
+    <BagContext.Provider value={{ items, selectedIds, selectedItems, toggleSelected, addItem, removeItem, clear, isOpen, open, close, justAdded }}>
       {children}
     </BagContext.Provider>
   );

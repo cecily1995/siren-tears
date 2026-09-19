@@ -8,6 +8,7 @@ import MobileMenu from './MobileMenu';
 import BagIcon from './BagIcon';
 import WishlistIcon from './WishlistIcon';
 import MobileSearchPanel from './MobileSearchPanel';
+import AnnouncementBar, { type AnnouncementItem } from './AnnouncementBar';
 
 const SHOP_CATEGORIES = [
   { key: 'rings', category: 'ring' },
@@ -73,10 +74,12 @@ function NavDropdown({
 
 export default function Navigation({
   searchPanelTiles,
-  collectionNames
+  collectionNames,
+  announcementItems = []
 }: {
   searchPanelTiles?: { href?: string; imageUrl?: string; title?: string; ctaLabel?: string }[];
   collectionNames: string[];
+  announcementItems?: AnnouncementItem[];
 }) {
   const t = useTranslations('nav');
   const tShop = useTranslations('shop');
@@ -112,8 +115,9 @@ export default function Navigation({
 
   return (
     <>
+    {isHome && <AnnouncementBar items={announcementItems} />}
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-700 ease-editorial ${
+      className={`fixed ${isHome ? 'top-7' : 'top-0'} inset-x-0 z-50 transition-all duration-700 ease-editorial ${
         scrolled
           ? 'bg-ivory border-b border-charcoal/10 py-4'
           : 'bg-transparent py-6'

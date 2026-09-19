@@ -30,7 +30,7 @@ type MemberPrefill = {
 };
 
 export default function CheckoutForm() {
-  const { items } = useBag();
+  const { selectedItems: items } = useBag();
   const t = useTranslations('checkout');
   const tBag = useTranslations('bag');
   const locale = useLocale();

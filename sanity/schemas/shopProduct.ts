@@ -150,8 +150,9 @@ export default defineType({
       name: 'packagingDescription',
       title: 'Packaging description',
       type: 'text',
-      rows: 3,
-      description: 'Shown in the "Packaging" section on the product page.',
+      rows: 7,
+      initialValue: 'Every SIREN TEARS jewelry comes with a complete gift set:\n• Dark brown premium jewelry box\n• Brand paper gift bag\n• Champagne silk storage pouch\n• Brand greeting card\nThe full gift set is ready for gifting. Please store your crystal in the silk pouch after use to prevent scratches and impacts.',
+      description: 'Line breaks and bullet points are preserved exactly on the product page.',
       group: 'media'
     }),
     defineField({

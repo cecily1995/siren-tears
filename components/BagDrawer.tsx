@@ -9,12 +9,12 @@ import ShippingNote from './ShippingNote';
 import Money from './Money';
 
 export default function BagDrawer() {
-  const { items, removeItem, isOpen, close } = useBag();
+  const { items, selectedIds, selectedItems, toggleSelected, removeItem, isOpen, close } = useBag();
   const t = useTranslations('bag');
 
   if (!isOpen) return null;
 
-  const subtotal = items.reduce((sum, i) => sum + (i.price || 0), 0);
+  const subtotal = selectedItems.reduce((sum, i) => sum + (i.price || 0), 0);
 
   return (
     <div className="fixed inset-0 z-[70] flex justify-end" onClick={close}>
@@ -68,7 +68,16 @@ export default function BagDrawer() {
             <div className="flex-1 overflow-y-auto px-6 py-6">
               <ul className="space-y-5 mb-6">
                 {items.map((item) => (
-                  <li key={item.productId} className="flex gap-4">
+                  <li key={item.productId} className={`flex gap-3 transition-opacity ${selectedIds.includes(item.productId) ? '' : 'opacity-45'}`}>
+                    <button
+                      type="button"
+                      onClick={() => toggleSelected(item.productId)}
+                      aria-label={`${selectedIds.includes(item.productId) ? 'Deselect' : 'Select'} ${item.name}`}
+                      aria-pressed={selectedIds.includes(item.productId)}
+                      className="w-4 shrink-0 flex items-start justify-center pt-7 text-[14px] text-charcoal"
+                    >
+                      {selectedIds.includes(item.productId) ? '•' : '○'}
+                    </button>
                     <div className="w-16 h-20 shrink-0 bg-charcoal/5 overflow-hidden">
                       {item.imageUrl && (
                         // eslint-disable-next-line @next/next/no-img-element
@@ -110,7 +119,8 @@ export default function BagDrawer() {
               <Link
                 href="/checkout"
                 onClick={close}
-                className="block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5 hover:bg-charcoal/85 transition-colors"
+                aria-disabled={selectedItems.length === 0}
+                className={`block w-full text-center text-[11px] tracking-[0.3em] uppercase text-ivory px-8 py-3.5 transition-colors ${selectedItems.length ? 'bg-charcoal hover:bg-charcoal/85' : 'bg-charcoal/30 pointer-events-none'}`}
               >
                 {t('checkoutCta')}
               </Link>
