@@ -14,7 +14,15 @@ export default defineType({
     }),
     defineField({ name: 'customerName', title: 'Customer name', type: 'string' }),
     defineField({ name: 'customerEmail', title: 'Customer email', type: 'string' }),
+    defineField({ name: 'subject', title: 'Subject', type: 'string' }),
     defineField({ name: 'message', title: 'Message', type: 'text', rows: 4, validation: (r) => r.required() }),
+    defineField({
+      name: 'attachments',
+      title: 'Attachments',
+      type: 'array',
+      of: [{ type: 'file' }],
+      description: 'Photos/files the customer attached (up to 10, 10MB each).'
+    }),
     defineField({
       name: 'status',
       title: 'Status',

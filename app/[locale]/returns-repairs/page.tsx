@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import ReturnsRepairsForm from '@/components/ReturnsRepairsForm';
 
 export async function generateMetadata({
   params
@@ -73,6 +74,14 @@ export default async function ReturnsRepairsPage({ params }: { params: { locale:
 
         <p className={`${body} mt-7`}>{t('closingBody')}</p>
         <p className={`${body} mt-2`}>{t('closingLine')}</p>
+
+        <p className={`${sectionTitle} mt-12`}>{t('contactIntroTitle')}</p>
+        <p className={body}>{t('contactIntroBody1')}</p>
+        <p className={`${body} mt-3`}>{t('contactIntroBody2')}</p>
+
+        <div className="mt-6">
+          <ReturnsRepairsForm />
+        </div>
       </div>
     </div>
   );
