@@ -40,7 +40,7 @@ export default async function CarePage({
         imageAlt="Natural stone, soft light"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
+      <section className="bg-ivory px-6 md:px-12 py-10 md:py-12">
         <div className="mx-auto max-w-[980px]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
             {sections.map((s, i) => (
@@ -51,7 +51,7 @@ export default async function CarePage({
                 <h2 className="serif-display text-[1.5rem] md:text-[1.7rem] font-light leading-tight mb-4 text-charcoal">
                   {s.title}
                 </h2>
-                <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{s.body}</p>
+                <p className="text-[0.95rem] leading-[1.75] text-ash font-light">{s.body}</p>
               </article>
             ))}
           </div>

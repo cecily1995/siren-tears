@@ -23,7 +23,7 @@ export default function CurrentlyAvailable({
   if (!items.length) return null;
 
   return (
-    <section className="bg-pearl py-14 md:py-20 px-6 md:px-12">
+    <section className="bg-pearl py-12 md:py-16 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
         {/* Exactly two lines: the series name, then one short line of copy.
             Nothing else stacked above/below -- no separate eyebrow or

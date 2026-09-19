@@ -19,7 +19,7 @@ export default async function OrderConfirmationPage({
   const order = searchParams?.order ? await getPurchaseRequestByOrderNumber(searchParams.order) : null;
 
   return (
-    <section className="bg-white px-6 md:px-12 pt-40 md:pt-48 pb-28 md:pb-36 min-h-[70vh]">
+    <section className="bg-white px-6 md:px-12 pt-[72px] md:pt-24 pb-16 md:pb-20 min-h-[70vh]">
       <ClearBagOnMount />
       <div className="mx-auto max-w-[560px] text-center">
         <p className="eyebrow mb-5">{t('eyebrow')}</p>

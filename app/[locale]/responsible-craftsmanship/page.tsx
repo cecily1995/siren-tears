@@ -36,7 +36,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-3 md:pb-4">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-3 md:pb-4">
         <h1 className="serif-display text-[clamp(1.5rem,3.2vw,2.1rem)] font-light leading-[1.2] text-charcoal uppercase tracking-[0.02em] text-left">
           {t('pageTitle')}
         </h1>
@@ -124,14 +124,14 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
         <div className="max-w-[560px] text-left">
           <p className="eyebrow mb-2">{madeByHand.title}</p>
           <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeByHand.tagline}</p>
-          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeByHand.body}</p>
+          <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{madeByHand.body}</p>
         </div>
       </div>
       <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal mb-14 md:mb-20">
         <div className="max-w-[560px] text-left">
           <p className="eyebrow mb-2">{madeToOrder.title}</p>
           <p className="text-[0.95rem] font-light text-charcoal mb-2">{madeToOrder.tagline}</p>
-          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{madeToOrder.body}</p>
+          <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{madeToOrder.body}</p>
         </div>
       </div>
 
@@ -151,7 +151,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
         <div className="max-w-[560px] text-left">
           <p className="eyebrow mb-2">{oneOfOne.title}</p>
           <p className="text-[0.95rem] font-light text-charcoal mb-2">{oneOfOne.tagline}</p>
-          <p className="text-[0.85rem] leading-[1.8] text-ash font-light">{oneOfOne.body}</p>
+          <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{oneOfOne.body}</p>
         </div>
       </div>
 
@@ -196,7 +196,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
           <div className="flex-1 text-right reveal">
             <p className="eyebrow mb-2">{signaturePackaging.title}</p>
             <p className="text-[0.95rem] font-light text-charcoal mb-2">{signaturePackaging.tagline}</p>
-            <p className="text-[0.85rem] leading-[1.8] text-ash font-light ml-auto max-w-md">{signaturePackaging.body}</p>
+            <p className="text-[0.85rem] leading-[1.7] text-ash font-light ml-auto max-w-md">{signaturePackaging.body}</p>
           </div>
         </div>
       </div>

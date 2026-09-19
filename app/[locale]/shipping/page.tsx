@@ -44,7 +44,7 @@ export default async function ShippingPage({
         imageAlt="Soft coastal light, New Zealand shoreline"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
+      <section className="bg-ivory px-6 md:px-12 py-10 md:py-12">
         <div className="mx-auto max-w-[980px]">
           <p className="text-center text-[0.85rem] text-ash/70 font-light mb-8 reveal">
             {t('carrierNote')}
@@ -59,7 +59,7 @@ export default async function ShippingPage({
                 <h2 className="serif-display text-[1.5rem] md:text-[1.7rem] font-light leading-tight mb-4 text-charcoal">
                   {s.title}
                 </h2>
-                <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{s.body}</p>
+                <p className="text-[0.95rem] leading-[1.75] text-ash font-light">{s.body}</p>
               </article>
             ))}
           </div>

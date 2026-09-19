@@ -17,12 +17,12 @@ export default async function ReturnsRepairsPage({ params }: { params: { locale:
 
   const t = await getTranslations('returnsRepairsPage');
 
-  const body = 'text-[0.72rem] leading-[1.85] text-ash font-light';
+  const body = 'text-[0.72rem] leading-[1.7] text-ash font-light';
   const sectionTitle = 'text-[0.72rem] tracking-[0.14em] uppercase text-charcoal font-normal mb-2 mt-7';
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-14 md:pb-20 max-w-[720px] mx-auto text-left">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-12 md:pb-16 max-w-[720px] mx-auto text-left">
         <h1 className="serif-display text-[1.6rem] md:text-[2rem] font-normal text-charcoal mb-8">
           {t('title')}
         </h1>

@@ -64,7 +64,7 @@ export default function RequestPurchaseForm({
         <p className="serif-display text-[1.25rem] font-light text-charcoal mb-3">
           {t('successTitle')}
         </p>
-        <p className="text-[0.88rem] leading-[1.8] text-ash font-light">{t('successBody')}</p>
+        <p className="text-[0.88rem] leading-[1.7] text-ash font-light">{t('successBody')}</p>
       </div>
     );
   }

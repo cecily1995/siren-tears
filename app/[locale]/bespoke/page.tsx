@@ -78,7 +78,7 @@ export default async function BespokePage({
       />
 
       {/* Process */}
-      <section className="bg-ivory px-6 md:px-12 py-16 md:py-32">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-20">
         <div className="mx-auto max-w-[1100px]">
           <p className="eyebrow text-center mb-8 md:mb-16">{t('processTitle')}</p>
           <div className="grid grid-cols-4 gap-1.5 md:gap-8">
@@ -91,7 +91,7 @@ export default async function BespokePage({
                   <h3 className="serif-display text-[0.8rem] md:text-[1.3rem] font-light leading-tight mb-1 md:mb-3 text-charcoal">
                     {s.title}
                   </h3>
-                  <p className="hidden sm:block text-[0.6rem] md:text-[0.9rem] leading-[1.4] md:leading-[1.85] text-ash font-light">
+                  <p className="hidden sm:block text-[0.6rem] md:text-[0.9rem] leading-[1.4] md:leading-[1.7] text-ash font-light">
                     {s.body}
                   </p>
                 </article>
@@ -107,7 +107,7 @@ export default async function BespokePage({
       </section>
 
       {/* Prefer to talk first? — positioned before the form as an alternative, not a redundant follow-up */}
-      <section className="bg-sandLight/40 px-6 md:px-12 py-14">
+      <section className="bg-sandLight/40 px-6 md:px-12 py-12 md:py-16">
         <div className="mx-auto max-w-[820px] flex flex-col sm:flex-row items-center justify-center gap-x-10 gap-y-4 text-center sm:text-left reveal">
           <p className="text-[0.9rem] text-ash font-light">{t('contactTitle')}</p>
           <div className="flex items-center gap-8">

@@ -25,13 +25,13 @@ export default function Atelier({ data }: { data: Data }) {
             />
           )}
         </div>
-        <div className="px-6 py-10">
+        <div className="px-6 py-12">
           <AtelierText data={data} align="left" />
         </div>
       </div>
 
       {/* Desktop: original side-by-side layout, image left / text right, text vertically centred against the image so there's no dead space below it. */}
-      <div className="hidden md:block px-12 py-40">
+      <div className="hidden md:block px-12 py-24">
         <div className="mx-auto max-w-[1280px] grid grid-cols-12 gap-16 items-center">
           <div className="col-span-6 reveal">
             <div className="relative aspect-[3/4] overflow-hidden bg-charcoal/5 frame-zoom">
@@ -63,7 +63,7 @@ function AtelierText({ data }: { data: Data; align: 'left' }) {
           {data.title}
         </h2>
       )}
-      <div className="mt-3 md:mt-8 space-y-3 md:space-y-6 text-[0.85rem] md:text-[0.98rem] leading-[1.7] md:leading-[1.95] text-ash font-light">
+      <div className="mt-3 md:mt-5 space-y-3 md:space-y-4 text-[0.85rem] md:text-[0.98rem] leading-[1.65] md:leading-[1.7] text-ash font-light">
         {data.body && <p>{data.body}</p>}
         {(data.paragraphs ?? []).map((p, i) => (
           <p key={i}>{p}</p>
@@ -71,7 +71,7 @@ function AtelierText({ data }: { data: Data; align: 'left' }) {
       </div>
 
       {data.stats && data.stats.length > 0 && (
-        <div className="mt-8 md:mt-14 grid grid-cols-3 gap-4 md:gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-3 gap-4 md:gap-6">
           {data.stats.map((s, i) => (
             <div key={i} className="border-t border-charcoal/15 pt-4 md:pt-5">
               <div className="serif-display text-[1.5rem] md:text-[2.2rem] font-light leading-none text-charcoal">

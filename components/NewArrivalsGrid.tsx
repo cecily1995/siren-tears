@@ -28,14 +28,14 @@ type Labels = {
 export default function NewArrivalsGrid({ items, labels }: { items: Product[]; labels: Labels }) {
   if (!items.length) {
     return (
-      <div className="px-6 md:px-12 py-24 text-center">
+      <div className="px-6 md:px-12 py-14 md:py-20 text-center">
         <p className="text-[0.95rem] text-ash font-light">{labels.empty}</p>
       </div>
     );
   }
 
   return (
-    <div className="px-6 md:px-12 py-14 md:py-20 max-w-[1480px] mx-auto">
+    <div className="px-6 md:px-12 py-12 md:py-16 max-w-[1480px] mx-auto">
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
         {items.map((p, i) => {
           const isSold = p.status === 'sold';

@@ -48,7 +48,7 @@ export default async function CollectionsPage({
         <div className="mx-auto max-w-[1480px]">
           <div className="max-w-2xl mb-8 md:mb-10 reveal">
             <p className="eyebrow mb-3">{t('beadedEyebrow')}</p>
-            <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('beadedIntro')}</p>
+            <p className="text-[0.95rem] leading-[1.7] text-ash font-light">{t('beadedIntro')}</p>
           </div>
 
           <CollectionsCoverflow
@@ -78,7 +78,7 @@ export default async function CollectionsPage({
               <h2 className="serif-display text-[clamp(1.6rem,3.2vw,2.4rem)] font-light leading-[1.2] mb-4 text-charcoal">
                 {t('aotearoaTitle')}
               </h2>
-              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaIntro')}</p>
+              <p className="text-[0.95rem] leading-[1.7] text-ash font-light">{t('aotearoaIntro')}</p>
             </div>
 
             <Link
@@ -99,7 +99,7 @@ export default async function CollectionsPage({
             </Link>
 
             <div className="mt-8 max-w-2xl text-left reveal">
-              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaExtended')}</p>
+              <p className="text-[0.95rem] leading-[1.7] text-ash font-light">{t('aotearoaExtended')}</p>
             </div>
           </div>
 
@@ -110,8 +110,8 @@ export default async function CollectionsPage({
               <h2 className="serif-display text-[clamp(1.6rem,3.2vw,2.4rem)] font-light leading-[1.2] mb-4 text-charcoal">
                 {t('aotearoaTitle')}
               </h2>
-              <p className="text-[0.95rem] leading-[1.8] text-ash font-light mb-6">{t('aotearoaIntro')}</p>
-              <p className="text-[0.95rem] leading-[1.8] text-ash font-light">{t('aotearoaExtended')}</p>
+              <p className="text-[0.95rem] leading-[1.7] text-ash font-light mb-6">{t('aotearoaIntro')}</p>
+              <p className="text-[0.95rem] leading-[1.7] text-ash font-light">{t('aotearoaExtended')}</p>
             </div>
             <div className="flex-1">
               <Link

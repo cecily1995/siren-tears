@@ -35,23 +35,23 @@ export default function Journal({
   labels: Labels;
 }) {
   return (
-    <section id="journal" className="bg-pearl py-32 md:py-44 px-6 md:px-12">
+    <section id="journal" className="bg-pearl py-16 md:py-24 px-6 md:px-12">
       <div className="mx-auto max-w-[1380px]">
         {labels.title && (
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-20 reveal">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-14 reveal">
             <div className="max-w-xl">
               <p className="eyebrow mb-5">{labels.eyebrow}</p>
               <h2 className="serif-display text-[clamp(2.2rem,4.5vw,3.8rem)] font-light leading-[1.1]">
                 {labels.title}
               </h2>
             </div>
-            <p className="md:max-w-sm text-[0.95rem] leading-[1.9] text-ash font-light">
+            <p className="md:max-w-sm text-[0.95rem] leading-[1.75] text-ash font-light">
               {labels.intro}
             </p>
           </div>
         )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-12 md:gap-x-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-10 md:gap-x-14">
           {items.map((a, i) => (
             <a
               key={a._id ?? i}
@@ -81,7 +81,7 @@ export default function Journal({
                   {a.title}
                 </h3>
                 {a.excerpt && (
-                  <p className="mt-5 text-[0.95rem] leading-[1.9] text-ash font-light">
+                  <p className="mt-5 text-[0.95rem] leading-[1.75] text-ash font-light">
                     {a.excerpt}
                   </p>
                 )}

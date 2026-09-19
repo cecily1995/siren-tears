@@ -33,10 +33,11 @@ export async function POST(request: Request) {
   const email = (formData.get('email') || '').toString().trim();
   const subject = (formData.get('subject') || '').toString().trim();
   const orderId = (formData.get('orderId') || '').toString().trim();
+  const orderNumber = (formData.get('orderNumber') || '').toString().trim();
   const message = (formData.get('message') || '').toString().trim();
   const files = formData.getAll('files').filter((f): f is File => f instanceof File && f.size > 0);
 
-  if (!fullName || !email || !subject || !orderId || !message) {
+  if (!fullName || !email || !subject || (!orderId && !orderNumber) || !message) {
     return NextResponse.json({ ok: false, error: 'Please complete all required fields.' }, { status: 400 });
   }
   if (files.length > MAX_FILES) {
@@ -50,8 +51,8 @@ export async function POST(request: Request) {
 
   try {
     const order = await client.fetch<{ _id: string } | null>(
-      `*[_type == "purchaseRequest" && _id == $id][0]{ _id }`,
-      { id: orderId }
+      `*[_type == "purchaseRequest" && (($id != "" && _id == $id) || ($orderNumber != "" && orderNumber == $orderNumber))][0]{ _id }`,
+      { id: orderId, orderNumber }
     );
     if (!order) {
       return NextResponse.json({ ok: false, error: 'Order not found.' }, { status: 404 });

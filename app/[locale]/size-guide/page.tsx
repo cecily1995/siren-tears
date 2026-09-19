@@ -38,8 +38,8 @@ export default async function SizeGuidePage({ params }: { params: { locale: stri
   return (
     <>
       <PageHeader eyebrow={t('title')} title={t('title')} />
-      <section className="bg-ivory px-6 md:px-12 py-16 md:py-24">
-        <div className="mx-auto max-w-[720px] grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-16">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
+        <div className="mx-auto max-w-[720px] grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
           <div>
             <p className="eyebrow mb-6">{t('ringTab')}</p>
             <p className="text-[0.9rem] text-charcoal font-light leading-relaxed mb-2">

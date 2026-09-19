@@ -34,7 +34,7 @@ export default function Collections({
   labels: Labels;
 }) {
   return (
-    <section id="collections" className="bg-pearl pt-16 pb-8 md:pt-24 md:pb-10 px-6 md:px-12">
+    <section id="collections" className="bg-pearl py-12 md:py-16 px-6 md:px-12">
       <div className="mx-auto max-w-[1480px]">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-8 md:mb-12 reveal">
           <div className="max-w-xl">
@@ -43,7 +43,7 @@ export default function Collections({
               {labels.title}
             </h2>
           </div>
-          <p className="md:max-w-sm text-[0.95rem] leading-[1.9] text-ash font-light">
+          <p className="md:max-w-sm text-[0.95rem] leading-[1.75] text-ash font-light">
             {labels.intro}
           </p>
         </div>
@@ -76,7 +76,7 @@ export default function Collections({
                   {c.title}
                 </h3>
                 {c.subtitle && (
-                  <p className="hidden md:block mt-3 max-w-md text-[0.92rem] text-ivory/85 font-light leading-[1.85] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-editorial">
+                  <p className="hidden md:block mt-3 max-w-md text-[0.92rem] text-ivory/85 font-light leading-[1.7] opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 ease-editorial">
                     {c.subtitle}
                   </p>
                 )}

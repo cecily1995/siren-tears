@@ -58,7 +58,7 @@ export default async function BespokeRequestPage({
         imageUrl="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Hands shaping jewellery at a quiet workbench"
       />
-      <section className="bg-ivory px-6 md:px-12 py-16 md:py-24">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-16">
         <div className="mx-auto max-w-[600px] border border-charcoal/12 bg-pearl p-8 md:p-10">
           <dl className="divide-y divide-charcoal/10">
             {rows.map((r, i) => (

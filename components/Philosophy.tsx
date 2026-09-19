@@ -72,7 +72,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
   }, [showVideo]);
 
   return (
-    <section className="relative bg-pearl text-charcoal py-32 md:py-44 px-6 md:px-12 overflow-hidden">
+    <section className="relative bg-pearl text-charcoal py-20 md:py-28 px-6 md:px-12 overflow-hidden">
       {/* Soft continuity from the ocean hero above: a dark-to-pearl bridge, not a hard cut. */}
       <div
         className="absolute inset-x-0 top-0 h-40 md:h-56 pointer-events-none"
@@ -125,7 +125,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
           <div className={`mt-10 mx-auto h-px w-16 ${showVideo ? 'bg-ivory/70' : 'bg-gold/60'}`} />
         </div>
 
-        <div className="mt-16 md:mt-32 grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-20">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
           {(data.pillars ?? []).map((p, i) => (
             <article
               key={i}
@@ -147,7 +147,7 @@ export default function Philosophy({ data }: { data: PhilosophyData }) {
                 {p.title}
               </h3>
               <p
-                className={`text-[0.72rem] md:text-[0.95rem] leading-[1.5] md:leading-[1.9] font-light ${
+                className={`text-[0.72rem] md:text-[0.95rem] leading-[1.5] md:leading-[1.75] font-light ${
                   showVideo ? 'text-ivory/90' : 'text-ash'
                 }`}
               >

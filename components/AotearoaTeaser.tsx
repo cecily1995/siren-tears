@@ -100,11 +100,11 @@ export default function AotearoaTeaser({
   useHorizontalSwipeLock(containerRef, () => undefined);
 
   return (
-    <section className="bg-pearl pt-6 pb-14 md:pt-8 md:pb-20 overflow-hidden">
+    <section className="bg-pearl py-12 md:py-16 overflow-hidden">
       {/* Full-bleed banner: photo with title/intro/CTA overlaid. The photo,
           the AOTEAROA wordmark, and "View All" are all separate links to
           the same destination -- three ways in, one place they go. */}
-      <div className="relative mx-auto max-w-[1480px] px-6 md:px-12 mb-10 md:mb-16 reveal">
+      <div className="relative mx-auto max-w-[1480px] px-6 md:px-12 mb-8 md:mb-10 reveal">
         <Link
           href="/shop?line=aotearoa"
           className="relative block aspect-[3/4] sm:aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-charcoal/5 group"

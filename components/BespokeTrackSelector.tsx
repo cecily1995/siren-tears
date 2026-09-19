@@ -29,7 +29,7 @@ export default function BespokeTrackSelector({
   const [selected, setSelected] = useState<'beaded' | 'gemstone' | null>(null);
 
   return (
-    <section className="bg-pearl px-6 md:px-12 py-10 md:py-16">
+    <section className="bg-pearl px-6 md:px-12 py-8 md:py-12">
       <div className="mx-auto max-w-[1100px]">
         <p className="eyebrow text-center mb-4">{labels.tracksTitle}</p>
         <div className="mx-auto h-px w-16 bg-gold/60 mb-6 md:mb-10" />
@@ -64,7 +64,7 @@ export default function BespokeTrackSelector({
                 </h2>
                 <p className="text-[0.82rem] md:text-[1rem] font-light mb-2 md:mb-5">{track.time}</p>
                 <p
-                  className={`text-[0.78rem] md:text-[0.92rem] leading-[1.7] md:leading-[1.9] font-light ${
+                  className={`text-[0.78rem] md:text-[0.92rem] leading-[1.7] md:leading-[1.75] font-light ${
                     isSelected ? 'text-ivory/80' : 'text-ash'
                   }`}
                 >
@@ -87,7 +87,7 @@ export default function BespokeTrackSelector({
           <div className="mt-10 md:mt-14 max-w-[760px] mx-auto">
             <div className="text-center mb-10">
               <p className="eyebrow mb-4">{labels.formTitle}</p>
-              <p className="text-[0.95rem] leading-[1.9] text-ash font-light max-w-md mx-auto">
+              <p className="text-[0.95rem] leading-[1.75] text-ash font-light max-w-md mx-auto">
                 {labels.formIntro}
               </p>
             </div>

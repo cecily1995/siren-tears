@@ -72,7 +72,7 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
           <h2 className="serif-display text-[clamp(1.4rem,2.4vw,1.9rem)] font-light leading-[1.1] tracking-wide">
             {data.brandName ?? 'SIREN TEARS'}
           </h2>
-          <p className="mt-4 max-w-md text-[0.95rem] leading-[1.95] text-charcoal/70 font-light">
+          <p className="mt-4 max-w-md text-[0.95rem] leading-[1.75] text-charcoal/70 font-light">
             {data.tagline || labels.tagline}
           </p>
           <div className="mt-6">

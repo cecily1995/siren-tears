@@ -46,7 +46,7 @@ export default async function GalleryPage({
         imageUrl="https://images.unsplash.com/photo-1767131636996-ae27286d36fb?auto=format&fit=crop&w=2000&q=80"
         imageAlt="Calm ocean water meeting a quiet rocky coastline"
       >
-        <p className="mt-7 max-w-xl mx-auto text-[0.98rem] leading-[1.95] text-ash font-light">
+        <p className="mt-4 max-w-xl text-[0.98rem] leading-[1.7] text-ash font-light">
           {t('intro')}
           {instagramUrl && (
             <>
@@ -64,7 +64,7 @@ export default async function GalleryPage({
         </p>
       </PageHeader>
 
-      <section className="bg-ivory px-6 md:px-12 py-24 md:py-32">
+      <section className="bg-ivory px-6 md:px-12 py-14 md:py-20">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
             <Suspense fallback={null}>
@@ -75,7 +75,7 @@ export default async function GalleryPage({
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">
                 {t('emptyTitle')}
               </p>
-              <p className="text-[0.95rem] leading-[1.9] text-ash font-light">
+              <p className="text-[0.95rem] leading-[1.75] text-ash font-light">
                 {t('emptyBody')}
               </p>
             </div>

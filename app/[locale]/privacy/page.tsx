@@ -13,7 +13,7 @@ export default async function PrivacyPage({
   setRequestLocale(params.locale);
 
   return (
-    <section className="bg-ivory px-6 md:px-12 pt-40 pb-24 md:pt-48 md:pb-32">
+    <section className="bg-ivory px-6 md:px-12 pt-[72px] pb-16 md:pt-24 md:pb-20">
       <div className="mx-auto max-w-[760px]">
         <p className="eyebrow mb-6">Legal</p>
         <h1 className="serif-display text-[clamp(2rem,4vw,2.8rem)] font-light leading-[1.15] mb-4">
@@ -21,7 +21,7 @@ export default async function PrivacyPage({
         </h1>
         <p className="text-[0.85rem] text-ash/70 font-light mb-12">Last updated: draft — pending review</p>
 
-        <div className="space-y-10 text-[0.95rem] leading-[1.9] text-ash font-light">
+        <div className="space-y-7 text-[0.95rem] leading-[1.7] text-ash font-light">
           <p>
             SIREN TEARS ("we", "us", "our") respects your privacy. This policy explains what
             information we collect, how we use it, and the choices available to you.

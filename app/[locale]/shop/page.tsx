@@ -105,7 +105,7 @@ export default async function ShopPage({
         imageAlt="Natural stone jewellery macro detail"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-20 md:py-28">
+      <section className="bg-ivory px-6 md:px-12 py-12 md:py-20">
         <div className="mx-auto max-w-[1480px]">
           {items.length > 0 ? (
             <ShopGrid
@@ -130,7 +130,7 @@ export default async function ShopPage({
               <p className="serif-display text-[1.6rem] font-light mb-5 text-charcoal">
                 {t('emptyTitle')}
               </p>
-              <p className="text-[0.95rem] leading-[1.9] text-ash font-light">{t('emptyBody')}</p>
+              <p className="text-[0.95rem] leading-[1.75] text-ash font-light">{t('emptyBody')}</p>
             </div>
           )}
         </div>

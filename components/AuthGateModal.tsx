@@ -67,7 +67,7 @@ export default function AuthGateModal() {
             <p className="serif-display text-[1.4rem] font-light text-charcoal mb-3">
               {t('gateJoinTitle')}
             </p>
-            <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-5">
+            <p className="text-[0.85rem] leading-[1.7] text-ash font-light mb-5">
               {t('accountCreatedBody')}
             </p>
             <ul className="text-left space-y-1.5 mb-7 inline-block">

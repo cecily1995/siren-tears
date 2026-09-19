@@ -23,7 +23,7 @@ export default function ProductAccordionSection({
         <span className="text-[11px] tracking-[0.24em] uppercase text-charcoal font-light">{title}</span>
         <span className="text-charcoal/50 text-lg leading-none font-light">{open ? '−' : '+'}</span>
       </button>
-      {open && <div className="pb-5 text-[0.88rem] text-ash font-light leading-[1.85]">{children}</div>}
+      {open && <div className="pb-5 text-[0.88rem] text-ash font-light leading-[1.7]">{children}</div>}
     </div>
   );
 }

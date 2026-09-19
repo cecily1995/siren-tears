@@ -870,6 +870,7 @@
     "formEmail": "邮箱",
     "formSubject": "主题",
     "formSelectOrder": "选择订单",
+    "formOrderNumber": "订单编号",
     "formMessage": "留言",
     "formAttachFiles": "Attach files",
     "formFileNote": "Attach up to 10 files. The maximum allowed size per file is 10 MB.",

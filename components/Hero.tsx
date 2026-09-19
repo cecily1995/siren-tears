@@ -68,7 +68,7 @@ export default function Hero({ data }: { data: HeroData }) {
               />
             </div>
             <p
-              className="mt-8 text-[0.95rem] md:text-[1.05rem] font-light text-ivory/85 max-w-xl mx-auto leading-[1.9] opacity-0 animate-[fadeUp_1.4s_cubic-bezier(0.22,1,0.36,1)_1.4s_forwards]"
+              className="mt-8 text-[0.95rem] md:text-[1.05rem] font-light text-ivory/85 max-w-xl mx-auto leading-[1.75] opacity-0 animate-[fadeUp_1.4s_cubic-bezier(0.22,1,0.36,1)_1.4s_forwards]"
             >
               {data.body}
             </p>

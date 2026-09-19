@@ -870,6 +870,7 @@
     "formEmail": "Email",
     "formSubject": "Тема",
     "formSelectOrder": "Выберите заказ",
+    "formOrderNumber": "Номер заказа",
     "formMessage": "Сообщение",
     "formAttachFiles": "Прикрепить файлы",
     "formFileNote": "Прикрепите до 10 файлов. Максимальный размер одного файла — 10 МБ.",

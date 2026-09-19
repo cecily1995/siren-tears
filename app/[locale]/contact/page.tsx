@@ -52,15 +52,15 @@ export default async function ContactPage({ params }: { params: { locale: string
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-8 md:pb-10 max-w-[820px] mx-auto text-left">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-5 md:pb-0 max-w-[820px] mx-auto text-left">
         <h1 className="serif-display text-[1.8rem] md:text-[2.2rem] font-light text-charcoal mb-2">
           {t('eyebrow')}
         </h1>
-        <p className="text-[1rem] md:text-[1.1rem] font-light text-charcoal/80 mb-4">{t('title')}</p>
-        <p className="text-[0.85rem] leading-[1.8] text-ash font-light max-w-lg">{t('intro')}</p>
+        <p className="text-[1rem] md:text-[1.1rem] font-light text-charcoal/80 mb-2">{t('title')}</p>
+        <p className="text-[0.85rem] leading-[1.65] text-ash font-light max-w-lg">{t('intro')}</p>
 
         {methods.length > 0 && (
-          <div className="mt-8 grid grid-cols-3 gap-x-4 gap-y-4 max-w-lg">
+          <div className="mt-5 grid grid-cols-3 gap-x-3 gap-y-2 max-w-lg">
             {methods.map((m) => (
               <a
                 key={m.label}
@@ -76,8 +76,8 @@ export default async function ContactPage({ params }: { params: { locale: string
         )}
       </div>
 
-      <div className="px-6 md:px-12 pb-4 md:pb-6 max-w-[820px] mx-auto">
-        <div className="grid grid-cols-2 gap-3 md:gap-4">
+      <div className="px-6 md:px-0 pb-3 w-full">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
           {smallTiles.map((tile) => (
             <Link key={tile.href} href={tile.href} className="group relative block aspect-[3/4] overflow-hidden bg-charcoal/5">
               {tile.image ? (
@@ -102,7 +102,7 @@ export default async function ContactPage({ params }: { params: { locale: string
         </div>
       </div>
 
-      <div className="px-6 md:px-12 pb-14 md:pb-20 max-w-[820px] mx-auto">
+      <div className="px-6 md:px-0 pb-12 md:pb-16 w-full">
         <Link href="/returns-repairs" className="group relative block aspect-[16/9] overflow-hidden bg-charcoal/5">
           {media?.returnsImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element

@@ -36,7 +36,7 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-28 md:pt-32 pb-10 md:pb-14 max-w-[760px] mx-auto text-left">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-8 md:pb-10 max-w-[760px] mx-auto text-left">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/logo/siren-tears-logo-full.png"
@@ -66,7 +66,7 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
           </h1>
         )}
 
-        <div className="space-y-3 text-[0.8rem] md:text-[0.85rem] leading-[1.85] text-ash font-light">
+        <div className="space-y-3 text-[0.8rem] md:text-[0.85rem] leading-[1.7] text-ash font-light">
           {(data.paragraphs ?? []).map((p: string, i: number) => (
             <p key={i} className="whitespace-pre-line">
               {p}

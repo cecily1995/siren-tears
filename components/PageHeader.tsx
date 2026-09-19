@@ -20,7 +20,7 @@ const DEFAULT_IMAGE =
  */
 export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, children, titleClassName }: Props) {
   return (
-    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-24 pb-6 md:pt-28 md:pb-8 overflow-hidden">
+    <section className="relative bg-pearl text-charcoal px-6 md:px-12 pt-[72px] pb-5 md:pt-24 md:pb-6 overflow-hidden">
       <div
         className="absolute inset-0 bg-center bg-cover opacity-[0.22]"
         style={{ backgroundImage: `url(${imageUrl || DEFAULT_IMAGE})` }}
@@ -42,7 +42,7 @@ export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, 
         }}
       />
       <div className="relative max-w-[820px] text-left reveal">
-        {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+        {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
         <h1
           className={
             titleClassName ||
@@ -52,7 +52,7 @@ export default function PageHeader({ eyebrow, title, intro, imageUrl, imageAlt, 
           {title}
         </h1>
         {intro && (
-          <p className="mt-5 max-w-xl text-[0.98rem] leading-[1.95] text-ash font-light">
+          <p className="mt-3 max-w-xl text-[0.98rem] leading-[1.7] text-ash font-light">
             {intro}
           </p>
         )}

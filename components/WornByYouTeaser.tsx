@@ -18,7 +18,7 @@ export default function WornByYouTeaser({ items, labels }: { items: Item[]; labe
   const covers = items.filter((i) => i.images?.[0]?.url).slice(0, 8);
 
   return (
-    <section className="bg-pearl pt-8 pb-20 md:pt-12 md:pb-16 overflow-hidden">
+    <section className="bg-pearl py-12 md:py-16 overflow-hidden">
       <div className="px-6 md:px-12 mx-auto max-w-[1480px] text-center mb-8 md:mb-10 reveal">
         <h2 className="serif-display text-[clamp(2rem,4vw,3rem)] font-light leading-[1.15] text-charcoal">
           {labels.title}

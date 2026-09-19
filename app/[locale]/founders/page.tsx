@@ -30,13 +30,13 @@ export default async function FoundersPage({ params }: { params: { locale: strin
       {/* Full-width, flush against the true left edge -- generous top
           clearance so it's never hidden under the fixed nav bar. Doesn't
           share a width constraint with the centered intro below it. */}
-      <div className="px-6 md:px-12 pt-28 md:pt-32">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24">
         <h1 className="serif-display text-[clamp(1.5rem,3.2vw,2.1rem)] font-light leading-[1.2] text-charcoal uppercase tracking-[0.02em] text-left">
           {t('pageTitle')}
         </h1>
       </div>
       <div className="px-6 md:px-12 max-w-[900px] mx-auto mt-5">
-        <p className="max-w-xl mx-auto text-[0.88rem] leading-[1.85] text-ash font-light text-center">
+        <p className="max-w-xl mx-auto text-[0.88rem] leading-[1.7] text-ash font-light text-center">
           {t('heroIntro')}
         </p>
       </div>
@@ -58,9 +58,9 @@ export default async function FoundersPage({ params }: { params: { locale: strin
         <div className="md:hidden">
           <p className="eyebrow mb-4 text-left">{t('foundersHeading')}</p>
           <div className="space-y-4 text-left">
-            <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para1')}</p>
-            <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para2')}</p>
-            <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para3')}</p>
+            <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para1')}</p>
+            <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para2')}</p>
+            <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para3')}</p>
           </div>
           <div className="mt-8 max-w-[420px] md:max-w-[640px] mx-auto">
             <SwipeGallery
@@ -74,9 +74,9 @@ export default async function FoundersPage({ params }: { params: { locale: strin
           <div className="flex-1">
             <p className="eyebrow mb-4 text-left">{t('foundersHeading')}</p>
             <div className="space-y-4 text-left">
-              <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para1')}</p>
-              <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para2')}</p>
-              <p className="text-[0.85rem] leading-[1.85] text-ash font-light">{t('para3')}</p>
+              <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para1')}</p>
+              <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para2')}</p>
+              <p className="text-[0.85rem] leading-[1.7] text-ash font-light">{t('para3')}</p>
             </div>
           </div>
           <div className="flex-1">

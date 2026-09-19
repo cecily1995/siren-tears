@@ -34,7 +34,7 @@ export default function OrdersPageContent() {
 
   return (
     <div className="bg-ivory min-h-[60vh]">
-      <div className="px-6 md:px-12 pt-28 md:pt-32">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24">
         {!loggedIn ? (
           <InlineLoginForm onSuccess={() => setLoggedIn(true)} />
         ) : (

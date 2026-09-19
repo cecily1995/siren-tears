@@ -870,6 +870,7 @@
     "formEmail": "E-mail",
     "formSubject": "Sujet",
     "formSelectOrder": "Sélectionner une commande",
+    "formOrderNumber": "Numéro de commande",
     "formMessage": "Message",
     "formAttachFiles": "Joindre des fichiers",
     "formFileNote": "Joignez jusqu'à 10 fichiers. Taille maximale par fichier : 10 Mo.",

@@ -11,9 +11,9 @@ const MAX_FILE_SIZE = 10 * 1024 * 1024;
 export default function ReturnsRepairsForm() {
   const t = useTranslations('returnsRepairsPage');
   const [loading, setLoading] = useState(true);
-  const [loggedIn, setLoggedIn] = useState(false);
   const [orders, setOrders] = useState<Order[]>([]);
   const [selectedOrder, setSelectedOrder] = useState('');
+  const [orderNumber, setOrderNumber] = useState('');
   const [files, setFiles] = useState<File[]>([]);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMsg, setErrorMsg] = useState('');
@@ -23,11 +23,10 @@ export default function ReturnsRepairsForm() {
     fetch('/api/auth/me')
       .then((res) => res.json())
       .then((data) => {
-        setLoggedIn(!!data.member);
         setOrders(data.purchases || []);
         if (data.purchases?.[0]?._id) setSelectedOrder(data.purchases[0]._id);
       })
-      .catch(() => setLoggedIn(false))
+      .catch(() => setOrders([]))
       .finally(() => setLoading(false));
   }, []);
 
@@ -58,6 +57,7 @@ export default function ReturnsRepairsForm() {
     setErrorMsg('');
     const form = new FormData(e.currentTarget);
     form.set('orderId', selectedOrder);
+    form.set('orderNumber', orderNumber.trim());
     files.forEach((f) => form.append('files', f));
 
     try {
@@ -81,16 +81,8 @@ export default function ReturnsRepairsForm() {
 
   if (loading) return <p className="text-[0.72rem] text-ash/60 font-light">…</p>;
 
-  if (!loggedIn) {
-    return <p className="text-[0.72rem] leading-[1.85] text-ash font-light">{t('formSignInPrompt')}</p>;
-  }
-
-  if (orders.length === 0) {
-    return <p className="text-[0.72rem] leading-[1.85] text-ash font-light">{t('formNoOrders')}</p>;
-  }
-
   if (status === 'success') {
-    return <p className="text-[0.72rem] leading-[1.85] text-charcoal font-light">{t('formSuccess')}</p>;
+    return <p className="text-[0.72rem] leading-[1.7] text-charcoal font-light">{t('formSuccess')}</p>;
   }
 
   return (
@@ -107,21 +99,35 @@ export default function ReturnsRepairsForm() {
         <label className={label}>{t('formSubject')} *</label>
         <input name="subject" type="text" required className={input} />
       </div>
-      <div>
-        <label className={label}>{t('formSelectOrder')} *</label>
-        <select
-          value={selectedOrder}
-          onChange={(e) => setSelectedOrder(e.target.value)}
-          required
-          className={`${input} appearance-none`}
-        >
-          {orders.map((o) => (
-            <option key={o._id} value={o._id}>
-              {o.orderNumber || o._id} — {o.productName || ''}
-            </option>
-          ))}
-        </select>
-      </div>
+      {orders.length > 0 ? (
+        <div>
+          <label className={label}>{t('formSelectOrder')} *</label>
+          <select
+            value={selectedOrder}
+            onChange={(e) => setSelectedOrder(e.target.value)}
+            required
+            className={`${input} appearance-none`}
+          >
+            {orders.map((o) => (
+              <option key={o._id} value={o._id}>
+                {o.orderNumber || o._id} — {o.productName || ''}
+              </option>
+            ))}
+          </select>
+        </div>
+      ) : (
+        <div>
+          <label className={label}>{t('formOrderNumber')} *</label>
+          <input
+            name="orderNumber"
+            type="text"
+            value={orderNumber}
+            onChange={(e) => setOrderNumber(e.target.value)}
+            required
+            className={input}
+          />
+        </div>
+      )}
       <div>
         <label className={label}>{t('formMessage')} *</label>
         <textarea name="message" required rows={4} className={`${input} resize-none`} />

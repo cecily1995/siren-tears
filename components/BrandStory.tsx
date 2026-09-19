@@ -11,14 +11,14 @@ export default function BrandStory({ data }: { data: BrandStoryData }) {
   return (
     <section
       id="about"
-      className="relative overflow-hidden py-32 md:py-48 px-6 md:px-12 text-charcoal"
+      className="relative overflow-hidden py-16 md:py-24 px-6 md:px-12 text-charcoal"
       style={{
         background:
           'linear-gradient(180deg, #FFFFFF 0%, #FFFFFF 100%)'
       }}
     >
       <div className="mx-auto max-w-[1380px]">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-20 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
           {/* Image column */}
           <div className="md:col-span-6 md:sticky md:top-28 reveal">
             <div className="relative overflow-hidden aspect-[4/5] frame-zoom">
@@ -46,14 +46,14 @@ export default function BrandStory({ data }: { data: BrandStoryData }) {
                 {data.title}
               </h2>
             )}
-            <div className="mt-10 space-y-7 text-[1rem] leading-[1.95] text-ash font-light max-w-xl">
+            <div className="mt-7 space-y-4 text-[1rem] leading-[1.75] text-ash font-light max-w-xl">
               {(data.paragraphs ?? []).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
             </div>
 
             {data.stats && data.stats.length > 0 && (
-              <div className="mt-16 grid grid-cols-3 gap-6 max-w-lg">
+              <div className="mt-10 grid grid-cols-3 gap-6 max-w-lg">
                 {data.stats.map((s, i) => (
                   <div key={i} className="border-t border-charcoal/15 pt-5">
                     <div className="serif-display text-[2.4rem] font-light leading-none text-charcoal">

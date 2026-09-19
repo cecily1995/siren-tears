@@ -120,7 +120,7 @@ export default function BespokeForm({ track }: { track: 'beaded' | 'gemstone' })
         <p className="serif-display text-[1.8rem] font-light mb-5 text-charcoal">
           {t('successTitle')}
         </p>
-        <p className="text-[0.95rem] leading-[1.9] text-ash font-light max-w-md mx-auto mb-8">
+        <p className="text-[0.95rem] leading-[1.75] text-ash font-light max-w-md mx-auto mb-8">
           {t('successBody')}
         </p>
 

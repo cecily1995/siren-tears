@@ -16,7 +16,7 @@ function CloseButton() {
         else router.push('/');
       }}
       aria-label="Close"
-      className="fixed top-20 right-6 md:top-24 md:right-10 z-[60] w-10 h-10 flex items-center justify-center bg-ivory/90 text-charcoal shadow-sm"
+      className="fixed top-[72px] right-6 md:top-24 md:right-10 z-[60] w-8 h-8 flex items-center justify-center text-charcoal/60 hover:text-charcoal"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -27,11 +27,11 @@ function CloseButton() {
 
 function CompactHeader({ eyebrow, title, intro }: { eyebrow: string; title: string; intro?: string }) {
   return (
-    <div className="relative px-6 md:px-12 pt-24 md:pt-28 pb-6 md:pb-8 max-w-[820px] mx-auto text-left">
+    <div className="relative px-6 md:px-12 pt-[72px] md:pt-24 pb-5 md:pb-6 max-w-[820px] mx-auto text-left">
       <CloseButton />
       <p className="eyebrow mb-3">{eyebrow}</p>
       <h1 className="serif-display text-[1.6rem] md:text-[2rem] font-light text-charcoal">{title}</h1>
-      {intro && <p className="mt-3 text-[0.9rem] leading-[1.8] text-ash font-light max-w-lg">{intro}</p>}
+      {intro && <p className="mt-3 text-[0.9rem] leading-[1.7] text-ash font-light max-w-lg">{intro}</p>}
     </div>
   );
 }

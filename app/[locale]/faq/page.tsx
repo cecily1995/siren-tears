@@ -33,14 +33,14 @@ export default async function FaqPage({
         imageAlt="Natural stone texture"
       />
 
-      <section className="bg-ivory px-6 md:px-12 py-10 md:py-14">
+      <section className="bg-ivory px-6 md:px-12 py-8 md:py-10">
         <div className="mx-auto max-w-[820px] divide-y divide-charcoal/10">
           {items.map((item, i) => (
             <div key={i} className="py-4 reveal" style={{ transitionDelay: `${(i % 6) * 60}ms` }}>
               <h2 className="serif-display text-[1.2rem] font-light text-charcoal mb-3">{item.q}</h2>
-              <p className="text-[0.92rem] leading-[1.9] text-ash font-light">{item.a}</p>
+              <p className="text-[0.92rem] leading-[1.75] text-ash font-light">{item.a}</p>
               {i === 2 && (
-                <p className="mt-3 text-[0.92rem] leading-[1.9] text-ash font-light">
+                <p className="mt-3 text-[0.92rem] leading-[1.75] text-ash font-light">
                   {t('shippingExtra')}{' '}
                   <Link href="/membership" className="text-gold hover:text-gold/80 link-underline">
                     → {t('joinLink')}

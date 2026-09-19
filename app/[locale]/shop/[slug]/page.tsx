@@ -73,7 +73,7 @@ export default async function ShopProductPage({
   ].filter(Boolean) as { label: string; value: string }[];
 
   return (
-    <section className="bg-ivory px-6 md:px-12 pt-32 md:pt-40 pb-24 md:pb-32">
+    <section className="bg-ivory px-6 md:px-12 pt-[72px] md:pt-24 pb-14 md:pb-20">
       <div className="mx-auto max-w-[1200px]">
         <Link
           href="/shop"
@@ -82,7 +82,7 @@ export default async function ShopProductPage({
           ← {t('backToShop')}
         </Link>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-16">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12">
           <div className="md:col-span-6 reveal">
             <ProductGallery
               images={product.images ?? []}

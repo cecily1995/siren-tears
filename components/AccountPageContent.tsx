@@ -55,12 +55,12 @@ export default function AccountPageContent({
 
   return (
     <>
-      <div className="px-6 md:px-12 pt-14 md:pt-16 pb-4 md:pb-6 max-w-[900px] mx-auto text-left">
+      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-5 md:pb-6 max-w-[900px] mx-auto text-left">
         <p className="eyebrow mb-3">{eyebrow}</p>
         <h1 className="serif-display text-[1.7rem] md:text-[2rem] font-light text-charcoal">{title}</h1>
-        {intro && <p className="mt-3 text-[0.9rem] leading-[1.8] text-ash font-light max-w-lg">{intro}</p>}
+        {intro && <p className="mt-3 text-[0.9rem] leading-[1.7] text-ash font-light max-w-lg">{intro}</p>}
       </div>
-      <section className="bg-ivory px-6 md:px-12 py-10 md:py-14">
+      <section className="bg-ivory px-6 md:px-12 py-8 md:py-10">
         <div className="mx-auto max-w-[900px]">
           <AccountLookupForm view="profile" />
         </div>

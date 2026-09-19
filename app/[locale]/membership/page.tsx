@@ -38,16 +38,16 @@ export default async function MembershipPage({
         imageAlt="Warm gold and champagne stone detail"
       />
 
-      <section className="bg-pearl px-6 md:px-12 py-24 md:py-32">
-        <div className="mx-auto max-w-[640px] space-y-20">
+      <section className="bg-pearl px-6 md:px-12 py-14 md:py-20">
+        <div className="mx-auto max-w-[640px] space-y-14">
           {/* Siren Circle */}
           <div>
-            <article className="reveal bg-ivory border border-charcoal/12 p-10 md:p-12 flex flex-col">
+            <article className="reveal bg-ivory border border-charcoal/12 p-6 md:p-8 flex flex-col">
               <p className="eyebrow mb-3">{t('circleTitle')}</p>
-              <p className="text-[0.95rem] text-gold font-light mb-8">{t('circleFree')}</p>
-              <ul className="space-y-4">
+              <p className="text-[0.95rem] text-gold font-light mb-5">{t('circleFree')}</p>
+              <ul className="space-y-3">
                 {circleBenefits.map((b, i) => (
-                  <li key={i} className="text-[0.92rem] leading-[1.8] text-ash font-light pl-5 relative">
+                  <li key={i} className="text-[0.92rem] leading-[1.7] text-ash font-light pl-5 relative">
                     <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
                     {b}
                   </li>
@@ -58,8 +58,8 @@ export default async function MembershipPage({
               </div>
             </article>
 
-            <div className="mt-10 reveal">
-              <div className="text-center mb-8">
+            <div className="mt-7 reveal">
+              <div className="text-center mb-5">
                 <p className="eyebrow mb-4">{t('circleCta')}</p>
               </div>
               <MembershipJoinForm />
@@ -70,19 +70,19 @@ export default async function MembershipPage({
 
           {/* Private Client — distinguished with a charcoal border/accent, not a solid black fill */}
           <article
-            className="reveal bg-sandLight/40 border-2 border-charcoal p-10 md:p-12 flex flex-col"
+            className="reveal bg-sandLight/40 border-2 border-charcoal p-6 md:p-8 flex flex-col"
           >
             <p className="eyebrow mb-3">{t('privateTitle')}</p>
-            <p className="text-[0.95rem] text-ash font-light mb-8">{t('privateSubtitle')}</p>
-            <ul className="space-y-4 flex-1">
+            <p className="text-[0.95rem] text-ash font-light mb-5">{t('privateSubtitle')}</p>
+            <ul className="space-y-3 flex-1">
               {privateBenefits.map((b, i) => (
-                <li key={i} className="text-[0.92rem] leading-[1.8] text-ash font-light pl-5 relative">
+                <li key={i} className="text-[0.92rem] leading-[1.7] text-ash font-light pl-5 relative">
                   <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
                   {b}
                 </li>
               ))}
             </ul>
-            <p className="mt-10 text-[0.82rem] text-ash/70 font-light leading-relaxed">
+            <p className="mt-7 text-[0.82rem] text-ash/70 font-light leading-relaxed">
               {t('privateQualify')}
             </p>
             <p className="mt-4 text-[0.78rem] text-gold font-light leading-relaxed">

@@ -127,7 +127,7 @@ export default function MembershipJoinForm() {
         <p className="serif-display text-[1.2rem] font-light text-charcoal mb-3">
           {t('successTitle')}
         </p>
-        <p className="text-[0.85rem] leading-[1.8] text-ash font-light mb-5">{t('successBody')}</p>
+        <p className="text-[0.85rem] leading-[1.7] text-ash font-light mb-5">{t('successBody')}</p>
         <p className="text-[10px] tracking-[0.24em] uppercase text-ash/60 mb-2">{t('codeLabel')}</p>
         <p className="serif-display text-[1.6rem] tracking-[0.15em] text-gold">{memberCode}</p>
         <Link

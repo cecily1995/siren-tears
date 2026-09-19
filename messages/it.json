@@ -870,6 +870,7 @@
     "formEmail": "Email",
     "formSubject": "Oggetto",
     "formSelectOrder": "Seleziona ordine",
+    "formOrderNumber": "Numero ordine",
     "formMessage": "Messaggio",
     "formAttachFiles": "Allega file",
     "formFileNote": "Allega fino a 10 file. Dimensione massima per file: 10 MB.",

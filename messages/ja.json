@@ -870,6 +870,7 @@
     "formEmail": "メールアドレス",
     "formSubject": "件名",
     "formSelectOrder": "注文を選択",
+    "formOrderNumber": "注文番号",
     "formMessage": "メッセージ",
     "formAttachFiles": "ファイルを添付",
     "formFileNote": "最大10ファイルまで添付可能です。1ファイルあたりの最大サイズは10MBです。",

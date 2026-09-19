@@ -870,6 +870,7 @@
     "formEmail": "이메일",
     "formSubject": "제목",
     "formSelectOrder": "주문 선택",
+    "formOrderNumber": "주문 번호",
     "formMessage": "메시지",
     "formAttachFiles": "파일 첨부",
     "formFileNote": "최대 10개 파일까지 첨부 가능합니다. 파일당 최대 용량은 10MB입니다.",
