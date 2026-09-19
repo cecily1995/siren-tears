@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import PageHeader from '@/components/PageHeader';
 import MembershipJoinForm from '@/components/MembershipJoinForm';
 import MemberGiftTeaser from '@/components/MemberGiftTeaser';
+import { Link } from '@/i18n/routing';
 
 export const revalidate = 60;
 
@@ -69,26 +70,30 @@ export default async function MembershipPage({
           <div className="h-px bg-charcoal/10" />
 
           {/* Private Client — distinguished with a charcoal border/accent, not a solid black fill */}
-          <article
-            className="reveal bg-sandLight/40 border-2 border-charcoal p-6 md:p-8 flex flex-col"
+          <Link
+            href="/membership/private-client"
+            className="reveal group block bg-sandLight/40 border-2 border-charcoal p-6 md:p-8 transition-colors duration-300 hover:bg-charcoal hover:text-ivory focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
           >
-            <p className="eyebrow mb-3">{t('privateTitle')}</p>
-            <p className="text-[0.95rem] text-ash font-light mb-5">{t('privateSubtitle')}</p>
+            <div className="flex items-start justify-between gap-6 mb-3">
+              <p className="eyebrow group-hover:text-gold transition-colors">{t('privateTitle')}</p>
+              <span className="text-[1.25rem] leading-none font-light transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">→</span>
+            </div>
+            <p className="text-[0.95rem] text-ash group-hover:text-ivory/75 font-light mb-5 transition-colors">{t('privateSubtitle')}</p>
             <ul className="space-y-3 flex-1">
               {privateBenefits.map((b, i) => (
-                <li key={i} className="text-[0.92rem] leading-[1.7] text-ash font-light pl-5 relative">
+                <li key={i} className="text-[0.92rem] leading-[1.7] text-ash group-hover:text-ivory/80 font-light pl-5 relative transition-colors">
                   <span className="absolute left-0 top-[0.6em] w-1.5 h-1.5 rounded-full bg-gold/70" />
                   {b}
                 </li>
               ))}
             </ul>
-            <p className="mt-7 text-[0.82rem] text-ash/70 font-light leading-relaxed">
+            <p className="mt-7 text-[0.82rem] text-ash/70 group-hover:text-ivory/70 font-light leading-relaxed transition-colors">
               {t('privateQualify')}
             </p>
             <p className="mt-4 text-[0.78rem] text-gold font-light leading-relaxed">
               {t('privatePriceNote')}
             </p>
-          </article>
+          </Link>
         </div>
       </section>
     </>
