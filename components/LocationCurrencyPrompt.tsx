@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 import { useCurrency } from '@/lib/currency-context';
 import { type Currency } from '@/lib/currency';
 
-const STORAGE_KEY = 'sirentears_location_confirmed';
+// Version the key whenever the prompt flow materially changes. This makes
+// existing visitors see the corrected location-first experience once, rather
+// than being skipped because an older implementation stored confirmation.
+export const LOCATION_CONFIRMATION_KEY = 'sirentears_location_confirmed_v2';
 const COUNTRY_CURRENCY: Record<string, Currency> = {
   NZ: 'NZD', AU: 'AUD', US: 'USD', CA: 'CAD', CN: 'CNY', GB: 'GBP', IE: 'EUR', FR: 'EUR', DE: 'EUR',
   IT: 'EUR', ES: 'EUR', JP: 'JPY', KR: 'KRW', SG: 'SGD', HK: 'HKD', CH: 'CHF', IN: 'INR'
@@ -16,19 +19,26 @@ export default function LocationCurrencyPrompt() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem(STORAGE_KEY)) {
+    if (localStorage.getItem(LOCATION_CONFIRMATION_KEY)) {
       window.dispatchEvent(new Event('sirentears:location-complete'));
       return;
     }
-    fetch('/api/location').then((response) => response.json()).then((data) => {
-      setCountry(data?.country || 'NZ');
-      window.setTimeout(() => setVisible(true), 900);
-    }).catch(() => window.setTimeout(() => setVisible(true), 900));
+
+    // Showing the prompt must not depend on a geo request finishing. Ad
+    // blockers and slow networks can otherwise leave it hidden while the
+    // login gate waits indefinitely (or appears in the wrong order).
+    const showTimer = window.setTimeout(() => setVisible(true), 600);
+    fetch('/api/location')
+      .then((response) => response.json())
+      .then((data) => setCountry(data?.country || 'NZ'))
+      .catch(() => undefined);
+
+    return () => window.clearTimeout(showTimer);
   }, []);
 
   function finish(useLocalCurrency: boolean) {
     if (useLocalCurrency) setCurrency(COUNTRY_CURRENCY[country] || 'NZD');
-    localStorage.setItem(STORAGE_KEY, '1');
+    localStorage.setItem(LOCATION_CONFIRMATION_KEY, '1');
     setVisible(false);
     window.dispatchEvent(new Event('sirentears:location-complete'));
   }

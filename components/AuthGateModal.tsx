@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/routing';
 import InlineLoginForm from './InlineLoginForm';
 import MembershipInvitationModal from './MembershipInvitationModal';
+import { LOCATION_CONFIRMATION_KEY } from './LocationCurrencyPrompt';
 
 const DISMISS_KEY = 'sirentears_auth_gate_dismissed';
 
@@ -35,7 +36,7 @@ export default function AuthGateModal() {
         /* fail silently — never block browsing over a network hiccup */
       }
     }
-    const locationDone = localStorage.getItem('sirentears_location_confirmed');
+    const locationDone = localStorage.getItem(LOCATION_CONFIRMATION_KEY);
     if (locationDone) {
       window.setTimeout(check, 1800);
     } else {

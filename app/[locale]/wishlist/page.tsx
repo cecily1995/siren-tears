@@ -17,7 +17,7 @@ function CloseButton() {
         else router.push('/');
       }}
       aria-label="Close"
-      className="fixed top-[72px] right-6 md:top-24 md:right-10 z-[60] w-8 h-8 flex items-center justify-center text-charcoal/60 hover:text-charcoal"
+      className="fixed top-[104px] right-5 md:top-24 md:right-10 z-[60] w-9 h-9 bg-ivory/95 border border-charcoal/10 shadow-sm flex items-center justify-center text-charcoal/70 hover:text-charcoal"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
