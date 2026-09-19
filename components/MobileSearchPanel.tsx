@@ -10,7 +10,7 @@ import { useRouter, Link } from '@/i18n/routing';
 // results, since those are line/category identifiers, not words that
 // appear in product names or stone descriptions.
 const SUGGESTED_TERMS = [
-  { label: 'Crystal', href: '/shop?line=beaded&category=necklace' },
+  { label: 'Crystal', href: '/shop?line=beaded' },
   { label: 'Necklace', href: '/shop?category=necklace' },
   { label: 'Ring', href: '/shop?category=ring' },
   { label: 'Bracelet', href: '/shop?category=braceletChain' },

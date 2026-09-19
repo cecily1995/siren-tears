@@ -9,8 +9,6 @@ import BagIcon from './BagIcon';
 import WishlistIcon from './WishlistIcon';
 import MobileSearchPanel from './MobileSearchPanel';
 
-const COLLECTION_NAMES = ['Mosaic', 'Last Queen', 'Golden Age', "Siren's Chain", 'Violet Hour', 'One Hue'];
-
 const SHOP_CATEGORIES = [
   { key: 'rings', category: 'ring' },
   { key: 'braceletChain', category: 'braceletChain' },
@@ -50,12 +48,12 @@ function NavDropdown({
   }, []);
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative flex h-4 items-center" ref={ref}>
       <button
         type="button"
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
-        className={`inline-flex items-center leading-none bg-transparent border-none p-0 cursor-pointer text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+        className={`inline-flex h-4 items-center leading-none bg-transparent border-none p-0 cursor-pointer text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
           scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
         }`}
       >
@@ -74,9 +72,11 @@ function NavDropdown({
 }
 
 export default function Navigation({
-  searchPanelTiles
+  searchPanelTiles,
+  collectionNames
 }: {
   searchPanelTiles?: { href?: string; imageUrl?: string; title?: string; ctaLabel?: string }[];
+  collectionNames: string[];
 }) {
   const t = useTranslations('nav');
   const tShop = useTranslations('shop');
@@ -137,12 +137,16 @@ export default function Navigation({
 
       <div className="mx-auto max-w-[1480px] px-6 md:px-12 flex items-center justify-between gap-6">
         <div className="flex items-center gap-8">
-          <MobileMenu dark={scrolled} searchPanelTiles={searchPanelTiles} />
+          <MobileMenu
+            dark={scrolled}
+            searchPanelTiles={searchPanelTiles}
+            collectionNames={collectionNames}
+          />
 
           <nav className="hidden lg:flex items-center gap-8">
             <NavDropdown label={t('collections')} scrolled={scrolled}>
               <div className="space-y-2.5">
-                {COLLECTION_NAMES.map((name) => (
+                {collectionNames.map((name) => (
                   <Link
                     key={name}
                     href={`/shop?line=beaded&collection=${encodeURIComponent(name)}`}
@@ -197,7 +201,7 @@ export default function Navigation({
 
             <Link
               href="/bespoke"
-              className={`inline-flex items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
+              className={`inline-flex h-4 items-center leading-none text-[11px] tracking-[0.28em] uppercase font-light transition-colors duration-500 ${
                 scrolled ? 'text-charcoal/70 hover:text-charcoal' : 'text-ivory/80 hover:text-ivory'
               }`}
             >

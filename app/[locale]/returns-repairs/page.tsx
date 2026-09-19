@@ -79,7 +79,7 @@ export default async function ReturnsRepairsPage({ params }: { params: { locale:
         <p className={body}>{t('contactIntroBody1')}</p>
         <p className={`${body} mt-3`}>{t('contactIntroBody2')}</p>
 
-        <div className="mt-6">
+        <div className="mt-6 w-full">
           <ReturnsRepairsForm />
         </div>
       </div>

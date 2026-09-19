@@ -6,15 +6,6 @@ import { useTranslations } from 'next-intl';
 import { Link, useRouter } from '@/i18n/routing';
 import MobileSearchPanel from './MobileSearchPanel';
 
-const COLLECTION_NAMES = [
-  'Mosaic',
-  'Last Queen',
-  'Golden Age',
-  "Siren's Chain",
-  'Violet Hour',
-  'One Hue'
-];
-
 const SHOP_CATEGORIES = [
   { key: 'rings', category: 'ring' },
   { key: 'braceletChain', category: 'braceletChain' },
@@ -32,7 +23,6 @@ const simpleLinks = [
 
 const ourWorldLinks = [
   { href: '/journal', key: 'journal' },
-  { href: '/membership', key: 'membership' },
   { href: '/worn-by-you', key: 'gallery' },
   { href: '/brand-story', key: 'about' },
   { href: '/founders', key: 'founders' },
@@ -56,10 +46,12 @@ function Chevron({ open }: { open: boolean }) {
 
 export default function MobileMenu({
   dark,
-  searchPanelTiles
+  searchPanelTiles,
+  collectionNames
 }: {
   dark: boolean;
   searchPanelTiles?: { href?: string; imageUrl?: string; title?: string; ctaLabel?: string }[];
+  collectionNames: string[];
 }) {
   const t = useTranslations('nav');
   const tShop = useTranslations('shop');
@@ -145,7 +137,7 @@ export default function MobileMenu({
           </button>
           {expanded === 'collections' && (
             <div className="pb-4 pl-1">
-              {COLLECTION_NAMES.map((name) => (
+              {collectionNames.map((name) => (
                 <Link
                   key={name}
                   href={`/shop?line=beaded&collection=${encodeURIComponent(name)}`}

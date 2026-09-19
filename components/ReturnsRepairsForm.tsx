@@ -94,7 +94,7 @@ export default function ReturnsRepairsForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-md space-y-5">
+    <form onSubmit={handleSubmit} className="w-full max-w-md space-y-5">
       <div>
         <label className={label}>{t('formFullName')} *</label>
         <input name="fullName" type="text" required className={input} />

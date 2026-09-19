@@ -16,7 +16,7 @@ function CloseButton() {
         else router.push('/');
       }}
       aria-label="Close"
-      className="absolute top-6 right-6 md:top-8 md:right-10 z-10 w-8 h-8 flex items-center justify-center text-charcoal"
+      className="fixed top-20 right-6 md:top-24 md:right-10 z-[60] w-10 h-10 flex items-center justify-center bg-ivory/90 text-charcoal shadow-sm"
     >
       <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
         <path d="M1 1L17 17M17 1L1 17" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
@@ -79,7 +79,11 @@ export default function WishlistPage() {
   }, [items]);
 
   if (!authChecked) {
-    return <div className="min-h-[60vh]" />;
+    return (
+      <div className="relative min-h-[60vh]">
+        <CloseButton />
+      </div>
+    );
   }
 
   if (!loggedIn) {
