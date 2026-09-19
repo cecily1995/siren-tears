@@ -52,6 +52,7 @@ export default function AuthGateModal() {
   if (justJoined) {
     return createPortal(
       <MembershipInvitationModal
+        onJoin={dismiss}
         onContinue={() => {
           dismiss();
           router.replace('/');

@@ -4,7 +4,13 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import MemberGiftTeaser from './MemberGiftTeaser';
 
-export default function MembershipInvitationModal({ onContinue }: { onContinue: () => void }) {
+export default function MembershipInvitationModal({
+  onContinue,
+  onJoin
+}: {
+  onContinue: () => void;
+  onJoin?: () => void;
+}) {
   const t = useTranslations('account');
 
   return (
@@ -24,7 +30,11 @@ export default function MembershipInvitationModal({ onContinue }: { onContinue: 
         <div className="mb-7 text-left">
           <MemberGiftTeaser size="sm" />
         </div>
-        <Link href="/membership" className="block w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5">
+        <Link
+          href="/membership"
+          onClick={onJoin}
+          className="block w-full text-[11px] tracking-[0.3em] uppercase text-ivory bg-charcoal px-8 py-3.5"
+        >
           {t('joinCircleCta')}
         </Link>
         <button type="button" onClick={onContinue} className="block w-full mt-4 text-[10px] tracking-[0.2em] uppercase text-ash/60">

@@ -398,23 +398,23 @@ export default function Footer({ data, labels }: { data: FooterData; labels: Lab
           </FooterAccordionSection>
         </div>
 
-        <div className="mt-10 md:mt-20 pt-6 md:pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 md:gap-4 text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.3em] uppercase text-charcoal/45 font-light">
+        <div className="mt-10 md:mt-20 pt-6 md:pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.3em] uppercase text-charcoal/45 font-light">
           <span>{labels.copyright}</span>
-          <div className="flex items-center gap-5 md:gap-6">
-            <Link href="/privacy" className="hover:text-charcoal/70 transition-colors">
-              {labels.privacy}
-            </Link>
-            <Link href="/terms" className="hover:text-charcoal/70 transition-colors">
-              {labels.terms}
-            </Link>
-            <span className="hidden md:inline">{labels.crafted}</span>
-            <CurrencySelector />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/logo/siren-tears-mermaid-mark.png"
-              alt="Siren Tears"
-              className="h-4 md:h-5 w-auto object-contain opacity-70"
-            />
+          <div className="w-full md:w-auto flex items-center justify-between md:justify-end gap-5 md:gap-6">
+            <div className="flex items-center gap-5 md:gap-6">
+              <Link href="/privacy" className="hover:text-charcoal/70 transition-colors">{labels.privacy}</Link>
+              <Link href="/terms" className="hover:text-charcoal/70 transition-colors">{labels.terms}</Link>
+              <span className="hidden md:inline">{labels.crafted}</span>
+            </div>
+            <div className="ml-auto flex items-center justify-end gap-3 md:gap-4 shrink-0">
+              <CurrencySelector />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/logo/siren-tears-watermark.png"
+                alt="Siren Tears"
+                className="w-[150px] md:w-[190px] h-auto object-contain object-right opacity-70"
+              />
+            </div>
           </div>
         </div>
       </div>
