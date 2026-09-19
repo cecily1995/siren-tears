@@ -52,7 +52,7 @@ export default async function ContactPage({ params }: { params: { locale: string
 
   return (
     <div className="bg-ivory">
-      <div className="px-6 md:px-12 pt-[72px] md:pt-24 pb-5 md:pb-0 max-w-[820px] mx-auto text-left">
+      <div className="px-6 md:px-0 pt-[72px] md:pt-24 pb-5 md:pb-0 max-w-[820px] mx-auto text-left">
         <h1 className="serif-display text-[1.8rem] md:text-[2.2rem] font-light text-charcoal mb-2">
           {t('eyebrow')}
         </h1>
@@ -76,8 +76,8 @@ export default async function ContactPage({ params }: { params: { locale: string
         )}
       </div>
 
-      <div className="px-6 md:px-0 pb-3 w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+      <div className="px-6 md:px-0 pt-5 md:pt-12 pb-3 w-full max-w-[820px] mx-auto">
+        <div className="grid grid-cols-2 gap-3 md:gap-5">
           {smallTiles.map((tile) => (
             <Link key={tile.href} href={tile.href} className="group relative block aspect-[3/4] overflow-hidden bg-charcoal/5">
               {tile.image ? (
@@ -102,7 +102,7 @@ export default async function ContactPage({ params }: { params: { locale: string
         </div>
       </div>
 
-      <div className="px-6 md:px-0 pb-12 md:pb-16 w-full">
+      <div className="px-6 md:px-0 pb-12 md:pb-16 w-full max-w-[820px] mx-auto">
         <Link href="/returns-repairs" className="group relative block aspect-[16/9] overflow-hidden bg-charcoal/5">
           {media?.returnsImageUrl ? (
             // eslint-disable-next-line @next/next/no-img-element

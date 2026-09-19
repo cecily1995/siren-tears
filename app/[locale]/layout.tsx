@@ -138,7 +138,7 @@ export default async function LocaleLayout({
             ]}
           />
           <RevealOnScroll />
-          <main>{children}</main>
+          <main className="pt-7">{children}</main>
           <Footer data={localizedFooterSettings} labels={footerLabels} />
           <AuthGateModal />
           <TawkChat />

@@ -48,7 +48,7 @@ export default async function ResponsibleCraftsmanshipPage({ params }: { params:
           so it lines up with everything else rather than hugging the raw
           page edge on wide screens. */}
       <div className="px-6 md:px-12 max-w-[1100px] mx-auto reveal">
-        <div className="max-w-[380px] text-left">
+        <div className="max-w-[380px] md:max-w-[520px] md:mx-auto text-left">
           <p className="eyebrow mb-1.5 text-[9px]">{craftedWithIntention.title}</p>
           <p className="text-[0.72rem] font-light text-charcoal mb-1">{craftedWithIntention.tagline}</p>
           <p className="text-[0.68rem] leading-[1.6] text-ash font-light">{craftedWithIntention.body}</p>

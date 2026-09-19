@@ -56,7 +56,7 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
         <img
           src="/logo/siren-tears-logo-full.png"
           alt="Siren Tears"
-          className="w-[150px] md:w-[180px] h-auto mb-8 md:mb-10"
+          className="w-[150px] md:w-[220px] h-auto mb-8 md:mb-10"
         />
         </div>
 
@@ -65,13 +65,15 @@ export default async function BrandStoryPage({ params }: { params: { locale: str
             display image under the logo, ahead of the (left-aligned,
             plain white background) text. */}
         {displayImage && (
-          <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-charcoal/5 mb-8 md:mb-10">
+          <div className="px-0 md:px-12 max-w-[1080px] mx-auto mb-8 md:mb-10">
+          <div className="relative aspect-[16/9] md:aspect-[21/9] w-full overflow-hidden bg-charcoal/5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={displayImage}
               alt={data.imageAlt || ''}
               className="absolute inset-0 w-full h-full object-cover"
             />
+          </div>
           </div>
         )}
 

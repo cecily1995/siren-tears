@@ -110,14 +110,14 @@ export default function Navigation({
   // (logo + bag icon only) -- the full site nav would be a distraction
   // during payment, per the checkout brief.
   if (pathname === '/checkout' || pathname.startsWith('/order-confirmation')) {
-    return null;
+    return <AnnouncementBar items={announcementItems} />;
   }
 
   return (
     <>
-    {isHome && <AnnouncementBar items={announcementItems} />}
+    <AnnouncementBar items={announcementItems} />
     <header
-      className={`fixed ${isHome ? 'top-7' : 'top-0'} inset-x-0 z-50 transition-all duration-700 ease-editorial ${
+      className={`fixed top-7 inset-x-0 z-50 transition-all duration-700 ease-editorial ${
         scrolled
           ? 'bg-ivory border-b border-charcoal/10 py-4'
           : 'bg-transparent py-6'
